@@ -1,0 +1,54 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 29
+    buildToolsVersion "29.0.2"
+
+    defaultConfig {
+        applicationId "demo.chen"
+        minSdkVersion 26
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    signingConfigs {
+        release {
+            storeFile file('../../onekit.keystore')
+            storePassword '123456'
+            keyAlias 'onekit'
+            keyPassword '123456'
+        }
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            signingConfig signingConfigs.release
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility = 1.8
+        targetCompatibility = 1.8
+    }
+
+}
+
+dependencies {
+    implementation 'com.tencent.map.geolocation:TencentLocationSdk-openplatform:7.2.6'
+    implementation project(path: ':Onekit')
+    implementation fileTree(dir: 'libs', include: ['*.aar', '*.jar'], exclude: [])
+    implementation project(path: ':OnekitWeixinApp')
+    implementation project(path: ':OnekitW3C')
+    implementation project(path: ':OnekitJS')
+
+    implementation 'com.tencent.mm.opensdk:wechat-sdk-android-without-mta:6.6.4'
+    // https://mvnrepository.com/artifact/com.squareup.okhttp3/okhttp
+    implementation 'com.squareup.okhttp3:okhttp:4.7.2'
+    implementation project(path: ':OnekitVUE')
+
+}
