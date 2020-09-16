@@ -7,7 +7,7 @@ public class Promise implements JsObject {
 
     @Override
     public String toString() {
-        return "[object Promise]";
+        return "[obj Promise]";
     }
 
     ///////////////////////////////

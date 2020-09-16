@@ -29,7 +29,7 @@ import com.google.zxing.PlanarYUVLuminanceSource;
 import java.io.IOException;
 
 /**
- * This object wraps the Camera service object and expects to be the only one
+ * This obj wraps the Camera service obj and expects to be the only one
  * talking to it. The implementation encapsulates the steps needed to take
  * preview-sized images, which are used for both preview and decoding.
  * 
@@ -72,7 +72,7 @@ public final class CameraManager {
 	 * Opens the camera driver and initializes the hardware parameters.
 	 * 打开相机驱动程序并初始化硬件参数。
 	 * @param holder
-	 *            The surface object which the camera will draw preview frames
+	 *            The surface obj which the camera will draw preview frames
 	 *            into.摄像机将绘制预览帧的表面物体。
 	 * @throws IOException
 	 *             Indicates the camera driver failed to open.表示照相机驱动器未打开。
@@ -327,7 +327,7 @@ public final class CameraManager {
 	}
 
 	/**
-	 * A factory method to build the appropriate LuminanceSource object based on
+	 * A factory method to build the appropriate LuminanceSource obj based on
 	 * the format of the preview buffers, as described by Camera.Parameters.
 	 * 
 	 * @param data

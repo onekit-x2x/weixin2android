@@ -3,7 +3,7 @@ package cn.onekit.js.core;
 import java.lang.reflect.Method;
 
 public  class function implements JsObject {
-     JsObject object;
+     JsObject obj;
      Method method;
      public JsObject thisArg;
      public function(){
@@ -18,13 +18,13 @@ public  class function implements JsObject {
           }
      }
 
-     public function(JsObject object, String methodName, Class< JsObject>... types) {
-          this(object.getClass(), methodName,types);
-          this.object = object;
+     public function(JsObject obj, String methodName, Class< JsObject>... types) {
+          this(obj.getClass(), methodName,types);
+          this.obj = obj;
      }
      public JsObject invoke(JsObject... arguments) {
           try{
-               return (JsObject) method.invoke(object, arguments);
+               return (JsObject) method.invoke(obj, arguments);
           } catch (Exception e) {
                e.printStackTrace();
                return null;

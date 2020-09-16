@@ -29,7 +29,7 @@ import okhttp3.Request;
 import okhttp3.Response;
 
 public class WxOpenInterface extends WxNFC {
-    public void login(Dict object){
+    public void login(Dict obj){
 
     }
 
@@ -50,8 +50,8 @@ public boolean share_menuItem = true;
     private IWXAPI api;
     private function success;
 
-    public void login(Map object) {
-        success = (function) object.get("success");
+    public void login(Map obj) {
+        success = (function) obj.get("success");
         //注册小程序
         api = WXAPIFactory.createWXAPI(Android.context, App_id, true);
         api.registerApp(App_id);
@@ -67,14 +67,14 @@ public boolean share_menuItem = true;
         // }
     }
 
-    public void checkSession(Map object) {
+    public void checkSession(Map obj) {
 
     }
 
-    public void getUserInfo(Map object) {
-        final function success = (function) object.get("success");
-        final function fail = (function) object.get("fail");
-        final function complete = (function) object.get("complete");
+    public void getUserInfo(Map obj) {
+        final function success = (function) obj.get("success");
+        final function fail = (function) obj.get("fail");
+        final function complete = (function) obj.get("complete");
         //
         final String url = "https://api.weixin.qq.com/sns/oauth2/access_token?appid=wx664178aa785b1628&secret=89e3c1844c5a6ea8663faf9f7c48279e&code=" + code + "&grant_type=authorization_code";
 
@@ -110,7 +110,7 @@ public boolean share_menuItem = true;
         });
     }
 
-    public void share(Map object) {
+    public void share(Map obj) {
 /*        api = WXAPIFactory.createWXAPI(Android.context, App_id,true);
         api.registerApp(App_id);
 
@@ -241,18 +241,18 @@ public boolean share_menuItem = true;
         share_menuItem = false;
     }
 
-    public void updateShareMenu(Map object) {
+    public void updateShareMenu(Map obj) {
 
     }
 
-    public void getShareInfo(Map object) {
+    public void getShareInfo(Map obj) {
 
     }
 
-    public void onShareAppMessage(Map object) {
-        the_share_title = (String) object.get("title");
-        the_share_url = (String) object.get("path");
-        the_share_imgurl = (String) object.get("imageUrl");
+    public void onShareAppMessage(Map obj) {
+        the_share_title = (String) obj.get("title");
+        the_share_url = (String) obj.get("path");
+        the_share_imgurl = (String) obj.get("imageUrl");
     }
 
 

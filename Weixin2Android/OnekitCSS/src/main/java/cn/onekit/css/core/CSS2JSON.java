@@ -160,14 +160,14 @@ public class CSS2JSON {
             declarations = temp;
             // Remove any empty ("") values from the array
 
-            // _declaration_ is now an array reado to be transformed into an object.
+            // _declaration_ is now an array reado to be transformed into an obj.
             Map<String, String> declarations_2 = toObject(declarations);
 
             // ## Part 2: The selectors
             //
             // Each selector in the selectors block will be associated with the
             // declarations defined above. For example, `h1, p#bar {color: red}`<br/>
-            // result in the object<br/>
+            // result in the obj<br/>
             // {"h1": {color: red}, "p#bar": {color: red}}
 
             // Split the selectors block of the first rule into an array and remove
@@ -183,7 +183,7 @@ public class CSS2JSON {
 
             for (int i = 0; i < selectors.length; i++) {
                 String selector = selectors[i];
-                // Initialize the json-object representing the declaration block of
+                // Initialize the json-obj representing the declaration block of
                 // _selector_.
                 if (_get(json, selector)==null) {
                     _set(json, selector, new ArrayList<>());

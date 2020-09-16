@@ -119,14 +119,14 @@ public class WxBLE extends WxBattery {
         _onBLEConnectionStateChange=callback;
     }
 
-    public void notifyBLECharacteristicValueChange(Map object) {
-        function success = object!=null && object.containsKey("success")?(function)object.get("success"):null;
-        function fail = object!=null && object.containsKey("fail")?(function)object.get("fail"):null;
-        function complete = object!=null && object.containsKey("complete")?(function)object.get("complete"):null;
-        String deviceId = object != null && object.containsKey("deviceId") ? (String) object.get("deviceId") : null;
-        String serviceId = object != null && object.containsKey("serviceId") ? (String) object.get("serviceId") : null;
-        String characteristicId = object != null && object.containsKey("characteristicId") ? (String) object.get("characteristicId") : null;
-        boolean state = (boolean) object.get("state");
+    public void notifyBLECharacteristicValueChange(Map obj) {
+        function success = obj!=null && obj.containsKey("success")?(function)obj.get("success"):null;
+        function fail = obj!=null && obj.containsKey("fail")?(function)obj.get("fail"):null;
+        function complete = obj!=null && obj.containsKey("complete")?(function)obj.get("complete"):null;
+        String deviceId = obj != null && obj.containsKey("deviceId") ? (String) obj.get("deviceId") : null;
+        String serviceId = obj != null && obj.containsKey("serviceId") ? (String) obj.get("serviceId") : null;
+        String characteristicId = obj != null && obj.containsKey("characteristicId") ? (String) obj.get("characteristicId") : null;
+        boolean state = (boolean) obj.get("state");
         //
         BluetoothGatt gatt = _gatts.get(deviceId);
         BluetoothGattService service = gatt.getService(UUID.fromString(serviceId));
@@ -151,14 +151,14 @@ public class WxBLE extends WxBattery {
         }
     }
 
-    public void writeBLECharacteristicValue(Map object) {
-        function success = object!=null && object.containsKey("success")?(function)object.get("success"):null;
-        function fail = object!=null && object.containsKey("fail")?(function)object.get("fail"):null;
-        function complete = object!=null && object.containsKey("complete")?(function)object.get("complete"):null;
-        String deviceId = object != null && object.containsKey("deviceId") ? (String) object.get("deviceId") : null;
-        String serviceId = object != null && object.containsKey("serviceId") ? (String) object.get("serviceId") : null;
-        String characteristicId = object != null && object.containsKey("characteristicId") ? (String) object.get("characteristicId") : null;
-        ArrayBuffer value = object != null && object.containsKey("value") ? (ArrayBuffer) object.get("value") : null;
+    public void writeBLECharacteristicValue(Map obj) {
+        function success = obj!=null && obj.containsKey("success")?(function)obj.get("success"):null;
+        function fail = obj!=null && obj.containsKey("fail")?(function)obj.get("fail"):null;
+        function complete = obj!=null && obj.containsKey("complete")?(function)obj.get("complete"):null;
+        String deviceId = obj != null && obj.containsKey("deviceId") ? (String) obj.get("deviceId") : null;
+        String serviceId = obj != null && obj.containsKey("serviceId") ? (String) obj.get("serviceId") : null;
+        String characteristicId = obj != null && obj.containsKey("characteristicId") ? (String) obj.get("characteristicId") : null;
+        ArrayBuffer value = obj != null && obj.containsKey("value") ? (ArrayBuffer) obj.get("value") : null;
         //
         _writeBLECharacteristicValue = success;
         BluetoothGatt gatt = _gatts.get(deviceId);
@@ -168,13 +168,13 @@ public class WxBLE extends WxBattery {
         gatt.writeCharacteristic(characteristic);
     }
 
-    public void readBLECharacteristicValue(Map object) {
-        function success = object != null && object.containsKey("success") ? (function) object.get("success") : null;
-        function fail = object != null && object.containsKey("fail") ? (function) object.get("fail") : null;
-        function complete = object != null && object.containsKey("complete") ? (function) object.get("complete") : null;
-        String deviceId = object != null && object.containsKey("deviceId") ? (String) object.get("deviceId") : null;
-        String serviceId = object != null && object.containsKey("serviceId") ? (String) object.get("serviceId") : null;
-        String characteristicId = object != null && object.containsKey("characteristicId") ? (String) object.get("characteristicId") : null;
+    public void readBLECharacteristicValue(Map obj) {
+        function success = obj != null && obj.containsKey("success") ? (function) obj.get("success") : null;
+        function fail = obj != null && obj.containsKey("fail") ? (function) obj.get("fail") : null;
+        function complete = obj != null && obj.containsKey("complete") ? (function) obj.get("complete") : null;
+        String deviceId = obj != null && obj.containsKey("deviceId") ? (String) obj.get("deviceId") : null;
+        String serviceId = obj != null && obj.containsKey("serviceId") ? (String) obj.get("serviceId") : null;
+        String characteristicId = obj != null && obj.containsKey("characteristicId") ? (String) obj.get("characteristicId") : null;
         //
         _readBLECharacteristicValue = success;
         BluetoothGatt gatt = _gatts.get(deviceId);
@@ -184,12 +184,12 @@ public class WxBLE extends WxBattery {
     }
 
 
-    public void getBLEDeviceCharacteristics(Map object) {
-        function success = object!=null && object.containsKey("success")?(function)object.get("success"):null;
-        function fail = object!=null && object.containsKey("fail")?(function)object.get("fail"):null;
-        function complete = object!=null && object.containsKey("complete")?(function)object.get("complete"):null;
-        String deviceId = object != null && object.containsKey("deviceId") ? (String) object.get("deviceId") : null;
-        String serviceId = object != null && object.containsKey("serviceId") ? (String) object.get("serviceId") : null;
+    public void getBLEDeviceCharacteristics(Map obj) {
+        function success = obj!=null && obj.containsKey("success")?(function)obj.get("success"):null;
+        function fail = obj!=null && obj.containsKey("fail")?(function)obj.get("fail"):null;
+        function complete = obj!=null && obj.containsKey("complete")?(function)obj.get("complete"):null;
+        String deviceId = obj != null && obj.containsKey("deviceId") ? (String) obj.get("deviceId") : null;
+        String serviceId = obj != null && obj.containsKey("serviceId") ? (String) obj.get("serviceId") : null;
         //
         BluetoothGatt gatt = _gatts.get(deviceId);
         BluetoothGattService service = gatt.getService(UUID.fromString(serviceId));
@@ -206,11 +206,11 @@ public class WxBLE extends WxBattery {
         }
     }
 
-    public void getBLEDeviceServices(Map object) {
-        function success = object != null && object.containsKey("success") ? (function) object.get("success") : null;
-        function fail = object != null && object.containsKey("fail") ? (function) object.get("fail") : null;
-        function complete = object != null && object.containsKey("complete") ? (function) object.get("complete") : null;
-        String deviceId = object != null && object.containsKey("deviceId") ? (String) object.get("deviceId") : null;
+    public void getBLEDeviceServices(Map obj) {
+        function success = obj != null && obj.containsKey("success") ? (function) obj.get("success") : null;
+        function fail = obj != null && obj.containsKey("fail") ? (function) obj.get("fail") : null;
+        function complete = obj != null && obj.containsKey("complete") ? (function) obj.get("complete") : null;
+        String deviceId = obj != null && obj.containsKey("deviceId") ? (String) obj.get("deviceId") : null;
         //
         _getBLEDeviceServices = success;
         BluetoothDevice device =((WX)this)._devices.get(deviceId);
@@ -218,22 +218,22 @@ public class WxBLE extends WxBattery {
         gatt.discoverServices();
     }
 
-    public void createBLEConnection(Map object) {
-        function success = object!=null && object.containsKey("success")?(function)object.get("success"):null;
-        function fail = object!=null && object.containsKey("fail")?(function)object.get("fail"):null;
-        function complete = object!=null && object.containsKey("complete")?(function)object.get("complete"):null;
-        String deviceId = object!=null && object.containsKey("deviceId")?(String)object.get("deviceId"):null;
+    public void createBLEConnection(Map obj) {
+        function success = obj!=null && obj.containsKey("success")?(function)obj.get("success"):null;
+        function fail = obj!=null && obj.containsKey("fail")?(function)obj.get("fail"):null;
+        function complete = obj!=null && obj.containsKey("complete")?(function)obj.get("complete"):null;
+        String deviceId = obj!=null && obj.containsKey("deviceId")?(String)obj.get("deviceId"):null;
         //
         BluetoothDevice device = ((WX)this)._devices.get(deviceId);
         _createBLEConnections.put(deviceId,success);
         device.connectGatt(Android.context, false,_callback);
     }
 
-    public void closeBLEConnection(Map object) {
-        function success = object != null && object.containsKey("success") ? (function) object.get("success") : null;
-        function fail = object != null && object.containsKey("fail") ? (function) object.get("fail") : null;
-        function complete = object != null && object.containsKey("complete") ? (function) object.get("complete") : null;
-        String deviceId = object != null && object.containsKey("deviceId") ? (String) object.get("deviceId") : null;
+    public void closeBLEConnection(Map obj) {
+        function success = obj != null && obj.containsKey("success") ? (function) obj.get("success") : null;
+        function fail = obj != null && obj.containsKey("fail") ? (function) obj.get("fail") : null;
+        function complete = obj != null && obj.containsKey("complete") ? (function) obj.get("complete") : null;
+        String deviceId = obj != null && obj.containsKey("deviceId") ? (String) obj.get("deviceId") : null;
         //
         BluetoothGatt gatt = _gatts.get(deviceId);
         gatt.disconnect();

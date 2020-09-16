@@ -12,10 +12,10 @@ import cn.onekit.weixin.app.R;
 import cn.onekit.weixin.core.res.wx_fail;
 
 public class WxBattery extends WxBasic {
-    public void getBatteryInfo(Map object) {
-        function success = (object.get("success") != null) ? (function) object.get("success") : null;
-        function fail = (object.get("fail") != null) ? (function) object.get("fail") : null;
-        function complete = (object.get("complete") != null) ? (function) object.get("complete") : null;
+    public void getBatteryInfo(Map obj) {
+        function success = (obj.get("success") != null) ? (function) obj.get("success") : null;
+        function fail = (obj.get("fail") != null) ? (function) obj.get("fail") : null;
+        function complete = (obj.get("complete") != null) ? (function) obj.get("complete") : null;
         try {
             String level = registerBattery();
             Dict res = new Dict();//(Android.context.getResources().getString(R.string.wx_getBatteryInfo_success),false);

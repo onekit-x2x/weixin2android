@@ -288,24 +288,24 @@ public class Onekit_JS {
         return string == null || string == "";
     }
 
-    public static boolean is(Object object) {
-        if (object == null) {
+    public static boolean is(Object obj) {
+        if (obj == null) {
             return false;
         }
-        if (object instanceof Null) {
+        if (obj instanceof Null) {
             return false;
         }
-        if (object instanceof JsNumber) {
-            JsNumber value = (JsNumber) object;
+        if (obj instanceof JsNumber) {
+            JsNumber value = (JsNumber) obj;
             return is(value.THIS.doubleValue() != 0);
-        } else if (object instanceof JsString) {
-            JsString string = (JsString) object;
+        } else if (obj instanceof JsString) {
+            JsString string = (JsString) obj;
             return !string.THIS.equals("");
-        } else if (object instanceof JsBoolean) {
-            JsBoolean bool = (JsBoolean) object;
+        } else if (obj instanceof JsBoolean) {
+            JsBoolean bool = (JsBoolean) obj;
             return bool.THIS;
         } else {
-            Log.e("[is]===========" + new java.util.Date().getTime(), object.getClass().getSimpleName());
+            Log.e("[is]===========" + new java.util.Date().getTime(), obj.getClass().getSimpleName());
         }
         return true;
     }

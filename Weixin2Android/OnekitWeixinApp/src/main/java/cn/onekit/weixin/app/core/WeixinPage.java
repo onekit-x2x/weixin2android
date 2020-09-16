@@ -131,8 +131,8 @@ public abstract class WeixinPage extends Activity implements WeixinFile  {
 //        }
 //    }
 
-    protected void Page(Dict object) {
-        onekit = object;
+    protected void Page(Dict obj) {
+        onekit = obj;
         if(!onekit.containsKey("data")){
             onekit.put("data",new Dict());
         }

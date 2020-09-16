@@ -10,26 +10,26 @@ import java.util.UUID;
 public class TheKit {
     public static String currentUrl;
 
-    public static void set(Object object, Object value, String key) {
+    public static void set(Object obj, Object value, String key) {
         try {
-            Class clazz = object.getClass();
+            Class clazz = obj.getClass();
             Field filed = clazz.getField(key);
-            filed.set(object, value);
+            filed.set(obj, value);
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    public static Object get(Object object, Object key) {
+    public static Object get(Object obj, Object key) {
         try {
-            Class clazz = object.getClass();
+            Class clazz = obj.getClass();
             Field field = clazz.getDeclaredField((String) key);
             if (field == null) {
                 return null;
             }
-            return field.get(object);
+            return field.get(obj);
         } catch (Exception e) {
-            //Log.e("[get]==========", object + " " +key);
+            //Log.e("[get]==========", obj + " " +key);
             return null;
         }
     }

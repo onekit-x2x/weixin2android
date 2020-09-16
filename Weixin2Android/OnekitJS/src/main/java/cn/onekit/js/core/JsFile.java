@@ -62,14 +62,14 @@ public interface JsFile {
 
     ////////////////////////////////////
 
-    default String typeof(JsObject object) {
-        if (object == null) {
+    default String typeof(JsObject obj) {
+        if (obj == null) {
             return "undefined";
         }
-        if (object instanceof Null) {
-            return "object";
+        if (obj instanceof Null) {
+            return "obj";
         }
-        return object.getClass().getSimpleName();
+        return obj.getClass().getSimpleName();
     }
 
     JsObject NaN = JsNumber.NaN;
@@ -300,8 +300,8 @@ public interface JsFile {
     /////////////////////////////////////
 
 
-    default Class getClass(JsObject object) {
-        return object.getClass();
+    default Class getClass(JsObject obj) {
+        return obj.getClass();
     }
 
 
@@ -319,8 +319,8 @@ public interface JsFile {
     }
 
     //
-   /* default String typeOf(JsObject object) {
-        return object.getClass().getSimpleName().toLowerCase();
+   /* default String typeOf(JsObject obj) {
+        return obj.getClass().getSimpleName().toLowerCase();
     }*/
 
     ///////////////////////////

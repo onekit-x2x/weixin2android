@@ -39,17 +39,17 @@ public class WxAJAX extends WxAddress {
     /**
      * getString 返回字符串 需要权限：android.permission.INTERNET
      *
-     * @param object 传输数据
+     * @param obj 传输数据
      */
-    public RequestTask request(final Dict object) {
-        final String url = ((JsString) object.get("url")).THIS;
-        final String method = (object.get("method") != null && (!object.get("method").equals(""))) ? ((JsString) object.get("method")).THIS.trim() : "GET";
-        final Dict header = (object.get("header") != null) ? (Dict) object.get("header") : null;
-        final String dataType = (object.get("dataType") != null && (!object.get("dataType").equals(""))) ? ((JsString) object.get("dataType")).THIS.trim() : "json";
-        final JsObject data = (object.get("data") != null) ?object.get("data") : null;
-        final function fail = object.get("fail") != null ? (function) object.get("fail") : null;
-        final function success = object.get("success") != null ? (function) object.get("success") : null;
-        final function complete = object.get("complete") != null ? (function) object.get("complete") : null;
+    public RequestTask request(final Dict obj) {
+        final String url = ((JsString) obj.get("url")).THIS;
+        final String method = (obj.get("method") != null && (!obj.get("method").equals(""))) ? ((JsString) obj.get("method")).THIS.trim() : "GET";
+        final Dict header = (obj.get("header") != null) ? (Dict) obj.get("header") : null;
+        final String dataType = (obj.get("dataType") != null && (!obj.get("dataType").equals(""))) ? ((JsString) obj.get("dataType")).THIS.trim() : "json";
+        final JsObject data = (obj.get("data") != null) ?obj.get("data") : null;
+        final function fail = obj.get("fail") != null ? (function) obj.get("fail") : null;
+        final function success = obj.get("success") != null ? (function) obj.get("success") : null;
+        final function complete = obj.get("complete") != null ? (function) obj.get("complete") : null;
         Request.Builder builder = new Request.Builder();
         String fullUrl = url;
         if (header != null) {
@@ -61,7 +61,7 @@ public class WxAJAX extends WxAddress {
             if (method.toString().equals("GET")) {
                 //get处理
                 if (data != null) {
-                    fullUrl += "?" + addDataGET(object);
+                    fullUrl += "?" + addDataGET(obj);
                 }
                 builder.get();
             } else {

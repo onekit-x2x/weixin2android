@@ -31,10 +31,10 @@ public class WxKeyboard extends WxInvoice {
     private MyTextChangedListener textChangedListener;
     private MyEditorActionListener editorActionListener;
 
-    public void hideKeyboard(Map object) {
-        function success = object.get("success") != null ? (function) object.get("success") : null;
-        function fail = object.get("fail") != null ? (function) object.get("fail") : null;
-        function complete = object.get("complete") != null ? (function) object.get("complete") : null;
+    public void hideKeyboard(Map obj) {
+        function success = obj.get("success") != null ? (function) obj.get("success") : null;
+        function fail = obj.get("fail") != null ? (function) obj.get("fail") : null;
+        function complete = obj.get("complete") != null ? (function) obj.get("complete") : null;
         try {
             if (edt == null) {
                 edt = ((Activity)Android.context).findViewById(R.id.edt_keyboard);
@@ -116,15 +116,15 @@ public class WxKeyboard extends WxInvoice {
         }
     }
 
-    public void showKeyboard(Map object) {
-        String defaultValue = object.get("defaultValue") != null ? (String) object.get("defaultValue") : null;
-        int maxLength = object.get("maxLength") != null ? (int) object.get("maxLength") : 0;
-        boolean multiple = object.get("multiple") != null ? (boolean) object.get("multiple") : false;
-        boolean confirmHold = object.get("confirmHold") != null ? (boolean) object.get("confirmHold") : false;
-        String confirmType = object.get("confirmType") != null ? (String) object.get("confirmType") : null;
-        function success = (object.get("success") != null) ? (function) object.get("success") : null;
-        function fail = (object.get("fail") != null) ? (function) object.get("fail") : null;
-        function complete = (object.get("complete") != null) ? (function) object.get("complete") : null;
+    public void showKeyboard(Map obj) {
+        String defaultValue = obj.get("defaultValue") != null ? (String) obj.get("defaultValue") : null;
+        int maxLength = obj.get("maxLength") != null ? (int) obj.get("maxLength") : 0;
+        boolean multiple = obj.get("multiple") != null ? (boolean) obj.get("multiple") : false;
+        boolean confirmHold = obj.get("confirmHold") != null ? (boolean) obj.get("confirmHold") : false;
+        String confirmType = obj.get("confirmType") != null ? (String) obj.get("confirmType") : null;
+        function success = (obj.get("success") != null) ? (function) obj.get("success") : null;
+        function fail = (obj.get("fail") != null) ? (function) obj.get("fail") : null;
+        function complete = (obj.get("complete") != null) ? (function) obj.get("complete") : null;
         try {
             ((Activity)Android.context).setContentView(R.layout.onekit_keyboard);
             imm = (InputMethodManager) ((Activity)Android.context).getSystemService(Context.INPUT_METHOD_SERVICE);
@@ -190,9 +190,9 @@ public class WxKeyboard extends WxInvoice {
             if (actionId == EditorInfo.IME_ACTION_DONE && isHide) {
                 imm.toggleSoftInput(0, InputMethodManager.HIDE_NOT_ALWAYS);
             }
-            Dict object = new Dict();
-            object.put("value", new JsString((String) v.getText()));
-            callback.invoke(object);
+            Dict obj = new Dict();
+            obj.put("value", new JsString((String) v.getText()));
+            callback.invoke(obj);
             return true;
         }
     }
@@ -211,9 +211,9 @@ public class WxKeyboard extends WxInvoice {
 
         @Override
         public void onTextChanged(CharSequence s, int start, int before, int count) {
-            Dict object = new Dict();
-            object.put("value", new JsString(s.toString()));
-            callback.invoke(object);
+            Dict obj = new Dict();
+            obj.put("value", new JsString(s.toString()));
+            callback.invoke(obj);
         }
 
         @Override
@@ -237,9 +237,9 @@ public class WxKeyboard extends WxInvoice {
             view.getWindowVisibleDisplayFrame(r);
             int heightDiff = view.getRootView().getHeight() - (r.bottom - r.top);
             if (heightDiff < 100) {
-                Dict object = new Dict();
-                object.put("value", new JsString(edt.getText().toString()));
-                callback.invoke(object);
+                Dict obj = new Dict();
+                obj.put("value", new JsString(edt.getText().toString()));
+                callback.invoke(obj);
             }
         }
     }

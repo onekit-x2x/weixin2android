@@ -37,10 +37,10 @@ public class WxBluetooth extends WxBLE {
     protected Map<String,BluetoothDevice> _devices = new HashMap();
     private BluetoothAdapter _bluetoothAdapter;
 
-    public void openBluetoothAdapter(Map object) {
-        function success = object != null && object.containsKey("success") ? (function) object.get("success") : null;
-        function fail = object != null && object.containsKey("fail") ? (function) object.get("fail") : null;
-        function complete = object != null && object.containsKey("complete") ? (function) object.get("complete") : null;
+    public void openBluetoothAdapter(Map obj) {
+        function success = obj != null && obj.containsKey("success") ? (function) obj.get("success") : null;
+        function fail = obj != null && obj.containsKey("fail") ? (function) obj.get("fail") : null;
+        function complete = obj != null && obj.containsKey("complete") ? (function) obj.get("complete") : null;
         //
         final BluetoothManager bluetoothManager =
                 (BluetoothManager) Android.context.getSystemService(Context.BLUETOOTH_SERVICE);
@@ -66,10 +66,10 @@ public class WxBluetooth extends WxBLE {
     }
 
     @SuppressLint("MissingPermission")
-    public void closeBluetoothAdapter(Map object) {
-        function success = object!=null && object.containsKey("success")?(function)object.get("success"):null;
-        function fail = object!=null && object.containsKey("fail")?(function)object.get("fail"):null;
-        function complete = object!=null && object.containsKey("complete")?(function)object.get("complete"):null;
+    public void closeBluetoothAdapter(Map obj) {
+        function success = obj!=null && obj.containsKey("success")?(function)obj.get("success"):null;
+        function fail = obj!=null && obj.containsKey("fail")?(function)obj.get("fail"):null;
+        function complete = obj!=null && obj.containsKey("complete")?(function)obj.get("complete"):null;
         //
         _bluetoothAdapter.disable();
         _bluetoothAdapter=null;
@@ -87,10 +87,10 @@ public class WxBluetooth extends WxBLE {
             //  put("serviceData",);
         }};
     }
-    public void getBluetoothAdapterState(Map object) {
-        function success = object!=null && object.containsKey("success")?(function)object.get("success"):null;
-        function fail = object!=null && object.containsKey("fail")?(function)object.get("fail"):null;
-        function complete = object!=null && object.containsKey("complete")?(function)object.get("complete"):null;
+    public void getBluetoothAdapterState(Map obj) {
+        function success = obj!=null && obj.containsKey("success")?(function)obj.get("success"):null;
+        function fail = obj!=null && obj.containsKey("fail")?(function)obj.get("fail"):null;
+        function complete = obj!=null && obj.containsKey("complete")?(function)obj.get("complete"):null;
         //
     }
 
@@ -99,12 +99,12 @@ public class WxBluetooth extends WxBLE {
     }
 
     @SuppressLint({"NewApi","MissingPermission"})
-    public void startBluetoothDevicesDiscovery(Map object) {
-        function success = object != null && object.containsKey("success") ? (function) object.get("success") : null;
-        function fail = object != null && object.containsKey("fail") ? (function) object.get("fail") : null;
-        function complete = object != null && object.containsKey("complete") ? (function) object.get("complete") : null;
-        Array services = object != null && object.containsKey("services") ? (Array) object.get("services") : null;
-        final boolean allowDuplicatesKey = object != null && object.containsKey("allowDuplicatesKey") ? (boolean) object.get("allowDuplicatesKey") : false;
+    public void startBluetoothDevicesDiscovery(Map obj) {
+        function success = obj != null && obj.containsKey("success") ? (function) obj.get("success") : null;
+        function fail = obj != null && obj.containsKey("fail") ? (function) obj.get("fail") : null;
+        function complete = obj != null && obj.containsKey("complete") ? (function) obj.get("complete") : null;
+        Array services = obj != null && obj.containsKey("services") ? (Array) obj.get("services") : null;
+        final boolean allowDuplicatesKey = obj != null && obj.containsKey("allowDuplicatesKey") ? (boolean) obj.get("allowDuplicatesKey") : false;
         //
         _objects.clear();
         _scanCallback = new ScanCallback() {
@@ -160,19 +160,19 @@ public class WxBluetooth extends WxBLE {
 
     @SuppressLint("MissingPermission")
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-    public void stopBluetoothDevicesDiscovery(Map object) {
-        function success = object!=null && object.containsKey("success")?(function)object.get("success"):null;
-        function fail = object!=null && object.containsKey("fail")?(function)object.get("fail"):null;
-        function complete = object!=null && object.containsKey("complete")?(function)object.get("complete"):null;
+    public void stopBluetoothDevicesDiscovery(Map obj) {
+        function success = obj!=null && obj.containsKey("success")?(function)obj.get("success"):null;
+        function fail = obj!=null && obj.containsKey("fail")?(function)obj.get("fail"):null;
+        function complete = obj!=null && obj.containsKey("complete")?(function)obj.get("complete"):null;
         //
         _bluetoothAdapter.getBluetoothLeScanner().stopScan(_scanCallback);
         if(success!=null){success.invoke(new Dict());}
     }
 
-    public void getConnectedBluetoothDevices(Map object) {
-        function success = object!=null && object.containsKey("success")?(function)object.get("success"):null;
-        function fail = object!=null && object.containsKey("fail")?(function)object.get("fail"):null;
-        function complete = object!=null && object.containsKey("complete")?(function)object.get("complete"):null;
+    public void getConnectedBluetoothDevices(Map obj) {
+        function success = obj!=null && obj.containsKey("success")?(function)obj.get("success"):null;
+        function fail = obj!=null && obj.containsKey("fail")?(function)obj.get("fail"):null;
+        function complete = obj!=null && obj.containsKey("complete")?(function)obj.get("complete"):null;
         //
     }
 
@@ -180,10 +180,10 @@ public class WxBluetooth extends WxBLE {
         _onBluetoothDeviceFound = callback;
     }
 
-    public void getBluetoothDevices(Map object) {
-        function success = object!=null && object.containsKey("success")?(function)object.get("success"):null;
-        function fail = object!=null && object.containsKey("fail")?(function)object.get("fail"):null;
-        function complete = object!=null && object.containsKey("complete")?(function)object.get("complete"):null;
+    public void getBluetoothDevices(Map obj) {
+        function success = obj!=null && obj.containsKey("success")?(function)obj.get("success"):null;
+        function fail = obj!=null && obj.containsKey("fail")?(function)obj.get("fail"):null;
+        function complete = obj!=null && obj.containsKey("complete")?(function)obj.get("complete"):null;
         //
         if(success!=null){
             success.invoke(new Dict(){{
