@@ -40,26 +40,26 @@ View_CSS(OnekitCSS OnekitCSS){
 
         return -1;
     }
-    private   int checkBrotherSelector(String string, CSSStyleDeclaration style, View SELF) {
+    private   int checkBrotherSelector(String aString, CSSStyleDeclaration style, View SELF) {
         String flag;
-        if (string.indexOf(">") > 0) {
+        if (aString.indexOf(">") > 0) {
             flag = ">";
-            string = string.replaceAll(">", " ");
-        } else if (string.indexOf("+") > 0) {
+            aString = aString.replaceAll(">", " ");
+        } else if (aString.indexOf("+") > 0) {
             flag = "+";
-            string = string.replace("+", " ");
-        } else if (string.indexOf("~") > 0) {
+            aString = aString.replace("+", " ");
+        } else if (aString.indexOf("~") > 0) {
             flag = "~";
-            string = string.replace("~", " ");
+            aString = aString.replace("~", " ");
         }else{
             flag = " ";
         }
         //
         String[] brothers;
-        if (string.indexOf(" ") > 0) {
-            brothers = STRING_.split(string," ");
+        if (aString.indexOf(" ") > 0) {
+            brothers = STRING_.split(aString," ");
         } else {
-            brothers = new String[]{string};
+            brothers = new String[]{aString};
         }
         //
        List<String> temp = new ArrayList<>();
@@ -466,33 +466,33 @@ View_CSS(OnekitCSS OnekitCSS){
         }
     }
 
-    private   int checkAttributeSelector(String string,View SELF) {
-      //  if(string.endsWith("]")) {
-       //     string = string.substring(0, string.length()- 1);
+    private   int checkAttributeSelector(String aString,View SELF) {
+      //  if(aString.endsWith("]")) {
+       //     aString = aString.substring(0, aString.length()- 1);
       //  }
         String[] attributePair;
         String flag;
-        if (string.indexOf("~=") > 0) {
+        if (aString.indexOf("~=") > 0) {
             flag = "~=";
-            attributePair = STRING_.split(string,"~=");
-        } else if (string.indexOf("|=") > 0) {
+            attributePair = STRING_.split(aString,"~=");
+        } else if (aString.indexOf("|=") > 0) {
             flag = "|=";
-            attributePair = STRING_.split(string,"|=");
-        } else  if (string.indexOf("^=") > 0) {
+            attributePair = STRING_.split(aString,"|=");
+        } else  if (aString.indexOf("^=") > 0) {
             flag = "^=";
-            attributePair = STRING_.split(string,"^=");
-        }else  if (string.indexOf("*=") > 0) {
+            attributePair = STRING_.split(aString,"^=");
+        }else  if (aString.indexOf("*=") > 0) {
             flag = "*=";
-            attributePair = STRING_.split(string,"*=");
-        }else if (string.indexOf("$=") > 0) {
+            attributePair = STRING_.split(aString,"*=");
+        }else if (aString.indexOf("$=") > 0) {
             flag = "$=";
-            attributePair = STRING_.split(string,"$=");
-        }else if (string.indexOf("=") > 0) {
+            attributePair = STRING_.split(aString,"$=");
+        }else if (aString.indexOf("=") > 0) {
             flag = "=";
-            attributePair = STRING_.split(string,"=");
+            attributePair = STRING_.split(aString,"=");
         } else{
             flag = "";
-            attributePair = new String[]{string};
+            attributePair = new String[]{aString};
         }
         String attributeName = attributePair[0];
         String attribute = (String) TheKit.get(SELF, attributeName);
@@ -534,14 +534,14 @@ View_CSS(OnekitCSS OnekitCSS){
         }
         return 10;
     }
-    private     int checkClassSelector(String string,View SELF) {
+    private     int checkClassSelector(String aString,View SELF) {
        if(!(SELF.getLayoutParams() instanceof CssLayoutParams)){
             return -1;
         }
        View node = SELF;
-        int p = string.indexOf(".");
+        int p = aString.indexOf(".");
         if (p >= 0) {
-            String className = string.substring(p + 1);
+            String className = aString.substring(p + 1);
             if(STRING_.isEmpty(((CssLayoutParams)node.getLayoutParams()).className)){
                 return -1;
             }
@@ -550,7 +550,7 @@ View_CSS(OnekitCSS OnekitCSS){
                 return -1;
             }
             if (p > 0) {
-                int priority = checkIdSelector(node, p < 0 ? string : string.substring(0, p));
+                int priority = checkIdSelector(node, p < 0 ? aString : aString.substring(0, p));
                 if (priority < 0) {
                     return priority;
                 } else {
@@ -560,21 +560,21 @@ View_CSS(OnekitCSS OnekitCSS){
                 return 10;
             }
         }
-        return checkIdSelector(SELF, p < 0 ? string : string.substring(0, p));
+        return checkIdSelector(SELF, p < 0 ? aString : aString.substring(0, p));
     }
-    private       int checkIdSelector(View SELF, String string) {
+    private       int checkIdSelector(View SELF, String aString) {
         /*if(!(SELF instanceof CssELEMENT_)){
             return -1;
         }*/
 //        View node = SELF;
         CssLayoutParams layoutParams = (CssLayoutParams) SELF.getLayoutParams();
-        int p = string.indexOf("#");
+        int p = aString.indexOf("#");
         if (p >= 0) {
-            String id = string.substring(p + 1);
+            String id = aString.substring(p + 1);
             if (id.equals(layoutParams.id)) {
                 int priority = 0;
                 if (p >0) {
-                    priority = checkElementSelector(string.substring(0, p),SELF);
+                    priority = checkElementSelector(aString.substring(0, p),SELF);
                     if(priority<0) {
                         return priority;
                     }
@@ -584,10 +584,10 @@ View_CSS(OnekitCSS OnekitCSS){
                 return -1;
             }
         }
-        return checkElementSelector( string,SELF);
+        return checkElementSelector( aString,SELF);
     }
-    private    int checkElementSelector( String string,View SELF) {
-        if( SELF.getClass().getSimpleName().toLowerCase().equalsIgnoreCase(string)){
+    private    int checkElementSelector( String aString,View SELF) {
+        if( SELF.getClass().getSimpleName().toLowerCase().equalsIgnoreCase(aString)){
             return 1;
         }else{
             return -1;

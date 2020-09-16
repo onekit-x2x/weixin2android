@@ -190,20 +190,20 @@ public interface JsFile {
         }
         if (value instanceof String) {
 
-            String string = (String) value;
-            if (string.equals("NaN")) {
+            String aString = (String) value;
+            if (aString.equals("NaN")) {
                 return true;
             }
-            if (string.equals("")) {
+            if (aString.equals("")) {
                 return false;
             }
             int count = 0;
-            for (char chr : string.toCharArray()) {
+            for (char chr : aString.toCharArray()) {
                 if (chr == ' ') {
                     count++;
                 }
             }
-            if (count == string.length()) {
+            if (count == aString.length()) {
                 return false;
             }
         }
@@ -214,10 +214,10 @@ public interface JsFile {
         return !OnekitJS.isNumber(value);*/
     }
 
-    default Double parseFloat(JsObject string) {
+    default Double parseFloat(JsObject aString) {
         try {
             Pattern pattern = Pattern.compile("^[+-]?[\\d]+([.][\\d]*)?([Ee][+-]?[\\d]+)?$");
-            Matcher matcher = pattern.matcher(string.toString().trim());
+            Matcher matcher = pattern.matcher(aString.toString().trim());
             StringBuilder str = new StringBuilder();
             boolean flag = false;
             while (matcher.find()) {
@@ -226,7 +226,7 @@ public interface JsFile {
             }
             if (!flag) {
                 pattern = Pattern.compile("([1-9]\\d*\\.?\\d*)|(0\\.\\d*[1-9])");
-                matcher = pattern.matcher(string.toString().trim());
+                matcher = pattern.matcher(aString.toString().trim());
                 while (matcher.find()) {
                     str.append(matcher.group());
                 }
@@ -237,7 +237,7 @@ public interface JsFile {
         }
     }
 
-    default  JsObject parseInt(JsObject string, JsObject radix) {
+    default  JsObject parseInt(JsObject aString, JsObject radix) {
         try {
             int flag;
             if (radix == null || !Onekit_JS.isNumber(radix)) {
@@ -245,7 +245,7 @@ public interface JsFile {
             } else {
                 flag = Onekit_JS.number(radix,0,0).intValue();
             }
-            String str = string.toString().trim();
+            String str = aString.toString().trim();
             Long result;
             if (str.startsWith("0x")) {
                 result = new BigInteger(str.substring(2), flag).longValue();
@@ -305,17 +305,17 @@ public interface JsFile {
     }
 
 
-    default Float NUMBER(String string) {
+    default Float NUMBER(String aString) {
         try {
-            return Float.parseFloat(string);
+            return Float.parseFloat(aString);
         } catch (Exception e) {
             return null;
         }
     }
 
 
-    default String String(String string, JsObject... vars) {
-        return string;
+    default String String(String aString, JsObject... vars) {
+        return aString;
     }
 
     //

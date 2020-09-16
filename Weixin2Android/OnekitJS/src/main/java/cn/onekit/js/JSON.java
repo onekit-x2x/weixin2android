@@ -14,12 +14,12 @@ import cn.onekit.js.core.function;
 public class JSON {
 	private static Gson gson = new Gson();
 
-	public static JsObject parse(String string) {
+	public static JsObject parse(String aString) {
 		try {
-			if (string == null) {
+			if (aString == null) {
 				return null;
 			}
-			String str = string.trim();
+			String str = aString.trim();
 			if (str.equals("")) {
 				return null;
 			}
@@ -38,10 +38,10 @@ public class JSON {
 				case "[":
 					return gson.fromJson(str, (Type) Array.class);
 				default:
-					if (string.startsWith("\"") && string.endsWith("\"")) {
-						string = string.substring(1, string.length() - 1);
+					if (aString.startsWith("\"") && aString.endsWith("\"")) {
+						aString = aString.substring(1, aString.length() - 1);
 					}
-					return new JsString( string);
+					return new JsString( aString);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -66,8 +66,8 @@ public class JSON {
 			tab = "";
 		}
 		if(json instanceof JsString){
-			String string = ((JsString)json).THIS;
-			return  String.format("\"%s\"",string);
+			String aString = ((JsString)json).THIS;
+			return  String.format("\"%s\"",aString);
 		}
 		StringBuilder result = new StringBuilder();
 		if(json instanceof Array){

@@ -36,11 +36,11 @@ public  class JsString implements JsObject {
 	return new STRING(hashCode;
 }*/
 
-	public JsObject _index(String string, int index) {
+	public JsObject _index(String aString, int index) {
 		if (index >= 0) {
 			return new JsNumber(index);
 		}
-		return new JsNumber(string.length() + index);
+		return new JsNumber(aString.length() + index);
 	}
 
 	public JsObject get(JsObject i) {

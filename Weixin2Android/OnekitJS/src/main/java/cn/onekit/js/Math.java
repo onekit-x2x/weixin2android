@@ -312,12 +312,12 @@ public class Math implements JsObject {
             return JsNumber.NaN;
         }
         double x = Onekit_JS.number(v,0,0).doubleValue();
-        String string = String.valueOf(x);
-        int dot = string.indexOf(".");
+        String aString = String.valueOf(x);
+        int dot = aString.indexOf(".");
         if (dot>=0 ) {
-            string = string.substring(0,dot);
+            aString = aString.substring(0,dot);
         }
-        return new JsNumber(Double.parseDouble(string));
+        return new JsNumber(Double.parseDouble(aString));
     }
     public static JsNumber trunc() {
         return trunc(null);

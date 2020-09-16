@@ -140,12 +140,12 @@ public class CSSStyleDeclaration {
 
     }
     public String toString() {
-        StringBuilder string = new StringBuilder();
-        string.append(new Date().getTime()+"===============\r\n");
+        StringBuilder aString = new StringBuilder();
+        aString.append(new Date().getTime()+"===============\r\n");
         for (String name : this.propertyNames) {
-            string.append(String.format("%s: %s\r\n", name, this.propertyValues.get(name)));
+            aString.append(String.format("%s: %s\r\n", name, this.propertyValues.get(name)));
         }
-        return string.toString();
+        return aString.toString();
     }
 
     public int length() {
@@ -400,8 +400,8 @@ public class CSSStyleDeclaration {
         }
     }
 
-    String[] fixArray(String string) {
-        String[] array = STRING_.split(string, " ");
+    String[] fixArray(String aString) {
+        String[] array = STRING_.split(aString, " ");
         switch (array.length) {
             case 1:
                 return new String[]{array[0], array[0], array[0], array[0]};

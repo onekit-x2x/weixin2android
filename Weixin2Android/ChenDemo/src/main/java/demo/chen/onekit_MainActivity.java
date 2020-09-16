@@ -215,9 +215,9 @@ public class onekit_MainActivity extends WeixinPage{
                     Log.d("sssssssssssssssssssssssssssss2", "run: ");
                     //同步调用,返回Response,会抛出IO异常
                     Response response = call.execute();
-                    String string =  response.invoke().string();
-                    Log.d("sssssssssssssssssssssssssssss3", "run: " + string);
-                    Dict data = (Dict) JSON.parse(string);
+                    String aString =  response.invoke().str();
+                    Log.d("sssssssssssssssssssssssssssss3", "run: " + aString);
+                    Dict data = (Dict) JSON.parse(aString);
 
                     //2. 拿到数据调拉起微信支付
                     String appId = data.get("appid").stringValue();

@@ -334,7 +334,7 @@ public class WxAJAX extends WxAddress {
                             wxTempPath,
                             null,
                             response.code());
-//                    r.data = response.invoke().string();
+//                    r.data = response.invoke().str();
 //                    r.errMsg = Android.context.getResources().getString(R.string.wx_downloadFile_success);
 //                    r.statusCode = response.code();
 //                    r.tempFilePath = wxTempPath;*/

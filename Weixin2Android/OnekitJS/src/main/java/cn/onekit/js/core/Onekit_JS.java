@@ -16,9 +16,9 @@ public class Onekit_JS {
      }*/
 
 
-    public static Array string2Array(String string) {
+    public static Array string2Array(String aString) {
         Array result = new Array();
-        for (char chr : string.toCharArray()) {
+        for (char chr : aString.toCharArray()) {
             String str = String.valueOf(chr);
             result.add(new JsString(str));
         }
@@ -121,47 +121,47 @@ public class Onekit_JS {
             return 0;
         }
         if (value instanceof String) {
-            StringBuilder string = new StringBuilder(((String) value).toLowerCase());
-            if (string.toString().equals("")) {
+            StringBuilder aString = new StringBuilder(((String) value).toLowerCase());
+            if (aString.toString().equals("")) {
                 return 0;
             }
-            if (string.toString().equals("infinity")) {
+            if (aString.toString().equals("infinity")) {
                 return JsNumber.POSITIVE_INFINITY.THIS;
             }
-            if (string.toString().equals("-infinity")) {
+            if (aString.toString().equals("-infinity")) {
                 return JsNumber.NEGATIVE_INFINITY.THIS;
             }
-            int JsObject = string.indexOf("e+");
+            int JsObject = aString.indexOf("e+");
             if (JsObject >= 0) {
-                int n = Integer.parseInt(string.substring(JsObject + 2));
-                string = new StringBuilder(string.substring(0, JsObject));
+                int n = Integer.parseInt(aString.substring(JsObject + 2));
+                aString = new StringBuilder(aString.substring(0, JsObject));
                 for (int i = 0; i < n; i++) {
-                    string.append("0");
+                    aString.append("0");
                 }
-                int dot = string.indexOf(".");
+                int dot = aString.indexOf(".");
                 if (dot >= 0) {
-                    string = new StringBuilder(string.substring(0, dot) + string.substring(dot + 1, dot + n + 1)
-                            + "." + string.substring(dot + n + 1));
+                    aString = new StringBuilder(aString.substring(0, dot) + aString.substring(dot + 1, dot + n + 1)
+                            + "." + aString.substring(dot + n + 1));
                 }
             }
-            int dot = string.indexOf(".");
+            int dot = aString.indexOf(".");
             if (dot >= 0) {
-                double d = Double.parseDouble(string.toString());
-                if (Integer.parseInt(string.substring(0, dot)) == 0) {
+                double d = Double.parseDouble(aString.toString());
+                if (Integer.parseInt(aString.substring(0, dot)) == 0) {
                     return (int) d;
                 } else {
                     return d;
                 }
             }
-            if (string.toString().startsWith("0x")) {
-                return new BigInteger(string.substring(2), 16).longValue();
-            } else if (string.toString().startsWith("0b")) {
-                return new BigInteger(string.substring(2), 2).longValue();
-            } else if (string.toString().startsWith("0o")) {
-                return new BigInteger(string.substring(2), 8).longValue();
+            if (aString.toString().startsWith("0x")) {
+                return new BigInteger(aString.substring(2), 16).longValue();
+            } else if (aString.toString().startsWith("0b")) {
+                return new BigInteger(aString.substring(2), 2).longValue();
+            } else if (aString.toString().startsWith("0o")) {
+                return new BigInteger(aString.substring(2), 8).longValue();
             } else {
                 try {
-                    return Integer.valueOf(string.toString());
+                    return Integer.valueOf(aString.toString());
                 } catch (Exception e) {
                     return JsNumber.NaN.THIS;
                 }
@@ -284,8 +284,8 @@ public class Onekit_JS {
         }
     */
 
-    public static boolean isEmpty(String string) {
-        return string == null || string == "";
+    public static boolean isEmpty(String aString) {
+        return aString == null || aString == "";
     }
 
     public static boolean is(Object obj) {
@@ -299,8 +299,8 @@ public class Onekit_JS {
             JsNumber value = (JsNumber) obj;
             return is(value.THIS.doubleValue() != 0);
         } else if (obj instanceof JsString) {
-            JsString string = (JsString) obj;
-            return !string.THIS.equals("");
+            JsString aString = (JsString) obj;
+            return !aString.THIS.equals("");
         } else if (obj instanceof JsBoolean) {
             JsBoolean bool = (JsBoolean) obj;
             return bool.THIS;

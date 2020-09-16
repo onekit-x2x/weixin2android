@@ -139,8 +139,8 @@ public class TheKit {
         return uuid + ext;
     }
 
-    public static boolean isEmpty(String string) {
-        return string == null || string.trim().equals("");
+    public static boolean isEmpty(String aString) {
+        return aString == null || aString.trim().equals("");
     }
 /*
     public static boolean isNaN(Object value) {
@@ -154,20 +154,20 @@ public class TheKit {
         }
         if (value instanceof String) {
 
-            String string = (String) value;
-            if (string.equals("NaN")) {
+            String aString = (String) value;
+            if (aString.equals("NaN")) {
                 return true;
             }
-            if (string.equals("")) {
+            if (aString.equals("")) {
                 return false;
             }
             int count = 0;
-            for (char chr : string.toCharArray()) {
+            for (char chr : aString.toCharArray()) {
                 if (chr == ' ') {
                     count++;
                 }
             }
-            if (count == string.length()) {
+            if (count == aString.length()) {
                 return false;
             }
         }
@@ -202,10 +202,10 @@ public class TheKit {
         }
     }
 */
-    public static String toCamelCase(String string) {
+    public static String toCamelCase(String aString) {
         StringBuilder result = new StringBuilder();
         //
-        String[] strings = string.trim().split("-");
+        String[] strings = aString.trim().split("-");
         for (int i = 0; i < strings.length; i++) {
             String str = strings[i];
             if (i > 0) {
@@ -217,10 +217,10 @@ public class TheKit {
         return result.toString();
     }
 
-    public static String fromCamelCase(String string) {
+    public static String fromCamelCase(String aString) {
         StringBuilder result = new StringBuilder();
         //
-        for (char chr : string.toCharArray()) {
+        for (char chr : aString.toCharArray()) {
             if (result.length() > 0) {
                 if (chr >= 'A' && chr <= 'Z') {
                     result.append("-");

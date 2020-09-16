@@ -44,27 +44,27 @@ public class JsNumber implements JsObject{
             return new JsBoolean(false);
         }
         Number value = Onekit_JS.number(testValue,0,0);
-        String string = value.toString();
-        int dot = string.lastIndexOf(".");
-        int zero = string.lastIndexOf("0");
-        if (dot<0 || (( dot== string.length() - 2)
-                && (zero== string.length() - 1))) {
-            double d = Double.parseDouble(string);
+        String aString = value.toString();
+        int dot = aString.lastIndexOf(".");
+        int zero = aString.lastIndexOf("0");
+        if (dot<0 || (( dot== aString.length() - 2)
+                && (zero== aString.length() - 1))) {
+            double d = Double.parseDouble(aString);
             return new JsBoolean( d >= MIN_SAFE_INTEGER.THIS.doubleValue() && d <= MAX_SAFE_INTEGER.THIS.doubleValue());
         }
         return new JsBoolean(false);
     }
-    public static JsNumber parseFloat(JsObject string){
-       if(!Onekit_JS.isNumber(string)){
+    public static JsNumber parseFloat(JsObject aString){
+       if(!Onekit_JS.isNumber(aString)){
            return new JsNumber(0.0);
        }
-       return new JsNumber( Double.parseDouble(string.toString()));
+       return new JsNumber( Double.parseDouble(aString.toString()));
     }
-    public  static JsNumber parseInt(JsObject string) {
-        if (!Onekit_JS.isNumber(string)) {
+    public  static JsNumber parseInt(JsObject aString) {
+        if (!Onekit_JS.isNumber(aString)) {
             return new JsNumber(0L);
         }
-        return new JsNumber((long)Double.parseDouble(string.toString()));
+        return new JsNumber((long)Double.parseDouble(aString.toString()));
     }
     public static JsObject Number(JsObject value) {
         return new JsNumber(value);
@@ -84,16 +84,16 @@ public class JsNumber implements JsObject{
         }
     }
     public JsString _toExponential(Integer fractionDigits) {
-        String string = this.toString();
-        int len = string.indexOf(".");
+        String aString = this.toString();
+        int len = aString.indexOf(".");
         if (fractionDigits == null) {
             if(len>=0) {
-                fractionDigits = string.length() - len;
+                fractionDigits = aString.length() - len;
             }else{
-                fractionDigits = string.length()-1;
+                fractionDigits = aString.length()-1;
             }
         }
-        String str = string+"00000000000000000000000000000";
+        String str = aString+"00000000000000000000000000000";
         if(len>=0) {
             return new JsString( String.format("%s.%s%se+%s",
                     str.substring(0, 1),
