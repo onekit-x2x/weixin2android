@@ -9,7 +9,7 @@ import java.util.Map;
 
 import cn.onekit.OneKit;
 import cn.onekit.css.core.CSS2JSON;
-import thekit.android.ASSET;
+import thekit.ASSET;
 
 public class CSSStyleSheet extends StyleSheet {
     private List<CSSRule> _cssRules;

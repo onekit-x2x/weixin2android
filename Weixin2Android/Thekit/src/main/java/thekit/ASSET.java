@@ -1,4 +1,4 @@
-package thekit.android;
+package thekit;
 
 import android.content.res.AssetManager;
 import android.graphics.Bitmap;
@@ -11,6 +11,8 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+
+import thekit.android.Android;
 
 public class ASSET {
     public static String loadString(String path) throws IOException {

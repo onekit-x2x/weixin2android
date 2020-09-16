@@ -17,7 +17,7 @@ import android.widget.Toast;
 import java.util.Map;
 
 import thekit.android.Android;
-import cn.onekit.COLOR;
+import thekit.COLOR;
 import cn.onekit.js.core.JsBoolean;
 import cn.onekit.js.Dict;
 import cn.onekit.js.core.JsString;

@@ -7,7 +7,7 @@ import android.widget.ImageView;
 
 import java.io.IOException;
 
-import thekit.android.ASSET;
+import thekit.ASSET;
 import thekit.FUNC1;
 import cn.onekit.OneKit;
 import cn.onekit.js.core.JsString;

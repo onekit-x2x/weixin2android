@@ -6,7 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import thekit.ARRAY;
-import cn.onekit.COLOR;
+import thekit.COLOR;
 import cn.onekit.DOM;
 import cn.onekit.LITERAL_;
 import cn.onekit.OneKit;

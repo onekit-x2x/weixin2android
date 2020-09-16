@@ -18,8 +18,7 @@ import android.util.SizeF;
 import android.view.View;
 import java.util.ArrayList;
 
-import cn.onekit.COLOR;
-import cn.onekit.LITERAL_;
+import thekit.COLOR;
 import thekit.ARRAY;
 
 import static thekit.android.Android.dp2px;

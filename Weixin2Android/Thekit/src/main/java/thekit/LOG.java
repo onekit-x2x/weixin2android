@@ -1,4 +1,4 @@
-package thekit.android;
+package thekit;
 
 import android.util.Log;
 

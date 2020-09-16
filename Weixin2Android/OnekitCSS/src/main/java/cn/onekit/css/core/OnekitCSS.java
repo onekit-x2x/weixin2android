@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-import cn.onekit.COLOR;
+import thekit.COLOR;
 import cn.onekit.LITERAL_;
 import cn.onekit.OneKit;
 import cn.onekit.css.CSSRule;

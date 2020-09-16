@@ -11,7 +11,7 @@ import android.widget.TabHost;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import thekit.android.ASSET;
+import thekit.ASSET;
 import cn.onekit.OneKit;
 import cn.onekit.js.core.Onekit_JS;
 import cn.onekit.weixin.app.R;

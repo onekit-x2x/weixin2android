@@ -5,7 +5,7 @@ import org.json.JSONObject;
 import java.io.FileNotFoundException;
 import java.util.HashMap;
 
-import thekit.android.ASSET;
+import thekit.ASSET;
 
 import static cn.onekit.OneKit.createUUID;
 

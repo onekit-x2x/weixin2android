@@ -1,4 +1,4 @@
-package cn.onekit;
+package thekit;
 
 import android.graphics.Color;
 

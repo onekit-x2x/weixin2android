@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import cn.onekit.COLOR;
+import thekit.COLOR;
 import cn.onekit.js.Array;
 import cn.onekit.js.Dict;
 import cn.onekit.js.core.JsNumber;

@@ -6,7 +6,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import thekit.ARRAY;
-import cn.onekit.COLOR;
+import thekit.COLOR;
 import cn.onekit.OneKit;
 import thekit.STRING_;
 import cn.onekit.css.core.OnekitCSS;
