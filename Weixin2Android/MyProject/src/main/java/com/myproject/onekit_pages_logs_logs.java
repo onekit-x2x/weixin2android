@@ -8,6 +8,7 @@ import cn.onekit.vue.*;
 import cn.onekit.w3c.*;
 import cn.onekit.weixin.app.*;
 import cn.onekit.weixin.app.core.*;
+import thekit.ACTION1;
 
 public class onekit_pages_logs_logs extends WeixinPage {
 

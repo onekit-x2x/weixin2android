@@ -5,12 +5,12 @@ import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 
-import cn.onekit.ARRAY;
+import thekit.ARRAY;
 import cn.onekit.COLOR;
 import cn.onekit.DOM;
 import cn.onekit.LITERAL_;
-import cn.onekit.TheKit;
-import cn.onekit.STRING_;
+import cn.onekit.OneKit;
+import thekit.STRING_;
 import cn.onekit.css.CSSStyleDeclaration;
 
 public class View_H5 {
@@ -279,7 +279,7 @@ public class View_H5 {
         } else {
             style = style.toLowerCase();
         }*/
-        String value = (String) TheKit.get(layoutParams.computedStyle, style);
+        String value = (String) OneKit.get(layoutParams.computedStyle, style);
         String[] temp = getSize(style, value);
         return getSize1_(style, node, temp);
     }
@@ -628,8 +628,8 @@ public class View_H5 {
     String getBorderStyle(View node, String border) {
         CssLayoutParams layoutParams = (CssLayoutParams) node.getLayoutParams();
         String style = String.format("border%sStyle", STRING_.firstUpper(border));
-        if (TheKit.get(layoutParams.computedStyle, style) != null) {
-            return (String) TheKit.get(layoutParams.computedStyle, style);
+        if (OneKit.get(layoutParams.computedStyle, style) != null) {
+            return (String) OneKit.get(layoutParams.computedStyle, style);
         }
         return "none";
     }
@@ -637,8 +637,8 @@ public class View_H5 {
     Integer getBorderColor(View node, String border) {
         CssLayoutParams layoutParams = (CssLayoutParams) node.getLayoutParams();
         String style = String.format("border%sColor", STRING_.firstUpper(border));
-        if (TheKit.get(layoutParams.computedStyle, style) != null) {
-            return COLOR.parse((String) TheKit.get(layoutParams.computedStyle, style));
+        if (OneKit.get(layoutParams.computedStyle, style) != null) {
+            return COLOR.parse((String) OneKit.get(layoutParams.computedStyle, style));
         }
         return Color.TRANSPARENT;
     }
@@ -646,7 +646,7 @@ public class View_H5 {
     float getBorderWidth(View node, String border) {
         CssLayoutParams layoutParams = (CssLayoutParams) node.getLayoutParams();
         String style = String.format("border%sWidth", STRING_.firstUpper(border));
-        if (TheKit.get(layoutParams.computedStyle, style) != null) {
+        if (OneKit.get(layoutParams.computedStyle, style) != null) {
             return getSize2(style, node);
         }
         return 0;
@@ -655,7 +655,7 @@ public class View_H5 {
     float getBorderRadius(View node, String border) {
         CssLayoutParams layoutParams = (CssLayoutParams) node.getLayoutParams();
         String style = String.format("border%sRadius", STRING_.firstUpper(border));
-        if (TheKit.get(layoutParams.computedStyle, style) != null) {
+        if (OneKit.get(layoutParams.computedStyle, style) != null) {
             return getSize2(style, node);
         }
         return 0;

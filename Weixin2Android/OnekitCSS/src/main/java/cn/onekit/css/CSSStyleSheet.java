@@ -7,9 +7,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import cn.onekit.ASSET;
-import cn.onekit.TheKit;
+import cn.onekit.OneKit;
 import cn.onekit.css.core.CSS2JSON;
+import thekit.android.ASSET;
 
 public class CSSStyleSheet extends StyleSheet {
     private List<CSSRule> _cssRules;
@@ -33,7 +33,7 @@ public class CSSStyleSheet extends StyleSheet {
     }
     public boolean load(String currentUrl,String url)  {
         try {
-            String path = TheKit.fixPath(currentUrl,url);
+            String path = OneKit.fixPath(currentUrl,url);
             String css = ASSET.loadString(prev+path);
             Map<String,Object> jSON = CSS2JSON.parse(css);
 

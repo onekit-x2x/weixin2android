@@ -17,11 +17,12 @@ import android.util.Log;
 import android.util.SizeF;
 import android.view.View;
 import java.util.ArrayList;
-import cn.onekit.ARRAY;
+
 import cn.onekit.COLOR;
 import cn.onekit.LITERAL_;
+import thekit.ARRAY;
 
-import static cn.onekit.Android.dp2px;
+import static thekit.android.Android.dp2px;
 
 public class View_layout {
     private OnekitCSS OnekitCSS;

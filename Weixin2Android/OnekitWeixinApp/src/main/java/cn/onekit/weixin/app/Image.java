@@ -7,9 +7,9 @@ import android.widget.ImageView;
 
 import java.io.IOException;
 
-import cn.onekit.ASSET;
-import cn.onekit.FUNC1;
-import cn.onekit.TheKit;
+import thekit.android.ASSET;
+import thekit.FUNC1;
+import cn.onekit.OneKit;
 import cn.onekit.js.core.JsString;
 import cn.onekit.js.core.JsObject;
 import cn.onekit.weixin.app.core.WeixinElement;
@@ -46,7 +46,7 @@ public class Image extends WeixinElement {
     public void setSrc(JsObject src) {
         this._src = (JsString) src;
         try {
-            imageView.setImageBitmap(ASSET.loadImage("miniprogram/"+ TheKit.fixPath(TheKit.currentUrl,_src.THIS)));
+            imageView.setImageBitmap(ASSET.loadImage("miniprogram/"+ OneKit.fixPath(OneKit.currentUrl,_src.THIS)));
         } catch (IOException e) {
             e.printStackTrace();
         }

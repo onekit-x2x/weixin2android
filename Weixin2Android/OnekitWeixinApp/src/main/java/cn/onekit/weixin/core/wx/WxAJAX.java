@@ -5,8 +5,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Map;
 
-import cn.onekit.Android;
-import cn.onekit.TheKit;
+import thekit.android.Android;
+import cn.onekit.OneKit;
 import cn.onekit.js.Dict;
 import cn.onekit.js.core.JsNumber;
 import cn.onekit.js.core.JsString;
@@ -17,7 +17,6 @@ import cn.onekit.weixin.DownloadTask;
 import cn.onekit.weixin.RequestTask;
 import cn.onekit.weixin.UploadTask;
 import cn.onekit.weixin.app.R;
-import cn.onekit.weixin.app.core.Onekit_Weixin_App;
 import cn.onekit.weixin.core.Onekit_Weixin;
 import cn.onekit.weixin.core.res.wx_fail;
 import okhttp3.Call;
@@ -302,11 +301,11 @@ public class WxAJAX extends WxAddress {
                 // 储存下载文件的目录
 //                String savePath = isExistDir(saveDir);
                 String androidTempDir = Android.context.getExternalCacheDir().getPath();
-                String shortName = TheKit.getNameFromUrl(url);
+                String shortName = OneKit.getNameFromUrl(url);
                 try {
                     is = response.body().byteStream();
                     long total = response.body().contentLength();
-                    String androidUUIDname = TheKit.createUUIDfileName(shortName);
+                    String androidUUIDname = OneKit.createUUIDfileName(shortName);
                     java.io.File file = new java.io.File(androidTempDir, androidUUIDname);
                     String androidTempPath = file.getPath();
                     // Log.i("sss",androidTempPath);

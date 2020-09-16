@@ -10,8 +10,8 @@ import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Map;
 
-import cn.onekit.ACTION;
-import cn.onekit.ACTION1;
+import thekit.ACTION;
+import thekit.ACTION1;
 import cn.onekit.DOM;
 import cn.onekit.LITERAL_;
 

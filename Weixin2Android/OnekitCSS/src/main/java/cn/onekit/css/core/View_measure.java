@@ -9,8 +9,8 @@ import android.widget.TextView;
 import cn.onekit.DOM;
 import cn.onekit.LITERAL_;
 
-import static cn.onekit.Android.dp2px;
-import static cn.onekit.Android.px2dp;
+import static thekit.android.Android.dp2px;
+import static thekit.android.Android.px2dp;
 
 public class View_measure {
     private OnekitCSS OnekitCSS;

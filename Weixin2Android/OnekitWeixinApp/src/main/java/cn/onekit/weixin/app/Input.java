@@ -27,7 +27,7 @@ import cn.onekit.w3c.Event;
 import cn.onekit.w3c.core.FormItem_;
 import cn.onekit.weixin.app.core.WeixinElement;
 
-import static cn.onekit.Android.px2dp;
+import static thekit.android.Android.px2dp;
 
 
 @SuppressLint("AppCompatCustomView")

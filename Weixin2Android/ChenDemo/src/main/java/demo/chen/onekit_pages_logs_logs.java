@@ -2,7 +2,7 @@ package demo.chen;
 
 import android.view.ViewGroup;
 
-import cn.onekit.ACTION1;
+import thekit.ACTION1;
 import cn.onekit.js.Array;
 import cn.onekit.js.Date;
 import cn.onekit.js.Dict;

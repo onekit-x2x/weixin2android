@@ -7,17 +7,18 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 import java.util.List;
 
-import cn.onekit.ARRAY;
+
 import cn.onekit.COLOR;
 import cn.onekit.LITERAL_;
-import cn.onekit.TheKit;
-import cn.onekit.STRING_;
+import cn.onekit.OneKit;
 import cn.onekit.css.CSSRule;
 import cn.onekit.css.CSSStyleDeclaration;
 import cn.onekit.css.CSSStyleRule;
 import cn.onekit.css.CSSStyleSheet;
+import thekit.ARRAY;
+import thekit.STRING_;
 
-import static cn.onekit.Android.dp2px;
+import static thekit.android.Android.dp2px;
 
 public class OnekitCSS {
 
@@ -43,7 +44,7 @@ public class OnekitCSS {
     public void init(String[] urls) {
         for (String url : urls) {
             CSSStyleSheet styleSheet = new CSSStyleSheet(prev, CSS2JSON);
-            styleSheet.load(TheKit.currentUrl, url);
+            styleSheet.load(OneKit.currentUrl, url);
             globalStyleSheets.add(styleSheet);
 
         }
@@ -54,7 +55,7 @@ public class OnekitCSS {
         List<CSSStyleSheet> pageStyleSheets = new ArrayList();
         for (String pageStyleSheetUrl : pageStyleSheetUrls) {
             CSSStyleSheet styleSheet = new CSSStyleSheet(prev, CSS2JSON);
-            styleSheet.load(TheKit.currentUrl, pageStyleSheetUrl);
+            styleSheet.load(OneKit.currentUrl, pageStyleSheetUrl);
             pageStyleSheets.add(styleSheet);
         }
         //LOG.add("styleSheet.load");

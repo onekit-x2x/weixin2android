@@ -5,10 +5,10 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
-import cn.onekit.ARRAY;
+import thekit.ARRAY;
 import cn.onekit.COLOR;
-import cn.onekit.TheKit;
-import cn.onekit.STRING_;
+import cn.onekit.OneKit;
+import thekit.STRING_;
 import cn.onekit.css.core.OnekitCSS;
 
 /**
@@ -187,7 +187,7 @@ public class CSSStyleDeclaration {
         this.propertyValues.put(propertyName, value);
         this.propertyPriorities.put(propertyName, priority);
         //
-        TheKit.set(this, value, TheKit.toCamelCase(propertyName));
+        OneKit.set(this, value, OneKit.toCamelCase(propertyName));
     }
 
 

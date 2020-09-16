@@ -29,7 +29,7 @@ import com.tencent.tencentmap.mapsdk.map.MapActivity;
 import com.tencent.tencentmap.mapsdk.map.MapView;
 import com.tencent.tencentmap.mapsdk.map.TencentMap;
 
-import cn.onekit.Android;
+import thekit.android.Android;
 import cn.onekit.weixin.app.R;
 
 public class LocationActivity extends MapActivity implements TencentLocationListener {

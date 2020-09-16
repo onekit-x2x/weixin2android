@@ -31,13 +31,13 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'com.google.code.gson:gson:2.8.6'
-    implementation 'com.squareup.okhttp3:okhttp:4.7.2'
-    implementation 'org.conscrypt:conscrypt-android:2.4.0'
+    implementation 'com.squareup.okhttp3:okhttp:4.8.1'
+    implementation 'org.conscrypt:conscrypt-android:2.5.0'
 
     implementation 'androidx.annotation:annotation:1.1.0'
-    implementation 'com.google.android.material:material:1.1.0'
-    implementation 'com.tencent.map:tencent-map-vector-sdk:4.3.5'
-    implementation 'com.tencent.map.geolocation:TencentLocationSdk-openplatform:7.2.6'
+    implementation 'com.google.android.material:material:1.2.1'
+    implementation 'com.tencent.map:tencent-map-vector-sdk:4.3.9.2'
+    implementation 'com.tencent.map.geolocation:TencentLocationSdk-openplatform:8.7.5.1'
     implementation project(path: ':Onekit')
     implementation project(path: ':OnekitJS')
 
@@ -49,4 +49,5 @@ dependencies {
     implementation project(path: ':OnekitVUE')
     implementation project(path: ':OnekitW3C')
     implementation project(path: ':OnekitCSS')
+    implementation project(path: ':Thekit')
 }

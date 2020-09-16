@@ -39,7 +39,7 @@ import java.util.Collection;
 import java.util.Hashtable;
 import java.util.Map;
 
-import cn.onekit.Android;
+import thekit.android.Android;
 import cn.onekit.weixin.app.R;
 import cn.onekit.weixin.core.zxing.RGBLuminanceSource;
 import cn.onekit.weixin.core.zxing.Utils;

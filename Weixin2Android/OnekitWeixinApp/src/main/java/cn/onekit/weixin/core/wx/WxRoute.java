@@ -16,8 +16,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
 
-import cn.onekit.Android;
-import cn.onekit.TheKit;
+import thekit.android.Android;
+import cn.onekit.OneKit;
 import cn.onekit.js.Dict;
 import cn.onekit.js.core.Onekit_JS;
 import cn.onekit.js.core.function;
@@ -34,7 +34,7 @@ public class WxRoute extends WxRedPackage {
 
     public  void switchTab(Map OBJECT) {
         String url = OBJECT.get("url") != null ? (String) OBJECT.get("url") : null;
-        url = TheKit.fixPath(TheKit.currentUrl,url);
+        url = OneKit.fixPath(OneKit.currentUrl,url);
          url = url.split("\\?")[0];
 
         try {
@@ -76,7 +76,7 @@ void setCurrentTabByTag(TabHost tabHost,int tag) {
         function complete = OBJECT.get("complete") != null ? (function) OBJECT.get("complete") : null;
         function fail = OBJECT.get("fail") != null ? (function) OBJECT.get("fail") : null;
         try {
-            url = TheKit.fixPath(TheKit.currentUrl,url);
+            url = OneKit.fixPath(OneKit.currentUrl,url);
             Intent intent = Onekit_Weixin_App.initIntent(application, url,0);
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             application.startActivity(intent);
@@ -110,7 +110,7 @@ void setCurrentTabByTag(TabHost tabHost,int tag) {
         function fail = OBJECT.get("fail") != null ? (function) OBJECT.get("fail") : null;
 
         try {
-            url = TheKit.fixPath( TheKit.currentUrl,url);
+            url = OneKit.fixPath( OneKit.currentUrl,url);
             Intent intent = Onekit_Weixin_App.initIntent(application, url,0);
             application.startActivity(intent);
             Dict res = new Dict();
@@ -144,7 +144,7 @@ void setCurrentTabByTag(TabHost tabHost,int tag) {
 
         try {
             int channelID = new Random().nextInt();
-            url = TheKit.fixPath(TheKit.currentUrl,url);
+            url = OneKit.fixPath(OneKit.currentUrl,url);
             Intent intent = Onekit_Weixin_App.initIntent(application, url,channelID);
             //new EventChannel(channelID, -channelID);
             EventChannel resEventChannel = new EventChannel(-channelID, channelID);

@@ -6,7 +6,7 @@ import android.nfc.NfcAdapter;
 
 import java.util.Map;
 
-import cn.onekit.Android;
+import thekit.android.Android;
 import cn.onekit.js.Array;
 import cn.onekit.js.ArrayBuffer;
 import cn.onekit.js.core.function;

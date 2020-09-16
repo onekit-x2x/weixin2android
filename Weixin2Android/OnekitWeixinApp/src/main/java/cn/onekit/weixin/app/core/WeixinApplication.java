@@ -2,14 +2,13 @@ package cn.onekit.weixin.app.core;
 
 import android.app.Application;
 
-import cn.onekit.Android;
-import cn.onekit.TheKit;
+import thekit.android.Android;
+import cn.onekit.OneKit;
 import cn.onekit.css.core.OnekitCSS;
 import cn.onekit.js.Dict;
 import cn.onekit.js.core.JsString;
 import cn.onekit.js.core.JsObject;
 import cn.onekit.weixin.WX;
-import cn.onekit.weixin.app.core.WeixinFile;
 
 public abstract class WeixinApplication extends Application implements WeixinFile,JsObject {
 
@@ -33,7 +32,7 @@ public abstract class WeixinApplication extends Application implements WeixinFil
     public void onCreate() {
         super.onCreate();
         Android.context = this;
-        TheKit.currentUrl = "/";
+        OneKit.currentUrl = "/";
         OnekitCSS.share = new OnekitCSS(Android.SIZE(),"miniprogram/");
         OnekitCSS.share.init(new String[]{"/onekit.wxss","/app.wxss"});
          wx = new WX();

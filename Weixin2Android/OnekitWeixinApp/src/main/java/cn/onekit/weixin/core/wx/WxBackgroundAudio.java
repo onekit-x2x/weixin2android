@@ -7,7 +7,7 @@ import android.widget.SeekBar;
 import java.io.IOException;
 import java.util.Map;
 
-import cn.onekit.Android;
+import thekit.android.Android;
 import cn.onekit.js.Dict;
 import cn.onekit.js.core.function;
 import cn.onekit.weixin.BackgroundAudioManager;

@@ -9,7 +9,7 @@ import android.view.WindowManager;
 import java.util.HashMap;
 import java.util.Map;
 
-import cn.onekit.Android;
+import thekit.android.Android;
 import cn.onekit.js.Dict;
 import cn.onekit.js.core.function;
 import cn.onekit.weixin.app.R;

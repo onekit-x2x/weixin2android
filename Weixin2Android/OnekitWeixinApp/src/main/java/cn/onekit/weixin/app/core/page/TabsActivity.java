@@ -11,8 +11,8 @@ import android.widget.TabHost;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import cn.onekit.ASSET;
-import cn.onekit.TheKit;
+import thekit.android.ASSET;
+import cn.onekit.OneKit;
 import cn.onekit.js.core.Onekit_JS;
 import cn.onekit.weixin.app.R;
 import cn.onekit.weixin.app.core.Onekit_Weixin_App;
@@ -27,7 +27,7 @@ public class TabsActivity extends TabActivity {
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        TheKit.currentUrl = "/";
+        OneKit.currentUrl = "/";
         current = this;
         ///////////////
         try {

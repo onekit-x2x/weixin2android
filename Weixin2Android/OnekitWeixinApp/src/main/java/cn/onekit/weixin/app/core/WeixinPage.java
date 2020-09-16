@@ -11,8 +11,8 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.HashMap;
 import java.util.Map;
 
-import cn.onekit.Android;
-import cn.onekit.TheKit;
+import thekit.android.Android;
+import cn.onekit.OneKit;
 import cn.onekit.css.core.CssLayoutParams;
 import cn.onekit.css.core.OnekitCSS;
 import cn.onekit.js.Dict;
@@ -42,8 +42,8 @@ public abstract class WeixinPage extends Activity implements WeixinFile  {
     Map<String,Class<WeixinTemplate>> imports = new HashMap();
     public void Import(String src) {
         src = src.substring(0,src.lastIndexOf("/"));
-        src = TheKit.fixPath(url,src);
-        src = TheKit.url2class(this,src);
+        src = OneKit.fixPath(url,src);
+        src = OneKit.url2class(this,src);
         try {
             Class classes = Class.forName(src);
             for(Class<WeixinTemplate> clazz : classes.getClasses()){
@@ -88,7 +88,7 @@ public abstract class WeixinPage extends Activity implements WeixinFile  {
         setContentView(page);
         page.setLayoutParams(new CssLayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.MATCH_PARENT));
         Bundle extras = getIntent().getExtras();
-        TheKit.currentUrl = url = TheKit.class2url(this, this.getClass().getName(), extras);
+        OneKit.currentUrl = url = OneKit.class2url(this, this.getClass().getName(), extras);
         pages.add(new PageObject(url));
         onekit_js();
          update();
@@ -108,7 +108,7 @@ public abstract class WeixinPage extends Activity implements WeixinFile  {
     @Override
     protected void onResume() {
         super.onResume();
-        TheKit.currentUrl = url;
+        OneKit.currentUrl = url;
         if (onekit.containsKey("onShow")) {
             ((function) onekit.get("onShow")).invoke();
         }

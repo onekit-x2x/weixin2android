@@ -4,8 +4,8 @@ import android.util.Log;
 
 import java.math.BigInteger;
 
-import cn.onekit.Android;
-import cn.onekit.TheKit;
+import thekit.android.Android;
+import cn.onekit.OneKit;
 import cn.onekit.js.Array;
 import cn.onekit.js.Error;
 import cn.onekit.js.Null;
@@ -325,8 +325,8 @@ public class Onekit_JS {
         if (url.endsWith(".js")) {
             url = url.substring(0, url.length() - ".js".length());
         }
-        url = TheKit.fixPath("/" + TheKit.currentUrl, url);
-        String name = TheKit.url2class(Android.context, url);
+        url = OneKit.fixPath("/" + OneKit.currentUrl, url);
+        String name = OneKit.url2class(Android.context, url);
         try {
             return Class.forName(name);
         } catch (ClassNotFoundException e) {

@@ -14,15 +14,14 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Map;
 
-import cn.onekit.Android;
-import cn.onekit.TheKit;
+import thekit.android.Android;
+import cn.onekit.OneKit;
 import cn.onekit.js.Array;
 import cn.onekit.js.Dict;
 import cn.onekit.js.core.JsNumber;
 import cn.onekit.js.core.JsString;
 import cn.onekit.js.core.function;
 import cn.onekit.weixin.app.R;
-import cn.onekit.weixin.app.core.Onekit_Weixin_App;
 import cn.onekit.weixin.core.Onekit_Weixin;
 import cn.onekit.weixin.core.res.wx_fail;
 
@@ -42,8 +41,8 @@ public class WxFile extends WxExtConfig {
 //
         String androidTempPath = Onekit_Weixin.tempPath2androidPath(tempFilePath);
         String androidFileDir = Android.context.getExternalFilesDir(null).getPath();
-        String shortName = TheKit.getNameFromUrl(androidTempPath);
-        String androidUUIDname = TheKit.createUUIDfileName(shortName);
+        String shortName = OneKit.getNameFromUrl(androidTempPath);
+        String androidUUIDname = OneKit.createUUIDfileName(shortName);
         // String savePath1 = APP.androidPath2storePath(tempFilePath);
 //        Log.e("path",Android.context.getApplicationContext().getFilesDir().getAbsolutePath());
         java.io.File file = new java.io.File(androidFileDir, androidUUIDname);

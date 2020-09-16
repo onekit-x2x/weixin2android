@@ -10,7 +10,7 @@ import com.tencent.mm.opensdk.openapi.WXAPIFactory;
 
 import java.io.IOException;
 
-import cn.onekit.Android;
+import thekit.android.Android;
 import cn.onekit.js.Dict;
 import cn.onekit.js.JSON;
 import cn.onekit.js.core.JsObject;

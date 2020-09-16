@@ -1,11 +1,11 @@
 package cn.onekit.weixin.core.wx;
 
-import cn.onekit.TheKit;
+import cn.onekit.OneKit;
 import cn.onekit.js.Dict;
 import cn.onekit.js.core.JsNumber;
 import cn.onekit.js.core.JsString;
 
-import static cn.onekit.TheKit.launchPath;
+import static cn.onekit.OneKit.launchPath;
 
 public class WxLifeCycle extends WxKeyboard {
 
@@ -25,7 +25,7 @@ public class WxLifeCycle extends WxKeyboard {
     public Dict getEnterOptionsSync() {
         Dict result = new Dict() {
             {
-                put("path", new JsString( TheKit.currentUrl));
+                put("path", new JsString( OneKit.currentUrl));
                 put("query", new Dict());
                 put("scene", new JsNumber(1001));
                 put("shareTicket", new JsString(null));

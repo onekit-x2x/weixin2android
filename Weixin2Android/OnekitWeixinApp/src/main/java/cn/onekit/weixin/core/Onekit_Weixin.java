@@ -1,21 +1,13 @@
 package cn.onekit.weixin.core;
 
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-
 import org.json.JSONObject;
 
 import java.io.FileNotFoundException;
 import java.util.HashMap;
 
-import cn.onekit.ASSET;
-import cn.onekit.TheKit;
-import cn.onekit.weixin.app.core.page.TabsActivity;
+import thekit.android.ASSET;
 
-import static cn.onekit.TheKit.createUUID;
-import static cn.onekit.TheKit.querystring2extras;
-import static cn.onekit.TheKit.url2class;
+import static cn.onekit.OneKit.createUUID;
 
 public class Onekit_Weixin {
 

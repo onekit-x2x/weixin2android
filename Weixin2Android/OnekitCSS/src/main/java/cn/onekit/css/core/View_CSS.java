@@ -7,11 +7,11 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 import java.util.List;
 
-import cn.onekit.ARRAY;
+import thekit.ARRAY;
 import cn.onekit.DOM;
 import cn.onekit.LITERAL_;
-import cn.onekit.STRING_;
-import cn.onekit.TheKit;
+import thekit.STRING_;
+import cn.onekit.OneKit;
 import cn.onekit.css.CSSStyleDeclaration;
 
 public class View_CSS {
@@ -495,7 +495,7 @@ View_CSS(OnekitCSS OnekitCSS){
             attributePair = new String[]{aString};
         }
         String attributeName = attributePair[0];
-        String attribute = (String) TheKit.get(SELF, attributeName);
+        String attribute = (String) OneKit.get(SELF, attributeName);
         if (null==attribute) {
             return -1;
         }

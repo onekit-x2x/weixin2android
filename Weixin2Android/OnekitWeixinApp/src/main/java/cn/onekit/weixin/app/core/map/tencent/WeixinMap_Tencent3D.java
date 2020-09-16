@@ -40,7 +40,7 @@ import cn.onekit.w3c.Event;
 import cn.onekit.weixin.app.R;
 import cn.onekit.weixin.app.core.map.WeixinMap;
 
-import static cn.onekit.Android.dp2px;
+import static thekit.android.Android.dp2px;
 
 public class WeixinMap_Tencent3D extends WeixinMap<MapView,TencentMap> {
 

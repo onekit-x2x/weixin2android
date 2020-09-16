@@ -31,5 +31,6 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation project(path: ':Onekit')
     implementation project(path: ':OnekitJS')
+    implementation project(path: ':Thekit')
 
 }

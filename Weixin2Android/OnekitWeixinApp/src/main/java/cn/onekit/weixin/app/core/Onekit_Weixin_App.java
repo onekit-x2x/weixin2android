@@ -4,22 +4,15 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
-import org.json.JSONObject;
-
-import java.io.FileNotFoundException;
-import java.util.HashMap;
-
-import cn.onekit.ASSET;
-import cn.onekit.TheKit;
+import cn.onekit.OneKit;
 import cn.onekit.weixin.app.core.page.TabsActivity;
 
-import static cn.onekit.TheKit.createUUID;
-import static cn.onekit.TheKit.querystring2extras;
-import static cn.onekit.TheKit.url2class;
+import static cn.onekit.OneKit.querystring2extras;
+import static cn.onekit.OneKit.url2class;
 
 public class Onekit_Weixin_App {
     static {
-        TheKit.tabsActivityClass = TabsActivity.class;
+        OneKit.tabsActivityClass = TabsActivity.class;
     }
     public static Intent initIntent(Context context, String url, int channelID) throws ClassNotFoundException {
 
