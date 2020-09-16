@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 
 import cn.onekit.w3c.Event;
 import cn.onekit.w3c.EventListener;
-import cn.onekit.weixin.app.RADIO;
+import cn.onekit.weixin.app.Radio;
 
 public class RadioDemo extends Activity {
     ViewGroup root(){
@@ -18,7 +18,7 @@ public class RadioDemo extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.demo_checkbox);
         //
-        RADIO radio = new RADIO(this);
+        Radio radio = new Radio(this);
        // radio.setChecked(true);
         // switcha.setDisabled(true);
         //radio.setColor(Color.RED);
