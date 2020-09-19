@@ -25,7 +25,7 @@ public  class function implements JsObject {
           this(obj.getClass(), methodName,types);
           this.obj = obj;
      }
-     public JsObject invoke(JsObject... arguments) {
+     public JsObject invoke(Object... arguments) {
           try{
                return (JsObject) method.invoke(obj, arguments);
           } catch (Exception e) {
