@@ -3,8 +3,6 @@ package cn.onekit.js;
 import java.util.HashMap;
 import java.util.Random;
 import cn.onekit.js.core.Iterator;
-import cn.onekit.js.core.JsObject;
-import cn.onekit.js.core.JsString;
 import cn.onekit.js.core.Onekit_JS;
 
 public class Dict extends HashMap<String,JsObject> implements JsObject {

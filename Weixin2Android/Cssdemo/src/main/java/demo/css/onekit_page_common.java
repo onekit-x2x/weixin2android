@@ -2,7 +2,7 @@ package demo.css;
 
 import android.content.Context;
 import android.view.ViewGroup;
-import cn.onekit.js.core.JsObject;
+import cn.onekit.js.JsObject;
 import cn.onekit.js.core.Onekit_JS;
 import cn.onekit.vue.Vue;
 import cn.onekit.w3c.LITERAL;

@@ -7,7 +7,7 @@ import android.util.Log;
 import android.widget.TextView;
 
 import cn.onekit.js.Dict;
-import cn.onekit.js.core.JsString;
+import cn.onekit.js.JsString;
 import cn.onekit.w3c.Event;
 import cn.onekit.weixin.app.core.WeixinElement;
 

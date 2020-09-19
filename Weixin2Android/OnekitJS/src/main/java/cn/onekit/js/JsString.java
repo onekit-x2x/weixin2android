@@ -1,13 +1,11 @@
-package cn.onekit.js.core;
+package cn.onekit.js;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
 
-import cn.onekit.js.Array;
-import cn.onekit.js.Dict;
-import cn.onekit.js.RangeError;
-import cn.onekit.js.RegExp;
+import cn.onekit.js.core.Onekit_JS;
+import cn.onekit.js.core.function;
 
 public  class JsString implements JsObject {
 	public String THIS;

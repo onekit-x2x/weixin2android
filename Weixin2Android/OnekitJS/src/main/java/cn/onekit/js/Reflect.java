@@ -1,7 +1,5 @@
 package cn.onekit.js;
 
-import cn.onekit.js.core.JsObject;
-
 public class Reflect  {
     ////////////////////////
     public static JsObject apply(Dict target, Dict thisArgument, Dict argumentsList){

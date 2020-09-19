@@ -2,8 +2,8 @@ package cn.onekit.w3c;
 
 import cn.onekit.js.Dict;
 
-import cn.onekit.js.core.JsString;
-import cn.onekit.js.core.JsObject;
+import cn.onekit.js.JsString;
+import cn.onekit.js.JsObject;
 
 public class Event implements JsObject {
     private Element currentTarget;

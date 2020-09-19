@@ -18,9 +18,9 @@ import java.util.Map;
 
 import thekit.android.Android;
 import thekit.COLOR;
-import cn.onekit.js.core.JsBoolean;
+import cn.onekit.js.JsBoolean;
 import cn.onekit.js.Dict;
-import cn.onekit.js.core.JsString;
+import cn.onekit.js.JsString;
 import cn.onekit.js.core.Onekit_JS;
 import cn.onekit.js.core.function;
 import cn.onekit.weixin.app.R;

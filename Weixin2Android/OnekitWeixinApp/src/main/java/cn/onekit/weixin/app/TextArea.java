@@ -16,7 +16,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import cn.onekit.js.Dict;
-import cn.onekit.js.core.JsNumber;
+import cn.onekit.js.JsNumber;
 import cn.onekit.w3c.Event;
 import cn.onekit.weixin.app.core.WeixinElement;
 

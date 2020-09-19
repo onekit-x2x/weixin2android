@@ -1,6 +1,6 @@
 package cn.onekit.w3c.core;
 
-import cn.onekit.js.core.JsObject;
+import cn.onekit.js.JsObject;
 
 public interface FormItem_<T extends JsObject> {
 

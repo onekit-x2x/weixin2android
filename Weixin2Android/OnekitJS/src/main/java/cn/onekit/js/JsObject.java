@@ -1,8 +1,6 @@
-package cn.onekit.js.core;
+package cn.onekit.js;
 
 import java.lang.reflect.Field;
-
-import cn.onekit.js.Dict;
 
 public interface JsObject {
     default  JsObject get(String key){

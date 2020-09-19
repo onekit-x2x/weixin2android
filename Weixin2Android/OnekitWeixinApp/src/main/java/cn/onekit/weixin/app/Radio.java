@@ -7,9 +7,9 @@ import android.util.AttributeSet;
 import android.widget.CompoundButton;
 import android.widget.RadioButton;
 
-import cn.onekit.js.core.JsBoolean;
+import cn.onekit.js.JsBoolean;
 import cn.onekit.js.Dict;
-import cn.onekit.js.core.JsObject;
+import cn.onekit.js.JsObject;
 import cn.onekit.w3c.Event;
 import cn.onekit.w3c.core.FormItem_;
 import cn.onekit.weixin.app.core.WeixinElement;

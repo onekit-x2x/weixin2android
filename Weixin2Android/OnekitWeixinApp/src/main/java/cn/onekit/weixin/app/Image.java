@@ -10,8 +10,8 @@ import java.io.IOException;
 import thekit.ASSET;
 import thekit.FUNC1;
 import cn.onekit.OneKit;
-import cn.onekit.js.core.JsString;
-import cn.onekit.js.core.JsObject;
+import cn.onekit.js.JsString;
+import cn.onekit.js.JsObject;
 import cn.onekit.weixin.app.core.WeixinElement;
 
 public class Image extends WeixinElement {

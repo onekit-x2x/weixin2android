@@ -13,8 +13,8 @@ import java.util.List;
 import java.util.Map;
 
 import cn.onekit.js.Dict;
-import cn.onekit.js.core.JsNumber;
-import cn.onekit.js.core.JsString;
+import cn.onekit.js.JsNumber;
+import cn.onekit.js.JsString;
 import cn.onekit.js.core.function;
 import cn.onekit.weixin.MapContext;
 import cn.onekit.weixin.core.res.wx_fail;

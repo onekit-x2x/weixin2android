@@ -19,6 +19,10 @@ import cn.onekit.js.Array;
 import cn.onekit.js.Console;
 import cn.onekit.js.Dict;
 import cn.onekit.js.Error;
+import cn.onekit.js.JsBoolean;
+import cn.onekit.js.JsNumber;
+import cn.onekit.js.JsObject;
+import cn.onekit.js.JsString;
 import cn.onekit.js.Map;
 import cn.onekit.js.Null;
 import cn.onekit.js.Symbol;
@@ -46,7 +50,7 @@ public interface JsFile {
         HashMap<String,function> prototypes = allOverrides.get(hashCode());
         prototypes.put(String.format("%s.%s",clazz,method),function);
     }
-    default function getPrototype(String clazz,String method,JsObject THIS){
+    default function getPrototype(String clazz, String method, JsObject THIS){
         function function =  allPrototypes.get(hashCode()).get(String.format("%s.%s",clazz,method));
         function.thisArg = THIS;
         return function;

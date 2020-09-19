@@ -2,8 +2,8 @@ package cn.onekit.vue;
 
 import thekit.ACTION1;
 import cn.onekit.js.Dict;
-import cn.onekit.js.core.JsNumber;
-import cn.onekit.js.core.JsObject;
+import cn.onekit.js.JsNumber;
+import cn.onekit.js.JsObject;
 
 public class Vue {
     JsObject data;

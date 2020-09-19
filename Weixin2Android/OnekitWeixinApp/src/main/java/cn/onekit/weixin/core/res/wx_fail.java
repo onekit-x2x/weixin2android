@@ -2,8 +2,8 @@ package cn.onekit.weixin.core.res;
 
 
 import cn.onekit.js.Dict;
-import cn.onekit.js.core.JsString;
-import cn.onekit.js.core.JsObject;
+import cn.onekit.js.JsString;
+import cn.onekit.js.JsObject;
 
 public class wx_fail extends Dict {
     public wx_fail(String errMsg) {

@@ -3,9 +3,9 @@ package cn.onekit.weixin;
 import java.util.HashMap;
 import java.util.Map;
 
-import cn.onekit.js.core.JsString;
+import cn.onekit.js.JsString;
 import cn.onekit.js.core.function;
-import cn.onekit.js.core.JsObject;
+import cn.onekit.js.JsObject;
 
 public class EventChannel implements JsObject {
     public static Map<Integer,EventChannel> eventChannels=new HashMap();

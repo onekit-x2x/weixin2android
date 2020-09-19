@@ -1,7 +1,6 @@
 package cn.onekit.weixin;
 
 import cn.onekit.js.Dict;
-import cn.onekit.js.core.JsObject;
 
 public class SystemInfo extends Dict {
    /* public String brand;

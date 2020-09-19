@@ -1,7 +1,5 @@
 package cn.onekit.js;
 
-import cn.onekit.js.core.JsNumber;
-import cn.onekit.js.core.JsObject;
 import cn.onekit.js.core.function;
 
 public class Int16Array extends TypedArray{

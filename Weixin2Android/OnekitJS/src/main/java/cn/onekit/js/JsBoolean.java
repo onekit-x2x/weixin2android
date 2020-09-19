@@ -1,4 +1,4 @@
-package cn.onekit.js.core;
+package cn.onekit.js;
 
 public class JsBoolean implements JsObject {
     public boolean THIS;

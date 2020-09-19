@@ -4,10 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import cn.onekit.js.core.JsBoolean;
-import cn.onekit.js.core.JsNumber;
-import cn.onekit.js.core.JsObject;
-import cn.onekit.js.core.JsString;
 import cn.onekit.js.core.Onekit_JS;
 
 public class Intl  {

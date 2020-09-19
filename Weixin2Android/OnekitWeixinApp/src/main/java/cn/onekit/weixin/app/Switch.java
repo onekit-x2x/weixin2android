@@ -5,7 +5,7 @@ import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.StateListDrawable;
 import android.view.View;
 
-import cn.onekit.js.core.JsBoolean;
+import cn.onekit.js.JsBoolean;
 import cn.onekit.js.Dict;
 import cn.onekit.w3c.Event;
 import cn.onekit.w3c.core.FormItem_;

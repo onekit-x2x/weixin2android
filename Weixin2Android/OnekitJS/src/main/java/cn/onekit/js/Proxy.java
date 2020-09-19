@@ -1,8 +1,5 @@
 package cn.onekit.js;
 
-import cn.onekit.js.core.JsObject;
-import cn.onekit.js.core.JsString;
-
 public class Proxy implements JsObject {
     public static Dict apply(String target, Dict thisArg, Dict argumentsList){
         return null;

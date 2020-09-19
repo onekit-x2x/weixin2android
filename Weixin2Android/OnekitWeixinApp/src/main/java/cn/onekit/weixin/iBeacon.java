@@ -1,8 +1,8 @@
 package cn.onekit.weixin;
 
 
-import cn.onekit.js.core.JsString;
-import cn.onekit.js.core.JsObject;
+import cn.onekit.js.JsString;
+import cn.onekit.js.JsObject;
 
 public class iBeacon implements JsObject{
     String uuid;

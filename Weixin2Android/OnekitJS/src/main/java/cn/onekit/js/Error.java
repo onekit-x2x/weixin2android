@@ -1,8 +1,5 @@
 package cn.onekit.js;
 
-import cn.onekit.js.core.JsObject;
-import cn.onekit.js.core.JsString;
-
 public class Error extends java.lang.Error implements JsObject {
 
     public Error(JsObject message) {

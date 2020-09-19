@@ -18,7 +18,7 @@ import thekit.android.Android;
 import cn.onekit.js.Array;
 import cn.onekit.js.ArrayBuffer;
 import cn.onekit.js.Dict;
-import cn.onekit.js.core.JsString;
+import cn.onekit.js.JsString;
 import cn.onekit.js.core.function;
 import cn.onekit.weixin.WX;
 

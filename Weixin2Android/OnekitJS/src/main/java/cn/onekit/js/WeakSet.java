@@ -1,8 +1,5 @@
 package cn.onekit.js;
 
-import cn.onekit.js.core.JsObject;
-import cn.onekit.js.core.JsString;
-
 public class WeakSet implements JsObject {
     ////////////
     public Dict add(JsObject value){

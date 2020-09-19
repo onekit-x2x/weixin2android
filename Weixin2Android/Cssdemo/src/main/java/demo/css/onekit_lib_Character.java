@@ -1,6 +1,6 @@
 package demo.css;
 
-import cn.onekit.js.core.JsString;
+import cn.onekit.js.JsString;
 import cn.onekit.weixin.app.core.WeixinClass;
 
 public class onekit_lib_Character extends WeixinClass {

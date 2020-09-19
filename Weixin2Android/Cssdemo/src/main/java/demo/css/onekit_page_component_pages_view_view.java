@@ -3,14 +3,12 @@ package demo.css;
 import android.view.ViewGroup;
 
 import cn.onekit.js.Dict;
-import cn.onekit.js.core.JsObject;
+import cn.onekit.js.JsObject;
 import cn.onekit.vue.Vue;
 import cn.onekit.w3c.LITERAL;
-import cn.onekit.weixin.app.Page;
 import cn.onekit.weixin.app.Text;
 import cn.onekit.weixin.app.View;
 import cn.onekit.weixin.app.core.WeixinPage;
-import cn.onekit.weixin.app.core.WeixinTemplate;
 
 public class onekit_page_component_pages_view_view extends WeixinPage {
 

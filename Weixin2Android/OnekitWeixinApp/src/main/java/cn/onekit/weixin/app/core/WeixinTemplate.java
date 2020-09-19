@@ -4,10 +4,9 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.ViewGroup;
 
-import cn.onekit.js.core.JsObject;
+import cn.onekit.js.JsObject;
 import cn.onekit.vue.Vue;
 import cn.onekit.w3c.Template;
-import cn.onekit.weixin.app.Page;
 
 public abstract class WeixinTemplate extends Template {
     public WeixinTemplate(Context context) {

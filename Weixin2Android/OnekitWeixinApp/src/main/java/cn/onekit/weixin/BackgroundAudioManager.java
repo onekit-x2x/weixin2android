@@ -6,8 +6,8 @@ import android.media.MediaPlayer;
 import android.net.Uri;
 
 import cn.onekit.js.Dict;
-import cn.onekit.js.core.JsString;
-import cn.onekit.js.core.JsObject;
+import cn.onekit.js.JsString;
+import cn.onekit.js.JsObject;
 import cn.onekit.js.core.function;
 
 public  class BackgroundAudioManager {

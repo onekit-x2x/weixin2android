@@ -34,8 +34,8 @@ import java.util.List;
 import java.util.Map;
 
 import cn.onekit.js.Dict;
-import cn.onekit.js.core.JsNumber;
-import cn.onekit.js.core.JsString;
+import cn.onekit.js.JsNumber;
+import cn.onekit.js.JsString;
 import cn.onekit.w3c.Event;
 import cn.onekit.weixin.app.R;
 import cn.onekit.weixin.app.core.map.WeixinMap;

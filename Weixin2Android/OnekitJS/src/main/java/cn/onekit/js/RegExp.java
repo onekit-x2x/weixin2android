@@ -6,10 +6,6 @@ import java.util.Arrays;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import cn.onekit.js.core.JsNumber;
-import cn.onekit.js.core.JsObject;
-
-import cn.onekit.js.core.JsString;
 import cn.onekit.js.core.Onekit_JS;
 
 public class RegExp implements JsObject {

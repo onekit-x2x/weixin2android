@@ -6,8 +6,8 @@ import android.view.MotionEvent;
 import android.widget.TextView;
 
 import cn.onekit.LITERAL_;
-import cn.onekit.js.core.JsString;
-import cn.onekit.js.core.JsObject;
+import cn.onekit.js.JsString;
+import cn.onekit.js.JsObject;
 
 
 public class LITERAL extends TextView implements Node, LITERAL_ {

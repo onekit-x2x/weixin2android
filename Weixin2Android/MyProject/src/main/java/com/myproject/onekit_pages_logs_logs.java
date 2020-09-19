@@ -1,7 +1,7 @@
 package com.myproject;
 
 import android.view.ViewGroup;
-import cn.onekit.*;
+
 import cn.onekit.js.*;
 import cn.onekit.js.core.*;
 import cn.onekit.vue.*;

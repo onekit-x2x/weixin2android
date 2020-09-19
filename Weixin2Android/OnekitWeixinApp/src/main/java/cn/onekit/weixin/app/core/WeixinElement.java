@@ -7,7 +7,7 @@ import android.view.MotionEvent;
 import java.util.HashMap;
 
 import cn.onekit.js.Dict;
-import cn.onekit.js.core.JsNumber;
+import cn.onekit.js.JsNumber;
 import cn.onekit.w3c.Element;
 import cn.onekit.w3c.Event;
 import cn.onekit.w3c.EventListener;

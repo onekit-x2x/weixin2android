@@ -4,8 +4,6 @@ import android.util.Log;
 
 import java.util.Random;
 
-import cn.onekit.js.core.JsObject;
-import cn.onekit.js.core.JsString;
 import cn.onekit.js.core.Onekit_JS;
 
 public class Console implements JsObject {

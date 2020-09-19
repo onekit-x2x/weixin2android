@@ -3,9 +3,6 @@ package cn.onekit.js;
 import java.util.HashMap;
 
 import cn.onekit.js.core.Iterator;
-import cn.onekit.js.core.JsBoolean;
-import cn.onekit.js.core.JsObject;
-import cn.onekit.js.core.JsString;
 import cn.onekit.js.core.function;
 
 public class Map implements JsObject {

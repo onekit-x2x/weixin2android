@@ -7,8 +7,8 @@ import java.util.Map;
 import thekit.COLOR;
 import cn.onekit.js.Array;
 import cn.onekit.js.Dict;
-import cn.onekit.js.core.JsNumber;
-import cn.onekit.js.core.JsString;
+import cn.onekit.js.JsNumber;
+import cn.onekit.js.JsString;
 
 public class WxAnimation extends WxAnalytics {
     class AnimationInfo {

@@ -6,8 +6,8 @@ import thekit.android.Android;
 import cn.onekit.OneKit;
 import cn.onekit.css.core.OnekitCSS;
 import cn.onekit.js.Dict;
-import cn.onekit.js.core.JsString;
-import cn.onekit.js.core.JsObject;
+import cn.onekit.js.JsString;
+import cn.onekit.js.JsObject;
 import cn.onekit.weixin.WX;
 
 public abstract class WeixinApplication extends Application implements WeixinFile,JsObject {

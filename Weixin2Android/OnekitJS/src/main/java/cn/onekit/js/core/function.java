@@ -2,6 +2,9 @@ package cn.onekit.js.core;
 
 import java.lang.reflect.Method;
 
+import cn.onekit.js.JsObject;
+import cn.onekit.js.JsString;
+
 public  class function implements JsObject {
      JsObject obj;
      Method method;

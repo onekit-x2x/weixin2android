@@ -5,10 +5,6 @@ import com.google.gson.Gson;
 import java.lang.reflect.Type;
 import java.util.List;
 
-import cn.onekit.js.core.JsBoolean;
-import cn.onekit.js.core.JsObject;
-
-import cn.onekit.js.core.JsString;
 import cn.onekit.js.core.function;
 
 public class JSON {

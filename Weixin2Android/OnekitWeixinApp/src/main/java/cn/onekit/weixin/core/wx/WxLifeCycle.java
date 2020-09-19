@@ -2,8 +2,8 @@ package cn.onekit.weixin.core.wx;
 
 import cn.onekit.OneKit;
 import cn.onekit.js.Dict;
-import cn.onekit.js.core.JsNumber;
-import cn.onekit.js.core.JsString;
+import cn.onekit.js.JsNumber;
+import cn.onekit.js.JsString;
 
 import static cn.onekit.OneKit.launchPath;
 

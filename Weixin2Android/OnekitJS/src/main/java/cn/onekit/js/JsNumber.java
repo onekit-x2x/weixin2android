@@ -1,6 +1,8 @@
-package cn.onekit.js.core;
+package cn.onekit.js;
 
-public class JsNumber implements JsObject{
+import cn.onekit.js.core.Onekit_JS;
+
+public class JsNumber implements JsObject {
     public static final JsNumber EPSILON = new JsNumber(2.2204460492503130808472633361816E-16);
     //
     public static final JsNumber MAX_SAFE_INTEGER = new JsNumber(9007199254740991L);

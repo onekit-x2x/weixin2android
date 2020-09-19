@@ -4,10 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import cn.onekit.js.core.JsNumber;
-import cn.onekit.js.core.JsObject;
-import cn.onekit.js.core.JsString;
-
 
 public class Symbol implements JsObject {
 

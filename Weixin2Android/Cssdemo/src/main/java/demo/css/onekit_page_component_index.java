@@ -1,7 +1,7 @@
 package demo.css;
 import android.graphics.Color;
 import android.view.ViewGroup;
-import cn.onekit.*;
+
 import cn.onekit.css.core.CssLayoutParams;
 import cn.onekit.js.*;
 import cn.onekit.js.core.*;

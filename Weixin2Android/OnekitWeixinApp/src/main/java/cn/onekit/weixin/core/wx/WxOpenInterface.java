@@ -19,8 +19,8 @@ import java.util.Map;
 
 import thekit.android.Android;
 import cn.onekit.js.Dict;
-import cn.onekit.js.core.JsString;
-import cn.onekit.js.core.JsObject;
+import cn.onekit.js.JsString;
+import cn.onekit.js.JsObject;
 import cn.onekit.js.core.function;
 import okhttp3.Call;
 import okhttp3.Callback;

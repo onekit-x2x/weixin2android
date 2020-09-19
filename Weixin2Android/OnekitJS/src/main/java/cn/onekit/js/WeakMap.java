@@ -1,8 +1,5 @@
 package cn.onekit.js;
 
-import cn.onekit.js.core.JsObject;
-import cn.onekit.js.core.JsString;
-
 public class WeakMap implements JsObject {
 ///////////////////////
     public boolean delete(String key){
