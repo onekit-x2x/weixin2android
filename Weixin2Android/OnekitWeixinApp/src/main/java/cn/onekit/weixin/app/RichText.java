@@ -6,7 +6,7 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.widget.TextView;
 
-import cn.onekit.js.Dict;
+import cn.onekit.js.JsObject;
 import cn.onekit.js.JsString;
 import cn.onekit.w3c.Event;
 import cn.onekit.weixin.app.core.WeixinElement;
@@ -28,7 +28,7 @@ public class RichText extends WeixinElement {
         inflate(getContext(),R.layout.onekit_richtext,this);
         richText().setOnClickListener(view -> {
             Log.d("~~~~~~~~~~~~", "1111111111111");
-            Event event = new Event("tap",new Dict() {{
+            Event event = new Event("tap",new JsObject() {{
                 put("tap", new JsString("tap"));
             }},this,this,0);
             dispatchEvent(event);

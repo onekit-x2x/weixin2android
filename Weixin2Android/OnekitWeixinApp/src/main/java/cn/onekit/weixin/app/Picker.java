@@ -23,11 +23,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-import cn.onekit.js.Array;
-import cn.onekit.js.Dict;
+import cn.onekit.js.JsArray;
+import cn.onekit.js.JsObject;
 import cn.onekit.js.JsNumber;
 import cn.onekit.js.JsString;
-import cn.onekit.js.JsObject;
+import cn.onekit.js.JsObject_;
 import cn.onekit.w3c.*;
 import cn.onekit.w3c.core.FormItem_;
 import cn.onekit.weixin.app.core.WeixinElement;
@@ -68,7 +68,7 @@ public class Picker extends WeixinElement implements FormItem_ {
         ///////////////////////
         bottomSheetDialog.findViewById(R.id.cancelButton).setOnClickListener(v -> bottomSheetDialog.hide());
         bottomSheetDialog.findViewById(R.id.confirmButton).setOnClickListener(v -> {
-                Event event = new Event("change",new Dict() {{
+                Event event = new Event("change",new JsObject() {{
                     put("value", new JsString(getValue().toString()));
                 }},this,this,0);
                 dispatchEvent(event);
@@ -126,16 +126,16 @@ public class Picker extends WeixinElement implements FormItem_ {
 
 
 
-    private JsObject _value = null;
+    private JsObject_ _value = null;
 
 
     @Override
-    public void setValue(JsObject value) {
+    public void setValue(JsObject_ value) {
         _value = value;
     }
 
     @Override
-    public JsObject getValue() {
+    public JsObject_ getValue() {
         return _value;
     }
 
@@ -147,7 +147,7 @@ public class Picker extends WeixinElement implements FormItem_ {
     private void _picker(NumberPicker numberPicker, List  data) {
         final List<String> names=new ArrayList();
         if (getRangeKey() != null) {
-            data.forEach(o -> names.add(((JsString) ((Dict)o).get(getRangeKey())).THIS));
+            data.forEach(o -> names.add(((JsString) ((JsObject)o).get(getRangeKey())).THIS));
 
         } else {
             data.forEach(o -> names.add((String) o));
@@ -256,13 +256,13 @@ public class Picker extends WeixinElement implements FormItem_ {
             //
             _picker(selector, data);
             if (getValue() != null) {
-                JsObject v= ((Array) getValue()).get(c);
+                JsObject_ v= ((JsArray) getValue()).get(c);
                 selector.setValue(((JsNumber)v).THIS.intValue());
             }
             selector.setOnValueChangedListener((picker, oldVal, newVal) -> {
                 final int column = (int) picker.getTag();
 
-                    Event event = new Event("columnChange",new Dict() {{
+                    Event event = new Event("columnChange",new JsObject() {{
 
                             put("column",new JsNumber( column));
                             put("value", new JsString( getValue().toString()));
@@ -271,9 +271,9 @@ public class Picker extends WeixinElement implements FormItem_ {
                      dispatchEvent(event);
 
                 ////////////
-                Array value = (Array) getValue();
+                JsArray value = (JsArray) getValue();
                 if (value == null) {
-                    value = new Array(new JsNumber(getRange().size()));
+                    value = new JsArray(new JsNumber(getRange().size()));
                 }
                 value.set(column,new JsNumber(newVal));
                 setValue(value);
@@ -396,9 +396,9 @@ public class Picker extends WeixinElement implements FormItem_ {
                     }
                     _provinces = new JSONArray(sb.toString());
                     //
-                    Array value = (Array) getValue();
+                    JsArray value = (JsArray) getValue();
                     if (value == null) {
-                        value = new Array();
+                        value = new JsArray();
                         JSONArray buffers = _provinces;
                         for (int i = 0; i < childNames.length + 1; i++) {
                             if (getCustomItem() != null) {
@@ -429,7 +429,7 @@ public class Picker extends WeixinElement implements FormItem_ {
     private void _region_change(ViewGroup region,int column,int index) {
         try {
             _regionIndexes[column] = index;
-            final Array value = (Array) getValue();
+            final JsArray value = (JsArray) getValue();
             if (getCustomItem() != null) {
                 JSONArray buffers = _provinces;
                 if(index==0){

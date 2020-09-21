@@ -6,8 +6,8 @@ import android.content.Intent;
 import java.util.Map;
 
 import thekit.android.Android;
-import cn.onekit.js.Array;
-import cn.onekit.js.Dict;
+import cn.onekit.js.JsArray;
+import cn.onekit.js.JsObject;
 import cn.onekit.js.core.function;
 import cn.onekit.weixin.app.R;
 import cn.onekit.weixin.app.core.WeixinPage;
@@ -24,7 +24,7 @@ public class WxScanCode extends WxRoute {
 
     public void scanCode(Map OBJECT) {
         boolean onlyFromCamera = OBJECT.get("onlyFromCamera") != null ? Boolean.valueOf(OBJECT.get("onlyFromCamera").toString()) : false;
-        Array scanType = OBJECT.get("scanType") != null ? (Array) OBJECT.get("scanType") : null;
+        JsArray scanType = OBJECT.get("scanType") != null ? (JsArray) OBJECT.get("scanType") : null;
         success = OBJECT.get("success") != null ? (function) OBJECT.get("success") : null;
         complete = OBJECT.get("complete") != null ? (function) OBJECT.get("complete") : null;
         fail = OBJECT.get("fail") != null ? (function) OBJECT.get("fail") : null;
@@ -62,7 +62,7 @@ public class WxScanCode extends WxRoute {
                     scanType = "EAN_13";//条形码
                 }
                 String path = "";
-                Dict res = new Dict();
+                JsObject res = new JsObject();
 //                wx_scanCode res = new wx_scanCode(content, scanType, "utf-8", path, Android.context.getResources().getString(R.string.wx_scanCode_success));
 //                res.charSet = "utf-8";
 //                res.result = content;

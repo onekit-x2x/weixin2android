@@ -7,11 +7,11 @@ import java.util.Map;
 
 import thekit.android.Android;
 import cn.onekit.OneKit;
-import cn.onekit.js.Dict;
+import cn.onekit.js.JsObject;
 import cn.onekit.js.JsNumber;
 import cn.onekit.js.JsString;
 import cn.onekit.js.TypedArray;
-import cn.onekit.js.JsObject;
+import cn.onekit.js.JsObject_;
 import cn.onekit.js.core.function;
 import cn.onekit.weixin.DownloadTask;
 import cn.onekit.weixin.RequestTask;
@@ -40,12 +40,12 @@ public class WxAJAX extends WxAddress {
      *
      * @param obj 传输数据
      */
-    public RequestTask request(final Dict obj) {
+    public RequestTask request(final JsObject obj) {
         final String url = ((JsString) obj.get("url")).THIS;
         final String method = (obj.get("method") != null && (!obj.get("method").equals(""))) ? ((JsString) obj.get("method")).THIS.trim() : "GET";
-        final Dict header = (obj.get("header") != null) ? (Dict) obj.get("header") : null;
+        final JsObject header = (obj.get("header") != null) ? (JsObject) obj.get("header") : null;
         final String dataType = (obj.get("dataType") != null && (!obj.get("dataType").equals(""))) ? ((JsString) obj.get("dataType")).THIS.trim() : "json";
-        final JsObject data = (obj.get("data") != null) ?obj.get("data") : null;
+        final JsObject_ data = (obj.get("data") != null) ?obj.get("data") : null;
         final function fail = obj.get("fail") != null ? (function) obj.get("fail") : null;
         final function success = obj.get("success") != null ? (function) obj.get("success") : null;
         final function complete = obj.get("complete") != null ? (function) obj.get("complete") : null;
@@ -72,7 +72,7 @@ public class WxAJAX extends WxAddress {
                     switch (data.getClass().getSimpleName()) {
                         case "OBJECT":
                             FormBody.Builder bodyBuilder = new FormBody.Builder();
-                            Dict map = (Dict) data;
+                            JsObject map = (JsObject) data;
                             for (Map.Entry entry : map.entrySet()) {
                                 bodyBuilder.add(entry.getKey().toString(), String.valueOf(entry.getValue()));
                             }
@@ -145,7 +145,7 @@ public class WxAJAX extends WxAddress {
             public void onResponse(Call call, final Response response) throws IOException {
                 final String data = response.body().string();
                 if (response.code() == 200) {
-                    Dict result = new Dict();/*(HashMap) JSON.parse(data),
+                    JsObject result = new JsObject();/*(HashMap) JSON.parse(data),
                             response.code(),
                             (Dict) JSON.parse(response.headers().toString()),
                             null);*/
@@ -186,8 +186,8 @@ public class WxAJAX extends WxAddress {
         final String url = OBJECT.get("url") != null ? (String) OBJECT.get("url") : null;
         final String name = OBJECT.get("name") != null ? (String) OBJECT.get("name") : null;
         final String filePath = OBJECT.get("filePath") != null ? (String) OBJECT.get("filePath") : null;
-        final Dict header = OBJECT.get("header") != null ? (Dict) OBJECT.get("header") : null;
-        final Dict formData = OBJECT.get("formData") != null ? (Dict) OBJECT.get("formData") : null;
+        final JsObject header = OBJECT.get("header") != null ? (JsObject) OBJECT.get("header") : null;
+        final JsObject formData = OBJECT.get("formData") != null ? (JsObject) OBJECT.get("formData") : null;
         final function fail = OBJECT.get("fail") != null ? (function) OBJECT.get("fail") : null;
         final function complete = OBJECT.get("complete") != null ? (function) OBJECT.get("complete") : null;
         final function success = OBJECT.get("success") != null ? (function) OBJECT.get("success") : null;
@@ -235,7 +235,7 @@ public class WxAJAX extends WxAddress {
             public void onResponse(Call call, final Response response) throws IOException {
                 final String data = response.body().string();
                 if (response.code() == 200) {
-                    Dict result = new Dict();/*
+                    JsObject result = new JsObject();/*
                             data,
                             response.code());
 //                    result.statusCode = response.code();
@@ -319,7 +319,7 @@ public class WxAJAX extends WxAddress {
                         long totalBytesWritten = sum;
                         long totalBytesExpectedToWrite = total;
                         if (downloadTask.onProgressUpdate != null) {
-                            Dict json = new Dict();
+                            JsObject json = new JsObject();
                             json.put("progress", new JsNumber(progress));
                             //    Log.v("bi", String.valueOf(progress));
                             json.put("totalBytesWritten",new JsNumber( totalBytesWritten));
@@ -329,7 +329,7 @@ public class WxAJAX extends WxAddress {
                     }
                     fos.flush();
                     // 下载完成
-                    Dict r =new Dict();/* new wx_downloadFile(
+                    JsObject r =new JsObject();/* new wx_downloadFile(
                             wxTempPath,
                             null,
                             response.code());
@@ -616,11 +616,11 @@ public class WxAJAX extends WxAddress {
     }
 
 
-    private String addDataGET(Dict datas) {
+    private String addDataGET(JsObject datas) {
 
         String addUrl = "?";
         try {
-            for (Map.Entry<String, JsObject> data : ((Dict) datas.get("data")).entrySet()) {
+            for (Map.Entry<String, JsObject_> data : ((JsObject) datas.get("data")).entrySet()) {
                 addUrl = addUrl + "&" + data.getKey() + "=" + data.getValue();
             }
         } catch (Exception e) {

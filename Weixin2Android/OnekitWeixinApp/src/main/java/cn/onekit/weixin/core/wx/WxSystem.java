@@ -15,7 +15,7 @@ import java.util.Map;
 
 import thekit.android.Android;
 import cn.onekit.js.JsBoolean;
-import cn.onekit.js.Dict;
+import cn.onekit.js.JsObject;
 import cn.onekit.js.JsString;
 import cn.onekit.js.core.function;
 import cn.onekit.weixin.SystemInfo;
@@ -28,7 +28,7 @@ public class WxSystem extends WxSubscribe {
         function complete = JsObject.get("complete") != null ? (function) JsObject.get("complete") : null;
         function fail = JsObject.get("fail") != null ? (function) JsObject.get("fail") : null;
         try {
-            Dict res = new Dict();
+            cn.onekit.js.JsObject res = new JsObject();
 //            res.brand = getbrand();
 //            res.model = getSystemModel();
 //            res.pixelRatio = getDensity();

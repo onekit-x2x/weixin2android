@@ -1,22 +1,22 @@
 package cn.onekit.weixin.core.res;
 
 
-import cn.onekit.js.Dict;
-import cn.onekit.js.JsString;
 import cn.onekit.js.JsObject;
+import cn.onekit.js.JsString;
+import cn.onekit.js.JsObject_;
 
-public class wx_fail extends Dict {
+public class wx_fail extends JsObject {
     public wx_fail(String errMsg) {
         put("errMsg", new JsString( errMsg));
     }
 
     @Override
-    public JsObject get(JsObject key) {
+    public JsObject_ get(JsObject_ key) {
         return null;
     }
 
     @Override
-    public void set(JsObject key, JsObject value) {
+    public void set(JsObject_ key, JsObject_ value) {
 
     }
 
@@ -26,12 +26,12 @@ public class wx_fail extends Dict {
     }
 
     @Override
-    public String toLocaleString(JsString locales, JsObject options) {
+    public String toLocaleString(JsString locales, JsObject_ options) {
         return null;
     }
 
     @Override
-    public JsObject invoke(JsObject... params) {
+    public JsObject_ invoke(JsObject_... params) {
         return null;
     }
 }

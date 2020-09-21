@@ -12,9 +12,9 @@ import cn.onekit.js.core.Iterator;
 import cn.onekit.js.core.Onekit_JS;
 import cn.onekit.js.core.function;
 
-public class Array extends ArrayList<JsObject> implements JsObject {
+public class JsArray extends ArrayList<JsObject_> implements JsObject_ {
 
-    public Array(List<JsObject> subList) {
+    public JsArray(List<JsObject_> subList) {
         super(subList);
     }
 
@@ -35,7 +35,7 @@ public class Array extends ArrayList<JsObject> implements JsObject {
         }
     }
 
-    public void setLength(JsObject length) {
+    public void setLength(JsObject_ length) {
         int length_ = Onekit_JS.number(length, 0, 0).intValue();
         _setLength(length_);
     }
@@ -47,7 +47,7 @@ public class Array extends ArrayList<JsObject> implements JsObject {
         return _hashCode;
     }
 
-    private static int _index(Array array, int index) {
+    private static int _index(JsArray array, int index) {
         if (index >= 0) {
             return index;
         }
@@ -59,7 +59,7 @@ public class Array extends ArrayList<JsObject> implements JsObject {
         StringBuilder result = new StringBuilder();
         result.append("[");
         for (int i = 0; i < size(); i++) {
-            JsObject element = get(i);
+            JsObject_ element = get(i);
             if (i > 0) {
                 result.append(",");
             }
@@ -71,25 +71,25 @@ public class Array extends ArrayList<JsObject> implements JsObject {
     }
 
     @Override
-    public String toLocaleString(JsString locales, JsObject options) {
+    public String toLocaleString(JsString locales, JsObject_ options) {
         return null;
     }
 
     @Override
-    public JsObject invoke(JsObject... params) {
+    public JsObject_ invoke(JsObject_... params) {
         return null;
     }
 
     @Override
-    public JsObject get(String key) {
+    public JsObject_ get(String key) {
         return null;
     }
 
     //////////////////////////////////////
-    public static Array from(JsObject arrayLike, JsObject mapFn, JsObject thisArg) {
+    public static JsArray from(JsObject_ arrayLike, JsObject_ mapFn, JsObject_ thisArg) {
         function fn = (function) mapFn;
-        if (arrayLike instanceof Array) {
-            return from((Array) arrayLike, fn, thisArg);
+        if (arrayLike instanceof JsArray) {
+            return from((JsArray) arrayLike, fn, thisArg);
         } else if (arrayLike instanceof JsString) {
             return from(((JsString) arrayLike).THIS, fn, thisArg);
         } else {
@@ -97,9 +97,9 @@ public class Array extends ArrayList<JsObject> implements JsObject {
         }
     }
 
-    private static Array from(Array array, JsObject mapFn, JsObject thisArg) {
-        Array result = new Array();
-        for (JsObject element : array) {
+    private static JsArray from(JsArray array, JsObject_ mapFn, JsObject_ thisArg) {
+        JsArray result = new JsArray();
+        for (JsObject_ element : array) {
             if (mapFn != null) {
                 result.add(mapFn.invoke(element));
             } else {
@@ -109,28 +109,28 @@ public class Array extends ArrayList<JsObject> implements JsObject {
         return result;
     }
 
-    private static Array from(String arrayLike, JsObject mapFn, JsObject thisArg) {
+    private static JsArray from(String arrayLike, JsObject_ mapFn, JsObject_ thisArg) {
         return from(Onekit_JS.string2Array(arrayLike), mapFn, thisArg);
     }
 
 
     //
-    public static boolean isArray(JsObject obj) {
-        return obj instanceof Array;
+    public static boolean isArray(JsObject_ obj) {
+        return obj instanceof JsArray;
     }
 
     //
-    public static Array of(JsObject... elements) {
-        Array result = new Array();
+    public static JsArray of(JsObject_... elements) {
+        JsArray result = new JsArray();
         Collections.addAll(result, elements);
         return result;
     }
 
     /////////////////////////////////////////
-    public Array() {
+    public JsArray() {
     }
 
-    public Array(JsObject length) {
+    public JsArray(JsObject_ length) {
         if (length == null) {
             add(null);
             return;
@@ -148,18 +148,18 @@ public class Array extends ArrayList<JsObject> implements JsObject {
         }
     }
 
-    public Array(JsObject... args) {
+    public JsArray(JsObject_... args) {
 
         Collections.addAll(this, args);
 
     }
     /////////////////////////////////////////////////
 
-    public Array concat(JsObject... values) {
-        Array RESULT = (Array) this.clone();
-        for (JsObject value : values) {
-            if (value instanceof Array) {
-                Array array = (Array) value;
+    public JsArray concat(JsObject_... values) {
+        JsArray RESULT = (JsArray) this.clone();
+        for (JsObject_ value : values) {
+            if (value instanceof JsArray) {
+                JsArray array = (JsArray) value;
                 RESULT.addAll(array);
             } else {
                 RESULT.add(value);
@@ -169,11 +169,11 @@ public class Array extends ArrayList<JsObject> implements JsObject {
     }
 
     //
-    private Array _copyWithin(int target, int start, int end) {
+    private JsArray _copyWithin(int target, int start, int end) {
         target = _index(this, target);
         start = _index(this, start);
         end = _index(this, end);
-        Array result = new Array();
+        JsArray result = new JsArray();
         result.addAll(this);
         for (int i = start, j = 0; i < end && i < result.size() && target + j < result.size(); i++, j++) {
             result.set(target + j, this.get(i));
@@ -181,11 +181,11 @@ public class Array extends ArrayList<JsObject> implements JsObject {
         return result;
     }
 
-    public Array copyWithin(int target, int start, int end) {
+    public JsArray copyWithin(int target, int start, int end) {
         target = _index(this, target);
         start = _index(this, start);
         end = _index(this, end);
-        Array result = new Array();
+        JsArray result = new JsArray();
         result.addAll(this);
         for (int i = start, j = 0; i < end && i < result.size() && target + j < result.size(); i++, j++) {
             result.set(target + j, this.get(i));
@@ -193,11 +193,11 @@ public class Array extends ArrayList<JsObject> implements JsObject {
         return result;
     }
 
-    public Array copyWithin(int target, int start) {
+    public JsArray copyWithin(int target, int start) {
         return copyWithin(target, start, this.size() - 1);
     }
 
-    public Array copyWithin(int target) {
+    public JsArray copyWithin(int target) {
         return copyWithin(target, 0);
     }
     //
@@ -207,10 +207,10 @@ public class Array extends ArrayList<JsObject> implements JsObject {
 
 
             @Override
-            public JsObject getValue(Object value) {
-                return new Array() {{
+            public JsObject_ getValue(Object value) {
+                return new JsArray() {{
                     add(new JsNumber(index++));
-                    add((JsObject) value);
+                    add((JsObject_) value);
                 }};
             }
 
@@ -220,10 +220,10 @@ public class Array extends ArrayList<JsObject> implements JsObject {
     }
 
     //
-    public boolean every(function callback, JsObject thisArg) {
+    public boolean every(function callback, JsObject_ thisArg) {
         callback.thisArg = thisArg;
         for (int i = 0; i < size(); i++) {
-            JsObject element = get(i);
+            JsObject_ element = get(i);
             if (element == null) {
                 continue;
             }
@@ -241,7 +241,7 @@ public class Array extends ArrayList<JsObject> implements JsObject {
 
 
     //
-    private Array _fill(JsObject value, int start, int end) {
+    private JsArray _fill(JsObject_ value, int start, int end) {
         start = _index(this, start);
         end = _index(this, end);
         for (int i = start; i >= 0 && i < end && i < size(); i++) {
@@ -250,26 +250,26 @@ public class Array extends ArrayList<JsObject> implements JsObject {
         return this;
     }
 
-    public Array fill(JsObject value, JsObject start, JsObject end) {
+    public JsArray fill(JsObject_ value, JsObject_ start, JsObject_ end) {
         int start_ = Onekit_JS.number(start, 0, 0).intValue();
         int end_ = Onekit_JS.number(end, 0, 0).intValue();
         return _fill(value, start_, end_);
     }
 
-    public Array fill(JsObject value, JsObject start) {
+    public JsArray fill(JsObject_ value, JsObject_ start) {
         return fill(value, start, new JsNumber(this.size()));
     }
 
-    public Array fill(JsObject value) {
+    public JsArray fill(JsObject_ value) {
         return fill(value, new JsNumber(0));
     }
 
     //
-    public Array filter(function callback, JsObject thisArg) {
+    public JsArray filter(function callback, JsObject_ thisArg) {
         callback.thisArg = thisArg;
-        Array result = new Array();
+        JsArray result = new JsArray();
         for (int i = 0; i < size(); i++) {
-            JsObject element = this.get(i);
+            JsObject_ element = this.get(i);
             if (element == null) {
                 continue;
             }
@@ -280,15 +280,15 @@ public class Array extends ArrayList<JsObject> implements JsObject {
         return result;
     }
 
-    public Array filter(function callback) {
+    public JsArray filter(function callback) {
         return filter(callback, null);
     }
 
     //
-    public JsObject find(function callback, JsObject thisArg) {
+    public JsObject_ find(function callback, JsObject_ thisArg) {
         callback.thisArg = thisArg;
         for (int i = 0; i < size(); i++) {
-            JsObject element = this.get(i);
+            JsObject_ element = this.get(i);
             if (Onekit_JS.is(callback.invoke(element, new JsNumber(i), this))) {
                 return element;
             }
@@ -296,15 +296,15 @@ public class Array extends ArrayList<JsObject> implements JsObject {
         return null;
     }
 
-    public JsObject find(function callback) {
+    public JsObject_ find(function callback) {
         return find(callback, null);
     }
 
     //
-    public Integer findIndex(function callback, JsObject thisArg) {
+    public Integer findIndex(function callback, JsObject_ thisArg) {
         callback.thisArg = thisArg;
         for (int i = 0; i < size(); i++) {
-            JsObject element = this.get(i);
+            JsObject_ element = this.get(i);
             if (element == null) {
                 continue;
             }
@@ -320,11 +320,11 @@ public class Array extends ArrayList<JsObject> implements JsObject {
     }
 
     //
-    private Array _flat(int depth, int current) {
-        Array result = new Array();
-        for (JsObject element : this) {
-            if (element instanceof Array && current < depth) {
-                Array array = (Array) element;
+    private JsArray _flat(int depth, int current) {
+        JsArray result = new JsArray();
+        for (JsObject_ element : this) {
+            if (element instanceof JsArray && current < depth) {
+                JsArray array = (JsArray) element;
                 result = result.concat(array._flat(depth, current + 1));
             } else {
                 result.add(element);
@@ -333,20 +333,20 @@ public class Array extends ArrayList<JsObject> implements JsObject {
         return result;
     }
 
-    public Array flat(int depth) {
+    public JsArray flat(int depth) {
         return _flat(depth, 0);
     }
 
-    public Array flat() {
+    public JsArray flat() {
         return flat(1);
     }
 
     //
-    public Array flatMap(function callback, JsObject thisArg) {
+    public JsArray flatMap(function callback, JsObject_ thisArg) {
         callback.thisArg = thisArg;
-        Array result = new Array();
+        JsArray result = new JsArray();
         for (int i = 0; i < size(); i++) {
-            JsObject element = this.get(i);
+            JsObject_ element = this.get(i);
             if (element == null) {
                 continue;
             }
@@ -355,15 +355,15 @@ public class Array extends ArrayList<JsObject> implements JsObject {
         return result;
     }
 
-    public Array flatMap(function callback) {
+    public JsArray flatMap(function callback) {
         return flatMap(callback, null);
     }
 
     //
-    public void forEach(function callback, JsObject thisArg) {
+    public void forEach(function callback, JsObject_ thisArg) {
         callback.thisArg = thisArg;
         for (int i = 0; i < size(); i++) {
-            JsObject element = this.get(i);
+            JsObject_ element = this.get(i);
             if (element == null) {
                 continue;
             }
@@ -377,14 +377,14 @@ public class Array extends ArrayList<JsObject> implements JsObject {
     }
 
     //
-    public JsBoolean includes(JsObject valueToFind, JsObject fromIndex) {
+    public JsBoolean includes(JsObject_ valueToFind, JsObject_ fromIndex) {
         int index = Onekit_JS.number(fromIndex, 0, 0).intValue();
 
         for (int i = index; i < size(); i++) {
             if (i < 0) {
                 continue;
             }
-            JsObject element = this.get(i);
+            JsObject_ element = this.get(i);
             if (element.equals(valueToFind)) {
                 return new JsBoolean(true);
             }
@@ -393,11 +393,11 @@ public class Array extends ArrayList<JsObject> implements JsObject {
     }
 
     //
-    public JsNumber indexOf(JsObject searchElement, JsObject fromIndex) {
+    public JsNumber indexOf(JsObject_ searchElement, JsObject_ fromIndex) {
         int f = Onekit_JS.number(fromIndex, 0, 0).intValue();
         f = _index(this, f);
         for (int i = f; i < size(); i++) {
-            JsObject temp = get(i);
+            JsObject_ temp = get(i);
             if (searchElement.equals(temp)) {
                 return new JsNumber(i);
             }
@@ -405,7 +405,7 @@ public class Array extends ArrayList<JsObject> implements JsObject {
         return new JsNumber(-1);
     }
 
-    public JsNumber indexOf(JsObject searchElement) {
+    public JsNumber indexOf(JsObject_ searchElement) {
         return indexOf(searchElement, new JsNumber(0));
     }
 
@@ -414,7 +414,7 @@ public class Array extends ArrayList<JsObject> implements JsObject {
         return StringUtils.join(this, separator);
     }
 
-    public JsString join(JsObject separator) {
+    public JsString join(JsObject_ separator) {
         return new JsString(_join(separator.toString()));
     }
 
@@ -426,7 +426,7 @@ public class Array extends ArrayList<JsObject> implements JsObject {
         return new Iterator(this.iterator()) {
 
             @Override
-            public JsObject getValue(Object value) {
+            public JsObject_ getValue(Object value) {
                 return new JsNumber(index++);
             }
 
@@ -434,10 +434,10 @@ public class Array extends ArrayList<JsObject> implements JsObject {
         };
     }
 
-    public int lastIndexOf(JsObject searchElement, int fromIndex) {
+    public int lastIndexOf(JsObject_ searchElement, int fromIndex) {
         fromIndex = _index(this, fromIndex);
         for (int i = fromIndex; i >= 0; i--) {
-            JsObject temp = get(i);
+            JsObject_ temp = get(i);
             if (searchElement.equals(temp)) {
                 return i;
             }
@@ -445,16 +445,16 @@ public class Array extends ArrayList<JsObject> implements JsObject {
         return -1;
     }
 
-    public int lastIndexOf(JsObject searchElement) {
+    public int lastIndexOf(JsObject_ searchElement) {
         return lastIndexOf(searchElement, size() - 1);
     }
 
     //
-    public Array map(JsObject callback, JsObject thisArg) {
+    public JsArray map(JsObject_ callback, JsObject_ thisArg) {
         ((function)callback).thisArg = thisArg;
-        Array result = new Array();
+        JsArray result = new JsArray();
         for (int i = 0; i < size(); i++) {
-            JsObject element = this.get(i);
+            JsObject_ element = this.get(i);
             if (element == null) {
                 continue;
             }
@@ -463,19 +463,19 @@ public class Array extends ArrayList<JsObject> implements JsObject {
         return result;
     }
 
-    public Array map(JsObject callback) {
+    public JsArray map(JsObject_ callback) {
         return map(callback, null);
     }
     //
 
-    public JsObject pop() {
+    public JsObject_ pop() {
         if (this.size() == 0) {
             return null;
         }
         return remove(this.size() - 1);
     }
 
-    public JsNumber push(JsObject... elements) {
+    public JsNumber push(JsObject_... elements) {
         if (elements == null) {
             add(null);
         } else {
@@ -484,13 +484,13 @@ public class Array extends ArrayList<JsObject> implements JsObject {
         return new JsNumber(this.size());
     }
 
-    public JsObject reduce(function callback, JsObject initialValue) {
+    public JsObject_ reduce(function callback, JsObject_ initialValue) {
         boolean flag = (initialValue == null);
         if (flag) {
             initialValue = get(0);
         }
         for (int i = (flag ? 1 : 0); i < size(); i++) {
-            JsObject element = this.get(i);
+            JsObject_ element = this.get(i);
             if (element == null) {
                 continue;
             }
@@ -499,17 +499,17 @@ public class Array extends ArrayList<JsObject> implements JsObject {
         return initialValue;
     }
 
-    public JsObject reduce(function callback) {
+    public JsObject_ reduce(function callback) {
         return reduce(callback, null);
     }
 
-    public JsObject reduceRight(function callback, JsObject initialValue) {
+    public JsObject_ reduceRight(function callback, JsObject_ initialValue) {
         boolean flag = initialValue == null;
         if (flag) {
             initialValue = get(size() - 1);
         }
         for (int i = size() - (flag ? 2 : 1); i >= 0; i--) {
-            JsObject element = this.get(i);
+            JsObject_ element = this.get(i);
             if (element == null) {
                 continue;
             }
@@ -518,12 +518,12 @@ public class Array extends ArrayList<JsObject> implements JsObject {
         return initialValue;
     }
 
-    public JsObject reduceRight(function callback) {
+    public JsObject_ reduceRight(function callback) {
         return reduceRight(callback, null);
     }
 
-    public Array reverse() {
-        Array temp = new Array();
+    public JsArray reverse() {
+        JsArray temp = new JsArray();
         for (int i = size() - 1; i >= 0; i--) {
             temp.add(get(i));
         }
@@ -532,31 +532,31 @@ public class Array extends ArrayList<JsObject> implements JsObject {
         return this;
     }
 
-    public JsObject shift() {
+    public JsObject_ shift() {
         return this.remove(0);
     }
 
-    private Array _slice(int start, int end) {
-        return new Array(this.subList(start, end));
+    private JsArray _slice(int start, int end) {
+        return new JsArray(this.subList(start, end));
     }
 
-    public Array slice(JsObject start, JsObject end) {
+    public JsArray slice(JsObject_ start, JsObject_ end) {
         int start_ = Onekit_JS.number(start, 0, 0).intValue();
         int end_ = Onekit_JS.number(end, 0, 0).intValue();
         return _slice(start_, end_);
     }
 
-    public Array slice(JsObject start) {
+    public JsArray slice(JsObject_ start) {
         return slice(start, new JsNumber(this.size() - 1));
     }
 
-    public Array slice() {
+    public JsArray slice() {
         return slice(new JsNumber(0));
     }
 
-    public boolean some(function callback, JsObject thisArg) {
+    public boolean some(function callback, JsObject_ thisArg) {
         for (int i = 0; i < size(); i++) {
-            JsObject element = this.get(i);
+            JsObject_ element = this.get(i);
             if (element == null) {
                 continue;
             }
@@ -571,12 +571,12 @@ public class Array extends ArrayList<JsObject> implements JsObject {
         return some(callback, null);
     }
 
-    public Array sort(function compareFunction) {
+    public JsArray sort(function compareFunction) {
         Collections.sort(this, (o1, o2) -> ((JsNumber) compareFunction.invoke(o1, o2)).THIS.intValue());
         return this;
     }
 
-    public Array sort() {
+    public JsArray sort() {
 
         Collections.sort(this, (o1, o2) -> {
             String str1 = o1.toString();
@@ -588,23 +588,23 @@ public class Array extends ArrayList<JsObject> implements JsObject {
         return this;
     }
 
-    public Array splice(int start, int deleteCount, JsObject... items) {
-        Array result = new Array(subList(start, start + deleteCount));
+    public JsArray splice(int start, int deleteCount, JsObject_... items) {
+        JsArray result = new JsArray(subList(start, start + deleteCount));
         this.removeRange(start, start + deleteCount);
-        for (JsObject element : items) {
+        for (JsObject_ element : items) {
             this.add(start++, element);
         }
         return result;
     }
 
-    public Array splice(int start) {
+    public JsArray splice(int start) {
         return splice(start, size() - start);
     }
 
-    public String toLocaleString(JsObject locales, Dict options) {
+    public String toLocaleString(JsObject_ locales, JsObject options) {
         StringBuilder result = new StringBuilder();
         for (int i = 0; i < size(); i++) {
-            JsObject element = this.get(i);
+            JsObject_ element = this.get(i);
             if (i > 0) {
                 result.append(",");
             }
@@ -613,8 +613,8 @@ public class Array extends ArrayList<JsObject> implements JsObject {
                 continue;
             }
             String str;
-            if (element instanceof Dict) {
-                str = ((Dict) element).toLocaleString(locales, options).THIS;
+            if (element instanceof JsObject) {
+                str = ((JsObject) element).toLocaleString(locales, options).THIS;
             } else if (Onekit_JS.isNumber(element)) {
                 str = ((JsNumber) element).toLocaleString(locales, options).THIS;
             } else if (element instanceof Date) {
@@ -629,9 +629,9 @@ public class Array extends ArrayList<JsObject> implements JsObject {
 
 
     //
-    public int unshift(JsObject... elements) {
+    public int unshift(JsObject_... elements) {
         int i = 0;
-        for (JsObject element : elements) {
+        for (JsObject_ element : elements) {
             this.add(i++, element);
         }
         return this.size();
@@ -641,25 +641,25 @@ public class Array extends ArrayList<JsObject> implements JsObject {
         return new Iterator(this.iterator()) {
 
             @Override
-            public JsObject getValue(Object value) {
-                return (JsObject) value;
+            public JsObject_ getValue(Object value) {
+                return (JsObject_) value;
             }
 
         };
     }
 
     @Override
-    public JsObject get(JsObject key) {
+    public JsObject_ get(JsObject_ key) {
         int index = Onekit_JS.number(key, 0, 0).intValue();
         return super.get(index);
     }
 
     @Override
-    public void set(String key, JsObject value) {
+    public void set(String key, JsObject_ value) {
     }
 
     @Override
-    public void set(JsObject key, JsObject value) {
+    public void set(JsObject_ key, JsObject_ value) {
         int index = Onekit_JS.number(key, 0, 0).intValue();
         set(index, value);
     }

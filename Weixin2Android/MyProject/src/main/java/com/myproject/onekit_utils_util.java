@@ -6,32 +6,32 @@ import cn.onekit.weixin.app.core.*;
 
 public class onekit_utils_util extends WeixinModule {
 
-    JsObject formatTime;
-    JsObject formatNumber;
+    JsObject_ formatTime;
+    JsObject_ formatNumber;
     @Override
     public void onekit_js() {
-        formatTime = new function(){ public JsObject invoke(JsObject... arguments){
-            JsObject date = arguments[0];
-            JsObject year = date.get("getFullYear").invoke();
-            JsObject month = Onekit_JS.plus(date.get("getMonth").invoke(),new JsNumber(1.0d));
-            JsObject day = date.get("getDate").invoke();
-            JsObject hour = date.get("getHours").invoke();
-            JsObject minute = date.get("getMinutes").invoke();
-            JsObject second = date.get("getSeconds").invoke();
-            return Onekit_JS.plus(Onekit_JS.plus(new Array(){{  add(year);
+        formatTime = new function(){ public JsObject_ invoke(JsObject_... arguments){
+            JsObject_ date = arguments[0];
+            JsObject_ year = date.get("getFullYear").invoke();
+            JsObject_ month = Onekit_JS.plus(date.get("getMonth").invoke(),new JsNumber(1.0d));
+            JsObject_ day = date.get("getDate").invoke();
+            JsObject_ hour = date.get("getHours").invoke();
+            JsObject_ minute = date.get("getMinutes").invoke();
+            JsObject_ second = date.get("getSeconds").invoke();
+            return Onekit_JS.plus(Onekit_JS.plus(new JsArray(){{  add(year);
                 add(month);
                 add(day);
-            }}.get("map").invoke(formatNumber).get("join").invoke(new JsString("/")),new JsString(" ")),new Array(){{  add(hour);
+            }}.get("map").invoke(formatNumber).get("join").invoke(new JsString("/")),new JsString(" ")),new JsArray(){{  add(hour);
                 add(minute);
                 add(second);
             }}.get("map").invoke(formatNumber).get("join").invoke(new JsString(":")));
         }};
-         formatNumber = new function(){ public JsObject invoke(JsObject... arguments){
-            JsObject n = arguments[0];
+         formatNumber = new function(){ public JsObject_ invoke(JsObject_... arguments){
+            JsObject_ n = arguments[0];
             n = n.get("toString").invoke();
             return Onekit_JS.is(n.get(new JsNumber(1.0d)))?n: Onekit_JS.plus(new JsString("0"),n);
         }};
-        module.exports = new Dict(){{
+        module.exports = new JsObject(){{
             put("formatTime",formatTime);
         }};
 

@@ -1,13 +1,13 @@
 package cn.onekit.w3c;
 
-import cn.onekit.js.Dict;
-
-import cn.onekit.js.JsString;
 import cn.onekit.js.JsObject;
 
-public class Event implements JsObject {
+import cn.onekit.js.JsString;
+import cn.onekit.js.JsObject_;
+
+public class Event implements JsObject_ {
     private Element currentTarget;
-    private Dict detail;
+    private JsObject detail;
     //private Dict  mark;
   //  private boolean mut;
     private Element target;
@@ -16,7 +16,7 @@ public class Event implements JsObject {
     //
     public Event(
             String type,
-            Dict detail,
+            JsObject detail,
      //       Dict  mark,
       //   boolean mut,
             Element currentTarget,
@@ -35,7 +35,7 @@ public class Event implements JsObject {
     public Element getCurrentTarget(){
         return currentTarget;
     }
-    public Dict getDetail(){
+    public JsObject getDetail(){
         return detail;
     }
    /* public Dict getMark(){

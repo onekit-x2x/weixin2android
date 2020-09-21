@@ -6,7 +6,7 @@ import android.graphics.drawable.StateListDrawable;
 import android.view.View;
 
 import cn.onekit.js.JsBoolean;
-import cn.onekit.js.Dict;
+import cn.onekit.js.JsObject;
 import cn.onekit.w3c.Event;
 import cn.onekit.w3c.core.FormItem_;
 import cn.onekit.weixin.app.core.WeixinElement;
@@ -116,7 +116,7 @@ public class Switch extends WeixinElement implements FormItem_<JsBoolean> {
         _mainSwitch().setOnCheckedChangeListener((buttonView, isChecked) -> {
 
 
-            Event event = new Event("change",new Dict() {{
+            Event event = new Event("change",new JsObject() {{
 
                 put("value", new JsBoolean(isChecked));
 
@@ -125,7 +125,7 @@ public class Switch extends WeixinElement implements FormItem_<JsBoolean> {
         });
         _mainCheckbox()._checkbox().setOnCheckedChangeListener((sender, isChecked) -> {
 
-            Event event = new Event("change",new Dict() {{
+            Event event = new Event("change",new JsObject() {{
 
                 put("value", new JsBoolean(isChecked));
 

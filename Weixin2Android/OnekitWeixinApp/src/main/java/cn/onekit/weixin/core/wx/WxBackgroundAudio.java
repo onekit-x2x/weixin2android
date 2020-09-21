@@ -8,7 +8,7 @@ import java.io.IOException;
 import java.util.Map;
 
 import thekit.android.Android;
-import cn.onekit.js.Dict;
+import cn.onekit.js.JsObject;
 import cn.onekit.js.core.function;
 import cn.onekit.weixin.BackgroundAudioManager;
 import cn.onekit.weixin.app.R;
@@ -29,7 +29,7 @@ public class WxBackgroundAudio extends WxBackground {
         function fail = OBJECT.get("fail") != null ? (function) OBJECT.get("fail") : null;
         function complete = OBJECT.get("complete") != null ? (function) OBJECT.get("complete") : null;
         if (mediaPlayer != null) {
-            Dict res = new Dict();
+            JsObject res = new JsObject();
 //            res.duration = mediaPlayer.getDuration() / 1000;//选定音频的长度
 //            res.currentPosition = mediaPlayer.getCurrentPosition() / 1000;//	选定音频的播放位置
 //            res.status = play;//播放状态
@@ -91,7 +91,7 @@ public class WxBackgroundAudio extends WxBackground {
                     seekBar.setProgress(0);
                 }
             });
-            Dict res = new Dict();
+            JsObject res = new JsObject();
 //            res.errMsg = Android.context.getResources().getString(R.string.wx_playBackgroundAudio_success); //"playBackgroundAudio: ok";
             if (complete != null) {
                 complete.invoke(res);
@@ -142,7 +142,7 @@ public class WxBackgroundAudio extends WxBackground {
         function complete = OBJECT.get("complete") != null ? (function) OBJECT.get("complete") : null;
         if (mediaPlayer != null && position != 0) {
             mediaPlayer.seekTo(position);
-            Dict res = new Dict();
+            JsObject res = new JsObject();
 //            res.errMsg = Android.context.getResources().getString(R.string.wx_seekBackgroundAudio_success);//"seekBackgroundAudio : OK";
             if (success != null) {
                 success.invoke(res);
@@ -165,7 +165,7 @@ public class WxBackgroundAudio extends WxBackground {
     //监听音乐播放
     public void onBackgroundAudioPlay(function OBJECT) {
         if (play == 1) {
-            Dict res = new Dict();
+            JsObject res = new JsObject();
             //注释,待解放
 //            res.errMsg = "onPlay is ok";
             OBJECT.invoke(res);
@@ -187,7 +187,7 @@ public class WxBackgroundAudio extends WxBackground {
     //监听音乐停止
     public void onBackgroundAudioStop(function OBJECT) {
         if (play == 2) {
-            Dict res = new Dict();
+            JsObject res = new JsObject();
 //            res.dataUrl = "dataUrl";
             OBJECT.invoke(res);
         }

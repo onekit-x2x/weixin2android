@@ -6,10 +6,9 @@ import java.io.IOException;
 import java.util.Map;
 
 import thekit.android.Android;
-import cn.onekit.js.Dict;
+import cn.onekit.js.JsObject;
 import cn.onekit.js.core.function;
 import cn.onekit.weixin.app.R;
-import cn.onekit.weixin.app.core.Onekit_Weixin_App;
 import cn.onekit.weixin.core.Onekit_Weixin;
 import cn.onekit.weixin.core.res.wx_fail;
 
@@ -40,7 +39,7 @@ public class WxVoice extends WxVibrate {
                 player.prepare();
                 player.start();
               //  WxBackgroundAudio.BackgroundAudioManager.mediaPlayer = player;
-                Dict res = new Dict();
+                JsObject res = new JsObject();
 //                res.errMsg = Android.context.getResources().getString(R.string.wx_playVoice_success);
 //                res.localld = filePath;
                 if (success != null) {
@@ -78,7 +77,7 @@ public class WxVoice extends WxVibrate {
         if (player.isPlaying()) {
             player.pause();//暂停播放
             isPause = false;
-            Dict res = new Dict();
+            JsObject res = new JsObject();
 //            res.errMsg = Android.context.getResources().getString(R.string.wx_pauseVoice_success);
             if (success != null) {
                 success.invoke(res);
@@ -111,7 +110,7 @@ public class WxVoice extends WxVibrate {
             player.reset();
             player.stop();
             player = null;
-            Dict res = new Dict();
+            JsObject res = new JsObject();
 //            res.errMsg =Android.context.getResources().getString(R.string.wx_stopVoice_success);
             if (success != null) {
                 success.invoke(res);

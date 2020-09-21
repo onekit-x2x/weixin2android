@@ -1,11 +1,11 @@
 package cn.onekit.js.core;
 
 
-import cn.onekit.js.Dict;
+import cn.onekit.js.JsObject;
 
-public abstract class JsModule extends Dict implements JsFile {
+public abstract class JsModule extends JsObject implements JsFile {
    public JsModule module = this;
-   public Dict exports;
+   public JsObject exports;
 
    protected abstract void onekit_js();
 

@@ -10,7 +10,7 @@ import android.view.View;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
-import cn.onekit.js.Dict;
+import cn.onekit.js.JsObject;
 import cn.onekit.js.JsNumber;
 import cn.onekit.w3c.Event;
 import cn.onekit.w3c.core.FormItem_;
@@ -51,7 +51,7 @@ public class Slider extends WeixinElement implements FormItem_<JsNumber> {
                 _value = new JsNumber(progress * _step + _min);
                 String v = _value + "";
                 _text().setText(v);
-                Event event = new Event("changing", new Dict() {{
+                Event event = new Event("changing", new JsObject() {{
 
                     put("value", _value);
 
@@ -67,7 +67,7 @@ public class Slider extends WeixinElement implements FormItem_<JsNumber> {
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
 
-                Event event = new Event("change", new Dict() {{
+                Event event = new Event("change", new JsObject() {{
 
                     put("value", _value);
 

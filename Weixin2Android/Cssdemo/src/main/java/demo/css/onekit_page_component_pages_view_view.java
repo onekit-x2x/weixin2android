@@ -2,8 +2,8 @@ package demo.css;
 
 import android.view.ViewGroup;
 
-import cn.onekit.js.Dict;
 import cn.onekit.js.JsObject;
+import cn.onekit.js.JsObject_;
 import cn.onekit.vue.Vue;
 import cn.onekit.w3c.LITERAL;
 import cn.onekit.weixin.app.Text;
@@ -19,7 +19,7 @@ Page(new Options(){{
     }
 
 
-    public void onekit_wxml(final ViewGroup ui, final JsObject data, final Vue vue) {
+    public void onekit_wxml(final ViewGroup ui, final JsObject_ data, final Vue vue) {
         Import("../../../common/head.wxml");
         Import("../../../common/foot.wxml");
         View ui_0 = new View(ui.getContext());
@@ -27,7 +27,7 @@ Page(new Options(){{
         ui_0.setClassName("container");
         //
         {
-            Template("head", new Dict() {{
+            Template("head", new JsObject() {{
                 put("title", "view");
             }}, ui_0);
             //

@@ -5,7 +5,7 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup;
 
-import cn.onekit.js.Dict;
+import cn.onekit.js.JsObject;
 import cn.onekit.w3c.Event;
 import cn.onekit.w3c.core.FormItem_;
 import cn.onekit.weixin.app.core.WeixinElement;
@@ -25,9 +25,9 @@ public class Form extends WeixinElement {
 
     public void submit() {
         try {
-            final Dict data = new Dict();
+            final JsObject data = new JsObject();
             _formData(this, data);
-            dispatchEvent(new  Event("submit",new Dict() {{
+            dispatchEvent(new  Event("submit",new JsObject() {{
                 put("value", data);
             }},this,this,0));
         } catch (Exception e) {
@@ -37,7 +37,7 @@ public class Form extends WeixinElement {
 
 
 
-    private void _formData(ViewGroup parent,Dict data)  {
+    private void _formData(ViewGroup parent, JsObject data)  {
 
             for (int i = 0; i < parent.getChildCount(); i++) {
                 View view = this.getChildAt(i);

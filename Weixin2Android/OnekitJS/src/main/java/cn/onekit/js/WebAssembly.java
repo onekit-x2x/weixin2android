@@ -1,34 +1,34 @@
 package cn.onekit.js;
 
-public class WebAssembly implements JsObject {
-    public static Dict compile(Array bufferSource){
+public class WebAssembly implements JsObject_ {
+    public static JsObject compile(JsArray bufferSource){
         return null;
     }
-    public static Dict compileStreaming(Dict source){
+    public static JsObject compileStreaming(JsObject source){
         return null;
     }
-    public static Dict instantiate(Array bufferSource, Dict importObject ){
+    public static JsObject instantiate(JsArray bufferSource, JsObject importObject ){
         return null;
     }
-    public static Dict instantiateStreaming(Dict Parameters, Dict importObject){
+    public static JsObject instantiateStreaming(JsObject Parameters, JsObject importObject){
         return null;
     }
-    public static boolean validate(Dict bufferSource){
+    public static boolean validate(JsObject bufferSource){
         return true;
     }
 
     @Override
-    public JsObject get(String key) {
+    public JsObject_ get(String key) {
         return null;
     }
 
     @Override
-    public void set(String key, JsObject value) {
+    public void set(String key, JsObject_ value) {
 
     }
 
     @Override
-    public void set(JsObject key, JsObject value) {
+    public void set(JsObject_ key, JsObject_ value) {
 
     }
 
@@ -38,12 +38,12 @@ public class WebAssembly implements JsObject {
     }
 
     @Override
-    public String toLocaleString(JsString locales, JsObject options) {
+    public String toLocaleString(JsString locales, JsObject_ options) {
         return null;
     }
 
     @Override
-    public JsObject invoke(JsObject... params) {
+    public JsObject_ invoke(JsObject_... params) {
         return null;
     }
 }

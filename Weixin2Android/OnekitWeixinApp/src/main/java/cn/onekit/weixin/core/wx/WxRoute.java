@@ -18,7 +18,7 @@ import java.util.Random;
 
 import thekit.android.Android;
 import cn.onekit.OneKit;
-import cn.onekit.js.Dict;
+import cn.onekit.js.JsObject;
 import cn.onekit.js.core.Onekit_JS;
 import cn.onekit.js.core.function;
 import cn.onekit.weixin.EventChannel;
@@ -81,7 +81,7 @@ void setCurrentTabByTag(TabHost tabHost,int tag) {
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             application.startActivity(intent);
             //
-            Dict res = new Dict();
+            JsObject res = new JsObject();
             if (success != null) {
                 success.invoke(res);
             }
@@ -113,7 +113,7 @@ void setCurrentTabByTag(TabHost tabHost,int tag) {
             url = OneKit.fixPath( OneKit.currentUrl,url);
             Intent intent = Onekit_Weixin_App.initIntent(application, url,0);
             application.startActivity(intent);
-            Dict res = new Dict();
+            JsObject res = new JsObject();
             ((Activity) Android.context).finish();
 //            res.errMsg = "redirectTo :Ok";
             if (success != null) {
@@ -156,7 +156,7 @@ void setCurrentTabByTag(TabHost tabHost,int tag) {
             Handler handler = new Handler() {
                 @Override
                 public void handleMessage(Message msg) {
-                    Dict res = new Dict();
+                    JsObject res = new JsObject();
 //                    res.errMsg = "navigateTo :ok";
 //                    res.eventChannel = resEventChannel;
                     if (success != null) {
@@ -182,8 +182,8 @@ void setCurrentTabByTag(TabHost tabHost,int tag) {
         }
     }
 
-    public void navigateBack(Dict OBJECT) {
-        if(OBJECT==null){OBJECT=new Dict();}
+    public void navigateBack(JsObject OBJECT) {
+        if(OBJECT==null){OBJECT=new JsObject();}
         int delta = OBJECT.get("delta") != null ?  Onekit_JS.number(OBJECT.get("delta"),0,0).intValue():1;
         function success = OBJECT.get("success") != null ? (function) OBJECT.get("success") : null;
         function complete = OBJECT.get("complete") != null ? (function) OBJECT.get("complete") : null;
@@ -196,7 +196,7 @@ void setCurrentTabByTag(TabHost tabHost,int tag) {
                 ((Activity) Android.context).finish();
             }
             //
-            Dict res = new Dict();
+            JsObject res = new JsObject();
 //            res.errMsg = "navigateBack :ok";
             if (success != null) {
                 success.invoke(res);

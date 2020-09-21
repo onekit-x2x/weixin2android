@@ -7,7 +7,7 @@ import android.nfc.NfcAdapter;
 import java.util.Map;
 
 import thekit.android.Android;
-import cn.onekit.js.Array;
+import cn.onekit.js.JsArray;
 import cn.onekit.js.ArrayBuffer;
 import cn.onekit.js.core.function;
 import cn.onekit.weixin.app.R;
@@ -27,7 +27,7 @@ public class WxNFC extends WxNavigationBar {
     }
 
     public void startHCE(Map OBJECT) {
-        Array aid_list = OBJECT.get("aid_list") != null ? (Array) OBJECT.get("aid_list") : null;
+        JsArray aid_list = OBJECT.get("aid_list") != null ? (JsArray) OBJECT.get("aid_list") : null;
         function success = OBJECT.get("success") != null ? (function) OBJECT.get("success") : null;
         function fail = OBJECT.get("fail") != null ? (function) OBJECT.get("fail") : null;
         function complete = OBJECT.get("complete") != null ? (function) OBJECT.get("complete") : null;

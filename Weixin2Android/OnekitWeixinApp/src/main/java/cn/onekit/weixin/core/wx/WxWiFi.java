@@ -19,9 +19,9 @@ import java.util.List;
 import java.util.Map;
 
 import thekit.android.Android;
-import cn.onekit.js.Array;
+import cn.onekit.js.JsArray;
 import cn.onekit.js.JsBoolean;
-import cn.onekit.js.Dict;
+import cn.onekit.js.JsObject;
 import cn.onekit.js.JsNumber;
 import cn.onekit.js.JsString;
 import cn.onekit.js.core.function;
@@ -82,7 +82,7 @@ public class WxWiFi extends WxWeRun {
     public void startWifi(Map Dict) {
         if (!(mWifiManager.getWifiState() == 4)) {
             switchStart = true;
-            Dict res = new Dict();
+            JsObject res = new JsObject();
 //            res.errMsg = Android.context.getResources().getString(R.string.wx_startWifi_success);
 //            res.errCode = errcode_OK;
             if (Dict.containsKey("success")) {
@@ -112,7 +112,7 @@ public class WxWiFi extends WxWeRun {
     public void stopWifi(Map Dict) {
         if (switchStart == true) {
             if (!(mWifiManager.getWifiState() == 4)) {
-                Dict res = new Dict();
+                JsObject res = new JsObject();
 //                res.errMsg = Android.context.getResources().getString(R.string.wx_stopWifi_success);
 //                res.errCode = errcode_OK;
                 if (Dict.containsKey("success")) {
@@ -172,7 +172,7 @@ public class WxWiFi extends WxWeRun {
 
                     if (Dict.containsKey("success")) {
                         function success = (function) Dict.get("success");
-                        Dict res = new Dict();
+                        JsObject res = new JsObject();
 //                        res.errMsg =Android.context.getResources().getString(R.string.wx_connectWifi_success);
                      /*   res.errCode = errcode_OK;
                         res.wifi = new Dict() {{
@@ -185,7 +185,7 @@ public class WxWiFi extends WxWeRun {
                     }
                     if (Dict.containsKey("complete")) {
                         function complete = (function) Dict.get("complete");
-                        Dict res = new Dict();
+                        JsObject res = new JsObject();
 //                        res.errCode = errcode_OK;
 //                        res.errMsg = Android.context.getResources().getString(R.string.wx_connectWifi_fail);
                        /* res.wifi = new Dict() {{
@@ -242,7 +242,7 @@ public class WxWiFi extends WxWeRun {
         if (switchStart) {
 
             if (mWifiManager.getWifiState() == 2 || mWifiManager.getWifiState() == 3) {
-                Dict res = new Dict();
+                JsObject res = new JsObject();
 //                res.errCode = errcode_OK;
 //                res.errMsg = Android.context.getResources().getString(R.string.wx_getWifiList_success);
                 if (Dict.containsKey("success")) {
@@ -299,12 +299,12 @@ public class WxWiFi extends WxWeRun {
 //                put("wifiList",wifiList);
 //            }});
 //        }
-        final Array wifiList = new Array();
+        final JsArray wifiList = new JsArray();
         callback = OBJECT;
         startScan(Android.context);
         mWifiList = getWifi();
         for (ScanResult result : mWifiList) {
-            Dict res = new Dict();
+            JsObject res = new JsObject();
             String SSID = result.SSID;
             String BSSID = result.BSSID;
             boolean secure = getCipherType(Android.context, SSID);
@@ -315,7 +315,7 @@ public class WxWiFi extends WxWeRun {
             res.put("signalStrength", new JsNumber(signalStrength));
             wifiList.add(res);
         }
-        callback.invoke(new Dict() {{
+        callback.invoke(new JsObject() {{
             put("wifiList", wifiList);
         }});
     }
@@ -351,7 +351,7 @@ public class WxWiFi extends WxWeRun {
                 final boolean secure = getCipherType(Android.context, SSID);
                 final int signalStrength = mWifiInfo.getRssi() + 100;
 
-                Dict res = new Dict() {{
+                JsObject res = new JsObject() {{
                     put("SSID", new JsString(SSID));
                     put("BSSID", new JsString(BSSID));
                     put("secure",new JsBoolean( secure));
@@ -407,7 +407,7 @@ public class WxWiFi extends WxWeRun {
         callback = OBJECT;
         ConnectivityManager manager = (ConnectivityManager) Android.context.getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo wifiInfo = manager.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
-        Dict res;
+        JsObject res;
         if (wifiInfo.isConnected()) {
             WifiManager wifiManager = (WifiManager) Android.context.getApplicationContext()
                     .getSystemService(Context.WIFI_SERVICE);
@@ -415,16 +415,16 @@ public class WxWiFi extends WxWeRun {
             String  BSSID = wifiManager.getConnectionInfo().getBSSID();
             boolean  secure = getCipherType(Android.context, SSID);
             int  signalStrength = mWifiInfo.getRssi() + 100;
-             res = new Dict() {{
+             res = new JsObject() {{
                 put("SSID", new JsString(SSID));
                 put("BSSID", new JsString(BSSID));
                 put("secure",new JsBoolean( secure));
                 put("signalStrength",new JsNumber( signalStrength));
             }};
         }else{
-            res = new Dict();
+            res = new JsObject();
         }
-        callback.invoke(new Dict() {{
+        callback.invoke(new JsObject() {{
             put("wifi", res);
         }});
     }

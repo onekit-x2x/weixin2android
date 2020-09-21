@@ -12,7 +12,7 @@ import com.tencent.tencentmap.mapsdk.map.TencentMap;
 import java.util.List;
 import java.util.Map;
 
-import cn.onekit.js.Dict;
+import cn.onekit.js.JsObject;
 import cn.onekit.js.JsNumber;
 import cn.onekit.js.JsString;
 import cn.onekit.js.core.function;
@@ -54,7 +54,7 @@ public  class MapContext_Tencent2D extends MapContext<MapView,TencentMap> {
         function complete = obj.get("complete") != null ? (function) obj.get("complete") : null;
         function fail = obj.get("fail") != null ? (function) obj.get("fail") : null;
         try{
-            Dict result = new Dict(){{
+            JsObject result = new JsObject(){{
                 put("longitude", new JsNumber(center.getLongitude()));
                 put("latitude", new JsNumber(center.getLatitude()));
             }};
@@ -85,12 +85,12 @@ public  class MapContext_Tencent2D extends MapContext<MapView,TencentMap> {
         function complete = obj.get("complete") != null ? (function) obj.get("complete") : null;
         function fail = obj.get("fail") != null ? (function) obj.get("fail") : null;
         try{
-            Dict result = new Dict(){{
-                put("southwest",new Dict(){{
+            JsObject result = new JsObject(){{
+                put("southwest",new JsObject(){{
                     put("latitude",new JsNumber( bounds.getSouthwest().getLatitude()));
                     put("longitude", new JsNumber(bounds.getSouthwest().getLongitude()));
                 }});
-                put("northeast",new Dict(){{
+                put("northeast",new JsObject(){{
                     put("latitude",new JsNumber( bounds.getNortheast().getLatitude()));
                     put("longitude", new JsNumber(bounds.getNortheast().getLongitude()));
                 }});
@@ -121,7 +121,7 @@ public  class MapContext_Tencent2D extends MapContext<MapView,TencentMap> {
         function complete = obj.get("complete") != null ? (function) obj.get("complete") : null;
         function fail = obj.get("fail") != null ? (function) obj.get("fail") : null;
         try{
-            Dict result = new Dict(){{
+            JsObject result = new JsObject(){{
                 put("rotate",new JsNumber( 0));
             }};
             if(success != null){
@@ -149,7 +149,7 @@ public  class MapContext_Tencent2D extends MapContext<MapView,TencentMap> {
         function complete = obj.get("complete") != null ? (function) obj.get("complete") : null;
         function fail = obj.get("fail") != null ? (function) obj.get("fail") : null;
         try{
-            Dict result = new Dict(){{
+            JsObject result = new JsObject(){{
                 put("scale",new JsNumber( getMap().getZoomLevel()));
             }};
             if(success != null){
@@ -177,7 +177,7 @@ public  class MapContext_Tencent2D extends MapContext<MapView,TencentMap> {
         function complete = obj.get("complete") != null ? (function) obj.get("complete") : null;
         function fail = obj.get("fail") != null ? (function) obj.get("fail") : null;
         try{
-            Dict result = new Dict(){{
+            JsObject result = new JsObject(){{
                 put("skew",new JsNumber(0));
             }};
             if(success != null){
@@ -215,7 +215,7 @@ public  class MapContext_Tencent2D extends MapContext<MapView,TencentMap> {
             _tencentMap.animateCamera(CameraUpdateFactory.newLatLngBounds(bounds, padding));
             Looper.loop();
 
-            Dict result = new Dict(){{
+            JsObject result = new JsObject(){{
                 put("errMsg",new JsString( "includePoints:ok"));
             }};
             if(success != null){
@@ -252,7 +252,7 @@ public  class MapContext_Tencent2D extends MapContext<MapView,TencentMap> {
             Looper.prepare();
             _tencentMap.animateTo(new LatLng((double)obj.get("latitude"),(double)obj.get("longitude")));
             Looper.loop();
-            Dict result = new Dict(){{
+            JsObject result = new JsObject(){{
                 put("errMsg", new JsString("moveToLocation:ok"));
             }};
             if(success != null){
@@ -296,7 +296,7 @@ public  class MapContext_Tencent2D extends MapContext<MapView,TencentMap> {
 //        _tencentMap.setCenter(new LatLng(lat, lng));
             Looper.loop();
 
-            Dict result = new Dict(){{
+            JsObject result = new JsObject(){{
                 put("errMsg", new JsString("setCenterOffset:ok"));
             }};
             if(success != null){
@@ -353,7 +353,7 @@ public  class MapContext_Tencent2D extends MapContext<MapView,TencentMap> {
                 }
             }
 
-            Dict result = new Dict(){{
+            JsObject result = new JsObject(){{
                 put("errMsg",new JsString( "translateMarker:ok"));
             }};
 

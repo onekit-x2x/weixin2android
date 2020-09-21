@@ -6,7 +6,7 @@ public class SyntaxError extends Error {
     public Integer lineNumber;
     public String message;
     public String name;
-    public Dict stack;
+    public JsObject stack;
     ////////////////////
 public String toSource(){
     return null;

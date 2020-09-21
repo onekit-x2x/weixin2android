@@ -6,7 +6,7 @@ import android.content.IntentFilter;
 import java.util.Map;
 
 import thekit.android.Android;
-import cn.onekit.js.Dict;
+import cn.onekit.js.JsObject;
 import cn.onekit.js.core.function;
 import cn.onekit.weixin.app.R;
 import cn.onekit.weixin.core.res.wx_fail;
@@ -18,7 +18,7 @@ public class WxBattery extends WxBasic {
         function complete = (obj.get("complete") != null) ? (function) obj.get("complete") : null;
         try {
             String level = registerBattery();
-            Dict res = new Dict();//(Android.context.getResources().getString(R.string.wx_getBatteryInfo_success),false);
+            JsObject res = new JsObject();//(Android.context.getResources().getString(R.string.wx_getBatteryInfo_success),false);
 //            res.errMsg = Android.context.getResources().getString(R.string.wx_getBatteryInfo_success);
 //            res.level = level;
             if (success != null) {

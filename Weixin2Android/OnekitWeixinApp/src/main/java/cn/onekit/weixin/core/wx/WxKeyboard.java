@@ -17,7 +17,7 @@ import android.widget.TextView;
 import java.util.Map;
 
 import thekit.android.Android;
-import cn.onekit.js.Dict;
+import cn.onekit.js.JsObject;
 import cn.onekit.js.JsString;
 import cn.onekit.js.core.function;
 import cn.onekit.weixin.app.R;
@@ -41,7 +41,7 @@ public class WxKeyboard extends WxInvoice {
             }
             imm = (InputMethodManager) ((Activity)Android.context).getSystemService(Context.INPUT_METHOD_SERVICE);
             imm.hideSoftInputFromInputMethod(edt.getWindowToken(), 0);
-            Dict res = new Dict();
+            JsObject res = new JsObject();
 //            res.errMsg = ((Activity)Android.context).getResources().getString(R.string.wx_hideKeyboard_success);
             if (success != null) {
                 success.invoke(res);
@@ -137,7 +137,7 @@ public class WxKeyboard extends WxInvoice {
             isHide = confirmHold;
             setConfirmType(confirmType, edt);
             imm.showSoftInput(edt, 0);
-            Dict res = new Dict();
+            JsObject res = new JsObject();
 //            res.errMsg = ((Activity)Android.context).getResources().getString(R.string.wx_showKeyboard_success);
             if (success != null) {
                 success.invoke(res);
@@ -190,7 +190,7 @@ public class WxKeyboard extends WxInvoice {
             if (actionId == EditorInfo.IME_ACTION_DONE && isHide) {
                 imm.toggleSoftInput(0, InputMethodManager.HIDE_NOT_ALWAYS);
             }
-            Dict obj = new Dict();
+            JsObject obj = new JsObject();
             obj.put("value", new JsString((String) v.getText()));
             callback.invoke(obj);
             return true;
@@ -211,7 +211,7 @@ public class WxKeyboard extends WxInvoice {
 
         @Override
         public void onTextChanged(CharSequence s, int start, int before, int count) {
-            Dict obj = new Dict();
+            JsObject obj = new JsObject();
             obj.put("value", new JsString(s.toString()));
             callback.invoke(obj);
         }
@@ -237,7 +237,7 @@ public class WxKeyboard extends WxInvoice {
             view.getWindowVisibleDisplayFrame(r);
             int heightDiff = view.getRootView().getHeight() - (r.bottom - r.top);
             if (heightDiff < 100) {
-                Dict obj = new Dict();
+                JsObject obj = new JsObject();
                 obj.put("value", new JsString(edt.getText().toString()));
                 callback.invoke(obj);
             }

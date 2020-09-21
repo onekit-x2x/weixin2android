@@ -11,7 +11,7 @@ import androidx.core.content.ContextCompat;
 import java.util.Map;
 
 import thekit.android.Android;
-import cn.onekit.js.Dict;
+import cn.onekit.js.JsObject;
 import cn.onekit.js.core.function;
 import cn.onekit.weixin.app.R;
 import cn.onekit.weixin.core.res.wx_fail;
@@ -68,7 +68,7 @@ public class WxRecord extends WxPullDownRefresh {
                         mRecorder.stop();
                         mRecorder.release();
                         mRecorder = null;
-                        Dict res = new Dict();
+                        JsObject res = new JsObject();
 //                        res.errMsg = Android.context.getResources().getString(R.string.wx_startRecord_success);
 //                        res.tempFilePath = OnekitWeixin.androidPath2tempPath(fileName);
                         if (success != null) {
@@ -94,7 +94,7 @@ public class WxRecord extends WxPullDownRefresh {
         function success = OBJECT.get("success") != null ? (function) OBJECT.get("success") : null;
         function fail = OBJECT.get("fail") != null ? (function) OBJECT.get("fail") : null;
         function complete = OBJECT.get("complete") != null ? (function) OBJECT.get("complete") : null;
-        Dict res = new Dict();
+        JsObject res = new JsObject();
 //        res.errMsg = Android.context.getResources().getString(R.string.wx_stopRecord_success);
         if (success != null) {
             success.invoke(res);

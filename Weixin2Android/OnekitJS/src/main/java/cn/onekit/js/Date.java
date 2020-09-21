@@ -3,7 +3,7 @@ package cn.onekit.js;
 import android.icu.text.SimpleDateFormat;
 import java.text.ParsePosition;
 
-public class Date implements JsObject {
+public class Date implements JsObject_ {
 
     private java.util.Date THIS;
 
@@ -19,7 +19,7 @@ public class Date implements JsObject {
     public Date() {
         this(new java.util.Date());
     }
-    public Date(JsObject value) {
+    public Date(JsObject_ value) {
         if(value instanceof JsNumber) {
             _Date(((JsNumber)value).THIS.longValue());
         }else if(value instanceof JsString){
@@ -435,27 +435,27 @@ public class Date implements JsObject {
         return toISOString();
     }
 
-    public JsString toLocaleDateString(String locales, Dict options) {
+    public JsString toLocaleDateString(String locales, JsObject options) {
         return new JsString("");
     }
 
     public JsString toLocaleDateString(String locales) {
-        return toLocaleDateString(locales, new Dict());
+        return toLocaleDateString(locales, new JsObject());
     }
 
     public JsString toLocaleDateString() {
         return toLocaleDateString("");
     }
 
-    public JsString toLocaleFormat(JsObject formatString) {
+    public JsString toLocaleFormat(JsObject_ formatString) {
         return new JsString("");
     }
 
-    public JsString toLocaleString(JsObject locales, JsObject options) {
+    public JsString toLocaleString(JsObject_ locales, JsObject_ options) {
         return new JsString("");
     }
 
-    public JsString toLocaleTimeString(JsObject locales, JsObject options) {
+    public JsString toLocaleTimeString(JsObject_ locales, JsObject_ options) {
         return new JsString("");
     }
 
@@ -469,12 +469,12 @@ public class Date implements JsObject {
     }
 
     @Override
-    public String toLocaleString(JsString locales, JsObject options) {
+    public String toLocaleString(JsString locales, JsObject_ options) {
         return null;
     }
 
     @Override
-    public JsObject invoke(JsObject... params) {
+    public JsObject_ invoke(JsObject_... params) {
         return null;
     }
 
@@ -491,22 +491,22 @@ public class Date implements JsObject {
     }
 
     @Override
-    public JsObject get(String key) {
+    public JsObject_ get(String key) {
         return null;
     }
 
     @Override
-    public JsObject get(JsObject key) {
+    public JsObject_ get(JsObject_ key) {
         return null;
     }
 
     @Override
-    public void set(String key, JsObject value) {
+    public void set(String key, JsObject_ value) {
 
     }
 
     @Override
-    public void set(JsObject key, JsObject value) {
+    public void set(JsObject_ key, JsObject_ value) {
 
     }
 /*

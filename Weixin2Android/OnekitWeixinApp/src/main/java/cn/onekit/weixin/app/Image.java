@@ -11,7 +11,7 @@ import thekit.ASSET;
 import thekit.FUNC1;
 import cn.onekit.OneKit;
 import cn.onekit.js.JsString;
-import cn.onekit.js.JsObject;
+import cn.onekit.js.JsObject_;
 import cn.onekit.weixin.app.core.WeixinElement;
 
 public class Image extends WeixinElement {
@@ -43,7 +43,7 @@ public class Image extends WeixinElement {
         return _src;
     }
 
-    public void setSrc(JsObject src) {
+    public void setSrc(JsObject_ src) {
         this._src = (JsString) src;
         try {
             imageView.setImageBitmap(ASSET.loadImage("miniprogram/"+ OneKit.fixPath(OneKit.currentUrl,_src.THIS)));

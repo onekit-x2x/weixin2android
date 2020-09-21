@@ -5,9 +5,9 @@ import java.util.Map;
 
 import cn.onekit.js.JsString;
 import cn.onekit.js.core.function;
-import cn.onekit.js.JsObject;
+import cn.onekit.js.JsObject_;
 
-public class EventChannel implements JsObject {
+public class EventChannel implements JsObject_ {
     public static Map<Integer,EventChannel> eventChannels=new HashMap();
     /////////////////////
     Map<String, function> onHandlers = new HashMap();
@@ -17,7 +17,7 @@ public class EventChannel implements JsObject {
         eventChannels.put(channelID,this);
     }
     private final int otherID;
-    public void emit(String eventName, JsObject args) {
+    public void emit(String eventName, JsObject_ args) {
         EventChannel other = eventChannels.get(otherID);
         if (other.onHandlers.containsKey(eventName)) {
             other.onHandlers.get(eventName).invoke(args);
@@ -45,12 +45,12 @@ public class EventChannel implements JsObject {
     }
 
     @Override
-    public String toLocaleString(JsString locales, JsObject options) {
+    public String toLocaleString(JsString locales, JsObject_ options) {
         return null;
     }
 
     @Override
-    public JsObject invoke(JsObject... params) {
+    public JsObject_ invoke(JsObject_... params) {
         return null;
     }
 }

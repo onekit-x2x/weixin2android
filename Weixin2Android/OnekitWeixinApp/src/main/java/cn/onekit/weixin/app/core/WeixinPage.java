@@ -15,9 +15,9 @@ import thekit.android.Android;
 import cn.onekit.OneKit;
 import cn.onekit.css.core.CssLayoutParams;
 import cn.onekit.css.core.OnekitCSS;
-import cn.onekit.js.Dict;
-import cn.onekit.js.JsString;
 import cn.onekit.js.JsObject;
+import cn.onekit.js.JsString;
+import cn.onekit.js.JsObject_;
 import cn.onekit.js.core.function;
 import cn.onekit.vue.Vue;
 import cn.onekit.weixin.EventChannel;
@@ -30,7 +30,7 @@ public abstract class WeixinPage extends Activity implements WeixinFile  {
         //LOG LOG = new LOG();
         page.removeAllViews();
         //LOG.add("removeAllViews");
-        Dict data = (Dict)onekit.get("data");
+        JsObject data = (JsObject)onekit.get("data");
         onekit_wxml(page, data,new Vue(data));
         //LOG.add("onekit_wxml");
         OnekitCSS.share.run(page, new String[]{"/" + url + ".wxss"});
@@ -53,7 +53,7 @@ public abstract class WeixinPage extends Activity implements WeixinFile  {
             e.printStackTrace();
         }
     }
-    public void Template(String is,Dict data,ViewGroup parent) {
+    public void Template(String is, JsObject data, ViewGroup parent) {
         try {
             WeixinTemplate template = imports.get(is).getConstructor(Context.class).newInstance(this);
             template.onekit_wxml(parent,data,new Vue(data));
@@ -68,11 +68,11 @@ public abstract class WeixinPage extends Activity implements WeixinFile  {
         };
     }
 
-    protected Dict onekit = new Dict();
+    protected JsObject onekit = new JsObject();
     //
     static Map<Integer, EventChannel> allEventChannel = new HashMap();
 
-    public abstract void onekit_wxml(final ViewGroup ui,  final JsObject data,final Vue vue);
+    public abstract void onekit_wxml(final ViewGroup ui, final JsObject_ data, final Vue vue);
 
     protected Page page;
 
@@ -131,15 +131,15 @@ public abstract class WeixinPage extends Activity implements WeixinFile  {
 //        }
 //    }
 
-    protected void Page(Dict obj) {
+    protected void Page(JsObject obj) {
         onekit = obj;
         if(!onekit.containsKey("data")){
-            onekit.put("data",new Dict());
+            onekit.put("data",new JsObject());
         }
         onekit.set("setData",new function(){
             @Override
-            public JsObject invoke(JsObject... arguments) {
-                Dict data = (Dict) arguments[0];
+            public JsObject_ invoke(JsObject_... arguments) {
+                JsObject data = (JsObject) arguments[0];
                 for (String key : data.keySet()) {
                     onekit.put(key, data.get(key));
                 }
@@ -148,14 +148,14 @@ public abstract class WeixinPage extends Activity implements WeixinFile  {
             }
         });
         onekit.put("getOpenerEventChannel", new cn.onekit.js.core.function() {
-            public EventChannel block(JsObject... arguments) {
+            public EventChannel block(JsObject_... arguments) {
                 int channelID = getIntent().getIntExtra("onekit_channelID", 0);
                 return EventChannel.eventChannels.get(channelID);
             }
         });
         if (onekit.containsKey("onLoad")) {
             Bundle extras = getIntent().getExtras();
-            Dict query = new Dict();
+            JsObject query = new JsObject();
             if (extras != null) {
                 for (String key : extras.keySet()) {
                     if (key.startsWith("onekit_")) {

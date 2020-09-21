@@ -5,11 +5,11 @@ import java.util.List;
 import java.util.Random;
 
 
-public class Symbol implements JsObject {
+public class Symbol implements JsObject_ {
 
     static List _Symbols = new ArrayList();
-    JsObject _description;
-    public Symbol(JsObject description){
+    JsObject_ _description;
+    public Symbol(JsObject_ description){
         _description=description;
         String result = String.format("__%s_%d_%d__", description, (int) java.lang.Math.floor(java.lang.Math.random() * 1e9), _Symbols.size() + 1);
         _Symbols.add(result);
@@ -19,23 +19,23 @@ public class Symbol implements JsObject {
     }
     public static boolean asyncIterator;
     public static boolean hasInstance;
-    public static Dict isConcatSpreadable;
-    public static Array iterator ;
+    public static JsObject isConcatSpreadable;
+    public static JsArray iterator ;
     public static String match;
-    public static Dict matchAll;
+    public static JsObject matchAll;
     public final String description = null;
     public static String  replace;
-    public static Dict search;
+    public static JsObject search;
     public static boolean species;
     public static String split;
-    public static Dict toPrimitive;
+    public static JsObject toPrimitive;
     public static String toStringTag;
-    public static Dict unscopables;
+    public static JsObject unscopables;
     //////////////////////////////
-    public static Dict For(String key){
+    public static JsObject For(String key){
         return null;
     }
-    public static String keyFor(Dict sym){
+    public static String keyFor(JsObject sym){
         return null;
     }
     public String toSource(){
@@ -44,27 +44,27 @@ public class Symbol implements JsObject {
     public String toString(){
         return String.format("Symbol(%s)",_description);
     }
-    public Dict valueOf(){
+    public JsObject valueOf(){
         return null;
     }
 
     @Override
-    public JsObject get(String key) {
+    public JsObject_ get(String key) {
         return null;
     }
 
     @Override
-    public JsObject get(JsObject key) {
+    public JsObject_ get(JsObject_ key) {
         return null;
     }
 
     @Override
-    public void set(String key, JsObject value) {
+    public void set(String key, JsObject_ value) {
 
     }
 
     @Override
-    public void set(JsObject key, JsObject value) {
+    public void set(JsObject_ key, JsObject_ value) {
 
     }
 
@@ -74,12 +74,12 @@ public class Symbol implements JsObject {
     }
 
     @Override
-    public String toLocaleString(JsString locales, JsObject options) {
+    public String toLocaleString(JsString locales, JsObject_ options) {
         return null;
     }
 
     @Override
-    public JsObject invoke(JsObject... params) {
+    public JsObject_ invoke(JsObject_... params) {
         return null;
     }
 }

@@ -1,24 +1,24 @@
 package cn.onekit.js;
 
-public class WeakSet implements JsObject {
+public class WeakSet implements JsObject_ {
     ////////////
-    public Dict add(JsObject value){
+    public JsObject add(JsObject_ value){
         return null;
     }
-    public boolean delete(JsObject value){
+    public boolean delete(JsObject_ value){
         return true;
     }
-    public boolean has(JsObject value){
+    public boolean has(JsObject_ value){
         return true;
     }
 
     @Override
-    public JsObject get(JsObject key) {
+    public JsObject_ get(JsObject_ key) {
         return null;
     }
 
     @Override
-    public void set(JsObject key, JsObject value) {
+    public void set(JsObject_ key, JsObject_ value) {
 
     }
 
@@ -28,12 +28,12 @@ public class WeakSet implements JsObject {
     }
 
     @Override
-    public String toLocaleString(JsString locales, JsObject options) {
+    public String toLocaleString(JsString locales, JsObject_ options) {
         return null;
     }
 
     @Override
-    public JsObject invoke(JsObject... params) {
+    public JsObject_ invoke(JsObject_... params) {
         return null;
     }
 }

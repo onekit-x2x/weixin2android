@@ -1,146 +1,205 @@
 package cn.onekit.js;
 
-import java.lang.reflect.Field;
+import java.util.HashMap;
+import java.util.Random;
+import cn.onekit.js.core.Iterator;
+import cn.onekit.js.core.Onekit_JS;
 
-public interface JsObject {
-    default  JsObject get(String key){
-        try {
-            if(this instanceof Dict){
-                Dict dict = ((Dict)this);
-                return dict.get(key);
-            }else {
-                Class clazz = this.getClass();
-                Field field = clazz.getDeclaredField(key);
-                field.setAccessible(true);
-                return (JsObject) field.get(this);
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-            return null;
-        }
+public class JsObject extends HashMap<String, JsObject_> implements JsObject_ {
+    ///////////////////////////////////////
+    int _hashCode =  new Random().nextInt();
+    @Override
+    public int hashCode() {
+        return _hashCode;
     }
-     default JsObject get(JsObject key){
-         return get(((JsString)key).THIS);
-     }
-    default JsObject get(int key){
-        return null;
-    }
-    default  void set(String key,JsObject value){
-        if(this instanceof Dict) {
-            Dict dict = ((Dict)this);
-             dict.put(key,value);
-        }else {
-            try {
-                Class clazz = this.getClass();
-                Field field = clazz.getDeclaredField(key);
-                field.setAccessible(true);
-                field.set(this, value);
 
-            } catch (Exception e) {
-                e.printStackTrace();
+    ////////////////////////////
+
+
+    public static JsObject assign(JsObject target, JsObject... source) {
+        for(JsObject dict : source) {
+            for (JsObject.Entry<String, JsObject_> entry : dict.entrySet()) {
+                target.put(entry.getKey(),  entry.getValue());
             }
         }
+        return target;
     }
-    default void set(JsObject key,JsObject value){
-        set(((JsString)key).THIS,value);
-    }
-/*
-    default void sot(JsObject key, JsObject value) {
-        try {
-            if (this instanceof Dict) {
-                Dict dict = (Dict) this;
-                if (value == null) {
-                    dict.put(key, null);
-                } else if (value instanceof JsObject) {
-                    dict.put(key, value);
-                } else {
-                    dict.put(key, new NUMBER(value));
-                }
-
-            } else  if (this instanceof Array) {
-                int index = OnekitJS.number(key).intValue();
-                Array array = (Array) this;
-                if (value == null) {
-                    array.set(index, null);
-                } else if (value instanceof JsObject) {
-                    array.set(index, value);
-                } else {
-                    array.set(index, new NUMBER(value));
-                }
-
-            } else if (this instanceof Map) {
-                Map map = (Map) this;
-                map.put(key, value);
-            } else {
-                throw new Exception(this.toString());
-            }
-        } catch (
-                Exception e) {
-            e.printStackTrace();
+    public static JsObject create(JsObject target, JsObject propertiesObject) {
+        JsObject result = new JsObject();
+        for (Entry<String, JsObject_> entry : target.entrySet()) {
+            result.put(entry.getKey(), entry.getValue());
         }
+        return result;
     }
-    default JsObject get(JsObject key) {
-        throw new Error("please use xxx.get('key')!");
+    public static JsObject create(JsObject target) {
+        return create(target,null);
     }
 
-    default JsObject get(JsObject key) {
-        try {
-            JsObject value;
-             if (this instanceof Map) {
-                Map map = (Map) this;
-                value=map.get(key);
-            } else  if (this instanceof List) {
-                int index = OnekitJS.number(key).intValue();
-                ArrayList list = (ArrayList)this;
-                value=list.get(index);
-            }else {
-                String key_ = (String) key;
-                Class clazz = this.getClass();
-                Field field = clazz.getDeclaredField(key_);
-                field.setAccessible(true);
-                value = field.get(this);
-            }
-            return OnekitJS.object2value(value);
-        } catch (Exception e) {
-            e.printStackTrace();
-            return null;
-        }
+    public static void defineProperties(JsObject obj, JsObject props) {
     }
-*/
-     JsString ToString();/*{
-        Class clazz = this.getClass();
+    public static Iterator entries(JsObject obj) {
+        return new Iterator(obj.entrySet().iterator()){
+
+            @Override
+            public JsArray getValue(Object value) {
+                Entry<String, JsObject_> entry= (Entry) value;
+                return new JsArray(){{add(new JsString(entry.getKey()));add(entry.getValue());}};
+            }
+        };
+    }
+
+    public static JsArray keys(JsObject dict) {
+        JsArray result = new JsArray();
+        for (String key: dict.keySet() ) {
+            result.add(new JsString(key));
+        }
+        return result;
+    }
+    public static JsArray keys(JsArray array) {
+        JsArray result = new JsArray();
+        for (int i=0;i<array.size();i++) {
+            JsObject_ item = array.get(i);
+            if(item==null){
+                continue;
+            }
+            result.add(new JsString(String.valueOf(i)));
+        }
+        return result;
+    }
+
+
+    @Override
+    public String toString() {
         StringBuilder result = new StringBuilder();
         result.append("{");
-        int i = 0;
-        for (Field field : clazz.getDeclaredFields()) {
-            try {
-                if (i++ > 0) {
-                    result.append(",");
-                }
-                Object temp = field.get(this);
-                Object value;
-                if (temp == null) {
-                    value = null;
-                } else if (temp instanceof String) {
-                    value = String.format("\"%s\"", temp);
-                } else {
-                    value = temp.toString();
-                }
-                result.append(String.format("\"%s\":%s", field.getName(),value));
-            } catch (Exception e) {
-                e.printStackTrace();
+        String[] keys = this.keySet().toArray(new String[]{});
+        for (int i = 0; i < keys.length; i++) {
+            String key = keys[i];
+            if (i > 0) {
+                result.append(",");
             }
+            result.append(String.format("\"%s\":%s", key, Onekit_JS.toString(this.get(key))));
         }
         result.append("}");
-        return new STRING(result.toString());
-    }*/
-
-    default String toLocaleString(JsString locales, JsObject options){
-        return toString();
+        return result.toString();
+    }
+    public JsString toLocaleString(JsObject_ locales, JsObject_ options){
+        return new JsString("");
+    }
+    @Override
+    public JsObject_ get(String key){
+       return super.get(key);
+    }
+    @Override
+    public JsObject_ get(JsObject_ key) {
+        return get(((JsString)key).THIS);
     }
 
-    default  JsObject invoke(JsObject... params){
+    @Override
+    public void set(String key, JsObject_ value) {
+        put(key, value);
+    }
+
+    @Override
+    public void set(JsObject_ key, JsObject_ value) {
+        put(key.toString(), value);
+    }
+
+    @Override
+    public JsString ToString() {
         return null;
     }
 
+    @Override
+    public String toLocaleString(JsString locales, JsObject_ options) {
+        return null;
+    }
+
+    @Override
+    public JsObject_ invoke(JsObject_... params) {
+        return null;
+    }
+
+/*
+    int _hashCode =  new Random().nextInt();
+    @Override
+    public int hashCode() {
+        return _hashCode;
+    }
+    ////////////////////////////
+
+
+    public static  Dict assign(Dict target, Dict... source) {
+        for(Dict dict : source) {
+            for (Entry<String, JsObject> entry : dict.entrySet()) {
+                target.put(entry.getKey(), (T1) entry.getValue());
+            }
+        }
+        return target;
+    }
+    public static  Dict create(Dict target, Dict propertiesObject) {
+        Dict result = new Dict();
+        for (Entry<String, JsObject> entry : target.entrySet()) {
+            result.put(entry.getKey(), entry.getValue());
+        }
+        return result;
+    }
+    public static  Dict create(Dict target) {
+        return create(target,null);
+    }
+
+    public static void defineProperties(Dict obj, Dict props) {
+    }
+    public static Iterator entries(Dict obj) {
+        return new Iterator(obj.entrySet().iterator()){
+
+            @Override
+            public Array getValue(JsObject value) {
+                Entry entry= (Entry) value;
+                return new Array(){{add(entry.getKey());add(entry.getValue());}};
+            }
+        };
+    }
+
+    public static  Array keys(Dict dict) {
+        Array result = new Array();
+        for (JsObject key: dict.keySet() ) {
+            result.add((String)key);
+        }
+        return result;
+    }
+    public static  Array keys(Array array) {
+        Array result = new Array();
+        for (int i=0;i<array.size();i++) {
+            JsObject item = array.get(i);
+            if(item==null){
+                continue;
+            }
+            result.add(String.valueOf(i));
+        }
+        return result;
+    }
+
+    public JsObject get(String key) {
+        return super.get(key);
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder result = new StringBuilder();
+        result.append("{");
+        String[] keys = this.keySet().toArray(new String[]{});
+        for (int i = 0; i < keys.length; i++) {
+            String key = keys[i];
+            if (i > 0) {
+                result.append(",");
+            }
+            result.append(String.format("\"%s\":%s", key, OnekitJS.toString(this.get(key))));
+        }
+        result.append("}");
+        return result.toString();
+    }
+    public String toLocaleString(String locales, Dict options){
+        return "";
+    }*/
 }

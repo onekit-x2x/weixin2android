@@ -6,7 +6,7 @@ import android.view.MotionEvent;
 
 import java.util.HashMap;
 
-import cn.onekit.js.Dict;
+import cn.onekit.js.JsObject;
 import cn.onekit.js.JsNumber;
 import cn.onekit.w3c.Element;
 import cn.onekit.w3c.Event;
@@ -52,7 +52,7 @@ public abstract class WeixinElement extends Element {
                     HashMap<Integer, EventListener> listeners = typeListeners.get("tap");
                     if(listeners!=null) {
                         for (EventListener listener : listeners.values()) {
-                            listener.handleEvent(new Event("tap", new Dict() {{
+                            listener.handleEvent(new Event("tap", new JsObject() {{
                                 put("x", new JsNumber(0));
                                 put("y", new JsNumber( 0));
                             }}, this, this, 9527));

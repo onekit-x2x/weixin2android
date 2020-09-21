@@ -13,8 +13,8 @@ import android.widget.TextView;
 import java.util.Map;
 
 import thekit.android.Android;
-import cn.onekit.js.Dict;
 import cn.onekit.js.JsObject;
+import cn.onekit.js.JsObject_;
 import cn.onekit.js.core.function;
 import cn.onekit.weixin.app.R;
 import cn.onekit.weixin.core.res.wx_fail;
@@ -45,7 +45,7 @@ public class WxNavigationBar extends WxMonitor {
             textview.setText(title);
             imageView.setVisibility(View.GONE);
             actionBar.setCustomView(actionbarLayout);
-            Dict res = new Dict();
+            JsObject res = new JsObject();
 //            res.errMsg = Android.context.getResources().getString(R.string.wx_setNavigationBarTitle_success);// "setNavigationBarTitle : ok";
 //            res.title = Android.context.getClass().getSimpleName();
             if (success != null) {
@@ -86,7 +86,7 @@ public class WxNavigationBar extends WxMonitor {
     public void setNavigationBarColor(Map OBJECT) {
         String frontColor = OBJECT.get("frontColor") != null ? (String) OBJECT.get("frontColor") : null;
         String backgroundColor = OBJECT.get("backgroundColor") != null ? (String) OBJECT.get("backgroundColor") : null;
-        JsObject animation = OBJECT.get("backgroundColor") != null ? (JsObject) OBJECT.get("animation") : null;
+        JsObject_ animation = OBJECT.get("backgroundColor") != null ? (JsObject_) OBJECT.get("animation") : null;
         int animationDuration = OBJECT.get("animation.duration") != null ? (int) OBJECT.get("animation.duration") : 0;
         String animationTimingFunc = OBJECT.get("animation.timingFunc") != null ? (String) OBJECT.get("animation.timingFunc") : null;
         function success = OBJECT.get("success") != null ? (function) OBJECT.get("success") : null;

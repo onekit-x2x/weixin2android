@@ -33,7 +33,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import cn.onekit.js.Dict;
+import cn.onekit.js.JsObject;
 import cn.onekit.js.JsNumber;
 import cn.onekit.js.JsString;
 import cn.onekit.w3c.Event;
@@ -68,7 +68,7 @@ public class WeixinMap_Tencent3D extends WeixinMap<MapView,TencentMap> {
         _tencentMap.setOnMapLoadedCallback(() -> {
             isLoaded = true;
             _projection = _tencentMap.getProjection();
-            _dispatchEvent("updatetap", new Dict(){{
+            _dispatchEvent("updatetap", new JsObject(){{
                 put("type",  new JsString("updated"));
             }});
 
@@ -89,8 +89,8 @@ public class WeixinMap_Tencent3D extends WeixinMap<MapView,TencentMap> {
         _tencentMap.setOnMarkerClickListener(marker -> {
             Map tag = (Map)marker.getTag();
             if(tag.containsKey("markerId")){
-                _dispatchEvent("markertap", new Dict(){{
-                    put("detail", new Dict());
+                _dispatchEvent("markertap", new JsObject(){{
+                    put("detail", new JsObject());
                     put("markerId",  new JsNumber(Integer.parseInt(tag.get("markerId").toString())));
                     put("type", new JsString( "markertap"));
                 }});
@@ -113,8 +113,8 @@ public class WeixinMap_Tencent3D extends WeixinMap<MapView,TencentMap> {
             public void onInfoWindowClick(Marker marker) {
                 Map tag = (Map)marker.getTag();
                 if(tag.containsKey("markerId")){
-                    _dispatchEvent("callouttap", new Dict(){{
-                        put("detail",new Dict());
+                    _dispatchEvent("callouttap", new JsObject(){{
+                        put("detail",new JsObject());
                         put("markerId", new JsNumber(Integer.parseInt(tag.get("markerId").toString())));
                         put("type", new JsString("callouttap"));
                     }});
@@ -130,8 +130,8 @@ public class WeixinMap_Tencent3D extends WeixinMap<MapView,TencentMap> {
         //bindpoitap事件
         _tencentMap.setOnMapPoiClickListener(mapPoi -> {
             Log.d("mapPoi", "_init: " + mapPoi.getName());
-            _dispatchEvent("poitap", new Dict(){{
-                put("detail", new Dict(){{
+            _dispatchEvent("poitap", new JsObject(){{
+                put("detail", new JsObject(){{
                     put("longitude",  new JsNumber(mapPoi.getLatitude()));
                     put("latitude",new JsNumber( mapPoi.getLongitude()));
                     put("name",  new JsString(mapPoi.getName()));
@@ -143,8 +143,8 @@ public class WeixinMap_Tencent3D extends WeixinMap<MapView,TencentMap> {
         //bindtap事件
         _tencentMap.setOnMapClickListener(latLng -> {
             Log.d("latLng", "onMapClick: " + latLng);
-            _dispatchEvent("tap", new Dict(){{
-                put("detail", new Dict(){{
+            _dispatchEvent("tap", new JsObject(){{
+                put("detail", new JsObject(){{
                     put("longitude", new JsNumber(latLng.getLongitude()));
                     put("latitude", new JsNumber(latLng.getLongitude()));
                 }});
@@ -161,13 +161,13 @@ public class WeixinMap_Tencent3D extends WeixinMap<MapView,TencentMap> {
             public void onCameraChange(CameraPosition cameraPosition) {
                 if(_zoom_temp == null){
                     _zoom_temp = cameraPosition.zoom;
-                    _dispatchEvent("regionchange", new Dict() {{
+                    _dispatchEvent("regionchange", new JsObject() {{
                         if(isGesture){
                             put("causedBy",new JsString( "gesture"));
                         }else{
                             put("causedBy", new JsString("update"));
                         }
-                        put("detail", new Dict() {{
+                        put("detail", new JsObject() {{
                             put("gesture", null);
                             put("type",new JsString( "begin"));
                         }});
@@ -186,8 +186,8 @@ public class WeixinMap_Tencent3D extends WeixinMap<MapView,TencentMap> {
                 _onekit_map.rotate = cameraPosition.bearing;
                 float zoom = cameraPosition.zoom;
                 Log.d("sssssssss", "onCameraChangeFinished: _zoom_temp:" + _zoom_temp + ", zoom:"+ zoom);
-                Dict result = new Dict(){{
-                    put("detail",new Dict(){{
+                JsObject result = new JsObject(){{
+                    put("detail",new JsObject(){{
                         put("gesture", null);
                         put("type", new JsString("end"));
                         put("rotate",new JsNumber( 0));
@@ -423,7 +423,7 @@ public class WeixinMap_Tencent3D extends WeixinMap<MapView,TencentMap> {
                 this.map_markers.put(markerId, marker);
             }
         }
-        _dispatchEvent("updatetap", new Dict(){{
+        _dispatchEvent("updatetap", new JsObject(){{
             put("type",new JsString(  "updated"));
         }});
     }
@@ -488,7 +488,7 @@ public class WeixinMap_Tencent3D extends WeixinMap<MapView,TencentMap> {
             Polyline polyline = _tencentMap.addPolyline(polylineOptions);
             this.map_polyline.add(polyline);
         }
-        _dispatchEvent("updatetap", new Dict(){{
+        _dispatchEvent("updatetap", new JsObject(){{
             put("type", new JsString( "updated"));
         }});
     }
@@ -516,7 +516,7 @@ public class WeixinMap_Tencent3D extends WeixinMap<MapView,TencentMap> {
                     strokeWidth(dp2px(Float.valueOf(strokeWidth))));
             this.map_circles.add(circle);
         }
-        _dispatchEvent("updatetap", new Dict(){{
+        _dispatchEvent("updatetap", new JsObject(){{
             put("type", new JsString( "updated"));
         }});
     }
@@ -609,7 +609,7 @@ public class WeixinMap_Tencent3D extends WeixinMap<MapView,TencentMap> {
             }
             this.map_polygons.add(_tencentMap.addPolygon(polygonOptions));
         }
-        _dispatchEvent("updatetap", new Dict(){{
+        _dispatchEvent("updatetap", new JsObject(){{
             put("type",new JsString( "updated"));
         }});
 
@@ -806,7 +806,7 @@ public class WeixinMap_Tencent3D extends WeixinMap<MapView,TencentMap> {
         }
     }
     /////////////////////////////////////////////////////
-    private void _dispatchEvent(String name, Dict result){
+    private void _dispatchEvent(String name, JsObject result){
         if(name == "updatetap"){
             result.put("timeStamp",new JsNumber( new Date().getTime() - _time));
         }else{

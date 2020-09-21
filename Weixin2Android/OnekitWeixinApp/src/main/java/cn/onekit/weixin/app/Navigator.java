@@ -3,7 +3,7 @@ package cn.onekit.weixin.app;
 import android.content.Context;
 import android.util.AttributeSet;
 
-import cn.onekit.js.Dict;
+import cn.onekit.js.JsObject;
 import cn.onekit.js.JsString;
 import cn.onekit.weixin.app.core.WeixinElement;
 
@@ -20,7 +20,7 @@ public class Navigator extends WeixinElement {
 
     void _init() {
         this.setOnClickListener(v -> {
-            wx.navigateTo(new Dict() {{
+            wx.navigateTo(new JsObject() {{
                 put("url", new JsString(getUrl()));
             }});
         });

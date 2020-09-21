@@ -13,27 +13,27 @@ public class Uint8Array extends TypedArray{
         super(typedArray);
     }
 
-    public <TA extends TypedArray> Uint8Array(JsObject buffer, JsObject byteOffset, JsObject length) {
+    public <TA extends TypedArray> Uint8Array(JsObject_ buffer, JsObject_ byteOffset, JsObject_ length) {
         super(Uint8Array.class, buffer, byteOffset, length);
     }
 
-    public <TA extends TypedArray> Uint8Array(JsObject buffer, JsObject byteOffset) {
+    public <TA extends TypedArray> Uint8Array(JsObject_ buffer, JsObject_ byteOffset) {
         super(Uint8Array.class, buffer, byteOffset);
     }
 
-    public <TA extends TypedArray> Uint8Array(JsObject buffer) {
+    public <TA extends TypedArray> Uint8Array(JsObject_ buffer) {
         super(Uint8Array.class, buffer);
     }
 
-    public <TA extends TypedArray> Uint8Array(Array array) {
+    public <TA extends TypedArray> Uint8Array(JsArray array) {
         super(Uint8Array.class, array);
     }
 
     //////////////////////////////////
-    public static  Uint8Array from(Set source, function mapFn, JsObject thisArg) {
+    public static  Uint8Array from(Set source, function mapFn, JsObject_ thisArg) {
         return _from(Uint8Array.class, source, mapFn, thisArg);
     }
-    public static Uint8Array of(JsObject... elements) {
+    public static Uint8Array of(JsObject_... elements) {
         return _of(Uint8Array.class, elements);
     }
 }

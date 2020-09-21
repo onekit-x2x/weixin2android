@@ -9,8 +9,8 @@ import android.hardware.SensorManager;
 import java.util.Map;
 
 import thekit.android.Android;
-import cn.onekit.js.Dict;
 import cn.onekit.js.JsObject;
+import cn.onekit.js.JsObject_;
 import cn.onekit.js.core.function;
 import cn.onekit.weixin.app.R;
 import cn.onekit.weixin.core.res.wx_fail;
@@ -29,7 +29,7 @@ public class WxAccelerometer  {
         try {
             startAccelerometer(new function() {
                 @Override
-                public JsObject invoke(JsObject... arguments) {
+                public JsObject_ invoke(JsObject_... arguments) {
                     if (callback != null) {
                     }
                     return null;
@@ -47,7 +47,7 @@ public class WxAccelerometer  {
 //                    return null;
 //                }
             });
-            Dict result = new Dict();
+            JsObject result = new JsObject();
 //            result.errMsg = Android.context.getResources().getString(R.string.wx_startAccelerometer_success);
             if (success != null) {
                 success.invoke(result);
@@ -74,7 +74,7 @@ public class WxAccelerometer  {
         function fail = OBJECT.get("fail") != null ? (function) OBJECT.get("fail") : null;
         try {
             Stop();
-            Dict res = new Dict();
+            JsObject res = new JsObject();
 //            result.errMsg = Android.context.getResources().getString(R.string.wx_stopAccelerometer_success);
             if (success != null) {
                 success.invoke(res);
@@ -101,7 +101,7 @@ public class WxAccelerometer  {
         @Override
         public void onSensorChanged(SensorEvent event) {
             if (event.sensor.getType() == Sensor.TYPE_ACCELEROMETER) {
-                eventCallback.invoke(new Dict());
+                eventCallback.invoke(new JsObject());
                // eventCallback.invoke(event);
             }
         }

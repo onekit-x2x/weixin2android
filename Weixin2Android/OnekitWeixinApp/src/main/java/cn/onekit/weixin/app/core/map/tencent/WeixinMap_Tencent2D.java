@@ -43,7 +43,7 @@ import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 import thekit.ASSET;
-import cn.onekit.js.Dict;
+import cn.onekit.js.JsObject;
 import cn.onekit.js.JsNumber;
 import cn.onekit.js.JsString;
 import cn.onekit.w3c.Event;
@@ -115,8 +115,8 @@ public class WeixinMap_Tencent2D extends WeixinMap<MapView,TencentMap> {
             Log.d("---------onMarkerClick,", "onMarkerClick: "+marker.getTag());
             Map tag = (HashMap)marker.getTag();
             if(tag.containsKey("markerId")){
-                Dict result = new Dict(){{
-                    put("detail", new Dict());
+                JsObject result = new JsObject(){{
+                    put("detail", new JsObject());
                     put("markerId", new JsNumber(Integer.parseInt((String)tag.get("markerId"))));
                     put("type", new JsString("markertap"));
                 }};
@@ -133,8 +133,8 @@ public class WeixinMap_Tencent2D extends WeixinMap<MapView,TencentMap> {
         _tencentMap.setOnInfoWindowClickListener(marker -> {
             Map tag = (Map)marker.getTag();
             if(tag.containsKey("markerId")){
-                _dispatchEvent("callouttap", new Dict(){{
-                    put("detail",new Dict());
+                _dispatchEvent("callouttap", new JsObject(){{
+                    put("detail",new JsObject());
                     put("markerId", new JsNumber(Integer.parseInt((String)tag.get("markerId"))));
                     put("type",new JsString("callouttap"));
                 }});
@@ -148,13 +148,13 @@ public class WeixinMap_Tencent2D extends WeixinMap<MapView,TencentMap> {
             public void onCameraChange(CameraPosition cameraPosition) {
                 if(_zoom_temp == null){
                     _zoom_temp = cameraPosition.getZoom();
-                    _dispatchEvent("regionchange", new Dict() {{
+                    _dispatchEvent("regionchange", new JsObject() {{
                         if(isGesture){
                             put("causedBy",new JsString( "gesture"));
                         }else{
                             put("causedBy", new JsString("update"));
                         }
-                        put("detail", new Dict() {{
+                        put("detail", new JsObject() {{
                             put("gesture", null);
                             put("type",new JsString( "begin"));
                         }});
@@ -173,8 +173,8 @@ public class WeixinMap_Tencent2D extends WeixinMap<MapView,TencentMap> {
                 _onekit_map.rotate = 0;
 
                 Log.d("=================================", "getZoomLevel: "+_tencentMap.getZoomLevel());
-                Dict result = new Dict(){{
-                    put("detail",new Dict(){{
+                JsObject result = new JsObject(){{
+                    put("detail",new JsObject(){{
                         put("gesture", null);
                         put("type", new JsString("end"));
                         put("rotate", new JsNumber(0));
@@ -198,7 +198,7 @@ public class WeixinMap_Tencent2D extends WeixinMap<MapView,TencentMap> {
         //地图加载监听
         _tencentMap.setOnMapLoadedListener(() -> {
             isLoaded = true;
-            _dispatchEvent("updatedtap", new Dict(){{
+            _dispatchEvent("updatedtap", new JsObject(){{
                 put("type",new JsString( "updated"));
             }});
             _todo.forEach((key, value) -> {
@@ -223,13 +223,13 @@ public class WeixinMap_Tencent2D extends WeixinMap<MapView,TencentMap> {
         return  getMapView().getMap();//_tencentMap;
     }
 
-    private Dict _poitapHandler(Dict before_result, double distance, LatLng clickPoi, double check_lat, double check_lng, String name){
+    private JsObject _poitapHandler(JsObject before_result, double distance, LatLng clickPoi, double check_lat, double check_lng, String name){
         double check_distance = TencentLocationUtils.distanceBetween(clickPoi.getLatitude(),clickPoi.getLongitude(),check_lat, check_lng);
         Log.d("--------------------------------", "poitap: "+check_distance + "," + name);
         if(check_distance <= distance){
-            Dict result = new Dict(){{
-                put("result", new Dict(){{
-                    put("detail", new Dict(){{
+            JsObject result = new JsObject(){{
+                put("result", new JsObject(){{
+                    put("detail", new JsObject(){{
                         put("latitude", new JsNumber(check_lat));
                         put("longitude", new JsNumber(check_lng));
                         put("name", new JsString(name));
@@ -330,7 +330,7 @@ public class WeixinMap_Tencent2D extends WeixinMap<MapView,TencentMap> {
     }
     private void _getAddress(LatLng clickPoi, JSONObject data) throws Exception{
         int now_zoom = _tencentMap.getZoomLevel();
-        Dict result = null;
+        JsObject result = null;
         double temp_dis = 999999999;
         JSONObject poi = null;
         JSONObject bossPoi = null;
@@ -378,9 +378,9 @@ public class WeixinMap_Tencent2D extends WeixinMap<MapView,TencentMap> {
             case 7:
             case 8:
                 //市区
-                result =  new Dict(){{
-                    put("result", new Dict(){{
-                        put("detail", new Dict(){{
+                result =  new JsObject(){{
+                    put("result", new JsObject(){{
+                        put("detail", new JsObject(){{
                             put("latitude",new JsNumber( clickPoi.getLatitude()));
                             put("longitude", new JsNumber(clickPoi.getLongitude()));
                             put("name", new JsString(city));
@@ -390,9 +390,9 @@ public class WeixinMap_Tencent2D extends WeixinMap<MapView,TencentMap> {
                 break;
             case 9:
                 //市区,区/县
-                result =  new Dict(){{
-                    put("result", new Dict(){{
-                        put("detail", new Dict(){{
+                result =  new JsObject(){{
+                    put("result", new JsObject(){{
+                        put("detail", new JsObject(){{
                             put("latitude", new JsNumber(clickPoi.getLatitude()));
                             put("longitude",new JsNumber( clickPoi.getLongitude()));
                             put("name", new JsString(district));
@@ -405,9 +405,9 @@ public class WeixinMap_Tencent2D extends WeixinMap<MapView,TencentMap> {
                 //市区,区/县,镇/乡
                 result = _poitapHandler(result, distance, clickPoi, town.getJSONObject("location").getDouble("lat"), town.getJSONObject("location").getDouble("lng"), town.getString("title") );
                 if(result == null){
-                    result = new Dict(){{
-                        put("result", new Dict(){{
-                            put("detail", new Dict(){{
+                    result = new JsObject(){{
+                        put("result", new JsObject(){{
+                            put("detail", new JsObject(){{
                                 put("latitude", new JsNumber(clickPoi.getLatitude()));
                                 put("longitude", new JsNumber(clickPoi.getLongitude()));
                                 put("name", new JsString(district));
@@ -421,9 +421,9 @@ public class WeixinMap_Tencent2D extends WeixinMap<MapView,TencentMap> {
             case 13:
                 //区/县， 乡/镇， boss点
                 //区/县
-                result = new Dict(){{
-                    put("result", new Dict(){{
-                        put("detail", new Dict(){{
+                result = new JsObject(){{
+                    put("result", new JsObject(){{
+                        put("detail", new JsObject(){{
                             put("latitude",new JsNumber( clickPoi.getLatitude()));
                             put("longitude", new JsNumber(clickPoi.getLongitude()));
                             put("name", new JsString(district));
@@ -465,15 +465,15 @@ public class WeixinMap_Tencent2D extends WeixinMap<MapView,TencentMap> {
                 break;
         }
         if(result == null){
-            _dispatchEvent("tap", new Dict(){{
-                put("detail", new Dict(){{
+            _dispatchEvent("tap", new JsObject(){{
+                put("detail", new JsObject(){{
                     put("longitude",new JsNumber(clickPoi.getLongitude()));
                     put("latitude", new JsNumber(clickPoi.getLongitude()));
                 }});
                 put("type",new JsString( "tap"));
             }});
         }else{
-            _dispatchEvent("poitap", (Dict)result.get("result"));
+            _dispatchEvent("poitap", (JsObject)result.get("result"));
         }
 
     }
@@ -674,7 +674,7 @@ public class WeixinMap_Tencent2D extends WeixinMap<MapView,TencentMap> {
             }
         }
 
-        _dispatchEvent("updatetap", new Dict(){{
+        _dispatchEvent("updatetap", new JsObject(){{
             put("type", new JsString("updated"));
         }});
     }
@@ -726,7 +726,7 @@ public class WeixinMap_Tencent2D extends WeixinMap<MapView,TencentMap> {
             Polyline p = _tencentMap.addPolyline(polylineOptions);
             this.map_polyline.add(p);
         }
-        _dispatchEvent("updatetap", new Dict(){{
+        _dispatchEvent("updatetap", new JsObject(){{
             put("type", new JsString("updated"));
         }});
     }
@@ -755,7 +755,7 @@ public class WeixinMap_Tencent2D extends WeixinMap<MapView,TencentMap> {
             this.map_circles.add(cir);
         }
 
-        _dispatchEvent("updatetap", new Dict(){{
+        _dispatchEvent("updatetap", new JsObject(){{
             put("type", new JsString("updated"));
         }});
     }
@@ -847,7 +847,7 @@ public class WeixinMap_Tencent2D extends WeixinMap<MapView,TencentMap> {
             }
             Polygon pol = _tencentMap.addPolygon(polygonOptions);
         }
-        _dispatchEvent("updatetap", new Dict(){{
+        _dispatchEvent("updatetap", new JsObject(){{
             put("type", new JsString("updated"));
         }});
     }
@@ -1022,7 +1022,7 @@ public class WeixinMap_Tencent2D extends WeixinMap<MapView,TencentMap> {
     }
 
     /////////////////////////////////////////////////////
-    private void _dispatchEvent(String name, Dict result){
+    private void _dispatchEvent(String name, JsObject result){
         if(name == "updatetap"){
             result.put("timeStamp", new JsNumber(new Date().getTime() - _time));
         }else{

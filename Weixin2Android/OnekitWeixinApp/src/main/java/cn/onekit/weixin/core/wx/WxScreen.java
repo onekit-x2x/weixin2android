@@ -10,7 +10,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import thekit.android.Android;
-import cn.onekit.js.Dict;
+import cn.onekit.js.JsObject;
 import cn.onekit.js.core.function;
 import cn.onekit.weixin.app.R;
 import cn.onekit.weixin.core.res.wx_fail;
@@ -32,7 +32,7 @@ public class WxScreen extends WxScanCode {
                 lp.screenBrightness = (brightness <= 0 ? 1 : brightness) / 255f;
             }
             window.setAttributes(lp);
-            Dict res = new Dict();
+            JsObject res = new JsObject();
 //            res.errMsg = Android.context.getResources().getString(R.string.wx_setScreenBrightness_success);
             if (success != null) {
                 success.invoke(res);
@@ -59,7 +59,7 @@ public class WxScreen extends WxScanCode {
         function complete = OBJECT.get("complete") != null ? (function) OBJECT.get("complete") : null;
         try {
             int systemBrightness = Settings.System.getInt(Android.context.getContentResolver(), Settings.System.SCREEN_BRIGHTNESS);
-            Dict res = new Dict();
+            JsObject res = new JsObject();
 //            res.value = (float) systemBrightness / 255;
 //            res.errMsg = Android.context.getResources().getString(R.string.wx_getScreenBrightness_success);
             if (success != null) {
@@ -90,7 +90,7 @@ public class WxScreen extends WxScanCode {
             if (keepScreenOn) {
                 ((Activity)Android.context).getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
             }
-            Dict res = new Dict();
+            JsObject res = new JsObject();
 //            res.errMsg = Android.context.getResources().getString(R.string.wx_setKeepScreenOn_success);
             if (success != null) {
                 success.invoke(res);

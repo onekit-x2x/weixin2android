@@ -8,7 +8,7 @@ import android.os.Build;
 import java.util.Map;
 
 import thekit.android.Android;
-import cn.onekit.js.Dict;
+import cn.onekit.js.JsObject;
 import cn.onekit.js.core.function;
 import cn.onekit.weixin.app.R;
 import cn.onekit.weixin.core.res.wx_fail;
@@ -20,7 +20,7 @@ public class WxSetting extends WxScreen {
         function complete = (OBJECT.get("complete") == null) ? (function) OBJECT.get("complete") : null;
         try {
             toSelfSetting(Android.context);
-            Dict res = new Dict();
+            JsObject res = new JsObject();
 //            res.errMsg = Android.context.getResources().getString(R.string.wx_openSetting_success);
             if (success != null) {
                 success.invoke(res);

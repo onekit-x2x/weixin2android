@@ -18,9 +18,9 @@ import java.io.IOException;
 import java.util.Map;
 
 import thekit.android.Android;
-import cn.onekit.js.Dict;
-import cn.onekit.js.JsString;
 import cn.onekit.js.JsObject;
+import cn.onekit.js.JsString;
+import cn.onekit.js.JsObject_;
 import cn.onekit.js.core.function;
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -29,7 +29,7 @@ import okhttp3.Request;
 import okhttp3.Response;
 
 public class WxOpenInterface extends WxNFC {
-    public void login(Dict obj){
+    public void login(JsObject obj){
 
     }
 
@@ -263,15 +263,15 @@ public boolean share_menuItem = true;
         api = WXAPIFactory.createWXAPI(Android.context, App_id, true);
         api.registerApp(App_id);
 
-        request(new Dict() {{
+        request(new JsObject() {{
             put("url", new JsString(url));
             put("data", new JsString(""));
             put("method", new JsString("POST"));
             put("dataType", new JsString("json"));
             put("success", new function() {
                 @Override
-                public JsObject invoke(JsObject... arguments) {
-                    JsObject res = arguments[0];
+                public JsObject_ invoke(JsObject_... arguments) {
+                    JsObject_ res = arguments[0];
                     Log.e("code", String.valueOf(res));
 //                    Log.e("headers", String.valueOf(res.get("headers")));
 //                    Log.e("data", String.valueOf(res.get("data")));

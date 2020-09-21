@@ -7,7 +7,7 @@ import android.widget.TextView;
 
 import cn.onekit.LITERAL_;
 import cn.onekit.js.JsString;
-import cn.onekit.js.JsObject;
+import cn.onekit.js.JsObject_;
 
 
 public class LITERAL extends TextView implements Node, LITERAL_ {
@@ -51,11 +51,11 @@ public class LITERAL extends TextView implements Node, LITERAL_ {
         return false;
     }
 
-    public void setValue(JsObject text) {
+    public void setValue(JsObject_ text) {
         this.setText(((JsString)text).THIS);
     }
 
-    public JsObject getValue() {
+    public JsObject_ getValue() {
         return new JsString((String) this.getText());
     }
 }

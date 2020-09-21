@@ -36,15 +36,15 @@ public class onekit_pages_logs_logs extends WeixinPage {
                 }
             });
         }});*/
-        JsObject util = new onekit_utils_util().exports;
-        Page(new Dict(){{
-            put("data",new Dict(){{
-                put("logs",new Array(){{}});
+        JsObject_ util = new onekit_utils_util().exports;
+        Page(new JsObject(){{
+            put("data",new JsObject(){{
+                put("logs",new JsArray(){{}});
             }});
-            put("onLoad",new function(){ public JsObject invoke(JsObject... arguments){
-                this.get("setData").invoke(new Dict(){{
-                    put("logs", Onekit_JS.or(wx.getStorageSync(new JsString("logs")),new Array(){{}}).get("map").invoke(new function(){ public JsObject invoke(JsObject... arguments){
-                        JsObject log = arguments[0];
+            put("onLoad",new function(){ public JsObject_ invoke(JsObject_... arguments){
+                this.get("setData").invoke(new JsObject(){{
+                    put("logs", Onekit_JS.or(wx.getStorageSync(new JsString("logs")),new JsArray(){{}}).get("map").invoke(new function(){ public JsObject_ invoke(JsObject_... arguments){
+                        JsObject_ log = arguments[0];
                         return util.get("formatTime").invoke(new Date(log));
                     }}));
                 }});
@@ -56,14 +56,14 @@ public class onekit_pages_logs_logs extends WeixinPage {
 
     @Override
 
-    public void onekit_wxml(ViewGroup ui, JsObject data, Vue vue) {
+    public void onekit_wxml(ViewGroup ui, JsObject_ data, Vue vue) {
 
         View ui_0 = new View(this);
         ui.addView(ui_0);
         ui_0.setClassName("container log-list");
-        vue.For(data.get("logs"), null, "index", "log", new ACTION1<JsObject>() {
+        vue.For(data.get("logs"), null, "index", "log", new ACTION1<JsObject_>() {
             @Override
-            public void invoke(JsObject data) {
+            public void invoke(JsObject_ data) {
 
                 Text ui_0_0 = new Text(ui.getContext());
                 ui_0.addView(ui_0_0);

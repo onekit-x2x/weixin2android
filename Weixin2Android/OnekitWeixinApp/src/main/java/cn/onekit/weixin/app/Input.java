@@ -20,7 +20,7 @@ import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import cn.onekit.js.Dict;
+import cn.onekit.js.JsObject;
 import cn.onekit.js.JsNumber;
 import cn.onekit.js.JsString;
 import cn.onekit.w3c.Event;
@@ -53,7 +53,7 @@ public class Input extends WeixinElement implements FormItem_<JsString> {
             if(visible != isVisiableForLast){
                 //_height = Util.px2dp(hight-displayHight-ztheight);
                 _height=px2dp((hight-displayHight-ztheight));
-                Event event = new Event("keyboardHeightChange",new Dict() {{
+                Event event = new Event("keyboardHeightChange",new JsObject() {{
 
                         put("height",  new JsNumber(_height));
                         put("duration", new JsNumber(0));
@@ -113,7 +113,7 @@ public class Input extends WeixinElement implements FormItem_<JsString> {
 
                 }
                 if(_focusListener!=null){
-                    Event event = new Event("change",new Dict() {{
+                    Event event = new Event("change",new JsObject() {{
 
                             put("value", new JsString(_input().getText().toString()));
                             put("height",  new JsNumber(_height));
@@ -124,7 +124,7 @@ public class Input extends WeixinElement implements FormItem_<JsString> {
                 }
             }else {
                 if (_blurListener!=null){
-                    Event event = new Event("change",new Dict() {{
+                    Event event = new Event("change",new JsObject() {{
 
                             put("value",  new JsString(_input().getText().toString()));
 
@@ -150,7 +150,7 @@ public class Input extends WeixinElement implements FormItem_<JsString> {
                         _keyCode = (int)s.subSequence(start, start + 1).charAt(0);
                     }
 
-                    Event event = new Event("change",new Dict() {{
+                    Event event = new Event("change",new JsObject() {{
 
                             put("value",  new JsString((String) s));
                             put("cursor", new JsNumber( start + 1));

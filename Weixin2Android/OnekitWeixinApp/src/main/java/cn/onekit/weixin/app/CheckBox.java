@@ -4,7 +4,7 @@ import android.content.Context;
 import android.util.AttributeSet;
 
 import cn.onekit.js.JsBoolean;
-import cn.onekit.js.Dict;
+import cn.onekit.js.JsObject;
 import cn.onekit.w3c.Event;
 import cn.onekit.w3c.core.FormItem_;
 import cn.onekit.weixin.app.core.WeixinElement;
@@ -24,7 +24,7 @@ public class CheckBox extends WeixinElement implements FormItem_<JsBoolean> {
         setColor(getColor());
         _checkbox()._checkbox().setOnCheckedChangeListener((sender, isChecked) -> {
 
-            Event event = new Event("change",new Dict() {{
+            Event event = new Event("change",new JsObject() {{
 
                 put("value",new JsBoolean( isChecked));
 

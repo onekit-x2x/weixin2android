@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import thekit.android.Android;
-import cn.onekit.js.Dict;
+import cn.onekit.js.JsObject;
 import cn.onekit.js.core.JsFile;
 import cn.onekit.weixin.PageObject;
 
@@ -13,7 +13,7 @@ public interface WeixinFile extends JsFile {
 
 
      ///////////////////////////////////////////
-     default Dict getApp() {
+     default JsObject getApp() {
           WeixinApplication app = (WeixinApplication) Android.application();
           return  app.THIS;
      }

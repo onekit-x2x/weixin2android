@@ -17,7 +17,7 @@ import com.tencent.map.geolocation.TencentLocationListener;
 import com.tencent.map.geolocation.TencentLocationManager;
 import com.tencent.map.geolocation.TencentLocationRequest;
 
-import cn.onekit.js.Array;
+import cn.onekit.js.JsArray;
 import cn.onekit.weixin.app.core.WeixinElement;
 import cn.onekit.weixin.app.core.map.WeixinMap;
 import cn.onekit.weixin.app.core.map.tencent.WeixinMap_Tencent2D;
@@ -134,12 +134,12 @@ public class Map extends WeixinElement implements TencentLocationListener {
     private boolean enableTraffic = false;
     private boolean enableSatellite = false;
     private boolean showLocation = false;
-    private Array markers;
-    private Array polyline;
-    private Array polygons;
-    private Array circles;
-    private Array controls;
-    private Array includePoints;
+    private JsArray markers;
+    private JsArray polyline;
+    private JsArray polygons;
+    private JsArray circles;
+    private JsArray controls;
+    private JsArray includePoints;
     private String subkey;
     private int layerStyle;
     private Map setting;
@@ -257,55 +257,55 @@ public class Map extends WeixinElement implements TencentLocationListener {
     }
 
     // 标记点
-    public void setMarkers(Array markers)  {
+    public void setMarkers(JsArray markers)  {
         this.markers = markers;
         _weixinMap.map_markers.clear();
         _weixinMap.setMarkers(markers);
     }
-    public Array getMarkers(){
+    public JsArray getMarkers(){
         return markers;
     }
 
-    public void setPolyline(Array polyline){
+    public void setPolyline(JsArray polyline){
         this.polyline = polyline;
         _weixinMap.map_polyline.clear();
         _weixinMap.setPolyline(polyline);
     }
-    public Array getPolyline(){
+    public JsArray getPolyline(){
         return polyline;
     }
     /////////////
-    public void setPolygons(Array polygons){
+    public void setPolygons(JsArray polygons){
         this.polygons = polygons;
         _weixinMap.map_polygons.clear();
         _weixinMap.setPolygons(polygons);
     }
-    public Array getPolygons(){
+    public JsArray getPolygons(){
         return polygons;
     }
     ////////////////
-    public void setCircles(Array circle){
+    public void setCircles(JsArray circle){
         this.circles = circle;
         _weixinMap.map_circles.clear();
         _weixinMap.setCircles(circle);
     }
-    public Array getCircles(){
+    public JsArray getCircles(){
         return circles;
     }
 
-    public Array getControls() {
+    public JsArray getControls() {
         return controls;
     }
-    public void setControls(Array controls) {
+    public void setControls(JsArray controls) {
         this.controls = controls;
         _weixinMap.map_controls.clear();
         _weixinMap.setControls(controls);
     }
 
-    public Array getIncludePoints() {
+    public JsArray getIncludePoints() {
         return includePoints;
     }
-    public void setIncludePoints(Array includePoints) {
+    public void setIncludePoints(JsArray includePoints) {
         this.includePoints = includePoints;
         _weixinMap.setIncludePoints(includePoints);
     }

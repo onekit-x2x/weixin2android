@@ -1,63 +1,63 @@
 package cn.onekit.js;
 
-public class Proxy implements JsObject {
-    public static Dict apply(String target, Dict thisArg, Dict argumentsList){
+public class Proxy implements JsObject_ {
+    public static JsObject apply(String target, JsObject thisArg, JsObject argumentsList){
         return null;
     }
-    public static Dict construct(Dict target, Dict argumentsList, String  newTarget){
+    public static JsObject construct(JsObject target, JsObject argumentsList, String  newTarget){
         return null;
     }
-    public static boolean defineProperty(Dict target, String property, String descriptor){
+    public static boolean defineProperty(JsObject target, String property, String descriptor){
         return true;
     }
-    public static boolean deleteProperty(Dict target, String property){
+    public static boolean deleteProperty(JsObject target, String property){
         return true;
     }
-    public static Dict get(Dict target, String property, Dict receiver){
+    public static JsObject get(JsObject target, String property, JsObject receiver){
         return null;
     }
-    public static Dict getOwnPropertyDescriptor(Dict target, String prop){
+    public static JsObject getOwnPropertyDescriptor(JsObject target, String prop){
         return null;
     }
-    public static Dict getPrototypeOf(Dict target){
+    public static JsObject getPrototypeOf(JsObject target){
         return null;
     }
-    public  static  boolean has(Dict target, String prop){
+    public  static  boolean has(JsObject target, String prop){
         return true;
     }
-    public static boolean isExtensible(Dict target){
+    public static boolean isExtensible(JsObject target){
         return true;
     }
-    public static Dict ownKeys(Dict target){
+    public static JsObject ownKeys(JsObject target){
         return  null;
     }
-    public static boolean preventExtensions(Dict target){
+    public static boolean preventExtensions(JsObject target){
         return true;
     }
-    public static  boolean set(Dict target, String property, Dict value, Dict receiver){
+    public static  boolean set(JsObject target, String property, JsObject value, JsObject receiver){
         return true;
     }
-    public static boolean setPrototypeOf(Dict target, Dict prototype){
+    public static boolean setPrototypeOf(JsObject target, JsObject prototype){
         return true;
     }
 
     @Override
-    public JsObject get(String key) {
+    public JsObject_ get(String key) {
         return null;
     }
 
     @Override
-    public JsObject get(JsObject key) {
+    public JsObject_ get(JsObject_ key) {
         return null;
     }
 
     @Override
-    public void set(String key, JsObject value) {
+    public void set(String key, JsObject_ value) {
 
     }
 
     @Override
-    public void set(JsObject key, JsObject value) {
+    public void set(JsObject_ key, JsObject_ value) {
 
     }
 
@@ -67,12 +67,12 @@ public class Proxy implements JsObject {
     }
 
     @Override
-    public String toLocaleString(JsString locales, JsObject options) {
+    public String toLocaleString(JsString locales, JsObject_ options) {
         return null;
     }
 
     @Override
-    public JsObject invoke(JsObject... params) {
+    public JsObject_ invoke(JsObject_... params) {
         return null;
     }
 }

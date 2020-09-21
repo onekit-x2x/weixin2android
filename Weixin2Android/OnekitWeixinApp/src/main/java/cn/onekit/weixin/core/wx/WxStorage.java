@@ -14,11 +14,11 @@ import java.util.Map;
 import java.util.Set;
 
 import thekit.android.Android;
-import cn.onekit.js.Array;
-import cn.onekit.js.Dict;
+import cn.onekit.js.JsArray;
+import cn.onekit.js.JsObject;
 import cn.onekit.js.JSON;
 import cn.onekit.js.JsString;
-import cn.onekit.js.JsObject;
+import cn.onekit.js.JsObject_;
 import cn.onekit.js.core.function;
 import cn.onekit.weixin.app.R;
 import cn.onekit.weixin.core.res.wx_fail;
@@ -27,20 +27,20 @@ public class WxStorage extends WxSoterAuthentication  {
      Gson gson=new Gson();
 
 
-    public  void setStorage(Dict OBJECT) {
+    public  void setStorage(JsObject OBJECT) {
         String key =  ((JsString)OBJECT.get("key")).THIS;
-        final JsObject data = OBJECT.get("data");
+        final JsObject_ data = OBJECT.get("data");
         ///////////////////
         _set(OBJECT, key, data);
         ////////////////////
     }
 
-    private  void _set(Map OBJECT, String key, JsObject data) {
+    private  void _set(Map OBJECT, String key, JsObject_ data) {
         try {
             Context context = Android.context;
             SharedPreferences spf = PreferenceManager.getDefaultSharedPreferences(context);
             SharedPreferences.Editor editor = spf.edit();
-            Dict ONEKIT = (Dict) JSON.parse(spf.getString("ONEKIT", "{}"));
+            JsObject ONEKIT = (JsObject) JSON.parse(spf.getString("ONEKIT", "{}"));
             String type = data.getClass().getName();
             ONEKIT.put(key, new JsString(type));
             editor.putString("ONEKIT", ONEKIT.toString());
@@ -52,7 +52,7 @@ public class WxStorage extends WxSoterAuthentication  {
                 successCallback = (function) OBJECT.get("success");
             if (OBJECT.containsKey("complete"))
                 completeCallback = (function) OBJECT.get("complete");
-            Dict res = new Dict();
+            JsObject res = new JsObject();
 //            res.errMsg =  Android.context.getResources().getString(R.string.wx_setStroage_success);
             if (successCallback != null)
                 successCallback.invoke(res);
@@ -74,13 +74,13 @@ public class WxStorage extends WxSoterAuthentication  {
                 completeCallback.invoke(res);
         }
     }
-    public void setStorageSync(JsObject jskey, JsObject value) {
+    public void setStorageSync(JsObject_ jskey, JsObject_ value) {
         String key = ((JsString)jskey).THIS;
         try {
             Context context = Android.context;
             SharedPreferences spf = PreferenceManager.getDefaultSharedPreferences(context);
             SharedPreferences.Editor editor = spf.edit();
-            Dict ONEKIT = (Dict) JSON.parse(spf.getString("ONEKIT", "{}"));
+            JsObject ONEKIT = (JsObject) JSON.parse(spf.getString("ONEKIT", "{}"));
             String type;
             if (value instanceof List) {
                 type = "List";
@@ -113,12 +113,12 @@ public class WxStorage extends WxSoterAuthentication  {
         }
     }
 
-    public  void getStorage(Dict OBJECT) {
-        JsObject key = OBJECT.get("key");
+    public  void getStorage(JsObject OBJECT) {
+        JsObject_ key = OBJECT.get("key");
         function successCallback = (function) OBJECT.get("success");
 
-        JsObject data = getStorageSync(key);
-        Dict result = new Dict();
+        JsObject_ data = getStorageSync(key);
+        JsObject result = new JsObject();
 //        result.data = data;
 //        result.errMsg =  Android.context.getResources().getString(R.string.wx_getStorage_success);
         //
@@ -131,14 +131,14 @@ public class WxStorage extends WxSoterAuthentication  {
             completeCallback.invoke(result);
     }
 
-    public  JsObject getStorageSync(JsObject key) {
+    public JsObject_ getStorageSync(JsObject_ key) {
         String akey = ((JsString)key).THIS;
             Context context = Android.context;
             SharedPreferences spf = PreferenceManager.getDefaultSharedPreferences(context);
             if (!spf.contains(akey)) {
                 return null;
             }
-            Dict ONEKIT = (Dict) JSON.parse(spf.getString("ONEKIT", "{}"));
+            JsObject ONEKIT = (JsObject) JSON.parse(spf.getString("ONEKIT", "{}"));
             String type = ((JsString) ONEKIT.get(key)).THIS;
             String value = spf.getString(akey, null);
             /*switch (type) {
@@ -165,11 +165,11 @@ public class WxStorage extends WxSoterAuthentication  {
         }
     }
 
-    public  void getStorageInfo(Dict OBJECT) {
+    public  void getStorageInfo(JsObject OBJECT) {
         function success = (function) OBJECT.get("success");
-        final Array keys = new Array();
+        final JsArray keys = new JsArray();
         try {
-            final Dict data = getStorageInfoSync();
+            final JsObject data = getStorageInfoSync();
             Set<String> set = data.keySet();
             String path = storagePath();
             Log.e("bili", path);
@@ -182,7 +182,7 @@ public class WxStorage extends WxSoterAuthentication  {
                 keys.add(new JsString(in));
                 //     Log.e("bili",in);
             }
-            Dict res = new Dict();
+            JsObject res = new JsObject();
 //            res.keys = keys;
 //            res.currentSize =(total - ava) / 1000000;
 //            res.limitSize = total / 1000000;
@@ -194,11 +194,11 @@ public class WxStorage extends WxSoterAuthentication  {
         }
     }
 
-    public  Dict getStorageInfoSync() {
+    public JsObject getStorageInfoSync() {
         Context context = Android.context;
         SharedPreferences spf = PreferenceManager.getDefaultSharedPreferences(context);
 
-        Dict ONEKIT = (Dict) JSON.parse(spf.getString("ONEKIT", "{}"));
+        JsObject ONEKIT = (JsObject) JSON.parse(spf.getString("ONEKIT", "{}"));
 //        Dict  result = new Dict();
         return ONEKIT;
 
@@ -215,7 +215,7 @@ public class WxStorage extends WxSoterAuthentication  {
             editor.remove(key);
             editor.apply();
             function success = (function) OBJECT.get("success");
-            Dict res = new Dict();
+            JsObject res = new JsObject();
 //            res.errMsg = Android.context.getResources().getString(R.string.wx_removeStorage_success);
             if (success != null) {
                 success.invoke(res);
@@ -243,7 +243,7 @@ public class WxStorage extends WxSoterAuthentication  {
         }
     }
 
-    public  void removeStorageSync(JsObject key) {
+    public  void removeStorageSync(JsObject_ key) {
 
         Context context = Android.context;
         SharedPreferences spf = PreferenceManager.getDefaultSharedPreferences(context);
@@ -265,13 +265,13 @@ public class WxStorage extends WxSoterAuthentication  {
             editor.apply();
             if (OBJECT.get("success") != null) {
                 function success = (function) OBJECT.get("success");
-                Dict res = new Dict();
+                JsObject res = new JsObject();
 //                res.errMsg = Android.context.getResources().getString(R.string.wx_clearStorage_success);
                 success.invoke(res);
             }
             if (OBJECT.get("complete") != null) {
                 function complete = (function) OBJECT.get("complete");
-                Dict res = new Dict();
+                JsObject res = new JsObject();
 //                res.errMsg = Android.context.getResources().getString(R.string.wx_clearStorage_success);
                 complete.invoke(res);
             }

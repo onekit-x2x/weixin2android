@@ -21,7 +21,7 @@ import androidx.core.content.ContextCompat;
 import java.util.Map;
 
 import thekit.android.Android;
-import cn.onekit.js.Dict;
+import cn.onekit.js.JsObject;
 import cn.onekit.js.JsString;
 import cn.onekit.js.core.function;
 import cn.onekit.weixin.app.R;
@@ -164,7 +164,7 @@ public class WxPhoneContact extends WxPhone {
 
                 try {
                     Android.context.startActivity(addIntent);
-                    Dict res = new Dict();
+                    JsObject res = new JsObject();
 //                    res.errMsg = Android.context.getResources().getString(R.string.wx_addPhoneContact_success);
                     success.invoke(res);
                     complete.invoke(res);
@@ -228,12 +228,12 @@ public class WxPhoneContact extends WxPhone {
             @Override
             public void onDismiss(DialogInterface dialog) {
                 function fail = (function) Dict.get("fail");
-                fail.invoke(new Dict() {{
+                fail.invoke(new JsObject() {{
                     put("fail",  new JsString("用户取消"));
                 }});
                 if (Dict.containsKey("complete")) {
                     function complete = (function) Dict.get("complete");
-                    complete.invoke(new Dict() {{
+                    complete.invoke(new JsObject() {{
                         put("complete", new JsString("complete"));
                     }});
                 }

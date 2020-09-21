@@ -6,7 +6,7 @@ public class TypeError extends Error {
     public Integer lineNumber;
     public String message;
     public String name;
-    public Dict stack;
+    public JsObject stack;
     ////////////////////
     public String toSource(){
         return null;
@@ -16,7 +16,7 @@ public class TypeError extends Error {
     }
 
     @Override
-    public JsObject get(JsObject key) {
+    public JsObject_ get(JsObject_ key) {
         return null;
     }
 }

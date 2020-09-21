@@ -12,8 +12,8 @@ import com.tencent.map.geolocation.TencentLocationRequest;
 import java.util.Map;
 
 import thekit.android.Android;
-import cn.onekit.js.Dict;
 import cn.onekit.js.JsObject;
+import cn.onekit.js.JsObject_;
 import cn.onekit.js.core.function;
 import cn.onekit.weixin.app.R;
 import cn.onekit.weixin.app.core.WeixinPage;
@@ -47,7 +47,7 @@ public class WxLocation extends WxLive {
                     if (altitude == true) {
                         altitude_value = (float) location.getAltitude();//高度
                     }
-                    Dict res = new Dict();
+                    JsObject res = new JsObject();
 //                    res.latitude = (float) location.getLatitude();
 //                    res.longitude = (float) location.getLongitude();
 //                    res.speed = location.getSpeed();
@@ -87,9 +87,9 @@ public class WxLocation extends WxLive {
         try {
             IntentChooseLocation(new function() {
                 @Override
-                public JsObject invoke(JsObject... arguments) {
-                    Dict result = (Dict)arguments[0];
-                    Dict res = new Dict();
+                public JsObject_ invoke(JsObject_... arguments) {
+                    JsObject result = (JsObject)arguments[0];
+                    JsObject res = new JsObject();
 //                    res.errMsg = String.valueOf(R.string.wx_chooseLocation_success);// ((OBJECT) result).get("errMsg").toString();
 //                    res.address = (result).get("address").toString();
 //                    res.latitude = (float) (result).get("latitude");
@@ -140,8 +140,8 @@ public class WxLocation extends WxLive {
         try {
             IntentopenLocation(OBJECT, new function() {
                 @Override
-                public JsObject invoke(JsObject... arguments) {
-                    Dict res = new Dict();
+                public JsObject_ invoke(JsObject_... arguments) {
+                    JsObject res = new JsObject();
 //                    res.errMsg = String.valueOf(R.string.wx_openLocation_success);//((OBJECT) result).get("errMsg").toString();
                     if (success != null) {
                         success.invoke(res);
@@ -205,7 +205,7 @@ public class WxLocation extends WxLive {
 
     public void ACTION1Openlocation(int resultCode, final Intent data) {
         if (resultCode == 1111) {
-            mapCallback.invoke(new Dict() {{
+            mapCallback.invoke(new JsObject() {{
                 //  put("errMsg", data.getStringExtra("errMsg"));
             }});
         }

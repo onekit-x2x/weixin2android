@@ -19,15 +19,15 @@ public class onekit_page_component_index extends WeixinPage {
             {
                 put("onShow", new function() {
 
-                    public JsObject invoke(JsObject... arguments) {
-                        wx.reportAnalytics("enter_home_programmatically", new Dict());
+                    public JsObject_ invoke(JsObject_... arguments) {
+                        wx.reportAnalytics("enter_home_programmatically", new JsObject());
                         return null;
                     }
                 });
                 put("onShareAppMessage", new function() {
 
-                    public JsObject invoke(JsObject... arguments) {
-                        return new Dict() {{
+                    public JsObject_ invoke(JsObject_... arguments) {
+                        return new JsObject() {{
                             put("title", "小程序官方组件展示");
                             put("path", "page/component/index");
                         }};
@@ -35,16 +35,16 @@ public class onekit_page_component_index extends WeixinPage {
                 });
 
 
-                put("data", new Dict() {
+                put("data", new JsObject() {
                     {
-                        put("list", new Array() {
+                        put("list", new JsArray() {
                             {
-                                add(new Dict() {
+                                add(new JsObject() {
                                     {
                                         put("id", "view");
                                         put("name", "视图容器");
                                         put("open", true);
-                                        put("pages", new Array() {{
+                                        put("pages", new JsArray() {{
                                                     add("view");
                                          add("scroll-view");
                                                    /*      add("swiper");
@@ -156,10 +156,10 @@ public class onekit_page_component_index extends WeixinPage {
                 });
                 put("kindToggle", new function() {
 
-                    public JsObject invoke(JsObject... arguments) {
+                    public JsObject_ invoke(JsObject_... arguments) {
                         Event e = (Event) arguments[0];
                         final String id = e.getCurrentTarget().getID();
-                        final Array list = THIS.get("data").get("list");
+                        final JsArray list = THIS.get("data").get("list");
                         for (int i = 0, len = list.getLength(); i < len; ++i) {
                             if (list.get(i).get("id").stringValue().equals(id)) {
                                 list.get(i).sot("open", !Onekit_JS.is(list.get(i).get("open")));
@@ -167,10 +167,10 @@ public class onekit_page_component_index extends WeixinPage {
                                 list.get(i).sot("open", false);
                             }
                         }
-                        THIS.setData(new Dict() {{
+                        THIS.setData(new JsObject() {{
                             put("list", list);
                         }});
-                        wx.reportAnalytics("click_view_programmatically", new Dict());
+                        wx.reportAnalytics("click_view_programmatically", new JsObject());
                         return null;
                     }
                 });
@@ -424,7 +424,7 @@ public class onekit_page_component_index extends WeixinPage {
     }
 
 
-    public void onekit_wxml(final ViewGroup ui, final JsObject data, final Vue vue) {
+    public void onekit_wxml(final ViewGroup ui, final JsObject_ data, final Vue vue) {
 
         View ui_0 = new View(ui.getContext());
         ui.addView(ui_0);
@@ -478,7 +478,7 @@ public class onekit_page_component_index extends WeixinPage {
                 //
                 vue.For(data.get("list"), "item.id", "index", "item", new ACTION1() {
                     @Override
-                    public void invoke(JsObject data) {
+                    public void invoke(JsObject_ data) {
 
                         View ui_0_1_0_0 = new View(ui.getContext());
                         ui_0_1_0.addView(ui_0_1_0_0);
@@ -520,7 +520,7 @@ public class onekit_page_component_index extends WeixinPage {
                                 ui_0_1_0_0_1_0.setClassName("navigator-box " + (Onekit_JS.is(data.get("item").get("open")) ? "navigator-box-show" : ""));
                                 vue.For(data.get("item").get("pages"), "*item", "index", "page", new ACTION1() {
                                     @Override
-                                    public void invoke(JsObject data) {
+                                    public void invoke(JsObject_ data) {
 
                                         Navigator ui_0_1_0_0_1_0_0 = new Navigator(ui.getContext());
                                         ui_0_1_0_0_1_0.addView(ui_0_1_0_0_1_0_0);

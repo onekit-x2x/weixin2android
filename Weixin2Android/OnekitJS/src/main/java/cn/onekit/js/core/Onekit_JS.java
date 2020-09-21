@@ -6,11 +6,11 @@ import java.math.BigInteger;
 
 import cn.onekit.js.JsBoolean;
 import cn.onekit.js.JsNumber;
-import cn.onekit.js.JsObject;
+import cn.onekit.js.JsObject_;
 import cn.onekit.js.JsString;
 import thekit.android.Android;
 import cn.onekit.OneKit;
-import cn.onekit.js.Array;
+import cn.onekit.js.JsArray;
 import cn.onekit.js.Error;
 import cn.onekit.js.Null;
 
@@ -20,8 +20,8 @@ public class Onekit_JS {
      }*/
 
 
-    public static Array string2Array(String aString) {
-        Array result = new Array();
+    public static JsArray string2Array(String aString) {
+        JsArray result = new JsArray();
         for (char chr : aString.toCharArray()) {
             String str = String.valueOf(chr);
             result.add(new JsString(str));
@@ -103,7 +103,7 @@ public class Onekit_JS {
         }
     }
 
-    public static boolean isNumber(JsObject v) {
+    public static boolean isNumber(JsObject_ v) {
         /*if (v == null) {
             return false;
         }
@@ -175,7 +175,7 @@ public class Onekit_JS {
         }
     }
 
-    public static Number number(JsObject value, Object nullValue, Object nanValue) {
+    public static Number number(JsObject_ value, Object nullValue, Object nanValue) {
         if (value == null) {
             return (Number) nullValue;
         }
@@ -245,7 +245,7 @@ public class Onekit_JS {
         return result;
     }
 
-    public static void number2bytes(byte[] data, String name, int size, int byteOffset, JsObject v) {
+    public static void number2bytes(byte[] data, String name, int size, int byteOffset, JsObject_ v) {
         Number value = ((JsNumber) v).THIS;
         long number;
         switch (name) {
@@ -314,7 +314,7 @@ public class Onekit_JS {
         return true;
     }
 
-    public static JsObject or(JsObject object1, JsObject object2) {
+    public static JsObject_ or(JsObject_ object1, JsObject_ object2) {
         return object1 != null ? object1 : object2;
     }
 /*
@@ -339,22 +339,22 @@ public class Onekit_JS {
         }
     }
 
-    public static JsObject plus(JsObject a, JsObject b) {
+    public static JsObject_ plus(JsObject_ a, JsObject_ b) {
         if (Onekit_JS.isNumber(a) && Onekit_JS.isNumber(b)) {
             return new JsNumber(((JsNumber) a).THIS.doubleValue() + ((JsNumber) b).THIS.doubleValue());
         } else {
             return new JsString(a.toString() + b.toString());
         }
     }
-    public static JsObject subtract(JsObject a, JsObject b) {
+    public static JsObject_ subtract(JsObject_ a, JsObject_ b) {
             return new JsNumber(((JsNumber) a).THIS.doubleValue() - ((JsNumber) b).THIS.doubleValue());
 
     }
-    public static JsObject multiply(JsObject a, JsObject b) {
+    public static JsObject_ multiply(JsObject_ a, JsObject_ b) {
         return new JsNumber(((JsNumber) a).THIS.doubleValue() * ((JsNumber) b).THIS.doubleValue());
 
     }
-    public static JsObject divide(JsObject a, JsObject b) {
+    public static JsObject_ divide(JsObject_ a, JsObject_ b) {
         return new JsNumber(((JsNumber) a).THIS.doubleValue() / ((JsNumber) b).THIS.doubleValue());
 
     }

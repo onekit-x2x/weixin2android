@@ -5,25 +5,25 @@ import android.app.Application;
 import thekit.android.Android;
 import cn.onekit.OneKit;
 import cn.onekit.css.core.OnekitCSS;
-import cn.onekit.js.Dict;
-import cn.onekit.js.JsString;
 import cn.onekit.js.JsObject;
+import cn.onekit.js.JsString;
+import cn.onekit.js.JsObject_;
 import cn.onekit.weixin.WX;
 
-public abstract class WeixinApplication extends Application implements WeixinFile,JsObject {
+public abstract class WeixinApplication extends Application implements WeixinFile, JsObject_ {
 
     public WeixinApplication(){
         super();
     }
-    public Dict THIS;
-    public void set(JsObject key,JsObject value){
+    public JsObject THIS;
+    public void set(JsObject_ key, JsObject_ value){
         THIS.set(key,value);
     }
    /* public JsObject get(JsObject key){
         return OnekitJS.object2value(THIS.get(key));
     }*/
 
-    protected void App(Dict OBJECT) {
+    protected void App(JsObject OBJECT) {
         THIS = OBJECT;
     }
 
@@ -42,7 +42,7 @@ public abstract class WeixinApplication extends Application implements WeixinFil
    protected abstract   void onekit_js();
 
     @Override
-    public JsObject get(JsObject key) {
+    public JsObject_ get(JsObject_ key) {
         return THIS.get(key);
     }
 
@@ -52,12 +52,12 @@ public abstract class WeixinApplication extends Application implements WeixinFil
     }
 
     @Override
-    public String toLocaleString(JsString locales, JsObject options) {
+    public String toLocaleString(JsString locales, JsObject_ options) {
         return null;
     }
 
     @Override
-    public JsObject invoke(JsObject... params) {
+    public JsObject_ invoke(JsObject_... params) {
         return null;
     }
 }

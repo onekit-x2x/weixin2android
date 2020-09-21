@@ -7,7 +7,7 @@ import android.content.Context;
 import java.util.Map;
 
 import thekit.android.Android;
-import cn.onekit.js.Dict;
+import cn.onekit.js.JsObject;
 import cn.onekit.js.core.function;
 import cn.onekit.weixin.app.R;
 import cn.onekit.weixin.core.res.wx_fail;
@@ -26,7 +26,7 @@ public class WxClipboard extends WxCard {
             ClipData mClipData = ClipData.newPlainText(null, data);
             // 将ClipData内容放到系统剪贴板里。
             cm.setPrimaryClip(mClipData);
-            Dict res = new Dict();//Android.context.getResources().getString(R.string.wx_setClipboardData_success));
+            JsObject res = new JsObject();//Android.context.getResources().getString(R.string.wx_setClipboardData_success));
 //            res.errMsg = Android.context.getResources().getString(R.string.wx_setClipboardData_success);
             if (success != null) {
                 success.invoke(res);
@@ -52,7 +52,7 @@ public class WxClipboard extends WxCard {
         function complete = OBJECT.get("complete") != null ? (function) OBJECT.get("complete") : null;
         function fail = OBJECT.get("fail") != null ? (function) OBJECT.get("fail") : null;
         try {
-            Dict res = new Dict();//(cm.getPrimaryClip().getItemAt(0).getText().toString());
+            JsObject res = new JsObject();//(cm.getPrimaryClip().getItemAt(0).getText().toString());
 //            res.data = cm.getPrimaryClip().getItemAt(0).getText().toString();
 //            res.errMsg = Android.context.getResources().getString(R.string.wx_getClipboardData_success);
             if (success != null) {

@@ -2,18 +2,18 @@ package cn.onekit.js.core;
 
 import java.lang.reflect.Method;
 
-import cn.onekit.js.JsObject;
+import cn.onekit.js.JsObject_;
 import cn.onekit.js.JsString;
 
-public  class function implements JsObject {
-     JsObject obj;
+public  class function implements JsObject_ {
+     JsObject_ obj;
      Method method;
-     public JsObject thisArg;
+     public JsObject_ thisArg;
      public function(){
 
      }
 
-     public function(Class clazz, String methodName, Class< JsObject>... types) {
+     public function(Class clazz, String methodName, Class<JsObject_>... types) {
           try {
                method = clazz.getMethod(methodName,types);
           } catch (NoSuchMethodException e) {
@@ -21,13 +21,13 @@ public  class function implements JsObject {
           }
      }
 
-     public function(JsObject obj, String methodName, Class< JsObject>... types) {
+     public function(JsObject_ obj, String methodName, Class<JsObject_>... types) {
           this(obj.getClass(), methodName,types);
           this.obj = obj;
      }
-     public JsObject invoke(Object... arguments) {
+     public JsObject_ invoke(Object... arguments) {
           try{
-               return (JsObject) method.invoke(obj, arguments);
+               return (JsObject_) method.invoke(obj, arguments);
           } catch (Exception e) {
                e.printStackTrace();
                return null;
@@ -35,22 +35,22 @@ public  class function implements JsObject {
      }
 
      @Override
-     public JsObject get(String key) {
+     public JsObject_ get(String key) {
           return null;
      }
 
      @Override
-     public JsObject get(JsObject key) {
+     public JsObject_ get(JsObject_ key) {
           return null;
      }
 
      @Override
-     public void set(String key, JsObject value) {
+     public void set(String key, JsObject_ value) {
 
      }
 
      @Override
-     public void set(JsObject key, JsObject value) {
+     public void set(JsObject_ key, JsObject_ value) {
 
      }
 
@@ -60,7 +60,7 @@ public  class function implements JsObject {
      }
 
      @Override
-     public String toLocaleString(JsString locales, JsObject options) {
+     public String toLocaleString(JsString locales, JsObject_ options) {
           return null;
      }
 }

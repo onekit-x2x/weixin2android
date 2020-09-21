@@ -5,19 +5,19 @@ import java.util.List;
 import java.util.Map;
 
 import thekit.COLOR;
-import cn.onekit.js.Array;
-import cn.onekit.js.Dict;
+import cn.onekit.js.JsArray;
+import cn.onekit.js.JsObject;
 import cn.onekit.js.JsNumber;
 import cn.onekit.js.JsString;
 
 public class WxAnimation extends WxAnalytics {
     class AnimationInfo {
         String type;
-        Array values;
+        JsArray values;
 
         public AnimationInfo(String type, Float[] values) {
             this.type = type;
-            this.values = new Array();
+            this.values = new JsArray();
             for(Float value:values){
                 this.values.add(new JsNumber(value));
             }
@@ -185,23 +185,23 @@ public class WxAnimation extends WxAnalytics {
         _buffer.clear();
     }
 
-    public Dict export() {
-        final Array actions = new Array();
+    public JsObject export() {
+        final JsArray actions = new JsArray();
         for (AnimationInfoSet animationInfoSet : _animations) {
-            final Dict action = new Dict();
+            final JsObject action = new JsObject();
             //定义集合
-            final Array animates = new Array();
+            final JsArray animates = new JsArray();
             for (AnimationInfo animationInfo : animationInfoSet.animationInfos) {
-                final Dict animate = new Dict();
+                final JsObject animate = new JsObject();
                 animate.put("type", new JsString(animationInfo.type));
                 animate.put("args",  animationInfo.values);
                 animates.add(animate);
             }
             action.put("animates", animates);
             //
-            final Dict option = new Dict();
+            final JsObject option = new JsObject();
             option.put("transformOrigin", new JsString( transformOrigin));
-            option.put("transition", new Dict() {{
+            option.put("transition", new JsObject() {{
                 put("duration", new JsNumber(duration));
                 put("timingFunction", new JsString(timingFunction));
                 put("delay", new JsNumber(delay));
@@ -213,7 +213,7 @@ public class WxAnimation extends WxAnalytics {
         //
         _animations.clear();
         //
-        return new Dict() {{
+        return new JsObject() {{
             put("actions", actions);
         }};
 

@@ -12,7 +12,7 @@ import cn.onekit.weixin.app.core.*;
 public class onekit_pages_index_index extends WeixinPage {
 
     @Override
-    public void onekit_wxml(ViewGroup ui, JsObject data, Vue vue) {
+    public void onekit_wxml(ViewGroup ui, JsObject_ data, Vue vue) {
         View ui_0 = new View(ui.getContext());
         ui.addView(ui_0);
         ui_0.setClassName("container");
@@ -74,35 +74,35 @@ public class onekit_pages_index_index extends WeixinPage {
         }
     }
 
-     JsObject app;
+     JsObject_ app;
     @Override
     public void onekit_js() {
         app = getApp();
-        Page(new Dict(){{
-            put("data",new Dict(){{
+        Page(new JsObject(){{
+            put("data",new JsObject(){{
                 put("motto",new JsString("Hello World"));
-                put("userInfo",new Dict(){{
+                put("userInfo",new JsObject(){{
                 }});
                 put("hasUserInfo",new JsBoolean(false));
                 put("canIUse",wx.canIUse(new JsString("button.open-type.getUserInfo")));
             }});
-            put("bindViewTap",new function(){ public JsObject invoke(JsObject... arguments){
-                wx.navigateTo(new Dict(){{
+            put("bindViewTap",new function(){ public JsObject_ invoke(JsObject_... arguments){
+                wx.navigateTo(new JsObject(){{
                     put("url",new JsString("../logs/logs"));
                 }});
                 return null;
             }});
-            put("onLoad",new function(){ public JsObject invoke(JsObject... arguments){
+            put("onLoad",new function(){ public JsObject_ invoke(JsObject_... arguments){
                 if(Onekit_JS.is(app.get("globalData").get("userInfo"))){
-                    onekit.get("setData").invoke(new Dict(){{
+                    onekit.get("setData").invoke(new JsObject(){{
                         put("userInfo",app.get("globalData").get("userInfo"));
                         put("hasUserInfo",new JsBoolean(true));
                     }});
                 }
                 else if(Onekit_JS.is(onekit.get("data").get("canIUse"))){
-                    app.set( "userInfoReadyCallback", new function(){ public JsObject invoke(JsObject... arguments){
-                        final JsObject res = arguments[0];
-                        onekit.get("setData").invoke(new Dict(){{
+                    app.set( "userInfoReadyCallback", new function(){ public JsObject_ invoke(JsObject_... arguments){
+                        final JsObject_ res = arguments[0];
+                        onekit.get("setData").invoke(new JsObject(){{
                             put("userInfo",res.get("userInfo"));
                             put("hasUserInfo",new JsBoolean(true));
                         }});
@@ -110,11 +110,11 @@ public class onekit_pages_index_index extends WeixinPage {
                     }});
                 }
                 else {
-                    wx.getUserInfo(new Dict(){{
-                        put("success",new function(){ public JsObject invoke(JsObject... arguments){
-                            final JsObject res = arguments[0];
+                    wx.getUserInfo(new JsObject(){{
+                        put("success",new function(){ public JsObject_ invoke(JsObject_... arguments){
+                            final JsObject_ res = arguments[0];
                             app.get("globalData").set( "userInfo", res.get("userInfo"));
-                            onekit.get("setData").invoke(new Dict(){{
+                            onekit.get("setData").invoke(new JsObject(){{
                                 put("userInfo",res.get("userInfo"));
                                 put("hasUserInfo",new JsBoolean(true));
                             }});
@@ -124,11 +124,11 @@ public class onekit_pages_index_index extends WeixinPage {
                 };
                 return null;
             }});
-            put("getUserInfo",new function(){ public JsObject invoke(JsObject... arguments){
-                final JsObject e = arguments[0];
+            put("getUserInfo",new function(){ public JsObject_ invoke(JsObject_... arguments){
+                final JsObject_ e = arguments[0];
                 console.get("log").invoke(e);
                 app.get("globalData").set( "userInfo", e.get("detail").get("userInfo"));
-                onekit.get("setData").invoke(new Dict(){{
+                onekit.get("setData").invoke(new JsObject(){{
                     put("userInfo",e.get("detail").get("userInfo"));
                     put("hasUserInfo",new JsBoolean(true));
                 }});

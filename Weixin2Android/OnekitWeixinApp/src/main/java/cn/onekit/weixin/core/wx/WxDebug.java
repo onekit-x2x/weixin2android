@@ -5,7 +5,7 @@ import android.provider.Settings;
 import java.util.Map;
 
 import thekit.android.Android;
-import cn.onekit.js.Dict;
+import cn.onekit.js.JsObject;
 import cn.onekit.js.core.function;
 import cn.onekit.weixin.app.R;
 import cn.onekit.weixin.core.res.wx_fail;
@@ -22,7 +22,7 @@ public class WxDebug extends WxCompass {
             }else {
                 Settings.Secure.putInt(application.getContentResolver(), Settings.Secure.ADB_ENABLED, 0);
             }
-            Dict res = new Dict();
+            JsObject res = new JsObject();
             if (success != null) {
                 success.invoke(res);
             }

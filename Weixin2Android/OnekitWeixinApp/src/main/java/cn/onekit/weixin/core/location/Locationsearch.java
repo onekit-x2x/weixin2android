@@ -18,8 +18,8 @@ import android.widget.TextView;
 
 import java.io.IOException;
 
-import cn.onekit.js.Array;
-import cn.onekit.js.Dict;
+import cn.onekit.js.JsArray;
+import cn.onekit.js.JsObject;
 import cn.onekit.js.JSON;
 import cn.onekit.js.JsNumber;
 import cn.onekit.js.JsString;
@@ -40,7 +40,7 @@ public class Locationsearch extends Activity {
     private String edittext;
     private Double latitude;
     private Double longitude;
-    private Array locations;
+    private JsArray locations;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -100,9 +100,9 @@ public class Locationsearch extends Activity {
         @Override
         protected void onPostExecute(String s) {
 
-            Dict json = (Dict) JSON.parse(s);
+            JsObject json = (JsObject) JSON.parse(s);
 //            locations = json.getArray("data");
-            locations = (Array) json.get("data");
+            locations = (JsArray) json.get("data");
             location_search_listview.setAdapter(new BaseAdapter() {
                 @Override
                 public int getCount() {
@@ -131,7 +131,7 @@ public class Locationsearch extends Activity {
                         holder = (ViewHolder) view.getTag();
                     }
 //                    Dict location = locations.getObject(i);
-                    Dict location = (Dict) locations.get(i);
+                    JsObject location = (JsObject) locations.get(i);
                     holder.text_name.setText(((JsString) location.get("title")).THIS);
                     holder.text_address.setText(((JsString) location.get("address")).THIS);
                     holder.image.setVisibility(View.GONE);
@@ -144,8 +144,8 @@ public class Locationsearch extends Activity {
                 public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 //                    Dict location = locations.getObject(i);
 //                    Dict s = location.getObject("location");
-                    Dict location = (Dict) locations.get(i);
-                    Dict s = (Dict) location.get("location");
+                    JsObject location = (JsObject) locations.get(i);
+                    JsObject s = (JsObject) location.get("location");
                     Intent intent = new Intent();
                     intent.putExtra("lat", ((JsNumber)s.get("lat")).THIS);
                     intent.putExtra("lng", ((JsNumber)s.get("lng")).THIS);

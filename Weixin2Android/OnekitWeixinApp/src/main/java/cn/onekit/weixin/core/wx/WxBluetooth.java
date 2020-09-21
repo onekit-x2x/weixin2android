@@ -21,11 +21,11 @@ import java.util.List;
 import java.util.Map;
 
 import thekit.android.Android;
-import cn.onekit.js.Array;
-import cn.onekit.js.Dict;
+import cn.onekit.js.JsArray;
+import cn.onekit.js.JsObject;
 import cn.onekit.js.JsNumber;
 import cn.onekit.js.JsString;
-import cn.onekit.js.JsObject;
+import cn.onekit.js.JsObject_;
 import cn.onekit.js.core.function;
 import cn.onekit.weixin.app.R;
 import cn.onekit.weixin.core.res.wx_fail;
@@ -33,7 +33,7 @@ import cn.onekit.weixin.core.res.wx_fail;
 public class WxBluetooth extends WxBLE {
     private function _onBluetoothAdapterStateChange;
     private function _onBluetoothDeviceFound;
-    Array _objects=new Array() ;
+    JsArray _objects=new JsArray() ;
     protected Map<String,BluetoothDevice> _devices = new HashMap();
     private BluetoothAdapter _bluetoothAdapter;
 
@@ -46,7 +46,7 @@ public class WxBluetooth extends WxBLE {
                 (BluetoothManager) Android.context.getSystemService(Context.BLUETOOTH_SERVICE);
         _bluetoothAdapter = bluetoothManager.getAdapter();
         if (_bluetoothAdapter != null) {
-            Dict result = new Dict();
+            JsObject result = new JsObject();
             if (success != null) {
                 success.invoke(result);
             }
@@ -76,8 +76,8 @@ public class WxBluetooth extends WxBLE {
     }
 
     @SuppressLint("MissingPermission")
-    Dict _device2object(final BluetoothDevice device, final int rssi,byte[] scanRecord) {
-        return new Dict() {{
+    JsObject _device2object(final BluetoothDevice device, final int rssi, byte[] scanRecord) {
+        return new JsObject() {{
             put("name", new JsString(device.getName()));
             put("deviceId", new JsString(device.getAddress()));
             put("RSSI", new JsNumber(rssi));
@@ -103,7 +103,7 @@ public class WxBluetooth extends WxBLE {
         function success = obj != null && obj.containsKey("success") ? (function) obj.get("success") : null;
         function fail = obj != null && obj.containsKey("fail") ? (function) obj.get("fail") : null;
         function complete = obj != null && obj.containsKey("complete") ? (function) obj.get("complete") : null;
-        Array services = obj != null && obj.containsKey("services") ? (Array) obj.get("services") : null;
+        JsArray services = obj != null && obj.containsKey("services") ? (JsArray) obj.get("services") : null;
         final boolean allowDuplicatesKey = obj != null && obj.containsKey("allowDuplicatesKey") ? (boolean) obj.get("allowDuplicatesKey") : false;
         //
         _objects.clear();
@@ -119,10 +119,10 @@ public class WxBluetooth extends WxBLE {
                 //
                 _devices.put(deviceId,device);
                 //
-                Dict dvc = _device2object(device, result.getRssi(), result.getScanRecord().getBytes());
+                JsObject dvc = _device2object(device, result.getRssi(), result.getScanRecord().getBytes());
                 Integer index=null;
                 for(int i=0;i<_objects.size();i++){
-                    Dict item = (Dict)_objects.get(i);
+                    JsObject item = (JsObject)_objects.get(i);
                     if(item.get("deviceId").equals(deviceId)){
                         index=i;
                         break;
@@ -135,7 +135,7 @@ public class WxBluetooth extends WxBLE {
                 }
 
                 if(_onBluetoothDeviceFound!=null){
-                    _onBluetoothDeviceFound.invoke(new Dict(){{
+                    _onBluetoothDeviceFound.invoke(new JsObject(){{
                         put("devices",_objects);
                     }});
                 }
@@ -146,7 +146,7 @@ public class WxBluetooth extends WxBLE {
         if (services != null) {
             List<ScanFilter> filters = new ArrayList();
             int i=0;
-            for(JsObject service : services ){
+            for(JsObject_ service : services ){
                 ScanFilter filter =  new ScanFilter.Builder().setServiceUuid(ParcelUuid.fromString(((JsString)service).THIS)).build();
                 filters.add(filter);
             }
@@ -166,7 +166,7 @@ public class WxBluetooth extends WxBLE {
         function complete = obj!=null && obj.containsKey("complete")?(function)obj.get("complete"):null;
         //
         _bluetoothAdapter.getBluetoothLeScanner().stopScan(_scanCallback);
-        if(success!=null){success.invoke(new Dict());}
+        if(success!=null){success.invoke(new JsObject());}
     }
 
     public void getConnectedBluetoothDevices(Map obj) {
@@ -186,7 +186,7 @@ public class WxBluetooth extends WxBLE {
         function complete = obj!=null && obj.containsKey("complete")?(function)obj.get("complete"):null;
         //
         if(success!=null){
-            success.invoke(new Dict(){{
+            success.invoke(new JsObject(){{
                 put("devices",_objects);
             }});
         }

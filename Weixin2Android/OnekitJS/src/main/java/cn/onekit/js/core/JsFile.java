@@ -15,13 +15,13 @@ import java.util.TimerTask;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import cn.onekit.js.Array;
+import cn.onekit.js.JsArray;
 import cn.onekit.js.Console;
-import cn.onekit.js.Dict;
+import cn.onekit.js.JsObject;
 import cn.onekit.js.Error;
 import cn.onekit.js.JsBoolean;
 import cn.onekit.js.JsNumber;
-import cn.onekit.js.JsObject;
+import cn.onekit.js.JsObject_;
 import cn.onekit.js.JsString;
 import cn.onekit.js.Map;
 import cn.onekit.js.Null;
@@ -50,14 +50,14 @@ public interface JsFile {
         HashMap<String,function> prototypes = allOverrides.get(hashCode());
         prototypes.put(String.format("%s.%s",clazz,method),function);
     }
-    default function getPrototype(String clazz, String method, JsObject THIS){
+    default function getPrototype(String clazz, String method, JsObject_ THIS){
         function function =  allPrototypes.get(hashCode()).get(String.format("%s.%s",clazz,method));
         function.thisArg = THIS;
         return function;
     }
     /////////////////////////////////////
-    default String onekit_$(String format, Dict args) {
-        for (Dict.Entry entry : args.entrySet()) {
+    default String onekit_$(String format, JsObject args) {
+        for (JsObject.Entry entry : args.entrySet()) {
             String str = String.format("${%s}", entry.getKey());
             format = format.replace(str, Onekit_JS.toString(entry.getValue()));
         }
@@ -66,7 +66,7 @@ public interface JsFile {
 
     ////////////////////////////////////
 
-    default String typeof(JsObject obj) {
+    default String typeof(JsObject_ obj) {
         if (obj == null) {
             return "undefined";
         }
@@ -76,32 +76,32 @@ public interface JsFile {
         return obj.getClass().getSimpleName();
     }
 
-    JsObject NaN = JsNumber.NaN;
-    JsObject undefined = null;
-    JsObject Infinity = JsNumber.POSITIVE_INFINITY;
-    JsObject Null = new Null();
+    JsObject_ NaN = JsNumber.NaN;
+    JsObject_ undefined = null;
+    JsObject_ Infinity = JsNumber.POSITIVE_INFINITY;
+    JsObject_ Null = new Null();
 
     /////////////////////////////////////
-    default JsObject Number(JsObject value) {
+    default JsObject_ Number(JsObject_ value) {
         return JsNumber.Number(value);
     }
 
-    default JsObject Boolean(JsObject value) {
+    default JsObject_ Boolean(JsObject_ value) {
         return new JsBoolean(value);
     }
 
-    default Error Error(JsObject message) {
+    default Error Error(JsObject_ message) {
         return new Error(message);
     }
 
-    default  Array Array(JsObject length) {
-        return new Array(length);
+    default JsArray Array(JsObject_ length) {
+        return new JsArray(length);
     }
 
-    default  Map Map(Array map) {
+    default  Map Map(JsArray map) {
         Map result = new Map();
-        for (JsObject temp : map) {
-            Array item  = (Array) temp;
+        for (JsObject_ temp : map) {
+            JsArray item  = (JsArray) temp;
             result.set(item.get(0), item.get(1));
         }
         return result;
@@ -173,12 +173,12 @@ public interface JsFile {
         return result.toString();
     }
 
-    default JsObject isFinite(JsObject testValue) {
+    default JsObject_ isFinite(JsObject_ testValue) {
         return JsNumber.isFinite(testValue);
 
     }
 
-    default JsObject isNaN(JsObject v) {
+    default JsObject_ isNaN(JsObject_ v) {
         return JsNumber.isNaN(v);
 /*
         if (v == null) {
@@ -218,7 +218,7 @@ public interface JsFile {
         return !OnekitJS.isNumber(value);*/
     }
 
-    default Double parseFloat(JsObject aString) {
+    default Double parseFloat(JsObject_ aString) {
         try {
             Pattern pattern = Pattern.compile("^[+-]?[\\d]+([.][\\d]*)?([Ee][+-]?[\\d]+)?$");
             Matcher matcher = pattern.matcher(aString.toString().trim());
@@ -241,7 +241,7 @@ public interface JsFile {
         }
     }
 
-    default  JsObject parseInt(JsObject aString, JsObject radix) {
+    default JsObject_ parseInt(JsObject_ aString, JsObject_ radix) {
         try {
             int flag;
             if (radix == null || !Onekit_JS.isNumber(radix)) {
@@ -304,7 +304,7 @@ public interface JsFile {
     /////////////////////////////////////
 
 
-    default Class getClass(JsObject obj) {
+    default Class getClass(JsObject_ obj) {
         return obj.getClass();
     }
 
@@ -318,7 +318,7 @@ public interface JsFile {
     }
 
 
-    default String String(String aString, JsObject... vars) {
+    default String String(String aString, JsObject_... vars) {
         return aString;
     }
 
@@ -329,7 +329,7 @@ public interface JsFile {
 
     ///////////////////////////
 
-    default Symbol Symbol(JsObject description) {
+    default Symbol Symbol(JsObject_ description) {
         return new Symbol(description);
     }
     default Symbol Symbol() {
@@ -341,7 +341,7 @@ public interface JsFile {
     @SuppressLint("UseSparseArrays")
     HashMap<Long, cn.onekit.js.core.function> _timeouts = new HashMap();
 
-    default long setTimeout(JsObject function, JsObject delay, JsObject... params) {
+    default long setTimeout(JsObject_ function, JsObject_ delay, JsObject_... params) {
 
         long id = new Random().nextLong();
         @SuppressLint("HandlerLeak")
@@ -359,7 +359,7 @@ public interface JsFile {
 
     }
 
-    default long setTimeout(JsObject function) {
+    default long setTimeout(JsObject_ function) {
         return setTimeout(function, new JsNumber(0));
     }
 
@@ -374,7 +374,7 @@ public interface JsFile {
     //////////////////////////////////////////////
     HashMap<Long, Timer> _intervals = new HashMap();
 
-    default long setInterval(JsObject function, JsObject delay, JsObject... params) {
+    default long setInterval(JsObject_ function, JsObject_ delay, JsObject_... params) {
         final Handler handler = new Handler() {
             @Override
             public void handleMessage(Message msg) {

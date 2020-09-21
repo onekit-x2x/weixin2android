@@ -2,43 +2,43 @@ package cn.onekit.js;
 
 public class Reflect  {
     ////////////////////////
-    public static JsObject apply(Dict target, Dict thisArgument, Dict argumentsList){
+    public static JsObject_ apply(JsObject target, JsObject thisArgument, JsObject argumentsList){
         return null;
     }
-    public static JsObject construct(Dict target, Dict argumentsList, Dict newTarget ){
+    public static JsObject_ construct(JsObject target, JsObject argumentsList, JsObject newTarget ){
         return null;
     }
-    public static boolean defineProperty(Dict target, String  propertyKey, String attributes){
+    public static boolean defineProperty(JsObject target, String  propertyKey, String attributes){
         return true;
     }
-    public static boolean deleteProperty(Dict target, String  propertyKey){
+    public static boolean deleteProperty(JsObject target, String  propertyKey){
         return true;
     }
-    public static JsObject get(Dict target, String  propertyKey, Dict receiver){
+    public static JsObject_ get(JsObject target, String  propertyKey, JsObject receiver){
         return null;
     }
-    public static JsObject getOwnPropertyDescriptor(Dict target, String propertyKey){
+    public static JsObject_ getOwnPropertyDescriptor(JsObject target, String propertyKey){
         return null;
     }
-    public static JsObject getPrototypeOf(Dict target){
+    public static JsObject_ getPrototypeOf(JsObject target){
         return null;
     }
-    public static boolean has(Dict target, String propertyKey){
+    public static boolean has(JsObject target, String propertyKey){
         return true;
     }
-    public static boolean isExtensible(Dict target){
+    public static boolean isExtensible(JsObject target){
         return true;
     }
-    public static Dict ownKeys(Dict target){
+    public static JsObject ownKeys(JsObject target){
         return  null;
     }
-    public static boolean preventExtensions(Dict target){
+    public static boolean preventExtensions(JsObject target){
         return true;
     }
-    public static boolean set(Dict target, String propertyKey, String value, Dict receiver){
+    public static boolean set(JsObject target, String propertyKey, String value, JsObject receiver){
         return true;
     }
-    public static boolean setPrototypeOf(Dict target, Dict prototype){
+    public static boolean setPrototypeOf(JsObject target, JsObject prototype){
         return true;
     }
 

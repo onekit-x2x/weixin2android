@@ -1,6 +1,6 @@
 package cn.onekit.js;
 
-public class WeakMap implements JsObject {
+public class WeakMap implements JsObject_ {
 ///////////////////////
     public boolean delete(String key){
         return true;
@@ -8,27 +8,27 @@ public class WeakMap implements JsObject {
     public boolean has(String key){
         return true;
     }
-    public Dict set(JsObject key, Dict value){
+    public JsObject set(JsObject_ key, JsObject value){
         return null;
     }
 
     @Override
-    public JsObject get(String key) {
+    public JsObject_ get(String key) {
         return null;
     }
 
     @Override
-    public JsObject get(JsObject key) {
+    public JsObject_ get(JsObject_ key) {
         return null;
     }
 
     @Override
-    public void set(String key, JsObject value) {
+    public void set(String key, JsObject_ value) {
 
     }
 
     @Override
-    public void set(JsObject key, JsObject value) {
+    public void set(JsObject_ key, JsObject_ value) {
 
     }
 
@@ -38,12 +38,12 @@ public class WeakMap implements JsObject {
     }
 
     @Override
-    public String toLocaleString(JsString locales, JsObject options) {
+    public String toLocaleString(JsString locales, JsObject_ options) {
         return null;
     }
 
     @Override
-    public JsObject invoke(JsObject... params) {
+    public JsObject_ invoke(JsObject_... params) {
         return null;
     }
 }

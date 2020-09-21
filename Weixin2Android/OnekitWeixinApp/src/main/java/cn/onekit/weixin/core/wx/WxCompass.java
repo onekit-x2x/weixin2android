@@ -8,7 +8,7 @@ import android.hardware.SensorManager;
 import java.util.Map;
 
 import thekit.android.Android;
-import cn.onekit.js.Dict;
+import cn.onekit.js.JsObject;
 import cn.onekit.js.core.function;
 import cn.onekit.weixin.app.R;
 import cn.onekit.weixin.core.res.wx_fail;
@@ -35,7 +35,7 @@ public class WxCompass extends WxClipboard {
                 @Override
                 public void onSensorChanged(final SensorEvent event) {
                     if (event.sensor.getType() == Sensor.TYPE_ORIENTATION) {
-                        Dict res = new Dict();
+                        JsObject res = new JsObject();
 //                        res.direction = event.values[0];
 //                        res.errMsg = Android.context.getResources().getString(R.string.wx_onCompassChange_success);
                         if (callback != null) {
@@ -50,7 +50,7 @@ public class WxCompass extends WxClipboard {
                 }
             };
             manager.registerListener(listener, manager.getDefaultSensor(Sensor.TYPE_ORIENTATION), SensorManager.SENSOR_DELAY_UI);
-            Dict res = new Dict();
+            JsObject res = new JsObject();
 //            res.errMsg = Android.context.getResources().getString(R.string.wx_startCompass_success);
             if (success != null) {
                 success.invoke(res);
@@ -77,7 +77,7 @@ public class WxCompass extends WxClipboard {
         function fail = OBJECT.get("fail") != null ? (function) OBJECT.get("fail") : null;
         try {
             manager.unregisterListener(listener);
-            Dict res = new Dict();
+            JsObject res = new JsObject();
 //            res.errMsg = Android.context.getResources().getString(R.string.wx_stopCompass_success);
             if (success != null) {
                 success.invoke(res);

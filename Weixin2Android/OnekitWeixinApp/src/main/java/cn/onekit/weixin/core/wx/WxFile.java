@@ -16,8 +16,8 @@ import java.util.Map;
 
 import thekit.android.Android;
 import cn.onekit.OneKit;
-import cn.onekit.js.Array;
-import cn.onekit.js.Dict;
+import cn.onekit.js.JsArray;
+import cn.onekit.js.JsObject;
 import cn.onekit.js.JsNumber;
 import cn.onekit.js.JsString;
 import cn.onekit.js.core.function;
@@ -63,7 +63,7 @@ public class WxFile extends WxExtConfig {
             }
             fStream.close();
             inStream.close();
-            Dict res = new Dict();
+            JsObject res = new JsObject();
 //            res.savedFilePath = OnekitWeixin.androidPath2storePath(file.getPath());
 //            res.errMsg = Android.context.getResources().getString(R.string.wx_saveFile_success);
             if (success != null)
@@ -127,8 +127,8 @@ public class WxFile extends WxExtConfig {
         try {
             java.io.File file = new java.io.File(Android.context.getExternalFilesDir(null).getPath());
             java.io.File[] files = file.listFiles();
-            Dict as = new Dict();
-            Array filelist = new Array();
+            JsObject as = new JsObject();
+            JsArray filelist = new JsArray();
             for (int i = 0; i < files.length; i++) {
                 String androidPath = files[i].getPath();
                 String wxStorePath = Onekit_Weixin.androidPath2storePath(androidPath);
@@ -139,7 +139,7 @@ public class WxFile extends WxExtConfig {
                 as.put("createTime",new JsNumber( createTime));
                 filelist.add(as);
             }
-            Dict res = new Dict();
+            JsObject res = new JsObject();
 //            res.fileList = filelist;
 //            res.errMsg = Android.context.getResources().getString(R.string.wx_getSavedFileList_success);
             if (success != null)
@@ -179,7 +179,7 @@ public class WxFile extends WxExtConfig {
                 complete.invoke(res);
             return;
         }
-        Dict res = new Dict();
+        JsObject res = new JsObject();
 //        res.errMsg = Android.context.getResources().getString(R.string.wx_getSavedFileInfo_success);
 //        res.size = Photo.getAutoFileSize(file);
 //        res.createTime = file.lastModified();
@@ -207,7 +207,7 @@ public class WxFile extends WxExtConfig {
             return;
         } else {
             file.delete();
-            Dict res = new Dict();
+            JsObject res = new JsObject();
 //            res.errMsg = Android.context.getResources().getString(R.string.wx_removeSavedFile_success);
             if (success != null)
                 success.invoke(res);
@@ -226,7 +226,7 @@ public class WxFile extends WxExtConfig {
         final String fileType = (OBJECT.get("fileType") != null) ? (String) OBJECT.get("fileType") : getMIMEType(file);
         try {
             openFile(file, fileType);
-            Dict res = new Dict();
+            JsObject res = new JsObject();
 //            res.errMsg = Android.context.getResources().getString(R.string.wx_openDocument_success);
             if (success != null)
                 success.invoke(res);
@@ -273,7 +273,7 @@ public class WxFile extends WxExtConfig {
                 digest = null;
                 break;
         }
-        Dict res = new Dict();
+        JsObject res = new JsObject();
 //        res.errMsg = Android.context.getResources().getString(R.string.wx_getFileInfo_success);
 //        res.size = Photo.getAutoFileSize(new File(OnekitWeixin.storePath2androidPath(filePath)));
 //        res.digest = digest;

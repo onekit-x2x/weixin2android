@@ -15,7 +15,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import cn.onekit.js.Dict;
+import cn.onekit.js.JsObject;
 import cn.onekit.js.JsNumber;
 import cn.onekit.w3c.Event;
 import cn.onekit.weixin.app.core.WeixinElement;
@@ -43,7 +43,7 @@ public class TextArea extends WeixinElement {
             if(visible != isVisiableForLast){
                 //_height = Util.px2dp(hight-displayHight-ztheight);
                 _height=px2dp((hight-displayHight-ztheight));
-                Event event = new Event("keyboardHeightChange",new Dict() {{
+                Event event = new Event("keyboardHeightChange",new JsObject() {{
 
                     put("height", new JsNumber(_height));
                     put("duration",new JsNumber(0));

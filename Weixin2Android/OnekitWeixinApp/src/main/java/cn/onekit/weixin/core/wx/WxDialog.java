@@ -19,7 +19,7 @@ import java.util.Map;
 import thekit.android.Android;
 import thekit.COLOR;
 import cn.onekit.js.JsBoolean;
-import cn.onekit.js.Dict;
+import cn.onekit.js.JsObject;
 import cn.onekit.js.JsString;
 import cn.onekit.js.core.Onekit_JS;
 import cn.onekit.js.core.function;
@@ -79,7 +79,7 @@ public class WxDialog extends WxDeviceMotion {
             wmParams.width = dm.widthPixels;
             wmParams.height = dm.heightPixels;
             wmManager.addView(the_loading_mask, wmParams);  //创建View
-            Dict res = new Dict();
+            JsObject res = new JsObject();
 //            res.errMsg = application.getResources().getString(R.string.wx_showLoading_success);
             if (success != null) {
                 success.invoke(res);
@@ -110,7 +110,7 @@ public class WxDialog extends WxDeviceMotion {
             WindowManager wmManager = (WindowManager) application.getSystemService(application.WINDOW_SERVICE);
             wmManager.removeView(the_loading_mask);
             the_loading_mask = null;
-            Dict res = new Dict();
+            JsObject res = new JsObject();
 //            res.errMsg = application.getResources().getString(R.string.wx_hideLoading_success);
             if (success != null) {
                 success.invoke(res);
@@ -137,7 +137,7 @@ public class WxDialog extends WxDeviceMotion {
         function fail = OBJECT.get("fail") != null ? (function) OBJECT.get("fail") : null;
         try {
           //  toast.cancel();
-            Dict res = new Dict();
+            JsObject res = new JsObject();
 //            res.errMsg = application.getResources().getString(R.string.wx_hideToast_success);
             if (success != null) {
                 success.invoke(res);
@@ -165,7 +165,7 @@ ImageView iconImageView(){
     return null;//view.findViewById(R.id.iconImageView);
 }
 View view;
-    public  void showToast(Dict OBJECT) {
+    public  void showToast(JsObject OBJECT) {
         String title = ((JsString) OBJECT.get("title")).THIS;
         String icon = OBJECT.get("icon") != null ? ((JsString) OBJECT.get("icon")).THIS.trim() : "success";
         final String image = OBJECT.get("image") != null ? ((JsString) OBJECT.get("image")).THIS.trim() : null;
@@ -195,7 +195,7 @@ View view;
           //  toast.setView(view);
 
             toast.show();
-            Dict res = new Dict();
+            JsObject res = new JsObject();
             if (success != null) {
                 success.invoke(res);
             }
@@ -242,7 +242,7 @@ View view;
                 builder.setPositiveButton(confirmText, new DialogInterface.OnClickListener() {// 添加确定按钮
                     @Override
                     public void onClick(DialogInterface dialog, int which) {// 确定按钮的响应事件
-                        Dict res = new Dict();
+                        JsObject res = new JsObject();
                         if (success != null) {
                             success.invoke(res);
                         }
@@ -255,7 +255,7 @@ View view;
                 builder.setPositiveButton(confirmText, new DialogInterface.OnClickListener() {// 添加确定按钮
                     @Override
                     public void onClick(DialogInterface dialog, int which) {// 确定按钮的响应事件
-                        Dict res = new Dict();
+                        JsObject res = new JsObject();
 //                        res.confirm = true;
 //                        res.cancel = false;
 //                        res.errMsg = application.getResources().getString(R.string.wx_showModal_success);
@@ -270,7 +270,7 @@ View view;
                 builder.setNegativeButton(cancelText, new DialogInterface.OnClickListener() {// 添加返回按钮
                     @Override
                     public void onClick(DialogInterface dialog, int which) {// 响应事件
-                        Dict res = new Dict();
+                        JsObject res = new JsObject();
 //                        res.confirm = false;
 //                        res.cancel = true;
 //                        res.errMsg = application.getResources().getString(R.string.wx_showModal_success);

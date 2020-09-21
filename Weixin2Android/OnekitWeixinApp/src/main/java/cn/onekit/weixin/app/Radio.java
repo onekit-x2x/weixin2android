@@ -8,8 +8,8 @@ import android.widget.CompoundButton;
 import android.widget.RadioButton;
 
 import cn.onekit.js.JsBoolean;
-import cn.onekit.js.Dict;
 import cn.onekit.js.JsObject;
+import cn.onekit.js.JsObject_;
 import cn.onekit.w3c.Event;
 import cn.onekit.w3c.core.FormItem_;
 import cn.onekit.weixin.app.core.WeixinElement;
@@ -33,7 +33,7 @@ public class Radio extends WeixinElement implements FormItem_ {
         @Override
         public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 
-            Event event = new Event("change",new Dict() {{
+            Event event = new Event("change",new JsObject() {{
 
                 put("value", new JsBoolean(isChecked));
 
@@ -90,13 +90,13 @@ _name = name;
 
     private String _value="";
     @Override
-    public void setValue(JsObject value) {
+    public void setValue(JsObject_ value) {
         _value=value.toString();
         _radio().setText(_value);
     }
 
     @Override
-    public JsObject getValue() {
+    public JsObject_ getValue() {
         return null;
     }
 

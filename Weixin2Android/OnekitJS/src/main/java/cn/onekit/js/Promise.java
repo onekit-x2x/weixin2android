@@ -2,7 +2,7 @@ package cn.onekit.js;
 
 import cn.onekit.js.core.*;
 
-public class Promise implements JsObject {
+public class Promise implements JsObject_ {
     function _callback;
 
     @Override
@@ -16,7 +16,7 @@ public class Promise implements JsObject {
     }
 
     //////////////////////////////////
-    public static Promise all(Array iterable) {
+    public static Promise all(JsArray iterable) {
         return null;
         /*return new Promise((resolve, reject) -> {
             Array result = new Array();
@@ -44,7 +44,7 @@ public class Promise implements JsObject {
         return null;
     }
 
-    public static Promise allSettled(Array iterable) {
+    public static Promise allSettled(JsArray iterable) {
         return null;
     }
 
@@ -69,7 +69,7 @@ public class Promise implements JsObject {
         return then(onFulfilled, null);
     }
 
-    public static Promise race(Array iterable) {
+    public static Promise race(JsArray iterable) {
         return null;
     }
 
@@ -81,11 +81,11 @@ public class Promise implements JsObject {
         return null;//new Promise((resolve, reject) -> (()invoke(reason));
     }
 
-    public static Promise resolve(JsObject value) {
+    public static Promise resolve(JsObject_ value) {
         return new Promise(new function(){
 
             @Override
-            public JsObject invoke(JsObject... arguments) {
+            public JsObject_ invoke(JsObject_... arguments) {
                 try {
                     function resolve = (function) arguments[0];
                     resolve.invoke(value);
@@ -100,22 +100,22 @@ public class Promise implements JsObject {
     }
 
     @Override
-    public JsObject get(String key) {
+    public JsObject_ get(String key) {
         return null;
     }
 
     @Override
-    public JsObject get(JsObject key) {
+    public JsObject_ get(JsObject_ key) {
         return null;
     }
 
     @Override
-    public void set(String key, JsObject value) {
+    public void set(String key, JsObject_ value) {
 
     }
 
     @Override
-    public void set(JsObject key, JsObject value) {
+    public void set(JsObject_ key, JsObject_ value) {
 
     }
 
@@ -125,12 +125,12 @@ public class Promise implements JsObject {
     }
 
     @Override
-    public String toLocaleString(JsString locales, JsObject options) {
+    public String toLocaleString(JsString locales, JsObject_ options) {
         return null;
     }
 
     @Override
-    public JsObject invoke(JsObject... params) {
+    public JsObject_ invoke(JsObject_... params) {
         return null;
     }
 }

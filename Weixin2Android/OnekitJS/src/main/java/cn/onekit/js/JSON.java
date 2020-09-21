@@ -10,7 +10,7 @@ import cn.onekit.js.core.function;
 public class JSON {
 	private static Gson gson = new Gson();
 
-	public static JsObject parse(String aString) {
+	public static JsObject_ parse(String aString) {
 		try {
 			if (aString == null) {
 				return null;
@@ -30,9 +30,9 @@ public class JSON {
 			}
 			switch (str.substring(0, 1)) {
 				case "{":
-					return gson.fromJson(str, (Type) Dict.class);
+					return gson.fromJson(str, (Type) JsObject.class);
 				case "[":
-					return gson.fromJson(str, (Type) Array.class);
+					return gson.fromJson(str, (Type) JsArray.class);
 				default:
 					if (aString.startsWith("\"") && aString.endsWith("\"")) {
 						aString = aString.substring(1, aString.length() - 1);
@@ -44,10 +44,10 @@ public class JSON {
 			return null;
 		}
 	}
-	public static String _entry(int depth, String key, JsObject value, JsObject replacer, int space){
+	public static String _entry(int depth, String key, JsObject_ value, JsObject_ replacer, int space){
 		return String.format("\"%s\":%s",key,_stringify(depth+1,value,replacer,space));
 	}
-	public static String _stringify(int depth,JsObject json, JsObject replacer, int space) {
+	public static String _stringify(int depth, JsObject_ json, JsObject_ replacer, int space) {
 		if(space>10){
 			space=10;
 		}
@@ -66,11 +66,11 @@ public class JSON {
 			return  String.format("\"%s\"",aString);
 		}
 		StringBuilder result = new StringBuilder();
-		if(json instanceof Array){
-			Array array = (Array) json;
+		if(json instanceof JsArray){
+			JsArray array = (JsArray) json;
 			result.append(tab+"[\r\n");
 			int i=0;
-			for(JsObject item: array){
+			for(JsObject_ item: array){
 				result.append(_stringify(depth+1,item,replacer,space));
 				if(i<array.size()-1) {
 					result.append(",");
@@ -79,12 +79,12 @@ public class JSON {
 				i++;
 			}
 			result.append(tab+"]");
-		}else if(json instanceof Dict){
-			Dict dict = (Dict) json;
+		}else if(json instanceof JsObject){
+			JsObject dict = (JsObject) json;
 			result.append(tab+"{\r\n");
 			int i=0;
 			for(String key : dict.keySet()){
-				JsObject value = dict.get(key);
+				JsObject_ value = dict.get(key);
 				if(replacer!=null){
 					if(replacer instanceof function) {
 						result.append(_entry(depth,key,value, replacer,space));
@@ -122,20 +122,20 @@ public class JSON {
 		}
 		return result.toString();
 	}
-	public static String stringify(JsObject json, JsObject replacer,int space) {
+	public static String stringify(JsObject_ json, JsObject_ replacer, int space) {
 		return _stringify( 0,json, replacer,space);
 	}
-	public static String stringify(JsObject json, JsObject replacer,String space) {
+	public static String stringify(JsObject_ json, JsObject_ replacer, String space) {
 		if(space.length()>10){
 			space = space.substring(0,10);
 		}
 		return stringify( json, replacer, space.length());
 	}
-	public static String stringify(JsObject json, JsObject replacer) {
+	public static String stringify(JsObject_ json, JsObject_ replacer) {
 		return stringify(json, replacer, 0);
 	}
 
-	public static String stringify(JsObject json) {
+	public static String stringify(JsObject_ json) {
 		return stringify(json, null);
 	}
 }

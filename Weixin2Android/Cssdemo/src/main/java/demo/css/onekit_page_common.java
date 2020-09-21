@@ -2,7 +2,7 @@ package demo.css;
 
 import android.content.Context;
 import android.view.ViewGroup;
-import cn.onekit.js.JsObject;
+import cn.onekit.js.JsObject_;
 import cn.onekit.js.core.Onekit_JS;
 import cn.onekit.vue.Vue;
 import cn.onekit.w3c.LITERAL;
@@ -19,7 +19,7 @@ public abstract class onekit_page_common {
             super(context);
         }
 
-        public void onekit_wxml(final ViewGroup ui, final JsObject data, final Vue vue) {
+        public void onekit_wxml(final ViewGroup ui, final JsObject_ data, final Vue vue) {
 
             View ui_0 = new View(ui.getContext());
             ui.addView(ui_0);
@@ -57,7 +57,7 @@ public abstract class onekit_page_common {
             super(context);
         }
 
-        public void onekit_wxml(final ViewGroup ui, final JsObject data, final Vue vue) {
+        public void onekit_wxml(final ViewGroup ui, final JsObject_ data, final Vue vue) {
             Navigator ui_0 = new Navigator(ui.getContext());
             ui.addView(ui_0);
             ui_0.setClassName("page-foot");

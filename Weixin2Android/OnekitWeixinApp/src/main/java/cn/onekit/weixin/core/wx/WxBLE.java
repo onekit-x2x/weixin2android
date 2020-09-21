@@ -15,9 +15,9 @@ import java.util.Map;
 import java.util.UUID;
 
 import thekit.android.Android;
-import cn.onekit.js.Array;
+import cn.onekit.js.JsArray;
 import cn.onekit.js.ArrayBuffer;
-import cn.onekit.js.Dict;
+import cn.onekit.js.JsObject;
 import cn.onekit.js.JsString;
 import cn.onekit.js.core.function;
 import cn.onekit.weixin.WX;
@@ -32,14 +32,14 @@ public class WxBLE extends WxBattery {
                 case BluetoothProfile.STATE_CONNECTED:
                     _gatts.put(deviceId,gatt);
                     if(_createBLEConnections.containsKey(deviceId)){
-                        _createBLEConnections.get(deviceId).invoke(new Dict());
+                        _createBLEConnections.get(deviceId).invoke(new JsObject());
                     }
                     break;
                 default:
                     break;
             }
             if(_onBLEConnectionStateChange!=null){
-                _onBLEConnectionStateChange.invoke(new Dict(){{
+                _onBLEConnectionStateChange.invoke(new JsObject(){{
 
                 }});
             }
@@ -48,7 +48,7 @@ public class WxBLE extends WxBattery {
         public void onCharacteristicChanged(final BluetoothGatt gatt, final BluetoothGattCharacteristic characteristic) {
             super.onCharacteristicChanged(gatt, characteristic);
             if (_onBLECharacteristicValueChange != null) {
-                _onBLECharacteristicValueChange.invoke(new Dict(){{
+                _onBLECharacteristicValueChange.invoke(new JsObject(){{
                     put("deviceId",new JsString(gatt.getDevice().getAddress()));
                     put("serviceId",new JsString(characteristic.getService().getUuid().toString()));
                     put("characteristicId",new JsString(characteristic.getUuid().toString()));
@@ -62,13 +62,13 @@ public class WxBLE extends WxBattery {
             super.onServicesDiscovered(gatt, status);
             if (_getBLEDeviceServices != null) {
                 List<BluetoothGattService> services = gatt.getServices();
-                final Array result = new Array();
+                final JsArray result = new JsArray();
                 for (BluetoothGattService service : services) {
-                    Dict svc = _service2object(service);
+                    JsObject svc = _service2object(service);
                     result.add(svc);
                 }
 
-                _getBLEDeviceServices.invoke(new Dict() {{
+                _getBLEDeviceServices.invoke(new JsObject() {{
                     put("services", result);
                 }});
 
@@ -79,7 +79,7 @@ public class WxBLE extends WxBattery {
         public void onCharacteristicWrite(BluetoothGatt gatt, BluetoothGattCharacteristic characteristic, int status) {
             super.onCharacteristicWrite(gatt, characteristic, status);
             if(_writeBLECharacteristicValue!=null){
-                _writeBLECharacteristicValue.invoke(new Dict(){{
+                _writeBLECharacteristicValue.invoke(new JsObject(){{
                 }});
             }
         }
@@ -88,7 +88,7 @@ public class WxBLE extends WxBattery {
         public void onCharacteristicRead(BluetoothGatt gatt, BluetoothGattCharacteristic characteristic, int status) {
             super.onCharacteristicRead(gatt, characteristic, status);
             if(_readBLECharacteristicValue!=null){
-                _readBLECharacteristicValue.invoke(new Dict(){{
+                _readBLECharacteristicValue.invoke(new JsObject(){{
                 }});
             }
         }
@@ -101,13 +101,13 @@ public class WxBLE extends WxBattery {
     private function _readBLECharacteristicValue;
     private function _getBLEDeviceServices;
 
-    Dict _service2object(final BluetoothGattService service) {
-        return new Dict() {{
+    JsObject _service2object(final BluetoothGattService service) {
+        return new JsObject() {{
             put("uuid",new JsString(service.getUuid().toString().toUpperCase()));
         }};
     }
-    private Dict _characteristic2object(final BluetoothGattCharacteristic characteristic) {
-        return new Dict() {{
+    private JsObject _characteristic2object(final BluetoothGattCharacteristic characteristic) {
+        return new JsObject() {{
             put("uuid",new JsString(characteristic.getUuid().toString().toUpperCase()));
         }};
     }
@@ -145,7 +145,7 @@ public class WxBLE extends WxBattery {
             }
         }
         if(success!=null){
-            success.invoke(new Dict(){{
+            success.invoke(new JsObject(){{
 
             }});
         }
@@ -194,13 +194,13 @@ public class WxBLE extends WxBattery {
         BluetoothGatt gatt = _gatts.get(deviceId);
         BluetoothGattService service = gatt.getService(UUID.fromString(serviceId));
         List<BluetoothGattCharacteristic> characteristics = service.getCharacteristics();
-        final Array result = new Array();
+        final JsArray result = new JsArray();
         for (BluetoothGattCharacteristic characteristic : characteristics) {
-            Dict chr = _characteristic2object(characteristic);
+            JsObject chr = _characteristic2object(characteristic);
             result.add(chr);
         }
         if (success != null) {
-            success.invoke(new Dict() {{
+            success.invoke(new JsObject() {{
                 put("characteristics", result);
             }});
         }
@@ -238,7 +238,7 @@ public class WxBLE extends WxBattery {
         BluetoothGatt gatt = _gatts.get(deviceId);
         gatt.disconnect();
         if (success != null) {
-            success.invoke(new Dict());
+            success.invoke(new JsObject());
         }
     }
 }

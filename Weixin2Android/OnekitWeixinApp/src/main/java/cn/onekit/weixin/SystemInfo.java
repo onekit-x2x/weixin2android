@@ -1,8 +1,8 @@
 package cn.onekit.weixin;
 
-import cn.onekit.js.Dict;
+import cn.onekit.js.JsObject;
 
-public class SystemInfo extends Dict {
+public class SystemInfo extends JsObject {
    /* public String brand;
     public String model;
     public float pixelRatio;

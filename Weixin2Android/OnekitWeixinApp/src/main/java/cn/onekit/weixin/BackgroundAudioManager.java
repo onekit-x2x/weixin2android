@@ -5,9 +5,9 @@ import android.media.MediaMetadataRetriever;
 import android.media.MediaPlayer;
 import android.net.Uri;
 
-import cn.onekit.js.Dict;
-import cn.onekit.js.JsString;
 import cn.onekit.js.JsObject;
+import cn.onekit.js.JsString;
+import cn.onekit.js.JsObject_;
 import cn.onekit.js.core.function;
 
 public  class BackgroundAudioManager {
@@ -41,7 +41,7 @@ public  class BackgroundAudioManager {
                 public void onCompletion(MediaPlayer mp) {
                     onEnded(new function() {
                         @Override
-                        public JsObject invoke(JsObject... arguments) {
+                        public JsObject_ invoke(JsObject_... arguments) {
                             return null;
                         }
                         //                            @Override
@@ -56,11 +56,11 @@ public  class BackgroundAudioManager {
         }
 
     }
-    public void pause(JsObject obj){
+    public void pause(JsObject_ obj){
         if(mediaPlayer.isPlaying()&&mediaPlayer!=null)
             mediaPlayer.pause();
     }
-    public void stop(JsObject obj){
+    public void stop(JsObject_ obj){
         if(mediaPlayer!=null)
             mediaPlayer.stop();
     }
@@ -70,7 +70,7 @@ public  class BackgroundAudioManager {
     }
     public void onEnded(function res){
         if(mediaPlayer!=null){
-            Dict obj = new Dict();
+            JsObject obj = new JsObject();
             obj.put("onEnded",new JsString("播放完成"));
             res.invoke(obj);
         }
@@ -79,28 +79,28 @@ public  class BackgroundAudioManager {
 
     public void onCanplay(function res){
         if(mediaPlayer!=null){
-            Dict obj = new Dict();
+            JsObject obj = new JsObject();
             obj.put("onCanplay",new JsString("能播放"));
             res.invoke(obj);
         }
     }
     public void onPlay(function res){
         if(mediaPlayer!=null&&mediaPlayer.isPlaying()){
-            Dict obj = new Dict();
+            JsObject obj = new JsObject();
             obj.put("onPlay",new JsString("正在播放"));
             res.invoke(obj);
         }
     }
     public void onPause(function res){
         if(mediaPlayer!=null&&(!mediaPlayer.isPlaying())){
-            Dict obj = new Dict();
+            JsObject obj = new JsObject();
             obj.put("onPause",new JsString("暂停中"));
             res.invoke(obj);
         }
     }
     public void onStop(function res){
         if(mediaPlayer==null){
-            Dict obj = new Dict();
+            JsObject obj = new JsObject();
             obj.put("onStop",new JsString("停止"));
             res.invoke(obj);
         }

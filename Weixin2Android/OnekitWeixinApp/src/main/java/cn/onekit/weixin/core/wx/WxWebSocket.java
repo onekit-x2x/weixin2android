@@ -7,8 +7,8 @@ import java.net.URI;
 import java.util.Map;
 
 import thekit.android.Android;
-import cn.onekit.js.Array;
-import cn.onekit.js.Dict;
+import cn.onekit.js.JsArray;
+import cn.onekit.js.JsObject;
 import cn.onekit.js.core.function;
 import cn.onekit.weixin.app.R;
 import cn.onekit.weixin.core.res.wx_fail;
@@ -18,9 +18,9 @@ public class WxWebSocket extends WxVoice {
 
     public void connectSocket(Map Dict) {
         String url = (String) Dict.get("url");
-        Dict header = (Dict) Dict.get("header");
+        JsObject header = (JsObject) Dict.get("header");
         String method = (String) Dict.get("method");
-        Array protocols = (Array) Dict.get("protocols");
+        JsArray protocols = (JsArray) Dict.get("protocols");
         function success = (function) Dict.get("success");
         function fail = (function) Dict.get("fail");
         function complete = (function) Dict.get("complete");
@@ -49,7 +49,7 @@ public class WxWebSocket extends WxVoice {
                 }
             };
             socketClient.connect();
-            Dict res = new Dict();
+            JsObject res = new JsObject();
 //            res.errMsg = Android.context.getResources().getString(cn.onekit.weixin.R.string.wx_connectSocket_success);
             if (success != null) {
                 success.invoke(res);

@@ -7,7 +7,7 @@ import java.util.regex.Matcher;
 import cn.onekit.js.core.Onekit_JS;
 import cn.onekit.js.core.function;
 
-public  class JsString implements JsObject {
+public  class JsString implements JsObject_ {
 	public String THIS;
 
 	public JsString(String THIS) {
@@ -34,33 +34,33 @@ public  class JsString implements JsObject {
 	return new STRING(hashCode;
 }*/
 
-	public JsObject _index(String aString, int index) {
+	public JsObject_ _index(String aString, int index) {
 		if (index >= 0) {
 			return new JsNumber(index);
 		}
 		return new JsNumber(aString.length() + index);
 	}
 
-	public JsObject get(JsObject i) {
+	public JsObject_ get(JsObject_ i) {
 		int index = Onekit_JS.number(i, 0, 0).intValue();
 		return new JsString(String.valueOf(this.toString().charAt(index)));
 	}
 
 	@Override
-	public void set(String key, JsObject value) {
+	public void set(String key, JsObject_ value) {
 
 	}
 
 	@Override
-	public void set(JsObject key, JsObject value) {
+	public void set(JsObject_ key, JsObject_ value) {
 
 	}
 
 	///////////////////////////////
-	public JsString fromCharCode(JsObject... nums) {
+	public JsString fromCharCode(JsObject_... nums) {
 		try {
 			StringBuilder result = new StringBuilder();
-			for (JsObject num : nums) {
+			for (JsObject_ num : nums) {
 				int number = new JsNumber(num).THIS.intValue();
 				if (number > 0xFFFF) {
 					number = number % 0xFFFF;
@@ -73,8 +73,8 @@ public  class JsString implements JsObject {
 		}
 	}
 
-	public JsString fromCodePoint(JsObject... nums) {
-		Array codeUnits = new Array();
+	public JsString fromCodePoint(JsObject_... nums) {
+		JsArray codeUnits = new JsArray();
 		JsNumber codeLen;
 		StringBuilder result = new StringBuilder();
 		for (int index = 0, len = nums.length; index != len; ++index) {
@@ -95,15 +95,15 @@ public  class JsString implements JsObject {
 				);
 			}
 			if (codeLen.THIS.intValue() >= 0x3fff) {
-				result.append(fromCharCode(codeUnits.toArray(new JsObject[0])));
+				result.append(fromCharCode(codeUnits.toArray(new JsObject_[0])));
 				//codeUnits.length = 0;
 			}
 		}
-		return new JsString(result + fromCharCode(codeUnits.toArray(new JsObject[0])).toString());
+		return new JsString(result + fromCharCode(codeUnits.toArray(new JsObject_[0])).toString());
 
 	}
 
-	public JsString anchor(JsObject name) {
+	public JsString anchor(JsObject_ name) {
 		return new JsString(String.format("<a name=\"%s\">%s</a>", name, this));
 	}
 
@@ -119,12 +119,12 @@ public  class JsString implements JsObject {
 		return new JsString(String.format("<bold>%s</bold>", this));
 	}
 
-	public JsString charAt(JsObject index) {
+	public JsString charAt(JsObject_ index) {
 		int i = Onekit_JS.number(index, 0, 0).intValue();
 		return new JsString(String.valueOf(this.toString().charAt(i)));
 	}
 
-	public JsString charCodeAt(JsObject index) {
+	public JsString charCodeAt(JsObject_ index) {
 		int i = Onekit_JS.number(index, 0, 0).intValue();
 		return new JsString(String.valueOf(this.toString().charAt(i)));
 	}
@@ -142,20 +142,20 @@ public  class JsString implements JsObject {
 
 	}
 
-	public JsString concat(JsObject... strings) {
+	public JsString concat(JsObject_... strings) {
 		StringBuilder result = new StringBuilder(this.toString());
-		for (JsObject THIS : strings) {
+		for (JsObject_ THIS : strings) {
 			result.append(THIS);
 		}
 		return new JsString(result.toString());
 	}
 
-	public JsBoolean endsWith(JsObject searchString, JsObject length) {
+	public JsBoolean endsWith(JsObject_ searchString, JsObject_ length) {
 		int len = Onekit_JS.number(length, 0, 0).intValue();
 		return new JsBoolean(this.toString().substring(len - searchString.toString().length(), len).equals(searchString.toString()));
 	}
 
-	public JsBoolean endsWith(JsObject searchString) {
+	public JsBoolean endsWith(JsObject_ searchString) {
 		return endsWith(searchString, new JsNumber(this.toString().length()));
 	}
 
@@ -163,15 +163,15 @@ public  class JsString implements JsObject {
 		return new JsString(String.format("<tt>%s</tt>", this));
 	}
 
-	public JsString fontcolor(JsObject color) {
+	public JsString fontcolor(JsObject_ color) {
 		return new JsString(String.format("<font color=\"%s\">%s</font>", color, this));
 	}
 
-	public JsString fontsize(JsObject size) {
+	public JsString fontsize(JsObject_ size) {
 		return new JsString(String.format("<font size=\"%s\">%s</font>", size, this));
 	}
 
-	public JsBoolean includes(JsObject searchString, JsObject position) {
+	public JsBoolean includes(JsObject_ searchString, JsObject_ position) {
 		if (position == null) {
 			position = new JsNumber(0);
 		}
@@ -179,12 +179,12 @@ public  class JsString implements JsObject {
 		return new JsBoolean(this.toString().substring(pos).contains(searchString.toString()));
 	}
 
-	public JsNumber indexOf(JsObject searchValue, JsObject from) {
+	public JsNumber indexOf(JsObject_ searchValue, JsObject_ from) {
 		int f = Onekit_JS.number(from, 0, 0).intValue();
 		return new JsNumber(this.toString().indexOf(searchValue.toString(), f));
 	}
 
-	public JsNumber indexOf(JsObject searchValue) {
+	public JsNumber indexOf(JsObject_ searchValue) {
 		return indexOf(searchValue, new JsNumber(0));
 	}
 
@@ -192,27 +192,27 @@ public  class JsString implements JsObject {
 		return new JsString(String.format("<i>%s</i>", this));
 	}
 
-	public JsNumber lastIndexOf(JsObject searchValue, JsObject fromIndex) {
+	public JsNumber lastIndexOf(JsObject_ searchValue, JsObject_ fromIndex) {
 		int from = Onekit_JS.number(fromIndex, 0, 0).intValue();
 		return new JsNumber(this.toString().lastIndexOf(searchValue.toString(), from));
 	}
 
-	public JsNumber lastIndexOf(JsObject searchValue) {
+	public JsNumber lastIndexOf(JsObject_ searchValue) {
 		return lastIndexOf(searchValue, new JsNumber(Double.POSITIVE_INFINITY));
 	}
 
-	public JsString link(JsObject url) {
+	public JsString link(JsObject_ url) {
 		return new JsString(String.format("<a href=\"%s\">%s</i>", url, this));
 	}
 
-	public JsNumber localeCompare(JsObject compareString, String locales, Dict options) {
+	public JsNumber localeCompare(JsObject_ compareString, String locales, JsObject options) {
 		return new JsNumber(0);
 	}
 
 	public RegExp.Match match(RegExp regexp) {
 		Matcher matcher = regexp.THIS.matcher(this.toString());
-		Array finds = new Array();
-		Array groups = null;
+		JsArray finds = new JsArray();
+		JsArray groups = null;
 		if (matcher.find()) {
 			for (int i = 0; i <= matcher.groupCount(); i++) {
 				String group = matcher.group(i);
@@ -225,15 +225,15 @@ public  class JsString implements JsObject {
 		return new RegExp.Match(finds, groups, index, input, length);
 	}
 
-	public Dict matchAll(RegExp regexp) {
+	public JsObject matchAll(RegExp regexp) {
 		return null;
 	}
 
-	public JsString normalize(Dict form) {
+	public JsString normalize(JsObject form) {
 		return null;
 	}
 
-	public JsString padEnd(JsObject targetLength, JsObject padString) {
+	public JsString padEnd(JsObject_ targetLength, JsObject_ padString) {
 		int len = Onekit_JS.number(targetLength, 0, 0).intValue();
 		if (len < this.toString().length()) {
 			return this;
@@ -246,11 +246,11 @@ public  class JsString implements JsObject {
 		return new JsString(sb.toString().substring(0, len));
 	}
 
-	public JsString padEnd(JsObject targetLength) {
+	public JsString padEnd(JsObject_ targetLength) {
 		return padEnd(targetLength, new JsString(" "));
 	}
 
-	public JsString padStart(JsObject targetLength, String padString) {
+	public JsString padStart(JsObject_ targetLength, String padString) {
 		int len = Onekit_JS.number(targetLength, 0, 0).intValue();
 		if (len < this.toString().length()) {
 			return this;
@@ -263,11 +263,11 @@ public  class JsString implements JsObject {
 		return new JsString(sb.toString().substring(0, len));
 	}
 
-	public JsString padStart(JsObject targetLength) {
+	public JsString padStart(JsObject_ targetLength) {
 		return padStart(targetLength, " ");
 	}
 
-	public JsString repeat(JsObject count) {
+	public JsString repeat(JsObject_ count) {
 		int c = Onekit_JS.number(count, 0, 0).intValue();
 		StringBuilder result = new StringBuilder();
 		for (int i = 0; i < c; i++) {
@@ -300,7 +300,7 @@ public  class JsString implements JsObject {
 		Matcher matcher = regexp.THIS.matcher(this.toString());
 		RegExp.$s.clear();
 		while (matcher.find()) {
-			List<JsObject> arguments = new ArrayList<>();
+			List<JsObject_> arguments = new ArrayList<>();
 			arguments.add(new JsString(matcher.group()));
 			for (int i = 1; i <= matcher.groupCount(); i++) {
 				String group = matcher.group(i);
@@ -311,7 +311,7 @@ public  class JsString implements JsObject {
 			arguments.add(this);
 			this.THIS = this.toString().replaceFirst(
 					regexp.getPattern(),
-					function.invoke(arguments.toArray(new JsObject[0])).toString()
+					function.invoke(arguments.toArray(new JsObject_[0])).toString()
 			);
 			if (!regexp.getFlags().contains("g")) {
 				break;
@@ -320,11 +320,11 @@ public  class JsString implements JsObject {
 		return this;
 	}
 
-	public JsString replace(JsObject substr, String newSubStr) {
+	public JsString replace(JsObject_ substr, String newSubStr) {
 		return new JsString(this.toString().replaceFirst(substr.toString(), newSubStr));
 	}
 
-	public JsString replace(JsObject substr, function function) {
+	public JsString replace(JsObject_ substr, function function) {
 		int p = this.toString().indexOf(substr.toString());
 		if (p < 0) {
 			return this;
@@ -340,14 +340,14 @@ public  class JsString implements JsObject {
 		return new JsNumber(-1);
 	}
 
-	public JsString slice(JsObject start, JsObject end) {
+	public JsString slice(JsObject_ start, JsObject_ end) {
 		int s = Onekit_JS.number(start, 0, 0).intValue();
 		int e = Onekit_JS.number(end, 0, 0).intValue();
 		return new JsString(this.toString().substring(s, e));
 
 	}
 
-	public JsString slice(JsObject start) {
+	public JsString slice(JsObject_ start) {
 		return slice(start, new JsNumber(this.toString().length()));
 	}
 
@@ -355,10 +355,10 @@ public  class JsString implements JsObject {
 		return new JsString(String.format("<small>%s</small>", this));
 	}
 
-	public Array split(JsObject separator, JsObject limit) {
+	public JsArray split(JsObject_ separator, JsObject_ limit) {
 		int l = Onekit_JS.number(limit, 0, 0).intValue();
 		String[] array = this.toString().split(separator.toString(), l);
-		Array result = new Array();
+		JsArray result = new JsArray();
 		int i = 0;
 		for (String item : array) {
 			if (i++ == 0 && item.equals("") && !this.toString().startsWith(" ")) {
@@ -369,15 +369,15 @@ public  class JsString implements JsObject {
 		return result;
 	}
 
-	public Array split(JsObject separator) {
+	public JsArray split(JsObject_ separator) {
 		return split(separator, new JsNumber(0));
 	}
 
-	public Array split() {
-		return Array.from(this,null,null);
+	public JsArray split() {
+		return JsArray.from(this,null,null);
 	}
 
-	public JsBoolean startsWith(JsObject searchString, JsObject position) {
+	public JsBoolean startsWith(JsObject_ searchString, JsObject_ position) {
 		if (position == null) {
 			position = new JsNumber(0);
 		}
@@ -394,13 +394,13 @@ public  class JsString implements JsObject {
 		return new JsString(String.format("<sub>%s</sub>", this));
 	}
 
-	public JsString substr(JsObject start, JsObject length) {
+	public JsString substr(JsObject_ start, JsObject_ length) {
 		int s = Onekit_JS.number(start, 0, 0).intValue();
 		int l = Onekit_JS.number(length, 0, 0).intValue();
 		return new JsString(this.toString().substring(s, s + l));
 	}
 
-	public JsString substr(JsObject start) {
+	public JsString substr(JsObject_ start) {
 		int s = Onekit_JS.number(start, 0, 0).intValue();
 		return substr(start, new JsNumber(this.toString().length() - s));
 	}
@@ -422,11 +422,11 @@ public  class JsString implements JsObject {
 		return this.toString().substring(indexStart, indexEnd);
 	}
 
-	public JsString substring(JsObject indexStart, JsObject indexEnd) {
+	public JsString substring(JsObject_ indexStart, JsObject_ indexEnd) {
 		return new JsString(_substring(Onekit_JS.number(indexStart, 0, 0).intValue(), Onekit_JS.number(indexEnd, 0, 0).intValue()));
 	}
 
-	public JsString substring(JsObject indexStart) {
+	public JsString substring(JsObject_ indexStart) {
 		return substring(indexStart, new JsNumber(this.toString().length()));
 	}
 
@@ -434,11 +434,11 @@ public  class JsString implements JsObject {
 		return new JsString(String.format("<sup>%s</sup>", this));
 	}
 
-	public JsString toLocaleLowerCase(JsObject... locale) {
+	public JsString toLocaleLowerCase(JsObject_... locale) {
 		return null;
 	}
 
-	public JsString toLocaleUpperCase(JsObject... locale) {
+	public JsString toLocaleUpperCase(JsObject_... locale) {
 		return null;
 	}
 
@@ -446,7 +446,7 @@ public  class JsString implements JsObject {
 		return new JsString(this.toString().toLowerCase());
 	}
 
-	public Dict toSource() {
+	public JsObject toSource() {
 		return null;
 	}
 
@@ -479,7 +479,7 @@ public  class JsString implements JsObject {
 		return new JsString(String.valueOf(this));
 	}
 
-	public JsString raw(Dict callSite, Object... substitutions) {
+	public JsString raw(JsObject callSite, Object... substitutions) {
 		return null;
 	}
 
@@ -501,17 +501,17 @@ public  class JsString implements JsObject {
 	}
 
 	@Override
-	public String toLocaleString(JsString locales, JsObject options) {
+	public String toLocaleString(JsString locales, JsObject_ options) {
 		return null;
 	}
 
 	@Override
-	public JsObject invoke(JsObject... params) {
+	public JsObject_ invoke(JsObject_... params) {
 		return null;
 	}
 
 	@Override
-	public JsObject get(String key) {
+	public JsObject_ get(String key) {
 		return null;
 	}
 }

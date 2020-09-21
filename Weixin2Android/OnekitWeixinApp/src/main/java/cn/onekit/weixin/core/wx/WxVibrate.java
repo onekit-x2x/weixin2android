@@ -7,7 +7,7 @@ import android.os.Vibrator;
 import java.util.Map;
 
 import thekit.android.Android;
-import cn.onekit.js.Dict;
+import cn.onekit.js.JsObject;
 import cn.onekit.js.core.function;
 import cn.onekit.weixin.app.R;
 import cn.onekit.weixin.core.res.wx_fail;
@@ -22,7 +22,7 @@ public class WxVibrate extends WxUpdate {
 
         try {
             vibrate(Android.context, 400);
-            Dict res = new Dict();
+            JsObject res = new JsObject();
 //            res.errMsg = Android.context.getResources().getString(R.string.wx_vibrateLong_success);
             if (success != null) {
                 success.invoke(res);
@@ -51,7 +51,7 @@ public class WxVibrate extends WxUpdate {
 
         try {
             vibrate(Android.context, 15);
-            Dict res = new Dict();
+            JsObject res = new JsObject();
 //            res.errMsg = Android.context.getResources().getString(R.string.wx_vibrateShort_success);
             if (success != null) {
                 success.invoke(res);

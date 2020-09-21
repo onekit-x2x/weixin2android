@@ -20,7 +20,7 @@ import java.util.List;
 import java.util.Map;
 
 import thekit.android.Android;
-import cn.onekit.js.Dict;
+import cn.onekit.js.JsObject;
 import cn.onekit.js.core.function;
 import cn.onekit.weixin.app.R;
 import cn.onekit.weixin.core.page.PullToRefreshLayout;
@@ -95,13 +95,13 @@ public class WxPullDownRefresh extends WxPhoneContact {
 
             if (OBJECT.containsKey("success")) {
                 function success = (function) OBJECT.get("success");
-                Dict res = new Dict();
+                JsObject res = new JsObject();
 //                res.errMsg = Android.context.getResources().getString(R.string.wx_startPullDownRefresh_success);
                 success.invoke(res);
             }
             if (OBJECT.containsKey("complete")) {
                 function complete = (function) OBJECT.get("complete");
-                Dict res = new Dict();
+                JsObject res = new JsObject();
 //                res.errMsg = Android.context.getResources().getString(R.string.wx_startPullDownRefresh_success);
                 complete.invoke(res);
             }
@@ -127,7 +127,7 @@ public class WxPullDownRefresh extends WxPhoneContact {
         function fail = OBJECT.get("fail") != null ? (function) OBJECT.get("fail") : null;
         try {
             refreshLayout.refreshFinish(PullToRefreshLayout.REFRESH_SUCCEED);
-            Dict res = new Dict();
+            JsObject res = new JsObject();
 //            res.errMsg = Android.context.getResources().getString(R.string.wx_stopPullDownRefresh_success);
             if (success != null) {
                 success.invoke(res);

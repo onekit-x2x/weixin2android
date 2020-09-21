@@ -27,8 +27,8 @@ import com.tencent.tencentmap.mapsdk.map.TencentMap;
 
 import java.io.IOException;
 
-import cn.onekit.js.Array;
-import cn.onekit.js.Dict;
+import cn.onekit.js.JsArray;
+import cn.onekit.js.JsObject;
 import cn.onekit.js.JSON;
 import cn.onekit.js.JsNumber;
 import cn.onekit.js.JsString;
@@ -42,7 +42,7 @@ public class ChooseLocation extends Activity implements
 
     private final static int chooselocation = 20000;
     private TencentLocation mLocation;
-    private Array locations;
+    private JsArray locations;
     private int flag = 0;
     private ListView listView;
     private String keyword = null;
@@ -225,8 +225,8 @@ public class ChooseLocation extends Activity implements
         @Override
         protected void onPostExecute(String s) {
 
-            Dict json = (Dict) JSON.parse(s);
-            locations = (Array) json.get("data");
+            JsObject json = (JsObject) JSON.parse(s);
+            locations = (JsArray) json.get("data");
             listView.setAdapter(new BaseAdapter() {
                 @Override
                 public int getCount() {
@@ -254,7 +254,7 @@ public class ChooseLocation extends Activity implements
                     } else {
                         holder = (ViewHolder) view.getTag();
                     }
-                    Dict location = (Dict) locations.get(i);
+                    JsObject location = (JsObject) locations.get(i);
                     holder.text_name.setText(((JsString)location.get("title")).THIS);
                     holder.text_address.setText(((JsString) location.get("address")).THIS);
                     holder.image.setVisibility(View.GONE);
@@ -276,10 +276,10 @@ public class ChooseLocation extends Activity implements
                             flag = 0;
                             break;
                     }
-                    Dict location = (Dict) locations.get(i);
+                    JsObject location = (JsObject) locations.get(i);
                     title = ((JsString) location.get("title")).THIS;
                     address = ((JsString) location.get("address")).THIS;
-                    Dict s = (Dict) location.get("location");
+                    JsObject s = (JsObject) location.get("location");
                     lat = ((JsNumber) s.get("lat")).THIS.doubleValue();
                     lng = ((JsNumber) s.get("lng")).THIS.doubleValue();
 

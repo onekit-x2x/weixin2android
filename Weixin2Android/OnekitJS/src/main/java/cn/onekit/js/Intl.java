@@ -16,9 +16,9 @@ public class Intl  {
         }
     }
 
-    public static Array getCanonicalLocales(Array locales) {
-        Array result = new Array();
-        for (JsObject temp : locales) {
+    public static JsArray getCanonicalLocales(JsArray locales) {
+        JsArray result = new JsArray();
+        for (JsObject_ temp : locales) {
             String locale = ((JsString)temp).THIS;
             if (!allLocale.contains(locale.toUpperCase())) {
                 throw new RangeError(new JsString(String.format("invalid language tag: %s", locale)));
@@ -37,14 +37,14 @@ public class Intl  {
         return result;
     }
 
-    public static Array getCanonicalLocales(String locale) {
-        return getCanonicalLocales(new Array() {{
+    public static JsArray getCanonicalLocales(String locale) {
+        return getCanonicalLocales(new JsArray() {{
             add(new JsString(locale));
         }});
     }
     //////////////////////////////
 
-    public static class Locale extends Dict {
+    public static class Locale extends JsObject {
 
 
 
@@ -54,21 +54,21 @@ public class Intl  {
         }
 
         @Override
-        public String toLocaleString(JsString locales, JsObject options) {
+        public String toLocaleString(JsString locales, JsObject_ options) {
             return null;
         }
 
         @Override
-        public JsObject invoke(JsObject... params) {
+        public JsObject_ invoke(JsObject_... params) {
             return null;
         }
 
-        public static class Options extends Dict {
+        public static class Options extends JsObject {
 
-            public Options(String locale, Dict options) {
+            public Options(String locale, JsObject options) {
                 _locale=locale;
-                for (java.util.Map.Entry<String,JsObject> entry:options.entrySet()){
-                    JsObject value = entry.getValue();
+                for (java.util.Map.Entry<String, JsObject_> entry:options.entrySet()){
+                    JsObject_ value = entry.getValue();
                     switch (entry.getKey()){
                         case "localeMatcher":_localeMatcher=   ((JsString)value).THIS;break;
                         case "usage":_usage=  ((JsString)value).THIS;break;
@@ -126,12 +126,12 @@ public class Intl  {
             }
 
             @Override
-            public JsObject get(JsObject key) {
+            public JsObject_ get(JsObject_ key) {
                 return null;
             }
 
             @Override
-            public void set(JsObject key, JsObject value) {
+            public void set(JsObject_ key, JsObject_ value) {
 
             }
 
@@ -141,17 +141,17 @@ public class Intl  {
             }
 
             @Override
-            public String toLocaleString(JsString locales, JsObject options) {
+            public String toLocaleString(JsString locales, JsObject_ options) {
                 return null;
             }
 
             @Override
-            public JsObject invoke(JsObject... params) {
+            public JsObject_ invoke(JsObject_... params) {
                 return null;
             }
         }
         //////////////////////////
-        public Locale(String tag, Dict options) {
+        public Locale(String tag, JsObject options) {
             String[] data = tag.split("-");
             for(int i=0;i<data.length;i++) {
                 String dat = data[i];
@@ -183,8 +183,8 @@ public class Intl  {
                         throw new RangeError(new JsString(dat));
                 }
             }
-            for (java.util.Map.Entry<String,JsObject> entry : options.entrySet()) {
-                JsObject value = entry.getValue();
+            for (java.util.Map.Entry<String, JsObject_> entry : options.entrySet()) {
+                JsObject_ value = entry.getValue();
                 switch (entry.getKey().trim()) {
                     case "script":
                         _script = value.toString();break;
@@ -202,7 +202,7 @@ public class Intl  {
         }
 
         public Locale(String tag) {
-            this(tag, new Dict());
+            this(tag, new JsObject());
         }
         /////////////////////
         private String _country;
@@ -240,19 +240,19 @@ private String _region;
     }
 
     //////////////////////////////
-    public static class Collator extends Dict {
+    public static class Collator extends JsObject {
 
         //////////////////////////
         private Locale _locale;
         private Locale.Options _options;
 
-        public Collator(String locales, Dict options) {
+        public Collator(String locales, JsObject options) {
             _locale = new Locale(locales);
             _options = new Locale.Options (locales,options);
         }
 
         public Collator(String locales) {
-            this(locales, new Dict());
+            this(locales, new JsObject());
         }
 
         public Collator() {
@@ -268,9 +268,9 @@ private String _region;
         public Locale.Options resolvedOptions() {
             return _options;
         }
-        public static Array supportedLocalesOf(Array locales, Dict options) {
-            Array result=new Array();
-            for (JsObject locale : locales) {
+        public static JsArray supportedLocalesOf(JsArray locales, JsObject options) {
+            JsArray result=new JsArray();
+            for (JsObject_ locale : locales) {
                 if (allLocale.contains(locale.toString().toUpperCase())) {
                     result.add(locale);
                 }
@@ -278,24 +278,24 @@ private String _region;
             return result;
         }
 
-        public static Array supportedLocalesOf(Array locales) {
-            return supportedLocalesOf(locales, new Dict());
+        public static JsArray supportedLocalesOf(JsArray locales) {
+            return supportedLocalesOf(locales, new JsObject());
         }
-        public static Array supportedLocalesOf(JsObject locales, Dict options) {
-            return supportedLocalesOf(new Array(){{add(locales);}},options);
+        public static JsArray supportedLocalesOf(JsObject_ locales, JsObject options) {
+            return supportedLocalesOf(new JsArray(){{add(locales);}},options);
         }
 
-        public static Array supportedLocalesOf(JsObject locales) {
-            return supportedLocalesOf(locales, new Dict());
+        public static JsArray supportedLocalesOf(JsObject_ locales) {
+            return supportedLocalesOf(locales, new JsObject());
         }
 
         @Override
-        public JsObject get(JsObject key) {
+        public JsObject_ get(JsObject_ key) {
             return null;
         }
 
         @Override
-        public void set(JsObject key, JsObject value) {
+        public void set(JsObject_ key, JsObject_ value) {
 
         }
 
@@ -305,33 +305,33 @@ private String _region;
         }
 
         @Override
-        public String toLocaleString(JsString locales, JsObject options) {
+        public String toLocaleString(JsString locales, JsObject_ options) {
             return null;
         }
 
         @Override
-        public JsObject invoke(JsObject... params) {
+        public JsObject_ invoke(JsObject_... params) {
             return null;
         }
     }
 
-    public static class DateTimeFormat extends Dict  {
+    public static class DateTimeFormat extends JsObject {
 
         @Override
-        public String toLocaleString(JsString locales, JsObject options) {
+        public String toLocaleString(JsString locales, JsObject_ options) {
             return null;
         }
 
         @Override
-        public JsObject invoke(JsObject... params) {
+        public JsObject_ invoke(JsObject_... params) {
             return null;
         }
 
-        public static class Options extends Dict  {
+        public static class Options extends JsObject {
 
-            public Options(Dict options) {
-                for (java.util.Map.Entry<String,JsObject> entry:options.entrySet()) {
-                    JsObject value = entry.getValue();
+            public Options(JsObject options) {
+                for (java.util.Map.Entry<String, JsObject_> entry:options.entrySet()) {
+                    JsObject_ value = entry.getValue();
                     switch (entry.getKey()) {
                         case "dateStyle":
                             _dateStyle = ((JsString) value).THIS;
@@ -514,12 +514,12 @@ private String _region;
             }
 
             @Override
-            public JsObject get(JsObject key) {
+            public JsObject_ get(JsObject_ key) {
                 return null;
             }
 
             @Override
-            public void set(JsObject key, JsObject value) {
+            public void set(JsObject_ key, JsObject_ value) {
 
             }
 
@@ -529,40 +529,40 @@ private String _region;
             }
 
             @Override
-            public String toLocaleString(JsString locales, JsObject options) {
+            public String toLocaleString(JsString locales, JsObject_ options) {
                 return null;
             }
 
             @Override
-            public JsObject invoke(JsObject... params) {
+            public JsObject_ invoke(JsObject_... params) {
                 return null;
             }
         }
         ///////////////////////
-        private Array _locales;
+        private JsArray _locales;
         private Options _options;
 
-        public DateTimeFormat(Array locales, Dict options) {
+        public DateTimeFormat(JsArray locales, JsObject options) {
             _locales = locales;
             _options = new Options(options);
         }
 
-        public DateTimeFormat(Array locales) {
-            this(locales, new Dict());
+        public DateTimeFormat(JsArray locales) {
+            this(locales, new JsObject());
         }
 
         public DateTimeFormat() {
             this(java.util.Locale.getDefault().toString());
         }
 
-        public DateTimeFormat(String locales, Dict options) {
-            this(new Array() {{
+        public DateTimeFormat(String locales, JsObject options) {
+            this(new JsArray() {{
                 add(new JsString(locales));
-            }}, new Dict());
+            }}, new JsObject());
         }
 
         private DateTimeFormat(String locales) {
-            this(locales, new Dict());
+            this(locales, new JsObject());
         }
 
         ////////////////////////////////////////
@@ -574,38 +574,38 @@ private String _region;
             return String.format("%s - %s",startDate.toString(),endDate.toString());
         }
 
-        public Array formatToParts(Date date) {
-            return new Array();
+        public JsArray formatToParts(Date date) {
+            return new JsArray();
         }
 
         public DateTimeFormat.Options resolvedOptions() {
             return _options;
         }
 
-        public Array supportedLocalesOf(Array locales, Dict options) {
-            return new Array();
+        public JsArray supportedLocalesOf(JsArray locales, JsObject options) {
+            return new JsArray();
         }
 
-        public Array supportedLocalesOf(Array locales) {
-            return supportedLocalesOf(locales, new Dict());
+        public JsArray supportedLocalesOf(JsArray locales) {
+            return supportedLocalesOf(locales, new JsObject());
         }
-        public Array supportedLocalesOf(JsObject locales, Dict options) {
-            return supportedLocalesOf(new Array(){{add(locales);}},options);
+        public JsArray supportedLocalesOf(JsObject_ locales, JsObject options) {
+            return supportedLocalesOf(new JsArray(){{add(locales);}},options);
         }
 
-        public Array supportedLocalesOf(String locales) {
+        public JsArray supportedLocalesOf(String locales) {
             return supportedLocalesOf(locales);
         }
     }
 
-    public static class ListFormat extends Dict {
+    public static class ListFormat extends JsObject {
         @Override
-        public JsObject get(JsObject key) {
+        public JsObject_ get(JsObject_ key) {
             return null;
         }
 
         @Override
-        public void set(JsObject key, JsObject value) {
+        public void set(JsObject_ key, JsObject_ value) {
 
         }
 
@@ -615,16 +615,16 @@ private String _region;
         }
 
         @Override
-        public String toLocaleString(JsString locales, JsObject options) {
+        public String toLocaleString(JsString locales, JsObject_ options) {
             return null;
         }
 
         @Override
-        public JsObject invoke(JsObject... params) {
+        public JsObject_ invoke(JsObject_... params) {
             return null;
         }
 
-        public static class Options extends Dict {
+        public static class Options extends JsObject {
     private String _localeMatcher;
 
     public String getLocaleMatcher() {
@@ -643,9 +643,9 @@ private String _region;
         return _style;
     }
 
-    public Options(Dict options) {
-        for (java.util.Map.Entry<String,JsObject> entry : options.entrySet()) {
-            JsObject value = entry.getValue();
+    public Options(JsObject options) {
+        for (java.util.Map.Entry<String, JsObject_> entry : options.entrySet()) {
+            JsObject_ value = entry.getValue();
             switch (entry.getKey()) {
                 case "localeMatcher":
                     _localeMatcher = ((JsString)value).THIS;
@@ -663,12 +663,12 @@ private String _region;
     }
 
             @Override
-            public JsObject get(JsObject key) {
+            public JsObject_ get(JsObject_ key) {
                 return null;
             }
 
             @Override
-            public void set(JsObject key, JsObject value) {
+            public void set(JsObject_ key, JsObject_ value) {
 
             }
 
@@ -678,61 +678,61 @@ private String _region;
             }
 
             @Override
-            public String toLocaleString(JsString locales, JsObject options) {
+            public String toLocaleString(JsString locales, JsObject_ options) {
                 return null;
             }
 
             @Override
-            public JsObject invoke(JsObject... params) {
+            public JsObject_ invoke(JsObject_... params) {
                 return null;
             }
         }
         ///////////////////
-        Array _locales;
+        JsArray _locales;
         private Options _options;
-        public ListFormat(Array locales, Dict options) {
+        public ListFormat(JsArray locales, JsObject options) {
             _locales = locales;
             _options = new Options(options);
         }
 
-        public ListFormat(Array locales) {
-this(locales,new Dict());
+        public ListFormat(JsArray locales) {
+this(locales,new JsObject());
         }
-        private ListFormat(String locale, Dict options) {
-            this(new Array() {{
+        private ListFormat(String locale, JsObject options) {
+            this(new JsArray() {{
                 add(new JsString(locale));
             }}, options);
         }
 
         public ListFormat(String locales) {
-            this(locales,new Dict());
+            this(locales,new JsObject());
         }
         public ListFormat() {
             this(java.util.Locale.getDefault().toString());
         }
         ////////////////////////////////////////
-        public Array supportedLocalesOf(String locales, Dict options) {
-            return new Array();
+        public JsArray supportedLocalesOf(String locales, JsObject options) {
+            return new JsArray();
         }
 
-        public Array supportedLocalesOf(String locales) {
-            return supportedLocalesOf(locales, new Dict());
+        public JsArray supportedLocalesOf(String locales) {
+            return supportedLocalesOf(locales, new JsObject());
         }
-        public Array supportedLocalesOf() {
+        public JsArray supportedLocalesOf() {
             return supportedLocalesOf(java.util.Locale.getDefault().toString());
         }
-        public  String format(Array list) {
+        public  String format(JsArray list) {
             return "";
         }
 
         public String format() {
-            return format(new Array());
+            return format(new JsArray());
         }
         public String format(String list) {
             return format(Onekit_JS.string2Array(list));
         }
-        public Array formatToParts(Array list) {
-            return new Array();
+        public JsArray formatToParts(JsArray list) {
+            return new JsArray();
         }
 
         public Options resolvedOptions() {
@@ -741,14 +741,14 @@ this(locales,new Dict());
 
     }
 
-    public static class NumberFormat extends Dict {
+    public static class NumberFormat extends JsObject {
         @Override
-        public JsObject get(JsObject key) {
+        public JsObject_ get(JsObject_ key) {
             return null;
         }
 
         @Override
-        public void set(JsObject key, JsObject value) {
+        public void set(JsObject_ key, JsObject_ value) {
 
         }
 
@@ -758,20 +758,20 @@ this(locales,new Dict());
         }
 
         @Override
-        public String toLocaleString(JsString locales, JsObject options) {
+        public String toLocaleString(JsString locales, JsObject_ options) {
             return null;
         }
 
         @Override
-        public JsObject invoke(JsObject... params) {
+        public JsObject_ invoke(JsObject_... params) {
             return null;
         }
 
-        public static class Options extends Dict {
+        public static class Options extends JsObject {
 
-        public Options(Dict options) {
-            for (Map.Entry<String,JsObject> entry : options.entrySet()) {
-                JsObject value = entry.getValue();
+        public Options(JsObject options) {
+            for (Map.Entry<String, JsObject_> entry : options.entrySet()) {
+                JsObject_ value = entry.getValue();
                 switch (entry.getKey().toString()) {
                     case "localeMatcher":
                         _localeMatcher = ((JsString)value).THIS;
@@ -882,12 +882,12 @@ this(locales,new Dict());
         }
 
             @Override
-            public JsObject get(JsObject key) {
+            public JsObject_ get(JsObject_ key) {
                 return null;
             }
 
             @Override
-            public void set(JsObject key, JsObject value) {
+            public void set(JsObject_ key, JsObject_ value) {
 
             }
 
@@ -897,66 +897,66 @@ this(locales,new Dict());
             }
 
             @Override
-            public String toLocaleString(JsString locales, JsObject options) {
+            public String toLocaleString(JsString locales, JsObject_ options) {
                 return null;
             }
 
             @Override
-            public JsObject invoke(JsObject... params) {
+            public JsObject_ invoke(JsObject_... params) {
                 return null;
             }
         }
             //////////////////////////
-        private Array _locales;
+        private JsArray _locales;
     private Options _options;
-        private NumberFormat(JsObject locales, JsObject options) {
-            _locales = (Array) locales;
-            _options=new Options((Dict) options);
+        private NumberFormat(JsObject_ locales, JsObject_ options) {
+            _locales = (JsArray) locales;
+            _options=new Options((JsObject) options);
         }
 
-        public NumberFormat(JsObject locales) {
-this(locales,new Dict());
+        public NumberFormat(JsObject_ locales) {
+this(locales,new JsObject());
         }
         public NumberFormat() {
             this(java.util.Locale.getDefault().toString());
         }
-        public NumberFormat(String locales, Dict options) {
-this(new Array(){{add(new JsString(locales));}},options);
+        public NumberFormat(String locales, JsObject options) {
+this(new JsArray(){{add(new JsString(locales));}},options);
         }
 
         public NumberFormat(String locales) {
-            this(locales,new Dict());
+            this(locales,new JsObject());
         }
         ////////////////////////////////////////
-        public String format(JsObject number) {
+        public String format(JsObject_ number) {
             return "";
         }
 
-        public Array formatToParts(JsObject number) {
-            return new Array();
+        public JsArray formatToParts(JsObject_ number) {
+            return new JsArray();
         }
 
         public Options resolvedOptions() {
             return _options;
         }
 
-        public Array supportedLocalesOf(String locales, Dict options) {
-            return new Array();
+        public JsArray supportedLocalesOf(String locales, JsObject options) {
+            return new JsArray();
         }
 
-        public Array supportedLocalesOf(String locales) {
-            return supportedLocalesOf(locales, new Dict());
+        public JsArray supportedLocalesOf(String locales) {
+            return supportedLocalesOf(locales, new JsObject());
         }
     }
 
-    public static class PluraRules extends Dict {
+    public static class PluraRules extends JsObject {
         @Override
-        public JsObject get(JsObject key) {
+        public JsObject_ get(JsObject_ key) {
             return null;
         }
 
         @Override
-        public void set(JsObject key, JsObject value) {
+        public void set(JsObject_ key, JsObject_ value) {
 
         }
 
@@ -966,12 +966,12 @@ this(new Array(){{add(new JsString(locales));}},options);
         }
 
         @Override
-        public String toLocaleString(JsString locales, JsObject options) {
+        public String toLocaleString(JsString locales, JsObject_ options) {
             return null;
         }
 
         @Override
-        public JsObject invoke(JsObject... params) {
+        public JsObject_ invoke(JsObject_... params) {
             return null;
         }
 
@@ -991,29 +991,29 @@ this(new Array(){{add(new JsString(locales));}},options);
             return _options;
         }
 
-        public String select(JsObject number) {
+        public String select(JsObject_ number) {
             return "";
         }
 
-        public Array supportedLocalesOf(String locales, Dict options) {
-            return new Array();
+        public JsArray supportedLocalesOf(String locales, JsObject options) {
+            return new JsArray();
         }
 
-        public Array supportedLocalesOf(String locales) {
-            return supportedLocalesOf(locales, new Dict());
+        public JsArray supportedLocalesOf(String locales) {
+            return supportedLocalesOf(locales, new JsObject());
         }
 
 
     }
 
-    public static class RelvativeTimeFormat extends Dict {
+    public static class RelvativeTimeFormat extends JsObject {
         @Override
-        public JsObject get(JsObject key) {
+        public JsObject_ get(JsObject_ key) {
             return null;
         }
 
         @Override
-        public void set(JsObject key, JsObject value) {
+        public void set(JsObject_ key, JsObject_ value) {
 
         }
 
@@ -1023,34 +1023,34 @@ this(new Array(){{add(new JsString(locales));}},options);
         }
 
         @Override
-        public String toLocaleString(JsString locales, JsObject options) {
+        public String toLocaleString(JsString locales, JsObject_ options) {
             return null;
         }
 
         @Override
-        public JsObject invoke(JsObject... params) {
+        public JsObject_ invoke(JsObject_... params) {
             return null;
         }
 
-        public static class Options implements JsObject {
+        public static class Options implements JsObject_ {
 
             @Override
-            public JsObject get(String key) {
+            public JsObject_ get(String key) {
                 return null;
             }
 
             @Override
-            public JsObject get(JsObject key) {
+            public JsObject_ get(JsObject_ key) {
                 return null;
             }
 
             @Override
-            public void set(String key, JsObject value) {
+            public void set(String key, JsObject_ value) {
 
             }
 
             @Override
-            public void set(JsObject key, JsObject value) {
+            public void set(JsObject_ key, JsObject_ value) {
 
             }
 
@@ -1060,24 +1060,24 @@ this(new Array(){{add(new JsString(locales));}},options);
             }
 
             @Override
-            public String toLocaleString(JsString locales, JsObject options) {
+            public String toLocaleString(JsString locales, JsObject_ options) {
                 return null;
             }
 
             @Override
-            public JsObject invoke(JsObject... params) {
+            public JsObject_ invoke(JsObject_... params) {
                 return null;
             }
         }
      /////////////////
        private String _locales;
      private Options _options;
-        public RelvativeTimeFormat(String locales, Dict options) {
+        public RelvativeTimeFormat(String locales, JsObject options) {
 _locales=locales;
             _options=new Options();
         }
         public RelvativeTimeFormat(String locales) {
-            this(locales, new Dict());
+            this(locales, new JsObject());
         }
         public String format(int value, String unit) {
             return "";
@@ -1088,12 +1088,12 @@ _locales=locales;
             return _options;
         }
 
-        public Array supportedLocalesOf(String locales, Dict options) {
-            return new Array();
+        public JsArray supportedLocalesOf(String locales, JsObject options) {
+            return new JsArray();
         }
 
-        public Array supportedLocalesOf(String locales) {
-            return supportedLocalesOf(locales, new Dict());
+        public JsArray supportedLocalesOf(String locales) {
+            return supportedLocalesOf(locales, new JsObject());
         }
 
     }
