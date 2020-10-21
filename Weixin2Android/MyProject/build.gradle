@@ -34,7 +34,6 @@ dependencies {
     implementation project(path: ':OnekitJS')
     implementation project(path: ':OnekitCSS')
     implementation project(path: ':OnekitW3C')
-    implementation project(path: ':OnekitVUE')
     implementation project(path: ':Thekit')
 
 }

@@ -36,6 +36,5 @@ dependencies {
     implementation project(path: ':OnekitW3C')
     implementation project(path: ':OnekitWeixinApp')
     implementation 'androidx.annotation:annotation:1.1.0'
-    implementation project(path: ':OnekitVUE')
     implementation project(path: ':OnekitCSS')
 }
