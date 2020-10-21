@@ -2,8 +2,8 @@ package cn.onekit.weixin.app.core;
 
 import android.app.Application;
 
-import thekit.android.Android;
-import cn.onekit.OneKit;
+import cn.onekit.thekit.Android;
+import cn.onekit.core.OneKit;
 import cn.onekit.css.core.OnekitCSS;
 import cn.onekit.js.JsObject;
 import cn.onekit.js.JsString;

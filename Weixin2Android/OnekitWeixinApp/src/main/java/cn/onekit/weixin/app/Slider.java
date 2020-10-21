@@ -16,7 +16,7 @@ import cn.onekit.w3c.Event;
 import cn.onekit.w3c.core.FormItem_;
 import cn.onekit.weixin.app.core.WeixinElement;
 
-import static thekit.android.Android.dp2px;
+import static cn.onekit.thekit.Android.dp2px;
 
 public class Slider extends WeixinElement implements FormItem_<JsNumber> {
 

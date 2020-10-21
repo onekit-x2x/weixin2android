@@ -6,7 +6,7 @@ import org.java_websocket.handshake.ServerHandshake;
 import java.net.URI;
 import java.util.Map;
 
-import thekit.android.Android;
+import cn.onekit.thekit.Android;
 import cn.onekit.js.JsArray;
 import cn.onekit.js.JsObject;
 import cn.onekit.js.core.function;

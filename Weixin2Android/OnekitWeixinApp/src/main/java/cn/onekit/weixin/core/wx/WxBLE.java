@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
-import thekit.android.Android;
+import cn.onekit.thekit.Android;
 import cn.onekit.js.JsArray;
 import cn.onekit.js.ArrayBuffer;
 import cn.onekit.js.JsObject;

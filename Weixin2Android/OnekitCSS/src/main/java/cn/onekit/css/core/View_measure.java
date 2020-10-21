@@ -6,11 +6,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import cn.onekit.DOM;
-import cn.onekit.LITERAL_;
+import cn.onekit.core.DOM;
 
-import static thekit.android.Android.dp2px;
-import static thekit.android.Android.px2dp;
+import static cn.onekit.thekit.Android.dp2px;
+import static cn.onekit.thekit.Android.px2dp;
 
 public class View_measure {
     private OnekitCSS OnekitCSS;

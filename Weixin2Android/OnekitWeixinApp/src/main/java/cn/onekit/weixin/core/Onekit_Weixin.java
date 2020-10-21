@@ -5,9 +5,9 @@ import org.json.JSONObject;
 import java.io.FileNotFoundException;
 import java.util.HashMap;
 
-import thekit.ASSET;
+import cn.onekit.thekit.ASSET;
 
-import static cn.onekit.OneKit.createUUID;
+import static cn.onekit.core.OneKit.createUUID;
 
 public class Onekit_Weixin {
 

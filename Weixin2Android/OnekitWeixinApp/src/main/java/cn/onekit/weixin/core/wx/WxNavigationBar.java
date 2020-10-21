@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 import java.util.Map;
 
-import thekit.android.Android;
+import cn.onekit.thekit.Android;
 import cn.onekit.js.JsObject;
 import cn.onekit.js.JsObject_;
 import cn.onekit.js.core.function;

@@ -20,7 +20,7 @@ import cn.onekit.js.JsNumber;
 import cn.onekit.w3c.Event;
 import cn.onekit.weixin.app.core.WeixinElement;
 
-import static thekit.android.Android.px2dp;
+import static cn.onekit.thekit.Android.px2dp;
 
 public class TextArea extends WeixinElement {
     private float _height;

@@ -18,10 +18,10 @@ import android.util.SizeF;
 import android.view.View;
 import java.util.ArrayList;
 
-import thekit.COLOR;
-import thekit.ARRAY;
+import cn.onekit.thekit.COLOR;
+import cn.onekit.thekit.ARRAY;
 
-import static thekit.android.Android.dp2px;
+import static cn.onekit.thekit.Android.dp2px;
 
 public class View_layout {
     private OnekitCSS OnekitCSS;

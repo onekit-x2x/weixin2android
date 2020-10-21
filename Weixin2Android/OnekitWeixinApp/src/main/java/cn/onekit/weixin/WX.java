@@ -3,11 +3,10 @@ package cn.onekit.weixin;
 import android.app.Activity;
 import android.util.Log;
 
-import thekit.android.Android;
+import cn.onekit.thekit.Android;
 import cn.onekit.weixin.app.Map;
 import cn.onekit.weixin.app.core.map.tencent.MapContext_Tencent2D;
 import cn.onekit.weixin.app.core.map.tencent.MapContext_Tencent3D;
-import cn.onekit.weixin.core.wx.WxRoute;
 import cn.onekit.weixin.core.wx.WxWXML;
 
 public class WX extends WxWXML {

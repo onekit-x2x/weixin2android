@@ -14,8 +14,8 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Map;
 
-import thekit.android.Android;
-import cn.onekit.OneKit;
+import cn.onekit.thekit.Android;
+import cn.onekit.core.OneKit;
 import cn.onekit.js.JsArray;
 import cn.onekit.js.JsObject;
 import cn.onekit.js.JsNumber;

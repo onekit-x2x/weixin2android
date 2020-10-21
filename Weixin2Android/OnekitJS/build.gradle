@@ -36,5 +36,4 @@ dependencies {
     implementation 'org.apache.commons:commons-lang3:3.11'
     implementation 'org.mozilla.javascript:com.springsource.org.mozilla.javascript:1.7.0.R2'
     implementation 'androidx.annotation:annotation:1.1.0'
-    implementation project(path: ':Thekit')
 }

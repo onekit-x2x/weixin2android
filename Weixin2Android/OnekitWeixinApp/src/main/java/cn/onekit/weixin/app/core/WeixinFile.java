@@ -3,7 +3,7 @@ package cn.onekit.weixin.app.core;
 import java.util.ArrayList;
 import java.util.List;
 
-import thekit.android.Android;
+import cn.onekit.thekit.Android;
 import cn.onekit.js.JsObject;
 import cn.onekit.js.core.JsFile;
 import cn.onekit.weixin.PageObject;

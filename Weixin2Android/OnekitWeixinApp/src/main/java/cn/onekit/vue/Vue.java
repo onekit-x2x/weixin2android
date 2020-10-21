@@ -1,6 +1,6 @@
 package cn.onekit.vue;
 
-import thekit.ACTION1;
+import cn.onekit.thekit.ACTION1;
 import cn.onekit.js.JsObject;
 import cn.onekit.js.JsNumber;
 import cn.onekit.js.JsObject_;

@@ -5,12 +5,12 @@ import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 
-import thekit.ARRAY;
-import thekit.COLOR;
-import cn.onekit.DOM;
-import cn.onekit.LITERAL_;
-import cn.onekit.OneKit;
-import thekit.STRING_;
+import cn.onekit.thekit.ARRAY;
+import cn.onekit.thekit.COLOR;
+import cn.onekit.core.DOM;
+import cn.onekit.core.LITERAL_;
+import cn.onekit.core.OneKit;
+import cn.onekit.thekit.STRING_;
 import cn.onekit.css.CSSStyleDeclaration;
 
 public class View_H5 {

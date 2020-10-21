@@ -5,8 +5,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Map;
 
-import thekit.android.Android;
-import cn.onekit.OneKit;
+import cn.onekit.thekit.Android;
+import cn.onekit.core.OneKit;
 import cn.onekit.js.JsObject;
 import cn.onekit.js.JsNumber;
 import cn.onekit.js.JsString;

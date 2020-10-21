@@ -42,7 +42,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
-import thekit.ASSET;
+import cn.onekit.thekit.ASSET;
 import cn.onekit.js.JsObject;
 import cn.onekit.js.JsNumber;
 import cn.onekit.js.JsString;
@@ -55,7 +55,7 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
-import static thekit.android.Android.dp2px;
+import static cn.onekit.thekit.Android.dp2px;
 
 public class WeixinMap_Tencent2D extends WeixinMap<MapView,TencentMap> {
 

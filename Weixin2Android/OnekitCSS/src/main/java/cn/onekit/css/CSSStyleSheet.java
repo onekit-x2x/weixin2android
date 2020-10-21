@@ -7,9 +7,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import cn.onekit.OneKit;
+import cn.onekit.core.OneKit;
 import cn.onekit.css.core.CSS2JSON;
-import thekit.ASSET;
+import cn.onekit.thekit.ASSET;
 
 public class CSSStyleSheet extends StyleSheet {
     private List<CSSRule> _cssRules;

@@ -7,7 +7,7 @@ import android.os.Bundle;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import cn.onekit.OneKit;
+import cn.onekit.core.OneKit;
 import cn.onekit.weixin.app.R;
 import cn.onekit.weixin.core.Onekit_Weixin;
 

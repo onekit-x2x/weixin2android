@@ -48,5 +48,4 @@ dependencies {
     implementation 'org.java-websocket:Java-WebSocket:1.5.1'
     implementation project(path: ':OnekitW3C')
     implementation project(path: ':OnekitCSS')
-    implementation project(path: ':Thekit')
 }

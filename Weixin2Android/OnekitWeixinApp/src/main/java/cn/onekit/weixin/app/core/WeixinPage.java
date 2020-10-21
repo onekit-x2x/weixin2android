@@ -11,8 +11,8 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.HashMap;
 import java.util.Map;
 
-import thekit.android.Android;
-import cn.onekit.OneKit;
+import cn.onekit.thekit.Android;
+import cn.onekit.core.OneKit;
 import cn.onekit.css.core.CssLayoutParams;
 import cn.onekit.css.core.OnekitCSS;
 import cn.onekit.js.JsObject;

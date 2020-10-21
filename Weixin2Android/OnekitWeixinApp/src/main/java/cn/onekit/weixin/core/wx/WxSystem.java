@@ -13,7 +13,7 @@ import android.util.DisplayMetrics;
 import java.util.Locale;
 import java.util.Map;
 
-import thekit.android.Android;
+import cn.onekit.thekit.Android;
 import cn.onekit.js.JsBoolean;
 import cn.onekit.js.JsObject;
 import cn.onekit.js.JsString;

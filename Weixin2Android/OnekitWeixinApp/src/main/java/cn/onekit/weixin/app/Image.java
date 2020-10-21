@@ -7,9 +7,9 @@ import android.widget.ImageView;
 
 import java.io.IOException;
 
-import thekit.ASSET;
-import thekit.FUNC1;
-import cn.onekit.OneKit;
+import cn.onekit.thekit.ASSET;
+import cn.onekit.thekit.FUNC1;
+import cn.onekit.core.OneKit;
 import cn.onekit.js.JsString;
 import cn.onekit.js.JsObject_;
 import cn.onekit.weixin.app.core.WeixinElement;

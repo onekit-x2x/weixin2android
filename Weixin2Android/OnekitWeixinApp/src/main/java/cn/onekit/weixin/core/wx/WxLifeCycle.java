@@ -1,11 +1,11 @@
 package cn.onekit.weixin.core.wx;
 
-import cn.onekit.OneKit;
+import cn.onekit.core.OneKit;
 import cn.onekit.js.JsObject;
 import cn.onekit.js.JsNumber;
 import cn.onekit.js.JsString;
 
-import static cn.onekit.OneKit.launchPath;
+import static cn.onekit.core.OneKit.launchPath;
 
 public class WxLifeCycle extends WxKeyboard {
 

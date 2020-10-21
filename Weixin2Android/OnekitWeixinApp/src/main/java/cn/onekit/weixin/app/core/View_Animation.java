@@ -21,12 +21,11 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-import thekit.android.Android;
-import thekit.android.Android;
+import cn.onekit.thekit.Android;
 import cn.onekit.weixin.Rotate3dAnimation;
 
-import static thekit.android.Android.dp2px;
-import static thekit.android.Android.px2dp;
+import static cn.onekit.thekit.Android.dp2px;
+import static cn.onekit.thekit.Android.px2dp;
 
 public class View_Animation {
     public static void animation(final View view, final Map animationData) {

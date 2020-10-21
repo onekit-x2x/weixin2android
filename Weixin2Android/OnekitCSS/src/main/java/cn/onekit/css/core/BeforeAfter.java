@@ -2,7 +2,7 @@ package cn.onekit.css.core;
 
 import android.content.Context;
 import android.widget.TextView;
-import cn.onekit.BeforeAfter_;
+import cn.onekit.core.BeforeAfter_;
 
 public   class BeforeAfter extends TextView implements BeforeAfter_ {
     public BeforeAfter(Context context) {

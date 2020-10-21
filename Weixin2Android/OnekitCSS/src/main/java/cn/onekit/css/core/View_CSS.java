@@ -7,11 +7,11 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 import java.util.List;
 
-import thekit.ARRAY;
-import cn.onekit.DOM;
-import cn.onekit.LITERAL_;
-import thekit.STRING_;
-import cn.onekit.OneKit;
+import cn.onekit.thekit.ARRAY;
+import cn.onekit.core.DOM;
+import cn.onekit.core.LITERAL_;
+import cn.onekit.thekit.STRING_;
+import cn.onekit.core.OneKit;
 import cn.onekit.css.CSSStyleDeclaration;
 
 public class View_CSS {

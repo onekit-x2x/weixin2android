@@ -4,11 +4,11 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
-import cn.onekit.OneKit;
+import cn.onekit.core.OneKit;
 import cn.onekit.weixin.app.core.page.TabsActivity;
 
-import static cn.onekit.OneKit.querystring2extras;
-import static cn.onekit.OneKit.url2class;
+import static cn.onekit.core.OneKit.querystring2extras;
+import static cn.onekit.core.OneKit.url2class;
 
 public class Onekit_Weixin_App {
     static {

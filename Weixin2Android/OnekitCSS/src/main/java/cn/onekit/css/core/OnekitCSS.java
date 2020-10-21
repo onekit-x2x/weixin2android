@@ -8,17 +8,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-import thekit.COLOR;
-import cn.onekit.LITERAL_;
-import cn.onekit.OneKit;
+import cn.onekit.thekit.COLOR;
+import cn.onekit.core.LITERAL_;
+import cn.onekit.core.OneKit;
 import cn.onekit.css.CSSRule;
 import cn.onekit.css.CSSStyleDeclaration;
 import cn.onekit.css.CSSStyleRule;
 import cn.onekit.css.CSSStyleSheet;
-import thekit.ARRAY;
-import thekit.STRING_;
+import cn.onekit.thekit.ARRAY;
+import cn.onekit.thekit.STRING_;
 
-import static thekit.android.Android.dp2px;
+import static cn.onekit.thekit.Android.dp2px;
 
 public class OnekitCSS {
 

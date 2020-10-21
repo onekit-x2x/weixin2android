@@ -4,7 +4,7 @@ import android.app.Application;
 
 import java.util.Base64;
 
-import thekit.android.Android;
+import cn.onekit.thekit.Android;
 import cn.onekit.js.ArrayBuffer;
 import cn.onekit.js.JsBoolean;
 import cn.onekit.js.TypedArray;

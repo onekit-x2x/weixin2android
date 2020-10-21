@@ -10,10 +10,10 @@ import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Map;
 
-import thekit.ACTION;
-import thekit.ACTION1;
-import cn.onekit.DOM;
-import cn.onekit.LITERAL_;
+import cn.onekit.thekit.ACTION;
+import cn.onekit.thekit.ACTION1;
+import cn.onekit.core.DOM;
+import cn.onekit.core.LITERAL_;
 
 
 class View_flexV {

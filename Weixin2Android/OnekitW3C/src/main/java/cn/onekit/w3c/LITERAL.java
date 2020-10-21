@@ -5,7 +5,7 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.widget.TextView;
 
-import cn.onekit.LITERAL_;
+import cn.onekit.core.LITERAL_;
 import cn.onekit.js.JsString;
 import cn.onekit.js.JsObject_;
 

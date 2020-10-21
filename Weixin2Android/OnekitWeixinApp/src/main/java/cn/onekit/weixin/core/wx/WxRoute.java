@@ -16,8 +16,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
 
-import thekit.android.Android;
-import cn.onekit.OneKit;
+import cn.onekit.thekit.Android;
+import cn.onekit.core.OneKit;
 import cn.onekit.js.JsObject;
 import cn.onekit.js.core.Onekit_JS;
 import cn.onekit.js.core.function;
