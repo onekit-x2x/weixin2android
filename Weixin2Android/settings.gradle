@@ -1,5 +1,0 @@
-include ':JsDemo', ':Onekit', ':OnekitWeixinApp', ':WeixinAppDemo', ':WeixinDemo', ':OnekitJS', ':OnekitW3C'
-rootProject.name='Weixin2Android'
-include ':OnekitCSS'
-include ':Cssdemo'
-include ':MyProject'

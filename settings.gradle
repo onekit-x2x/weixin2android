@@ -1,0 +1,2 @@
+include ':app', ':OnekitWeixinApp'
+rootProject.name='WeixinAppDemo'
