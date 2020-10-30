@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="onekit">
+        <attr name="switch_type" format="string"/>
+        <attr name="switch_disabled" format="boolean"/>
+    </declare-styleable>
+</resources>

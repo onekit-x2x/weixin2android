@@ -1,0 +1,6 @@
+<resources>
+     <style name="onekit_checkbox" parent="@android:style/Widget.CompoundButton.CheckBox">
+
+         <item name="android:colorControlNormal">#d1d1d1</item>
+     </style>
+</resources>
