@@ -1,2 +1,2 @@
-include ':app', ':OnekitWeixinApp'
+include ':app', ':weixin2android'
 rootProject.name='WeixinAppDemo'
