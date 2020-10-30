@@ -49,3 +49,12 @@ dependencies {
     implementation 'com.google.zxing:core:3.4.1'
     implementation 'org.java-websocket:Java-WebSocket:1.5.1'
 }
+apply plugin: 'com.novoda.bintray-release'
+publish{
+    userOrg = 'www-onekit-cn' // Bintray 账号名
+    groupId = 'cn.onekit.x2x'
+    artifactId = 'weixin2android'
+    publishVersion = '1.0.0'
+    desc = ''
+    website = 'https://www.onekit.cn'
+}
