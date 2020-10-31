@@ -1,9 +1,10 @@
 package cn.onekit.weixin.app;
 
 import android.content.Context;
-import android.graphics.drawable.GradientDrawable;
-import android.graphics.drawable.StateListDrawable;
+import android.util.AttributeSet;
 import android.view.View;
+
+import java.util.jar.Attributes;
 
 import cn.onekit.js.JsBoolean;
 import cn.onekit.js.JsObject;
@@ -56,6 +57,10 @@ public class Switch extends WeixinElement implements FormItem_<JsBoolean> {
 
     public Switch(Context context) {
         super(context);
+        _init();
+    }
+    public Switch(Context context, AttributeSet attrs) {
+        super(context,attrs);
         _init();
     }
     /////////////////////////////////////
@@ -147,6 +152,7 @@ public class Switch extends WeixinElement implements FormItem_<JsBoolean> {
                 _mainCheckbox().setColor(_color);
                 break;
             case "switch":
+                /*
                 StateListDrawable trackDrawableList =      (StateListDrawable) _mainSwitch().getTrackDrawable();
                 GradientDrawable trackDrawable= (GradientDrawable) trackDrawableList.getStateDrawable(1);
                 assert trackDrawable != null;
@@ -156,6 +162,8 @@ public class Switch extends WeixinElement implements FormItem_<JsBoolean> {
                 GradientDrawable thumbDrawable= (GradientDrawable) thumbDrawableList.getStateDrawable(1);
                 assert thumbDrawable != null;
                 thumbDrawable.setStroke(1,_color);
+                */
+                //ContextCompat.getColorStateList( _mainSwitch(), R.drawable.switch_track_selector)
                 break;
             default:
                 break;

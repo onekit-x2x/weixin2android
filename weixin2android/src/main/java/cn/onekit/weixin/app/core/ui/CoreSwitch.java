@@ -9,9 +9,11 @@ import android.text.StaticLayout;
 import android.text.TextPaint;
 import android.util.AttributeSet;
 
+import androidx.appcompat.widget.SwitchCompat;
+
 import java.lang.reflect.Field;
 
-public  class CoreSwitch extends android.widget.Switch{
+public  class CoreSwitch extends SwitchCompat {
     Class<android.widget.Switch> clazz = android.widget.Switch.class;
     public CoreSwitch(Context context) {
         super(context);
@@ -102,9 +104,10 @@ public  class CoreSwitch extends android.widget.Switch{
             if (mThumbDrawable.get(this) != null) {
                 Drawable thumbDrawable =(Drawable)mThumbDrawable.get(this);
                 assert thumbDrawable != null;
-                final Insets inset = thumbDrawable.getOpticalInsets();
-                paddingLeft = Math.max(paddingLeft, inset.left);
-                paddingRight = Math.max(paddingRight, inset.right);
+
+              //  final Insets inset = thumbDrawable.getOpticalInsets();
+              //  paddingLeft = Math.max(paddingLeft, inset.left);
+              //  paddingRight = Math.max(paddingRight, inset.right);
             }
 
             final int switchWidth = (int)(Math.max((int)mSwitchMinWidth.get(this),

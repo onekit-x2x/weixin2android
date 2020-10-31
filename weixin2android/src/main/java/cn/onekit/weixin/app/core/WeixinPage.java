@@ -1,30 +1,31 @@
 package cn.onekit.weixin.app.core;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.ViewGroup;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import java.lang.reflect.InvocationTargetException;
 import java.util.HashMap;
 import java.util.Map;
 
-import cn.onekit.thekit.Android;
 import cn.onekit.core.OneKit;
 import cn.onekit.css.core.CssLayoutParams;
 import cn.onekit.css.core.OnekitCSS;
 import cn.onekit.js.JsObject;
-import cn.onekit.js.JsString;
 import cn.onekit.js.JsObject_;
+import cn.onekit.js.JsString;
 import cn.onekit.js.core.function;
+import cn.onekit.thekit.Android;
 import cn.onekit.weixin.EventChannel;
 import cn.onekit.weixin.PageObject;
 import cn.onekit.weixin.WX;
 import cn.onekit.weixin.app.Page;
 
-public abstract class WeixinPage extends Activity implements WeixinFile  {
+public abstract class WeixinPage extends AppCompatActivity implements WeixinFile  {
     private void update() {
         //LOG LOG = new LOG();
         page.removeAllViews();
@@ -38,7 +39,7 @@ public abstract class WeixinPage extends Activity implements WeixinFile  {
 
     protected WX wx;
     //////////////////////////////////
-    Map<String,Class<WeixinTemplate>> imports = new HashMap();
+    Map<String,Class<WeixinTemplate>> imports = new HashMap<>();
     public void Import(String src) {
         src = src.substring(0,src.lastIndexOf("/"));
         src = OneKit.fixPath(url,src);
