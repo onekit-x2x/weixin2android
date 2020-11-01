@@ -27,6 +27,6 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'cn.onekit.x2x:js:1.0.0'
     implementation 'cn.onekit.x2x:css:1.0.0'
-    implementation 'cn.onekit.x2x:w3c:1.0.0'
+    implementation 'cn.onekit.x2x:w3c:1.0.1'
     implementation project(path: ':weixin2android')
 }

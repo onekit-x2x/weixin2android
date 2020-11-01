@@ -41,7 +41,7 @@ dependencies {
     implementation 'cn.onekit.x2x:onekit:1.0.0'
     implementation 'cn.onekit.x2x:js:1.0.0'
     implementation 'cn.onekit.x2x:css:1.0.0'
-    implementation 'cn.onekit.x2x:w3c:1.0.0'
+    implementation 'cn.onekit.x2x:w3c:1.0.1'
     implementation 'com.tencent.mm.opensdk:wechat-sdk-android-without-mta:6.6.4'
 //    implementation 'com.4tencent.soter:soter-wrapper:2.0.0'
     implementation 'com.google.zxing:android-core:3.3.0'

@@ -1,17 +1,16 @@
 package cn.onekit.weixin.app.core.ui;
 
 import android.content.Context;
+import android.graphics.Insets;
 import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
+import android.os.storage.StorageManager;
 import android.text.Layout;
 import android.text.StaticLayout;
 import android.text.TextPaint;
 import android.util.AttributeSet;
 import android.widget.Switch;
-
-import androidx.appcompat.widget.SwitchCompat;
-
 import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 
 public  class CoreSwitch extends Switch {
     Class<Switch> clazz = Switch.class;
@@ -21,107 +20,105 @@ public  class CoreSwitch extends Switch {
     public CoreSwitch(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
-    private Layout makeLayout(CharSequence text) throws Exception {
-        TextPaint mTextPaint = (TextPaint) clazz.getField("mTextPaint").get(this);
-        return new StaticLayout(text, mTextPaint,
-                (int) Math.ceil(Layout.getDesiredWidth(text, mTextPaint)),
-                Layout.Alignment.ALIGN_NORMAL, 1.f, 0, true);
-    }
+
 /*
+    private Layout makeLayout(CharSequence text) {
+        try {
+            Field mSwitchTransformationMethod = clazz.getDeclaredField("mSwitchTransformationMethod");mSwitchTransformationMethod.setAccessible(true);
+            Field mTextPaint = clazz.getDeclaredField("mTextPaint");mTextPaint.setAccessible(true);
+            Field mUseFallbackLineSpacing = clazz.getDeclaredField("mTextPaint");mTextPaint.setAccessible(true);
+            Method getDesiredWidth = Layout.class.getDeclaredMethod("getDesiredWidth");getDesiredWidth.setAccessible(true);
+            final CharSequence transformed = text;
+
+            int width = (int) Math.ceil((int)getDesiredWidth.invoke(null,
+                    transformed,
+                    0,
+                    transformed.length(),
+                    (TextPaint)mTextPaint.get(this),
+                    getTextDirectionHeuristic()));
+            return StaticLayout.Builder.obtain(transformed, 0, transformed.length(), (TextPaint) mTextPaint.get(this), width)
+                    .setUseLineSpacingFromFallbacks((boolean)mUseFallbackLineSpacing.get(this))
+                    .build();
+        } catch (Exception e) {
+            return null;
+        }
+    }
     @Override
     public void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-        try {
-  // Field mShowText =clazz.getDeclaredField("mShowText");mShowText.setAccessible(true);
-           //    Field mTextOn = clazz.getDeclaredField("mTextOn");mTextOn.setAccessible(true);
-          //  Field mTextOff = clazz.getDeclaredField("mTextOff");mTextOff.setAccessible(true);
+        try{
             Field mOnLayout = clazz.getDeclaredField("mOnLayout");mOnLayout.setAccessible(true);
             Field mOffLayout = clazz.getDeclaredField("mOffLayout");mOffLayout.setAccessible(true);
-            Field mTempRect = clazz.getDeclaredField("mTempRect");mTempRect.setAccessible(true);
-            Field mThumbDrawable = clazz.getDeclaredField("mThumbDrawable");mThumbDrawable.setAccessible(true);
-            Field mTrackDrawable = clazz.getDeclaredField("mTrackDrawable");mTrackDrawable.setAccessible(true);
-            Field mThumbTextPadding = clazz.getDeclaredField("mThumbTextPadding");mThumbTextPadding.setAccessible(true);
             Field mThumbWidth = clazz.getDeclaredField("mThumbWidth");mThumbWidth.setAccessible(true);
-            Field mSwitchMinWidth = clazz.getDeclaredField("mSwitchMinWidth");mSwitchMinWidth.setAccessible(true);
             Field mSwitchWidth = clazz.getDeclaredField("mSwitchWidth");mSwitchWidth.setAccessible(true);
-            Field mSwitchHeight =  clazz.getDeclaredField("mSwitchHeight");mSwitchHeight.setAccessible(true);
-            //
-            if (getShowText()) {
-                if (mOnLayout.get(this) == null) {
-                    mOnLayout.set(this, makeLayout(getTextOn()));
-                }
-
-                if (mOffLayout.get(this) == null) {
-                    mOffLayout.set(this, makeLayout(getTextOn()));
-                }
+            Field mSwitchHeight = clazz.getDeclaredField("mSwitchHeight");mSwitchHeight.setAccessible(true);
+        if (getShowText()) {
+            if (mOnLayout.get(this) == null) {
+                mOnLayout.set(this,makeLayout(getTextOn()));
             }
 
-            final Rect padding = (Rect) mTempRect.get(this);
-            final int thumbWidth;
-            final int thumbHeight;
-            if (mThumbDrawable.get(this)!=null) {
-                // Cached thumb width does not include padding.
-                Drawable thumbDrawable =(Drawable)mThumbDrawable.get(this);
-                assert padding != null;
-                assert thumbDrawable != null;
-                thumbDrawable.getPadding(padding);
-                thumbWidth =  thumbDrawable.getIntrinsicWidth() - padding.left - padding.right;
-                thumbHeight =  thumbDrawable.getIntrinsicHeight();
-            } else {
-                thumbWidth = 0;
-                thumbHeight = 0;
+            if (mOffLayout.get(this) == null) {
+                mOffLayout.set(this,makeLayout(getTextOff()));
             }
+        }
 
-            final int maxTextWidth;
-            if (getShowText()) {
-                Layout onLayout=(Layout)mOnLayout.get(this);
-                assert onLayout != null;
-                maxTextWidth = (int)(Math.max(onLayout.getWidth(), onLayout.getWidth()
-                        + (int)mThumbTextPadding.get(this) * 1.6));
-            } else {
-                maxTextWidth = 0;
-            }
+        final Rect padding = new Rect();
+        final int thumbWidth;
+        final int thumbHeight;
+        if (getThumbDrawable() != null) {
+            // Cached thumb width does not include padding.
+            getThumbDrawable() .getPadding(padding);
+            thumbWidth = getThumbDrawable() .getIntrinsicWidth() - padding.left - padding.right;
+            thumbHeight = getThumbDrawable() .getIntrinsicHeight();
+        } else {
+            thumbWidth = 0;
+            thumbHeight = 0;
+        }
 
-            mThumbWidth.set(this, Math.max(maxTextWidth, thumbWidth));
+        final int maxTextWidth;
+        if (getShowText()) {
+            maxTextWidth = Math.max(((Layout)mOnLayout.get(this)).getWidth(), ((Layout)mOnLayout.get(this)).getWidth())
+                    + getThumbTextPadding() * 2;
+        } else {
+            maxTextWidth = 0;
+        }
 
-            final int trackHeight;
-            if (mTrackDrawable.get(this) != null) {
-                Drawable trackDrawable = (Drawable)mTrackDrawable.get(this);
-                assert padding != null;
-                assert trackDrawable != null;
-                trackDrawable.getPadding(padding);
-                trackHeight =   trackDrawable.getIntrinsicHeight();
-            } else {
-                assert padding != null;
-                padding.setEmpty();
-                trackHeight = 0;
-            }
+        mThumbWidth.set(this,Math.max(maxTextWidth, thumbWidth));
 
-            // Adjust left and right padding to ensure there's enough room for the
-            // thumb's padding (when present).
-            int paddingLeft = padding.left;
-            int paddingRight = padding.right;
-            if (mThumbDrawable.get(this) != null) {
-                Drawable thumbDrawable =(Drawable)mThumbDrawable.get(this);
-                assert thumbDrawable != null;
+        final int trackHeight;
+        if (getTrackDrawable() != null) {
+            getTrackDrawable().getPadding(padding);
+            trackHeight = getTrackDrawable().getIntrinsicHeight();
+        } else {
+            padding.setEmpty();
+            trackHeight = 0;
+        }
 
-              //  final Insets inset = thumbDrawable.getOpticalInsets();
-              //  paddingLeft = Math.max(paddingLeft, inset.left);
-              //  paddingRight = Math.max(paddingRight, inset.right);
-            }
+        // Adjust left and right padding to ensure there's enough room for the
+        // thumb's padding (when present).
+        int paddingLeft = padding.left;
+        int paddingRight = padding.right;
+        if (getTrackDrawable() != null) {
+            final Insets inset = getTrackDrawable().getOpticalInsets();
+            paddingLeft = Math.max(paddingLeft, inset.left);
+            paddingRight = Math.max(paddingRight, inset.right);
+        }
 
-            final int switchWidth = (int)(Math.max((int)mSwitchMinWidth.get(this),
-                    1.6 * (int)mThumbWidth.get(this) + paddingLeft + paddingRight));
-            final int switchHeight = Math.max(trackHeight, thumbHeight);
-            mSwitchWidth.set(this,switchWidth);
-            mSwitchHeight.set(this,switchHeight);
+        final int switchWidth = Math.max(getSwitchMinWidth(),
+                2 * (int)mThumbWidth.get(this) + paddingLeft + paddingRight);
+        final int switchHeight = Math.max(trackHeight, thumbHeight);
+        mSwitchWidth.set(this, switchWidth);
+        mSwitchHeight.set(this,switchHeight);
 
-            setMeasuredDimension(switchWidth, switchHeight);
+        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
 
+        final int measuredHeight = getMeasuredHeight();
+        if (measuredHeight < switchHeight) {
+            setMeasuredDimension(getMeasuredWidthAndState(), switchHeight);
+        }
         }catch (Exception e){
             e.printStackTrace();
             super.onMeasure(widthMeasureSpec, heightMeasureSpec);
         }
-    }
-*/
+    }*/
 
 }
