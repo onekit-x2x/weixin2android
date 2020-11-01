@@ -1,17 +1,14 @@
 package cn.onekit.weixin.app.core;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.ViewGroup;
-
-import androidx.appcompat.app.AppCompatActivity;
-
 import java.lang.reflect.InvocationTargetException;
 import java.util.HashMap;
 import java.util.Map;
-
 import cn.onekit.core.OneKit;
 import cn.onekit.css.core.CssLayoutParams;
 import cn.onekit.css.core.OnekitCSS;
@@ -25,7 +22,7 @@ import cn.onekit.weixin.PageObject;
 import cn.onekit.weixin.WX;
 import cn.onekit.weixin.app.Page;
 
-public abstract class WeixinPage extends AppCompatActivity implements WeixinFile  {
+public abstract class WeixinPage extends Activity implements WeixinFile  {
     private void update() {
         //LOG LOG = new LOG();
         page.removeAllViews();

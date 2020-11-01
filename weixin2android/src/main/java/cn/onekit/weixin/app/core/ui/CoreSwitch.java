@@ -1,20 +1,20 @@
 package cn.onekit.weixin.app.core.ui;
 
 import android.content.Context;
-import android.graphics.Insets;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.text.Layout;
 import android.text.StaticLayout;
 import android.text.TextPaint;
 import android.util.AttributeSet;
+import android.widget.Switch;
 
 import androidx.appcompat.widget.SwitchCompat;
 
 import java.lang.reflect.Field;
 
-public  class CoreSwitch extends SwitchCompat {
-    Class<android.widget.Switch> clazz = android.widget.Switch.class;
+public  class CoreSwitch extends Switch {
+    Class<Switch> clazz = Switch.class;
     public CoreSwitch(Context context) {
         super(context);
     }
@@ -27,16 +27,15 @@ public  class CoreSwitch extends SwitchCompat {
                 (int) Math.ceil(Layout.getDesiredWidth(text, mTextPaint)),
                 Layout.Alignment.ALIGN_NORMAL, 1.f, 0, true);
     }
-
+/*
     @Override
     public void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         try {
-            Field mShowText =clazz.getDeclaredField("mShowText");mShowText.setAccessible(true);
-            Field mTextOn = clazz.getDeclaredField("mTextOn");mTextOn.setAccessible(true);
-            Field mTextOff = clazz.getDeclaredField("mTextOff");mTextOff.setAccessible(true);
+  // Field mShowText =clazz.getDeclaredField("mShowText");mShowText.setAccessible(true);
+           //    Field mTextOn = clazz.getDeclaredField("mTextOn");mTextOn.setAccessible(true);
+          //  Field mTextOff = clazz.getDeclaredField("mTextOff");mTextOff.setAccessible(true);
             Field mOnLayout = clazz.getDeclaredField("mOnLayout");mOnLayout.setAccessible(true);
             Field mOffLayout = clazz.getDeclaredField("mOffLayout");mOffLayout.setAccessible(true);
-            // Method makeLayout =  clazz.getDeclaredMethod("makeLayout",CharSequence.class);
             Field mTempRect = clazz.getDeclaredField("mTempRect");mTempRect.setAccessible(true);
             Field mThumbDrawable = clazz.getDeclaredField("mThumbDrawable");mThumbDrawable.setAccessible(true);
             Field mTrackDrawable = clazz.getDeclaredField("mTrackDrawable");mTrackDrawable.setAccessible(true);
@@ -46,13 +45,13 @@ public  class CoreSwitch extends SwitchCompat {
             Field mSwitchWidth = clazz.getDeclaredField("mSwitchWidth");mSwitchWidth.setAccessible(true);
             Field mSwitchHeight =  clazz.getDeclaredField("mSwitchHeight");mSwitchHeight.setAccessible(true);
             //
-            if ((boolean)mShowText.get(this)) {
+            if (getShowText()) {
                 if (mOnLayout.get(this) == null) {
-                    mOnLayout.set(this, makeLayout((String)mTextOn.get(this)));
+                    mOnLayout.set(this, makeLayout(getTextOn()));
                 }
 
                 if (mOffLayout.get(this) == null) {
-                    mOffLayout.set(this, makeLayout((String)mTextOff.get(this)));
+                    mOffLayout.set(this, makeLayout(getTextOn()));
                 }
             }
 
@@ -73,7 +72,7 @@ public  class CoreSwitch extends SwitchCompat {
             }
 
             final int maxTextWidth;
-            if ((boolean)mShowText.get(this)) {
+            if (getShowText()) {
                 Layout onLayout=(Layout)mOnLayout.get(this);
                 assert onLayout != null;
                 maxTextWidth = (int)(Math.max(onLayout.getWidth(), onLayout.getWidth()
@@ -123,6 +122,6 @@ public  class CoreSwitch extends SwitchCompat {
             super.onMeasure(widthMeasureSpec, heightMeasureSpec);
         }
     }
-
+*/
 
 }
