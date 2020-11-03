@@ -21,7 +21,7 @@ public  class CoreSwitch extends Switch {
         super(context, attrs);
     }
 
-/*
+
     private Layout makeLayout(CharSequence text) {
         try {
             Field mSwitchTransformationMethod = clazz.getDeclaredField("mSwitchTransformationMethod");mSwitchTransformationMethod.setAccessible(true);
@@ -45,10 +45,12 @@ public  class CoreSwitch extends Switch {
     }
     @Override
     public void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+
         try{
             Field mOnLayout = clazz.getDeclaredField("mOnLayout");mOnLayout.setAccessible(true);
             Field mOffLayout = clazz.getDeclaredField("mOffLayout");mOffLayout.setAccessible(true);
             Field mThumbWidth = clazz.getDeclaredField("mThumbWidth");mThumbWidth.setAccessible(true);
+//            Field mTempRect = clazz.getDeclaredField("mTempRect");mTempRect.setAccessible(true);
             Field mSwitchWidth = clazz.getDeclaredField("mSwitchWidth");mSwitchWidth.setAccessible(true);
             Field mSwitchHeight = clazz.getDeclaredField("mSwitchHeight");mSwitchHeight.setAccessible(true);
         if (getShowText()) {
@@ -61,7 +63,7 @@ public  class CoreSwitch extends Switch {
             }
         }
 
-        final Rect padding = new Rect();
+        final Rect padding = new Rect();//(Rect) mTempRect.get(this);
         final int thumbWidth;
         final int thumbHeight;
         if (getThumbDrawable() != null) {
@@ -119,6 +121,6 @@ public  class CoreSwitch extends Switch {
             e.printStackTrace();
             super.onMeasure(widthMeasureSpec, heightMeasureSpec);
         }
-    }*/
+    }
 
 }

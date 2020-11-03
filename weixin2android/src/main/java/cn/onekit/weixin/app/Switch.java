@@ -1,6 +1,8 @@
 package cn.onekit.weixin.app;
 
 import android.content.Context;
+import android.graphics.drawable.GradientDrawable;
+import android.graphics.drawable.StateListDrawable;
 import android.util.AttributeSet;
 import android.view.View;
 
@@ -17,9 +19,10 @@ import cn.onekit.weixin.app.core.ui.CoreSwitch;
 
 public class Switch extends WeixinElement implements FormItem_<JsBoolean> {
     private String _name;
+
     @Override
     public void setName(String name) {
-        _name=name;
+        _name = name;
     }
 
     @Override
@@ -32,6 +35,7 @@ public class Switch extends WeixinElement implements FormItem_<JsBoolean> {
     public void setValue(JsBoolean value) {
 
     }
+
     @Override
     public JsBoolean getValue() {
         switch (_type) {
@@ -39,7 +43,7 @@ public class Switch extends WeixinElement implements FormItem_<JsBoolean> {
                 return new JsBoolean(_mainCheckbox().getChecked());
 
             case "switch":
-                return new JsBoolean( _mainSwitch().isChecked());
+                return new JsBoolean(_mainSwitch().isChecked());
             default:
                 return null;
         }
@@ -54,38 +58,44 @@ public class Switch extends WeixinElement implements FormItem_<JsBoolean> {
     ////////////////////////////////////////
 
 
-
     public Switch(Context context) {
         super(context);
         _init();
     }
+
     public Switch(Context context, AttributeSet attrs) {
-        super(context,attrs);
+        super(context, attrs);
         _init();
     }
+
     /////////////////////////////////////
     private boolean _disabled;
 
-    public void setDisabled(Boolean disabled){
-            _disabled=disabled;
-            _mainSwitch().setEnabled(!disabled);
-            _mainCheckbox().setDisabled(disabled);
+    public void setDisabled(Boolean disabled) {
+        _disabled = disabled;
+        _mainSwitch().setEnabled(!disabled);
+        _mainCheckbox().setDisabled(disabled);
     }
-    public boolean getDisabled(){
+
+    public boolean getDisabled() {
         return _disabled;
     }
+
     private boolean _checked;
-    public void setChecked(Boolean checked){
-            _checked=checked;
-            _mainSwitch().setChecked(checked);
-            _mainCheckbox().setChecked(checked);
+
+    public void setChecked(Boolean checked) {
+        _checked = checked;
+        _mainSwitch().setChecked(checked);
+        _mainCheckbox().setChecked(checked);
     }
-    public boolean getChecked(){
+
+    public boolean getChecked() {
         return _checked;
     }
 
 
     private String _type = "switch";
+
     public void setType(String type) {
         switch (type) {
             case "checkbox":
@@ -107,13 +117,12 @@ public class Switch extends WeixinElement implements FormItem_<JsBoolean> {
 
     //
     private CoreSwitch _mainSwitch() {
-        return  this.findViewById(R.id.mainSwitch);
+        return this.findViewById(R.id.mainSwitch);
     }
 
     private CoreCheckBox _mainCheckbox() {
-        return  this.findViewById(R.id.mainCheckbox);
+        return this.findViewById(R.id.mainCheckbox);
     }
-
 
     private void _init() {
         inflate(getContext(), R.layout.onekit_switch, this);
@@ -121,28 +130,25 @@ public class Switch extends WeixinElement implements FormItem_<JsBoolean> {
         _mainSwitch().setOnCheckedChangeListener((buttonView, isChecked) -> {
 
 
-            Event event = new Event("change",new JsObject() {{
+            Event event = new Event("change", new JsObject() {{
 
                 put("value", new JsBoolean(isChecked));
 
-            }},this,this,0);
+            }}, this, this, 0);
             dispatchEvent(event);
         });
         _mainCheckbox()._checkbox().setOnCheckedChangeListener((sender, isChecked) -> {
 
-            Event event = new Event("change",new JsObject() {{
+            Event event = new Event("change", new JsObject() {{
 
                 put("value", new JsBoolean(isChecked));
 
-            }},this,this,0);
+            }}, this, this, 0);
             dispatchEvent(event);
         });
-//
-
     }
 
-   private int _color=getResources().getColor(R.color.weixin,getContext().getTheme());
-
+    private int _color = getResources().getColor(R.color.weixin, getContext().getTheme());
 
     public void setColor(int color) {
         _color = color;
@@ -152,27 +158,21 @@ public class Switch extends WeixinElement implements FormItem_<JsBoolean> {
                 _mainCheckbox().setColor(_color);
                 break;
             case "switch":
-                /*
-                StateListDrawable trackDrawableList =      (StateListDrawable) _mainSwitch().getTrackDrawable();
-                GradientDrawable trackDrawable= (GradientDrawable) trackDrawableList.getStateDrawable(1);
+                StateListDrawable trackDrawableList = (StateListDrawable) _mainSwitch().getTrackDrawable();
+                GradientDrawable trackDrawable = (GradientDrawable) trackDrawableList.getStateDrawable(1);
                 assert trackDrawable != null;
                 trackDrawable.setColor(_color);
                 //
-                StateListDrawable thumbDrawableList =      (StateListDrawable) _mainSwitch().getThumbDrawable();
-                GradientDrawable thumbDrawable= (GradientDrawable) thumbDrawableList.getStateDrawable(1);
+                StateListDrawable thumbDrawableList = (StateListDrawable) _mainSwitch().getThumbDrawable();
+                GradientDrawable thumbDrawable = (GradientDrawable) thumbDrawableList.getStateDrawable(1);
                 assert thumbDrawable != null;
-                thumbDrawable.setStroke(1,_color);
-                */
-                //ContextCompat.getColorStateList( _mainSwitch(), R.drawable.switch_track_selector)
+                thumbDrawable.setStroke(1, _color);
                 break;
             default:
                 break;
         }
     }
-
     public int getColor() {
         return _color;
     }
-
-
 }
