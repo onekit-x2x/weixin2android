@@ -18,4 +18,13 @@ public class DownloadTask {
     public void abort(){
         call.cancel();
     }
+    public void offHeadersReceived(function callback){
+
+    };
+    public void offProgressUpdate(function callback){
+
+    };
+    public void onHeadersReceived(function callback){
+
+    };
 }

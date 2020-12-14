@@ -10,6 +10,7 @@ import cn.onekit.thekit.Android;
 import cn.onekit.js.JsObject;
 import cn.onekit.js.core.function;
 import cn.onekit.weixin.AudioContext;
+import cn.onekit.weixin.InnerAudioContext;
 import cn.onekit.weixin.MediaAudioPlayer;
 import cn.onekit.weixin.app.R;
 import cn.onekit.weixin.core.Onekit_Weixin;
@@ -141,8 +142,8 @@ public class WxVoice extends WxVideoDecoder {
     public MediaAudioPlayer createMediaAudioPlayer(Map OBJECT){
           return null;
     }
-    public void createInnerAudioContext(){
-
+    public InnerAudioContext createInnerAudioContext(){
+return null;
     }
     public AudioContext createAudioContext(JsObject_ id, JsObject_ THIS){
           return null;

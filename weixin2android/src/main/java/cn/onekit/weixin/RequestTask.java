@@ -1,5 +1,6 @@
 package cn.onekit.weixin;
 
+import cn.onekit.js.core.function;
 import okhttp3.Call;
 import okhttp3.OkHttpClient;
 
@@ -13,4 +14,11 @@ public class RequestTask {
     public void abort(){
         call.cancel();
     }
+    public void offHeadersReceived(function callback){
+
+    }
+    public void onHeadersReceived(function callback){
+
+    }
+
 }

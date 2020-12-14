@@ -1,8 +1,10 @@
 package cn.onekit.weixin.core.wx;
 
-public class WxUDP extends WxTopBar{
-    public void createUDPSocket(){
+import cn.onekit.weixin.UDPSocket;
 
+public class WxUDP extends WxTopBar{
+    public UDPSocket createUDPSocket(){
+        return null;
     }
 
 }

@@ -3,11 +3,12 @@ package cn.onekit.weixin.core.wx;
 import android.provider.Settings;
 
 import java.util.Map;
-import java.util.logging.LogManager;
+
 
 import cn.onekit.thekit.Android;
 import cn.onekit.js.JsObject;
 import cn.onekit.js.core.function;
+import cn.onekit.weixin.LogManager;
 import cn.onekit.weixin.RealtimeLogManager;
 import cn.onekit.weixin.app.R;
 import cn.onekit.weixin.core.res.wx_fail;
