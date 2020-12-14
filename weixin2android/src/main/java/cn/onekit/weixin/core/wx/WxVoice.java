@@ -5,14 +5,17 @@ import android.media.MediaPlayer;
 import java.io.IOException;
 import java.util.Map;
 
+import cn.onekit.js.JsObject_;
 import cn.onekit.thekit.Android;
 import cn.onekit.js.JsObject;
 import cn.onekit.js.core.function;
+import cn.onekit.weixin.AudioContext;
+import cn.onekit.weixin.MediaAudioPlayer;
 import cn.onekit.weixin.app.R;
 import cn.onekit.weixin.core.Onekit_Weixin;
 import cn.onekit.weixin.core.res.wx_fail;
 
-public class WxVoice extends WxVibrate {
+public class WxVoice extends WxVideoDecoder {
 
     private MediaPlayer player;
     private boolean isPause = true;
@@ -129,4 +132,21 @@ public class WxVoice extends WxVibrate {
             }
         }
     }
+    public void setInnerAudioOption(Map OBJECT){
+
+    }
+    public void getAvailableAudioSources(Map OBJECT){
+
+    }
+    public MediaAudioPlayer createMediaAudioPlayer(Map OBJECT){
+          return null;
+    }
+    public void createInnerAudioContext(){
+
+    }
+    public AudioContext createAudioContext(JsObject_ id, JsObject_ THIS){
+          return null;
+    }
+
+
 }

@@ -13,6 +13,7 @@ import java.util.Map;
 import cn.onekit.thekit.Android;
 import cn.onekit.js.JsObject;
 import cn.onekit.js.core.function;
+import cn.onekit.weixin.RecorderManager;
 import cn.onekit.weixin.app.R;
 import cn.onekit.weixin.core.res.wx_fail;
 
@@ -126,5 +127,8 @@ public class WxRecord extends WxPullDownRefresh {
             String[] perms = {"android.permission.RECORD_AUDIO"};
             ActivityCompat.requestPermissions((Activity) Android.context, perms, 1);
         }
+    }
+    public RecorderManager getRecorderManager(){
+        return null;
     }
 }

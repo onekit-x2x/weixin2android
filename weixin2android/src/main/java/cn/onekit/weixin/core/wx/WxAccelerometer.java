@@ -125,5 +125,8 @@ public class WxAccelerometer  {
     private  void Stop() {
         sensorManager.unregisterListener(SensorEventListener);
     }
+    public  void offAccelerometerChange(function callback){
+
+    }
 }
 

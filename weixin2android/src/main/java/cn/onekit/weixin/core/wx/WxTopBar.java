@@ -1,4 +1,9 @@
 package cn.onekit.weixin.core.wx;
 
-public class WxTopBar extends WxTabBar{
+import java.util.Map;
+
+public class WxTopBar extends WxTick{
+    public void setTopBarText(Map OBJECT){
+
+    }
 }

@@ -291,5 +291,11 @@ public boolean share_menuItem = true;
     }
 
 
+
+    public void authorize(Map OBJECT){
+
+    }
+
+
 }
 

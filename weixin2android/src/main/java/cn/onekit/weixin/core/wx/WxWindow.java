@@ -1,6 +1,7 @@
 package cn.onekit.weixin.core.wx;
 
 import java.util.HashMap;
+import java.util.Map;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -100,4 +101,15 @@ public class WxWindow extends WxWiFi {
     public float innerHeight() {
         return _innerHeight;
     }
+
+    public void setWindowSize(Map OBJECT){
+
+    }
+    public void onWindowResize(Map OBJECT){
+
+    }
+    public void offWindowResize(Map OBJECT){
+
+    }
+
 }

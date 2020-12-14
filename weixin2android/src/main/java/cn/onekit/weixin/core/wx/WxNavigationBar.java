@@ -111,5 +111,9 @@ public class WxNavigationBar extends WxMonitor {
             imageView.setVisibility(View.GONE);
         }
     }
+
+    public void hideHomeButton(Map OBJECT) {
+
+    }
 }
 

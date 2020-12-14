@@ -1,5 +1,7 @@
 package cn.onekit.weixin.core.wx;
 
+import cn.onekit.js.JsObject_;
+
 public class WxPerformance extends WxPayment {
 
     public WxPerformance getPerformance() {
@@ -15,4 +17,8 @@ public class WxPerformance extends WxPayment {
         int i = (int) System.nanoTime() / 10000;
         return i;
     }
+    public void reportPerformance(JsObject_ id, JsObject_ value, JsObject_ dimensions){
+
+    }
+
 }

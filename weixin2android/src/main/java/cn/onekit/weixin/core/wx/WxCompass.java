@@ -97,5 +97,8 @@ public class WxCompass extends WxClipboard {
             }
         }
     }
+    public void offCompassChange(function callback){
+
+    }
 }
 

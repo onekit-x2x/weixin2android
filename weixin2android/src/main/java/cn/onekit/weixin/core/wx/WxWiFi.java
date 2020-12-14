@@ -573,4 +573,10 @@ public class WxWiFi extends WxWeRun {
         }
 
     };
+    public void offWifiConnected(function callback){
+
+    }
+    public void offGetWifiList(function callback){
+
+    }
 }

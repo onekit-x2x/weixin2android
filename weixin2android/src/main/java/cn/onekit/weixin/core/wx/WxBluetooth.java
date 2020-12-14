@@ -30,7 +30,7 @@ import cn.onekit.js.core.function;
 import cn.onekit.weixin.app.R;
 import cn.onekit.weixin.core.res.wx_fail;
 
-public class WxBluetooth extends WxBLE {
+public class WxBluetooth extends WxBLEPeripheral {
     private function _onBluetoothAdapterStateChange;
     private function _onBluetoothDeviceFound;
     JsArray _objects=new JsArray() ;
@@ -191,4 +191,12 @@ public class WxBluetooth extends WxBLE {
             }});
         }
     }
+
+    public void offBluetoothDeviceFound(function callback){
+
+    }
+    public void offBluetoothAdapterStateChange(function callback){
+
+    }
+
 }

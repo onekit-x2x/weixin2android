@@ -23,7 +23,7 @@ import cn.onekit.js.core.function;
 import cn.onekit.weixin.app.R;
 import cn.onekit.weixin.core.res.wx_fail;
 
-public class WxKeyboard extends WxInvoice {
+public class WxKeyboard extends WxIsOpenAccessibility {
     private EditText edt;
     private boolean isHide = false;
     private InputMethodManager imm;
@@ -242,6 +242,15 @@ public class WxKeyboard extends WxInvoice {
                 callback.invoke(obj);
             }
         }
+    }
+    public void onKeyboardHeightChange(function callback){
+
+    }
+    public void offKeyboardHeightChange(function callback){
+
+    }
+    public void getSelectedTextRange(Map Object){
+
     }
 }
 

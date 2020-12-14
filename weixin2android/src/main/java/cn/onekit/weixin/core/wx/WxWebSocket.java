@@ -13,7 +13,7 @@ import cn.onekit.js.core.function;
 import cn.onekit.weixin.app.R;
 import cn.onekit.weixin.core.res.wx_fail;
 
-public class WxWebSocket extends WxVoice {
+public class WxWebSocket extends WxVoIP {
     WebSocketClient socketClient;
 
     public void connectSocket(Map Dict) {

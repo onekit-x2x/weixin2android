@@ -110,4 +110,10 @@ public class WxScreen extends WxScanCode {
             }
         }
     }
+    public void onUserCaptureScreen(function callback){
+
+    }
+    public void offUserCaptureScreen(function callback){
+
+    }
 }

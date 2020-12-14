@@ -14,6 +14,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.List;
 import java.util.Map;
 
 import cn.onekit.thekit.Android;
@@ -296,8 +297,8 @@ View view;
             }
         }
     }
-/*
-    private  NDialog nDialog;
+
+   /* private  NDialog nDialog;
 
     public  void showActionSheet(Map OBJECT) {
         List itemListArry = OBJECT.get("itemList") != null ? (List) OBJECT.get("itemList") : null;
@@ -349,8 +350,8 @@ View view;
                 complete.invoke(res);
             }
         }
-    }
-*/
+    }*/
+
     //是否显示透明蒙层
     public  void addMask(boolean if_add_mask) {
         if (if_add_mask) {
@@ -380,6 +381,12 @@ View view;
         } else {
             Log.e("removeMask", "the null value");
         }
+    }
+    public void enableAlertBeforeUnload(Map OBJECT){
+
+    }
+    public void disableAlertBeforeUnload(Map OBJECT){
+
     }
 
 }

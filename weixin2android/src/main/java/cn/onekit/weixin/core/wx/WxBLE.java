@@ -241,5 +241,22 @@ public class WxBLE extends WxBattery {
             success.invoke(new JsObject());
         }
     }
+    public void setBLEMTU(Map OBJECT){
+
+    }
+    public void offBLEConnectionStateChange(function callback){
+
+    }
+    public void offBLECharacteristicValueChange(function callback){
+
+    }
+    public void makeBluetoothPair(Map OBJECT){
+
+    }
+    public void getBLEDeviceRSSI(Map OBJECT){
+
+    }
+
+
 }
 

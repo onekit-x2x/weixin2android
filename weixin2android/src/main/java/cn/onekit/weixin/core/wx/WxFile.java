@@ -21,6 +21,7 @@ import cn.onekit.js.JsObject;
 import cn.onekit.js.JsNumber;
 import cn.onekit.js.JsString;
 import cn.onekit.js.core.function;
+import cn.onekit.weixin.FileSystemManager;
 import cn.onekit.weixin.app.R;
 import cn.onekit.weixin.core.Onekit_Weixin;
 import cn.onekit.weixin.core.res.wx_fail;
@@ -504,6 +505,12 @@ public class WxFile extends WxExtConfig {
         } catch (Exception ex) {
             ex.printStackTrace();
         }
+    }
+    public void saveFileToDisk(Map OBJECT){
+
+    }
+    public FileSystemManager getFileSystemManager(){
+        return null;
     }
 }
 

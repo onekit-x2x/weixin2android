@@ -10,11 +10,12 @@ import cn.onekit.thekit.Android;
 import cn.onekit.js.JsArray;
 import cn.onekit.js.ArrayBuffer;
 import cn.onekit.js.core.function;
+import cn.onekit.weixin.NFCAdapter;
 import cn.onekit.weixin.app.R;
 import cn.onekit.weixin.core.nfc.NfcService;
 import cn.onekit.weixin.core.res.wx_fail;
 
-public class WxNFC extends WxNavigationBar {
+public class WxNFC extends WxNetwork {
     private NfcAdapter nfcAdapter;
     private PendingIntent pendingIntent;
     private String errMsg;
@@ -100,6 +101,12 @@ public class WxNFC extends WxNavigationBar {
         function fail = OBJECT.get("fail") != null ? (function) OBJECT.get("fail") : null;
         function complete = OBJECT.get("complete") != null ? (function) OBJECT.get("complete") : null;
         NfcService.data = data._data;
+    }
+    public void offHCEMessage(function callback) {
+        NfcService.callback = callback;
+    }
+    public NFCAdapter getNFCAdapter() {
+        return null;
     }
 }
 

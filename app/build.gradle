@@ -1,6 +1,12 @@
 apply plugin: 'com.android.application'
 
+
 android {
+    sourceSets {
+        main {
+            java.srcDirs = ['src/main/java']
+        }
+}
     compileSdkVersion 30
     buildToolsVersion "29.0.3"
     defaultConfig {
