@@ -1,22 +1,16 @@
 package cn.onekit.weixin.core.wx;
 
 import cn.onekit.js.JsObject_;
+import cn.onekit.weixin.Performance;
 
 public class WxPerformance extends WxPayment {
 
-    public WxPerformance getPerformance() {
-        WxPerformance performance = new WxPerformance();
-        return performance;
+    public Performance getPerformance() {
+
+        return null;
     }
 
-    public void triggerGC() {
-        System.gc();
-    }
 
-    public int now() {
-        int i = (int) System.nanoTime() / 10000;
-        return i;
-    }
     public void reportPerformance(JsObject_ id, JsObject_ value, JsObject_ dimensions){
 
     }

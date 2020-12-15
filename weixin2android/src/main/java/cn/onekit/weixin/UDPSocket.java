@@ -1,11 +1,11 @@
 package cn.onekit.weixin;
 
-import cn.onekit.js.JsObject_;
+import cn.onekit.js.JsObject;
 import cn.onekit.js.Map;
 import cn.onekit.js.core.function;
 
 public class UDPSocket {
-    public JsObject_ bind(JsObject_ port){
+    public JsObject bind(JsObject port){
         return null;
     };
     public void close(){

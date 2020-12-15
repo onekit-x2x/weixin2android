@@ -1,20 +1,66 @@
 package cn.onekit.weixin;
 
-import cn.onekit.js.JsObject_;
+import cn.onekit.js.JsBoolean;
+import cn.onekit.js.JsObject;
 import cn.onekit.js.core.function;
 
 public class InnerAudioContext {
-    private JsObject_ src;
-    private JsObject_ startTime;
-    private JsObject_ autoplay;
-    private JsObject_ loop;
-    private JsObject_ obeyMuteSwitch;
-    private JsObject_ volume;
-    private JsObject_ playbackRate;
-    private JsObject_ duration;
-    private JsObject_ currentTime;
-    private JsObject_ paused;
-    private JsObject_ buffered;
+    private JsObject src;
+    private JsObject startTime;
+    private JsBoolean autoplay;
+    private JsBoolean loop;
+    private JsBoolean obeyMuteSwitch;
+    private JsObject volume;
+    private JsObject playbackRate;
+    private JsObject duration;
+    private JsObject currentTime;
+    private JsBoolean paused;
+    private JsObject buffered;
+
+    public JsObject getSrc() {
+        return src;
+    }
+
+    public JsObject getStartTime() {
+        return startTime;
+    }
+
+    public JsBoolean getAutoplay() {
+        return autoplay;
+    }
+
+    public JsBoolean getLoop() {
+        return loop;
+    }
+
+    public JsBoolean getObeyMuteSwitch() {
+        return obeyMuteSwitch;
+    }
+
+    public JsObject getVolume() {
+        return volume;
+    }
+
+    public JsObject getPlaybackRate() {
+        return playbackRate;
+    }
+
+    public JsObject getDuration() {
+        return duration;
+    }
+
+    public JsObject getCurrentTime() {
+        return currentTime;
+    }
+
+    public JsBoolean getPaused() {
+        return paused;
+    }
+
+    public JsObject getBuffered() {
+        return buffered;
+    }
+
     public void destroy(){
 
     }
@@ -85,7 +131,7 @@ public class InnerAudioContext {
     public void play(){
 
     }
-    public void seek(JsObject_ position){
+    public void seek(JsObject position){
 
     }
     public void stop(){

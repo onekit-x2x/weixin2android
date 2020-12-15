@@ -2,7 +2,7 @@ package cn.onekit.weixin;
 
 import java.util.Map;
 
-import cn.onekit.js.JsObject_;
+import cn.onekit.js.JsObject;
 
 public class VideoContext {
     public void exitFullScreen(){
@@ -20,16 +20,16 @@ public class VideoContext {
     public void play(){
 
     }
-    public void playbackRate(JsObject_ rate){
+    public void playbackRate(JsObject rate){
 
     }
     public void requestFullScreen(Map OBJECT){
 
     }
-    public void seek(JsObject_ position){
+    public void seek(JsObject position){
 
     }
-    public void sendDanmu(JsObject_ data){
+    public void sendDanmu(JsObject data){
 
     }
     public void showStatusBar(){

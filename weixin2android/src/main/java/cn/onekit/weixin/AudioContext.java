@@ -1,6 +1,6 @@
 package cn.onekit.weixin;
 
-import cn.onekit.js.JsObject_;
+import cn.onekit.js.JsObject;
 
 public class AudioContext {
     public  void pause(){
@@ -9,10 +9,10 @@ public class AudioContext {
     public  void play(){
 
     }
-    public  void seek(JsObject_ position){
+    public  void seek(JsObject position){
 
     }
-    public  void setSrc(JsObject_ src){
+    public  void setSrc(JsObject src){
 
     }
 }

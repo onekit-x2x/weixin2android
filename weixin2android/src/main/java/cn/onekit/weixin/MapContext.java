@@ -2,7 +2,7 @@ package cn.onekit.weixin;
 
 import java.util.Map;
 
-import cn.onekit.js.JsObject_;
+
 
 public class MapContext {
     public void addGroundOverlay(Map OBJECT){

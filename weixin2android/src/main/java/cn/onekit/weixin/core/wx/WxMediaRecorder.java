@@ -1,11 +1,11 @@
 package cn.onekit.weixin.core.wx;
 
-import android.media.MediaRecorder;
 
-import cn.onekit.js.JsObject_;
+import cn.onekit.js.Map;
+import cn.onekit.weixin.MediaRecorder;
 
 public class WxMediaRecorder extends WxMedia {
-    public MediaRecorder createMediaRecorder(JsObject_ canvas, JsObject_ options){
+    public MediaRecorder createMediaRecorder(Map canvas, Map options){
         return null;
     }
 }
