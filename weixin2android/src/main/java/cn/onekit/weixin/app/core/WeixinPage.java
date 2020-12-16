@@ -161,7 +161,8 @@ public abstract class WeixinPage extends Activity implements WeixinFile  {
                     query.put(key, new JsString(extras.getString(key)));
                 }
             }
-            onekit.get("onLoad").invoke(query);
+            function onLoad = (function)onekit.get("onLoad");
+            onLoad.invoke(query);
         }
     }
 

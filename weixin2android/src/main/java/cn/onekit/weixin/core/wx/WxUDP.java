@@ -4,7 +4,8 @@ import cn.onekit.weixin.UDPSocket;
 
 public class WxUDP extends WxTopBar{
     public UDPSocket createUDPSocket(){
-        return null;
+
+        return new UDPSocket();
     }
 
 }
