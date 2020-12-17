@@ -106,7 +106,7 @@ public class UDPSocket  {
     ;
 
     public void offMessage(function callback) {
-this.messageCallback = null;
+       this.messageCallback = null;
     }
 
     ;
@@ -144,7 +144,7 @@ this.messageCallback = null;
                             ((JsString) OBJECT.get("message")).THIS.getBytes() :
                             ((ArrayBuffer) OBJECT.get("message"))._data;
                     final int offset = OBJECT.get("offset") != null ? ((JsNumber) OBJECT.get("offset")).THIS.intValue() : 0;
-                    final int length = OBJECT.get("length") != null ? ((JsNumber) OBJECT.get("length")).THIS.intValue() : message.length;
+                    final int length = OBJECT.get("length") != null ? ((JsNumber) OBJECT.get("length")).THIS.intValue() : message.length-offset;
                     //////////////////////////////////////
                     DatagramPacket packetSend = new DatagramPacket(message, offset, length, InetAddress.getByName(address), port);
                     socket.send(packetSend);

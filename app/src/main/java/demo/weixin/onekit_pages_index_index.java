@@ -2,6 +2,7 @@ package demo.weixin;
 
 import android.view.ViewGroup;
 
+import cn.onekit.js.ArrayBuffer;
 import cn.onekit.js.JsNumber;
 import cn.onekit.js.JsObject;
 import cn.onekit.js.JsObject_;
@@ -54,9 +55,12 @@ public class onekit_pages_index_index extends WeixinPage {
                             console.warn(new JsString("监听"), res);
 
                             udpConnect.send(new JsObject(){{
-                               put("address",new JsString("192.168.22.173"));
+                                JsString jsString = new JsString("hello, how are you");
+                                put("address",new JsString("192.168.22.173"));
                                 put("port",new JsNumber(9527));
-                                put("message",new JsString("hello, how are you"));
+                                put("message",jsString);
+                                put("offset",new JsNumber(1));
+                                //put("length",jsString.getLength());
                             }});
                             return null;
                         }
