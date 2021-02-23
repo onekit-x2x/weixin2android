@@ -28,7 +28,7 @@ public class onekit_pages_index_index extends WeixinPage {
             put("onLoad", new function() {
                 @Override
                 public JsObject_ invoke(JsObject_... params) {
-                    final UDPSocket udpConnect = wx.createUDPSocket();
+                  /*  final UDPSocket udpConnect = wx.createUDPSocket();
 
                     final function closeCallback = new function() {
                         @Override
@@ -86,7 +86,7 @@ public class onekit_pages_index_index extends WeixinPage {
                     udpConnect.bind();
                     return null;
                 }
-            });
+            });*/
         }});
     }
 }
