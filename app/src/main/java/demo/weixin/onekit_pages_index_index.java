@@ -4,10 +4,12 @@ import android.view.ViewGroup;
 
 import cn.onekit.js.ArrayBuffer;
 import cn.onekit.js.JsNumber;
+import cn.onekit.js.
 import cn.onekit.js.JsObject;
 import cn.onekit.js.JsObject_;
 import cn.onekit.js.JsString;
 import cn.onekit.js.core.function;
+import cn.onekit.thekit.ACTION1;
 import cn.onekit.weixin.UDPSocket;
 import cn.onekit.weixin.app.core.Vue;
 import cn.onekit.weixin.app.core.WeixinPage;
@@ -20,6 +22,13 @@ public class onekit_pages_index_index extends WeixinPage {
         //Switch switch1 = new Switch(ui.getContext());
         //  ui.addView(switch1);
         //switch1.setStyle("width:100px;height:100px;");
+
+        vue.For(data.get("items"), null, "index", "item", new ACTION1(){
+            @Override
+            public void invoke(Object Item) {
+
+            }
+        });
     }
 
     @Override
